@@ -6,5 +6,6 @@ Plannings de cada cliente, uno por fichero HTML.
 | --- | --- |
 | Adrià Huguet | `adria.html` |
 | Isaac Elíes | `isaac-elies.html` |
+| Ezequiel Huguet | `ezequiel-huguet.html` |
 
 Con GitHub Pages activado, cada planning se abre en `https://coachhuguet.github.io/huguet/<fichero>.html`.

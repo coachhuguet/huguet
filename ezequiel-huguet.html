@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#081016">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Coach Huguet">
+</head>
+<body>
+<!--BODY-START-->
+<title>Coach Huguet · Ezequiel Huguet</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+  /* Misma estética que el resto de clientes: verde y azul sobre fondo oscuro. */
+  :root {
+    --bg: #081016;
+    --card: #111b23;
+    --card-2: #16232d;
+    --line: #22323e;
+    --ink: #eef4f7;
+    --mut: #9bb0bd;
+    --green: #3ddc84;
+    --blue: #3fb6f2;
+    --amber: #f2b33f;
+    --red: #ff6b6b;
+    --display: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+    --body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 var(--body); -webkit-font-smoothing: antialiased; }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+  .wrap { max-width: 680px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+  /* Cabecera */
+  header { padding-block: 28px 18px; text-align: center; background: radial-gradient(120% 80% at 50% 0%, rgba(61,220,132,.16), transparent 60%); }
+  .brand { font: 700 13px/1 var(--body); letter-spacing: .28em; text-transform: uppercase; color: var(--green); }
+  .brand span { color: var(--blue); }
+  h1 { font: 700 46px/0.95 var(--display); text-transform: uppercase; margin: 10px 0 6px; letter-spacing: .01em; }
+  h1 em { font-style: normal; color: var(--green); }
+  .quote { color: var(--mut); font-style: italic; max-width: 34em; margin: 0 auto; font-size: 15px; }
+  .pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 18px; }
+  .pill { border: 1.5px solid; border-radius: 999px; padding: 6px 14px; font-weight: 600; font-size: 14px; white-space: nowrap; }
+  .p-amber { color: var(--amber); } .p-blue { color: var(--blue); } .p-green { color: var(--green); } .p-red { color: var(--red); }
+
+  /* Pestañas */
+  nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-top: 1px solid var(--line); border-bottom: 2px solid var(--green); }
+  nav .in { display: flex; overflow-x: auto; scrollbar-width: none; max-width: 680px; margin: 0 auto; }
+  nav .in::-webkit-scrollbar { display: none; }
+  nav button {
+    flex: none; background: none; border: 0; color: var(--mut); font: 700 14px/1 var(--body); letter-spacing: .1em; text-transform: uppercase;
+    padding: 17px 16px 15px; border-bottom: 3px solid transparent; cursor: pointer;
+  }
+  nav button[aria-selected="true"] { color: var(--green); border-bottom-color: var(--green); }
+  nav button:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
+
+  main { padding-block: 26px 60px; }
+  section[hidden] { display: none; }
+  h2 { font: 700 38px/1 var(--display); text-transform: uppercase; margin: 0 0 20px; padding-left: 14px; border-left: 5px solid var(--green); }
+  h2 em { font-style: normal; color: var(--green); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px; margin-bottom: 14px; }
+  .card.hl { background: #0c1a22; border-left: 4px solid var(--blue); }
+  .card h3 { font: 700 21px/1.1 var(--display); text-transform: uppercase; letter-spacing: .02em; margin: 0 0 12px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .card p { margin: 0 0 8px; } .card p:last-child { margin-bottom: 0; }
+  b, strong { font-weight: 700; }
+  .g { color: var(--green); } .bl { color: var(--blue); } .r { color: var(--red); } .mut { color: var(--mut); }
+  .small { font-size: 14px; }
+  ol, ul { margin: 0; padding-left: 20px; } li { margin: 4px 0; }
+
+  .grid2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; }
+  .stat { background: var(--card-2); border-radius: 12px; padding: 12px; }
+  .stat .k { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--mut); font-weight: 600; }
+  .stat .v { font: 700 26px/1.1 var(--display); }
+
+  .day { display: grid; grid-template-columns: 54px minmax(0,1fr); gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); align-items: center; }
+  .day:last-child { border-bottom: 0; }
+  .day .d { font: 700 20px/1 var(--display); color: var(--blue); text-transform: uppercase; }
+  .tag { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 6px; margin-left: 6px; vertical-align: 2px; }
+  .t-gym { background: rgba(63,182,242,.16); color: var(--blue); }
+  .t-pista { background: rgba(61,220,132,.16); color: var(--green); }
+  .t-box { background: rgba(255,107,107,.16); color: var(--red); }
+  .t-cardio { background: rgba(242,179,63,.16); color: var(--amber); }
+  .t-rec { background: rgba(155,176,189,.16); color: var(--mut); }
+
+  .ex { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 4px 12px; padding: 11px 0; border-bottom: 1px solid var(--line); }
+  .ex:last-child { border-bottom: 0; }
+  .ex .n { font-weight: 700; }
+  .ex .dose { font: 700 18px/1.2 var(--display); color: var(--green); text-align: right; white-space: nowrap; }
+  .ex .why { grid-column: 1 / -1; color: var(--mut); font-size: 14px; }
+
+  .phase { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; margin-bottom: 14px; }
+  .phase div { border: 1px solid var(--line); border-radius: 12px; padding: 12px; background: var(--card); }
+  .phase .w { font: 700 13px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--blue); }
+  .phase .t { font: 700 22px/1.15 var(--display); text-transform: uppercase; margin-top: 4px; }
+
+  .macro { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 8px; text-align: center; margin-top: 12px; }
+  .macro div { background: var(--card-2); border-radius: 10px; padding: 10px 4px; }
+  .macro b { display: block; font: 700 24px/1 var(--display); }
+  .meal { display: grid; grid-template-columns: 110px minmax(0,1fr); gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+  .meal:last-child { border-bottom: 0; }
+  .meal span:first-child { color: var(--blue); font-weight: 700; }
+
+  .no li { list-style: none; margin-left: -20px; }
+  .no li::before { content: "✕ "; color: var(--red); font-weight: 700; }
+
+  .scroll { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
+  th, td { border-bottom: 1px solid var(--line); padding: 7px 5px; text-align: left; white-space: nowrap; }
+  th { color: var(--mut); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
+  input { width: 66px; font: 600 15px var(--body); padding: 6px 7px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); }
+  input:focus-visible { outline: 2px solid var(--green); }
+  footer { text-align: center; color: var(--mut); font-size: 13px; padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px)); }
+</style>
+
+<header>
+  <div class="wrap">
+    <div class="brand">Coach <span>Huguet</span> · Fuerza funcional</div>
+    <h1>Ezequiel <em>Huguet</em></h1>
+    <p class="quote">"Fuerte para la vida, no para el espejo. Cada semana un poco mejor que la anterior."</p>
+    <div class="pills">
+      <span class="pill p-amber">🔥 kcal: pendiente de altura</span>
+      <span class="pill p-blue">🥩 Proteína 1,8 g/kg</span>
+      <span class="pill p-green">💪 Fuerza funcional</span>
+      <span class="pill p-red">🏋️ 3 gym + 2 cardio</span>
+      <span class="pill p-blue">💧 2,5 L agua</span>
+    </div>
+  </div>
+</header>
+
+<nav aria-label="Secciones">
+  <div class="in" role="tablist">
+    <button role="tab" data-t="perfil" aria-selected="true">Perfil</button>
+    <button role="tab" data-t="estrategia" aria-selected="false">Estrategia</button>
+    <button role="tab" data-t="entreno" aria-selected="false">Entreno</button>
+    <button role="tab" data-t="niveles" aria-selected="false">Niveles</button>
+    <button role="tab" data-t="dieta" aria-selected="false">Dieta</button>
+    <button role="tab" data-t="mente" aria-selected="false">Mente</button>
+    <button role="tab" data-t="progreso" aria-selected="false">📊 Progreso</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- PERFIL -->
+  <section id="perfil">
+    <h2>Perfil <em>actual</em></h2>
+    <div class="card">
+      <div class="grid2">
+        <div class="stat"><div class="k">Peso</div><div class="v">81 kg</div></div>
+        <div class="stat"><div class="k">Altura</div><div class="v">— m</div></div>
+        <div class="stat"><div class="k">Edad</div><div class="v">58 años</div></div>
+        <div class="stat"><div class="k">Objetivo</div><div class="v">Fuerza funcional</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>🎯 Objetivos a 8 semanas</h3>
+      <ol>
+        <li><b>Más fuerza útil:</b> subir cargas y repeticiones en sentadilla, dominadas y flexiones.</li>
+        <li><b>Ganar músculo sin volumen de culturismo:</b> cuerpo más firme y funcional, con el peso estable o subiendo muy poco.</li>
+        <li><b>Piernas y gemelos fuertes:</b> un día entero de pierna y gemelo dos veces por semana.</li>
+        <li><b>Core sólido:</b> espalda protegida y mejor postura en el día a día.</li>
+        <li><b>Buen estado de forma:</b> dos días de cardio suave para el corazón y la recuperación.</li>
+        <li><b>Cero lesiones:</b> técnica limpia, calentamiento siempre y progresión sin prisas.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>📅 Plan</h3>
+      <p>Del <b>26 de octubre</b> al <b>20 de diciembre</b> de 2026. Dos bloques de 4 semanas; la cuarta semana de cada bloque es de descarga.</p>
+      <p class="mut small">Antes de empezar (semana 0) pésate, toma las medidas y haz los tests de la pestaña Progreso para tener tu punto de partida.</p>
+    </div>
+  </section>
+
+  <!-- ESTRATEGIA -->
+  <section id="estrategia" hidden>
+    <h2>Tu <em>estrategia</em></h2>
+    <div class="card hl">
+      <p>💪 <b>Objetivo:</b> fuerza funcional. Movimientos que sirven fuera del gimnasio: <b>empujar, tirar, agacharse y estabilizar</b>.</p>
+      <p>🧱 <b>Los básicos mandan:</b> dominadas, sentadilla, flexiones y core. Pocos ejercicios, bien hechos y cada semana un poco mejor.</p>
+      <p>🦵 <b>Pierna un solo día</b>, pero completo. Los gemelos se trabajan <b>dos veces por semana</b> al final de la sesión.</p>
+      <p>🫀 <b>A los 58 la recuperación cuenta:</b> nada de ir al fallo, calentamiento largo y un día de descanso entre sesiones de fuerza.</p>
+    </div>
+    <div class="card">
+      <h3>⏱️ Descanso entre series</h3>
+      <p><b class="g">2 minutos</b> en los ejercicios grandes (sentadilla, dominadas, peso muerto rumano); <b class="g">60 a 90 segundos</b> en el resto, el core y los gemelos.</p>
+    </div>
+    <div class="card">
+      <h3>🔥 Intensidad</h3>
+      <p>Termina cada serie con <b>2 o 3 repeticiones en la recámara</b>: que la última repetición cueste, pero salga limpia. <b class="r">No se entrena al fallo.</b></p>
+      <p>Bajada controlada (2-3 s), subida firme y respiración constante: suelta el aire al hacer fuerza, sin bloquear la respiración.</p>
+    </div>
+    <div class="card">
+      <h3>🗓️ Semana tipo</h3>
+      <div class="day"><span class="d">Lun</span><span>Tren superior A + core + gemelo <span class="tag t-gym">Gym</span></span></div>
+      <div class="day"><span class="d">Mar</span><span>Cardio suave 30-40 min <span class="tag t-cardio">Cardio</span></span></div>
+      <div class="day"><span class="d">Mié</span><span>Pierna completa <span class="tag t-gym">Gym</span></span></div>
+      <div class="day"><span class="d">Jue</span><span>Cardio suave + movilidad <span class="tag t-cardio">Cardio</span></span></div>
+      <div class="day"><span class="d">Vie</span><span>Tren superior B + core + gemelo <span class="tag t-gym">Gym</span></span></div>
+      <div class="day"><span class="d">Sáb</span><span>Paseo largo o actividad libre <span class="tag t-rec">Libre</span></span></div>
+      <div class="day"><span class="d">Dom</span><span>Descanso total <span class="tag t-rec">Off</span></span></div>
+      <p class="mut small" style="margin-top:10px">Gemelo: lunes y viernes al final. El miércoles de pierna no lleva gemelo para no sobrecargarlo.</p>
+    </div>
+    <div class="card">
+      <h3>📈 Progresión</h3>
+      <div class="phase" style="margin-bottom:0">
+        <div><div class="w">Sem 1-4</div><div class="t">Técnica y base</div><p class="mut small" style="margin:6px 0 0">Aprender los movimientos y encontrar las cargas.</p></div>
+        <div><div class="w">Sem 5-8</div><div class="t">Más fuerza</div><p class="mut small" style="margin:6px 0 0">Subir de nivel en los básicos y algo más de peso.</p></div>
+      </div>
+      <p class="small" style="margin-top:12px"><b>Doble progresión:</b> cuando completes todas las series en el máximo del rango (por ejemplo 3×10 de un 3×8-10), sube un poco el peso o pasa al siguiente nivel (ver pestaña Niveles). Semanas 4 y 8: <b>descarga</b>, mismo peso con una serie menos.</p>
+    </div>
+  </section>
+
+  <!-- ENTRENO -->
+  <section id="entreno" hidden>
+    <h2>Tu <em>entreno</em></h2>
+    <div class="card hl"><p>Antes de cada sesión: <b>12-15 min de calentamiento</b> (5-8 min de bici o elíptica suave, movilidad de hombro, cadera y tobillo) y <b>2 series de aproximación</b> ligeras en el primer ejercicio.</p></div>
+
+    <div class="card">
+      <h3>Lunes · Tren superior A</h3>
+      <div class="ex"><span class="n">Dominadas (según tu nivel)</span><span class="dose">4×4-8</span><span class="why">El ejercicio estrella de la semana. Con banda o negativas si aún no salen; ver Niveles.</span></div>
+      <div class="ex"><span class="n">Flexiones (según tu nivel)</span><span class="dose">4×8-12</span><span class="why">Cuerpo en bloque, codos a 45°, pecho cerca del suelo.</span></div>
+      <div class="ex"><span class="n">Remo con mancuerna a una mano</span><span class="dose">3×10/brazo</span><span class="why">Apoyado en el banco, espalda recta. Tira hacia la cadera.</span></div>
+      <div class="ex"><span class="n">Press de hombro con mancuernas sentado</span><span class="dose">3×8-10</span><span class="why">Respaldo vertical, sin arquear la zona lumbar.</span></div>
+      <div class="ex"><span class="n">Face pull</span><span class="dose">3×15</span><span class="why">Salud del hombro y postura.</span></div>
+      <div class="ex"><span class="n">Core: plancha frontal</span><span class="dose">3×30-45 s</span><span class="why">Glúteo apretado, sin hundir la cadera.</span></div>
+      <div class="ex"><span class="n">Core: dead bug</span><span class="dose">3×8/lado</span><span class="why">Lumbar pegada al suelo, movimiento lento.</span></div>
+      <div class="ex"><span class="n">Gemelo de pie (máquina o escalón)</span><span class="dose">4×12-15</span><span class="why">Pausa de 1 s arriba y estiramiento completo abajo.</span></div>
+    </div>
+
+    <div class="card">
+      <h3>Miércoles · Pierna</h3>
+      <div class="ex"><span class="n">Sentadilla (según tu nivel)</span><span class="dose">4×6-10</span><span class="why">Goblet al principio, con barra cuando la técnica sea sólida. Rodillas en la línea de los pies.</span></div>
+      <div class="ex"><span class="n">Peso muerto rumano con mancuernas</span><span class="dose">3×8-10</span><span class="why">Cadera atrás, espalda neutra. Isquios y glúteo, clave para la espalda.</span></div>
+      <div class="ex"><span class="n">Zancada atrás con mancuernas</span><span class="dose">3×8/pierna</span><span class="why">Hacia atrás es más amable con la rodilla. Equilibrio y fuerza de cada pierna.</span></div>
+      <div class="ex"><span class="n">Step-up al banco</span><span class="dose">3×8/pierna</span><span class="why">Banco a la altura de la rodilla. Sube empujando con el talón, sin impulso.</span></div>
+      <div class="ex"><span class="n">Puente de glúteo</span><span class="dose">3×12</span><span class="why">Con peso en la cadera. Aprieta 2 s arriba.</span></div>
+      <div class="ex"><span class="n">Paseo del granjero</span><span class="dose">3×30 m</span><span class="why">Mancuernas pesadas, cuerpo erguido. Agarre, core y piernas a la vez.</span></div>
+      <div class="ex"><span class="n">Core: Pallof press</span><span class="dose">3×10/lado</span><span class="why">En polea o banda. Que el tronco no gire.</span></div>
+    </div>
+
+    <div class="card">
+      <h3>Viernes · Tren superior B</h3>
+      <div class="ex"><span class="n">Dominadas agarre neutro o supino</span><span class="dose">3×4-8</span><span class="why">Variante más fácil para el codo y el hombro. Mismo nivel que el lunes.</span></div>
+      <div class="ex"><span class="n">Press banca con mancuernas</span><span class="dose">3×8-10</span><span class="why">Escápulas atrás. Las mancuernas cuidan más el hombro que la barra.</span></div>
+      <div class="ex"><span class="n">Remo invertido en barra o TRX</span><span class="dose">3×8-12</span><span class="why">Cuerpo recto. Cuanto más horizontal, más difícil.</span></div>
+      <div class="ex"><span class="n">Flexiones (según tu nivel)</span><span class="dose">2×máx −2</span><span class="why">Paras 2 repeticiones antes del fallo. Apunta el número.</span></div>
+      <div class="ex"><span class="n">Curl martillo + extensión de tríceps en polea</span><span class="dose">2×12</span><span class="why">Brazo sano y fuerte, sin buscar volumen.</span></div>
+      <div class="ex"><span class="n">Core: plancha lateral</span><span class="dose">3×20-30 s/lado</span><span class="why">Cuerpo en línea. Protege la zona lumbar.</span></div>
+      <div class="ex"><span class="n">Core: rueda abdominal (o bird dog)</span><span class="dose">3×8</span><span class="why">Rueda desde rodillas y recorrido corto; bird dog si molesta la espalda.</span></div>
+      <div class="ex"><span class="n">Gemelo sentado (o a una pierna en escalón)</span><span class="dose">4×12-15</span><span class="why">Pausa arriba y bajada lenta. Sentado trabaja más el sóleo.</span></div>
+    </div>
+
+    <div class="card">
+      <h3>Martes y jueves · Cardio suave</h3>
+      <div class="ex"><span class="n">Caminar rápido, bici o elíptica</span><span class="dose">30-40 min</span><span class="why">Ritmo en el que puedas hablar pero no cantar. Corazón sano y mejor recuperación.</span></div>
+      <div class="ex"><span class="n">Movilidad (jueves)</span><span class="dose">10 min</span><span class="why">Cadera, columna torácica, tobillo y hombro.</span></div>
+    </div>
+  </section>
+
+  <!-- NIVELES -->
+  <section id="niveles" hidden>
+    <h2>Tus <em>niveles</em></h2>
+    <div class="card hl"><p>Cada básico tiene <b>niveles</b>. Empieza en el que puedas hacer con buena técnica en el rango de repeticiones. Cuando lo completes en el máximo del rango <b>dos sesiones seguidas</b>, pasa al siguiente.</p></div>
+    <div class="card">
+      <h3>🔝 Dominadas</h3>
+      <div class="ex"><span class="n">1 · Colgarse de la barra</span><span class="dose">3×20-30 s</span><span class="why">Hombros activos, no colgado "muerto". Agarre y hombro.</span></div>
+      <div class="ex"><span class="n">2 · Jalón al pecho en máquina</span><span class="dose">4×8-10</span><span class="why">Base de fuerza para tirar.</span></div>
+      <div class="ex"><span class="n">3 · Dominada con banda elástica</span><span class="dose">4×5-8</span><span class="why">Banda gruesa al principio; cada vez más fina.</span></div>
+      <div class="ex"><span class="n">4 · Negativas</span><span class="dose">4×3-5</span><span class="why">Sube con ayuda de un banco y baja en 4-5 s.</span></div>
+      <div class="ex"><span class="n">5 · Dominada completa</span><span class="dose">4×3-8</span><span class="why">Desde brazos estirados hasta barbilla por encima de la barra.</span></div>
+    </div>
+    <div class="card">
+      <h3>🫸 Flexiones</h3>
+      <div class="ex"><span class="n">1 · Flexión en pared o espaldera alta</span><span class="dose">3×12-15</span><span class="why">Para aprender la posición del cuerpo.</span></div>
+      <div class="ex"><span class="n">2 · Flexión inclinada en banco</span><span class="dose">4×8-12</span><span class="why">Cuanto más bajo el apoyo, más difícil.</span></div>
+      <div class="ex"><span class="n">3 · Flexión en el suelo</span><span class="dose">4×8-12</span><span class="why">Cuerpo en bloque de cabeza a talones.</span></div>
+      <div class="ex"><span class="n">4 · Flexión con pausa abajo</span><span class="dose">4×6-10</span><span class="why">2 s a un dedo del suelo.</span></div>
+      <div class="ex"><span class="n">5 · Flexión con pies elevados</span><span class="dose">4×6-10</span><span class="why">Pies en un banco bajo.</span></div>
+    </div>
+    <div class="card">
+      <h3>🦵 Sentadilla</h3>
+      <div class="ex"><span class="n">1 · Sentadilla a banco</span><span class="dose">3×10-12</span><span class="why">Tocas el banco y te levantas sin dejarte caer.</span></div>
+      <div class="ex"><span class="n">2 · Sentadilla goblet</span><span class="dose">4×8-10</span><span class="why">Mancuerna o kettlebell pegada al pecho. Sube el peso poco a poco.</span></div>
+      <div class="ex"><span class="n">3 · Sentadilla con barra</span><span class="dose">4×6-8</span><span class="why">Solo con técnica sólida. Profundidad hasta donde mantengas la espalda neutra.</span></div>
+    </div>
+    <div class="card">
+      <h3>⚠️ Señales para no subir de nivel</h3>
+      <ul>
+        <li>Dolor articular (rodilla, hombro, codo o lumbar). Molestia muscular sí, dolor de articulación no.</li>
+        <li>La técnica se rompe en las últimas repeticiones.</li>
+        <li>Llegas a la sesión sin haber recuperado de la anterior.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- DIETA -->
+  <section id="dieta" hidden>
+    <h2>Tu <em>dieta</em></h2>
+    <div class="card hl">
+      <p>📊 <b>Pendiente de tu altura:</b> con ella calculo las calorías exactas. Mientras tanto, las reglas por kilo de peso.</p>
+      <p>⚖️ <b>Recomposición:</b> comes más o menos lo que gastas, con mucha proteína. Buscamos ganar músculo y perder algo de grasa, no subir de peso.</p>
+      <p>📏 <b>La cintura manda:</b> si la cintura baja y las cargas suben, vamos bien aunque la báscula no se mueva.</p>
+    </div>
+    <div class="card">
+      <h3>Reparto por kilo de peso</h3>
+      <p><b style="font:700 32px/1 var(--display)">— </b> <span class="mut">kcal (pendiente)</span></p>
+      <div class="macro"><div><b class="bl">1,8 g/kg</b><span class="mut small">Proteína</span></div><div><b class="g">3 g/kg</b><span class="mut small">Hidratos</span></div><div><b style="color:var(--amber)">0,9 g/kg</b><span class="mut small">Grasa</span></div></div>
+      <p class="mut small" style="margin-top:12px">Con tus 81 kg: unos 145 g de proteína, 240 g de hidratos y 70 g de grasa al día. Reparte la proteína en 4 comidas de 30-40 g.</p>
+    </div>
+    <div class="card">
+      <h3>🍽️ Menú ejemplo</h3>
+      <div class="meal"><span>Desayuno</span><span>Tortilla de 3 huevos, 2 tostadas integrales con tomate y aceite, 1 fruta</span></div>
+      <div class="meal"><span>Comida</span><span>80 g arroz, pasta o legumbre (crudo), 150-180 g pollo, pescado o ternera, verdura abundante, 1 cda aceite de oliva</span></div>
+      <div class="meal"><span>Merienda</span><span>250 g yogur griego natural o skyr, 1 puñado de nueces y 1 fruta</span></div>
+      <div class="meal"><span>Post-entreno</span><span>Si cenas tarde: 30 g proteína whey o un vaso de leche con 1 plátano</span></div>
+      <div class="meal"><span>Cena</span><span>180 g pescado (azul 2-3 veces por semana), huevos o pavo, 200 g patata o boniato, ensalada</span></div>
+    </div>
+    <div class="card">
+      <h3>💊 Suplementos útiles</h3>
+      <ul>
+        <li><b>Creatina:</b> 3-5 g cada día. A partir de los 50 ayuda mucho a mantener fuerza y músculo.</li>
+        <li><b>Proteína whey:</b> solo si no llegas a tu proteína con comida.</li>
+        <li><b>Vitamina D:</b> en invierno, si la analítica lo indica.</li>
+        <li class="mut small">Si tomas alguna medicación, consúltalo antes con tu médico.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- MENTE -->
+  <section id="mente" hidden>
+    <h2>Tu <em>mente</em></h2>
+    <div class="card">
+      <h3>🧠 Mentalidad de constancia</h3>
+      <ol>
+        <li><b>Constancia antes que intensidad.</b> Tres sesiones cada semana durante 8 semanas valen más que cualquier sesión heroica.</li>
+        <li><b>Apunta todo.</b> Repeticiones de dominadas y flexiones, y peso de la sentadilla. Es tu mejor motivación.</li>
+        <li><b>Escucha al cuerpo.</b> Un mal día se baja la carga; no se suspende la semana.</li>
+        <li><b>Dormir es recuperar.</b> 7-8 horas: ahí se gana la fuerza.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>⚠️ Lo que no debes hacer</h3>
+      <ul class="no">
+        <li>Entrenar al fallo o "a muerte"</li>
+        <li>Saltarte el calentamiento</li>
+        <li>Subir de nivel antes de dominar el anterior</li>
+        <li>Entrenar con dolor articular</li>
+        <li>Aguantar la respiración haciendo fuerza</li>
+        <li>Quedarte corto de proteína</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROGRESO -->
+  <section id="progreso" hidden>
+    <h2>Tu <em>progreso</em></h2>
+    <div class="card hl"><p>Rellena las medidas y los tests en las semanas <b>0, 4 y 8</b>, y las cargas cada semana. Se guarda en este móvil.</p></div>
+    <div class="card">
+      <h3>📏 Peso y medidas</h3>
+      <div class="scroll"><table id="medidas"></table></div>
+      <p class="mut small" style="margin-top:10px">Mide en ayunas, siempre a la misma hora. Cintura: a la altura del ombligo. Gemelo: en la parte más ancha, de pie.</p>
+    </div>
+    <div class="card">
+      <h3>🧪 Tests de fuerza</h3>
+      <div class="scroll"><table id="tests"></table></div>
+      <p class="mut small" style="margin-top:10px">Dominadas y flexiones: máximo de repeticiones limpias en tu nivel (anota el nivel). Plancha: segundos con buena técnica.</p>
+    </div>
+    <div class="card">
+      <h3>🏋️ Cargas semanales</h3>
+      <div class="scroll"><table id="cargas"></table></div>
+      <p class="mut small" style="margin-top:10px">Apunta el peso (kg) o las repeticiones de tu mejor serie de la semana.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">Coach Huguet · actualizado el 23 oct 2026</footer>
+<script>
+  (function () {
+    var tabs = document.querySelectorAll('nav button');
+    function show(t) {
+      tabs.forEach(function (b) { b.setAttribute('aria-selected', String(b.dataset.t === t)); });
+      document.querySelectorAll('main section').forEach(function (s) { s.hidden = s.id !== t; });
+    }
+    tabs.forEach(function (b) {
+      b.addEventListener('click', function () {
+        show(b.dataset.t);
+        b.scrollIntoView({ inline: 'center', block: 'nearest' });
+        var nav = document.querySelector('nav');
+        if (window.scrollY > nav.offsetTop) window.scrollTo(0, nav.offsetTop);
+      });
+    });
+    var h = (location.hash || '').slice(1);
+    if (document.getElementById(h) && h !== 'perfil') show(h);
+
+    var key = 'coach-huguet-ezequiel-huguet';
+    var data = {};
+    try { data = JSON.parse(localStorage.getItem(key)) || {}; } catch (e) {}
+    function table(id, cols, rows) {
+      var html = '<tr><th></th>' + cols.map(function (c) { return '<th>' + c + '</th>'; }).join('') + '</tr>';
+      rows.forEach(function (r, ri) {
+        html += '<tr><td>' + r + '</td>' + cols.map(function (c, ci) {
+          var k = id + '-' + ri + '-' + ci;
+          return '<td><input inputmode="decimal" data-k="' + k + '" value="' + (data[k] || '').replace(/"/g, '') + '" aria-label="' + r + ', ' + c + '"></td>';
+        }).join('') + '</tr>';
+      });
+      var t = document.getElementById(id);
+      t.innerHTML = html;
+      t.addEventListener('input', function (ev) {
+        data[ev.target.dataset.k] = ev.target.value;
+        try { localStorage.setItem(key, JSON.stringify(data)); } catch (e) {}
+      });
+    }
+    table('medidas', ['Sem 0', 'Sem 4', 'Sem 8'], ['Peso corporal (kg)', 'Cintura (cm)', 'Pecho (cm)', 'Brazo (cm)', 'Muslo (cm)', 'Gemelo (cm)']);
+    table('tests', ['Sem 0', 'Sem 4', 'Sem 8'], ['Dominadas (reps · nivel)', 'Flexiones (reps · nivel)', 'Plancha (s)', 'Sentadilla 8 reps (kg)']);
+    var weeks = []; for (var i = 1; i <= 8; i++) weeks.push('S' + i + (i === 4 || i === 8 ? '·D' : ''));
+    table('cargas', weeks, ['Dominadas (reps)', 'Flexiones (reps)', 'Sentadilla (kg)', 'Peso muerto rumano (kg)', 'Remo mancuerna (kg)', 'Press hombro (kg)', 'Gemelo (kg)']);
+  })();
+</script>
+<!--BODY-END-->
+</body>
+</html>
