@@ -3,135 +3,406 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Planning Adrià</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<style>
-  :root { --bg:#f4f7fa; --card:#fff; --ink:#122334; --mut:#5a6b7c; --line:#d6dfe7; --blue:#14365a; --ball:#d7e842; }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#0d151d; --card:#15212c; --ink:#e6edf3; --mut:#97a8b8; --line:#283846; --blue:#86b6e6; color-scheme:dark; } }
-  :root[data-theme="dark"] { --bg:#0d151d; --card:#15212c; --ink:#e6edf3; --mut:#97a8b8; --line:#283846; --blue:#86b6e6; color-scheme:dark; }
-  body { background:var(--bg); color:var(--ink); font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif; margin:0; }
-  main { max-width:640px; margin:0 auto; padding-block:20px 40px; padding-left:max(16px,env(safe-area-inset-left,0px)); padding-right:max(16px,env(safe-area-inset-right,0px)); }
-  h1 { font-size:28px; margin:0 0 4px; }
-  h2 { font-size:20px; margin:28px 0 10px; color:var(--blue); }
-  h3 { font-size:16px; margin:0 0 6px; }
-  .sub { color:var(--mut); margin:0; }
-  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 14px; margin-bottom:10px; }
-  .tag { display:inline-block; background:var(--ball); color:#2a3000; font-size:12px; font-weight:600; padding:2px 8px; border-radius:99px; }
-  ul { margin:4px 0 0; padding-left:18px; }
-  li { margin:2px 0; }
-  .dose { color:var(--mut); font-variant-numeric:tabular-nums; }
-  .scroll { overflow-x:auto; }
-  table { border-collapse:collapse; width:100%; font-size:14px; font-variant-numeric:tabular-nums; }
-  th, td { border-bottom:1px solid var(--line); padding:6px 4px; text-align:left; }
-  th { color:var(--mut); font-weight:600; font-size:12px; }
-  input { width:64px; font:inherit; padding:4px 6px; border:1px solid var(--line); border-radius:6px; background:var(--bg); color:var(--ink); }
-  .note { color:var(--mut); font-size:13px; }
-</style>
+<meta name="theme-color" content="#081016">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Coach Huguet">
 </head>
 <body>
+<!--BODY-START-->
+<title>Coach Huguet · Adrià</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+  /* Una sola estética oscura, a propósito: verde pista y azul cristal sobre noche de pista cubierta. */
+  :root {
+    --bg: #081016;
+    --card: #111b23;
+    --card-2: #16232d;
+    --line: #22323e;
+    --ink: #eef4f7;
+    --mut: #9bb0bd;
+    --green: #3ddc84;
+    --blue: #3fb6f2;
+    --amber: #f2b33f;
+    --red: #ff6b6b;
+    --display: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+    --body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 var(--body); -webkit-font-smoothing: antialiased; }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+  .wrap { max-width: 680px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 
-<main>
-  <h1>Adrià Huguet · Planning de pádel</h1>
-  <p class="sub">75 kg · 1,80 m · seco y definido. Del 26 oct al 20 dic 2026.</p>
+  /* Cabecera */
+  header { padding-block: 28px 18px; text-align: center; background: radial-gradient(120% 80% at 50% 0%, rgba(61,220,132,.16), transparent 60%); }
+  .brand { font: 700 13px/1 var(--body); letter-spacing: .28em; text-transform: uppercase; color: var(--green); }
+  .brand span { color: var(--blue); }
+  h1 { font: 700 46px/0.95 var(--display); text-transform: uppercase; margin: 10px 0 6px; letter-spacing: .01em; }
+  h1 em { font-style: normal; color: var(--green); }
+  .quote { color: var(--mut); font-style: italic; max-width: 34em; margin: 0 auto; font-size: 15px; }
+  .pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 18px; }
+  .pill { border: 1.5px solid; border-radius: 999px; padding: 6px 14px; font-weight: 600; font-size: 14px; white-space: nowrap; }
+  .p-amber { color: var(--amber); } .p-blue { color: var(--blue); } .p-green { color: var(--green); } .p-red { color: var(--red); }
 
-  <h2>Objetivos a 8 semanas</h2>
-  <div class="card"><ul>
-    <li><b>Más fuerza de piernas:</b> +10 kg en el peso muerto con trap bar (4×5).</li>
-    <li><b>Hombro y codo sin lesiones:</b> rotación externa 3 días por semana.</li>
-    <li><b>Mantener peso y definición:</b> entre 74 y 76 kg, pesándote los lunes en ayunas.</li>
-    <li><b>Transición fondo-red:</b> ganar la red tras bandeja en 7 de cada 10 puntos.</li>
-  </ul></div>
+  /* Pestañas */
+  nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-top: 1px solid var(--line); border-bottom: 2px solid var(--green); }
+  nav .in { display: flex; overflow-x: auto; scrollbar-width: none; max-width: 680px; margin: 0 auto; }
+  nav .in::-webkit-scrollbar { display: none; }
+  nav button {
+    flex: none; background: none; border: 0; color: var(--mut); font: 700 14px/1 var(--body); letter-spacing: .1em; text-transform: uppercase;
+    padding: 17px 16px 15px; border-bottom: 3px solid transparent; cursor: pointer;
+  }
+  nav button[aria-selected="true"] { color: var(--green); border-bottom-color: var(--green); }
+  nav button:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
 
-  <h2>Semana tipo</h2>
-  <p class="note">Bloque 1 (26 oct – 22 nov): fuerza base. Bloque 2 (23 nov – 20 dic): mismos días, menos reps y más peso (trap bar 5×3 + 3 saltos tras cada serie, banca 4×5, dominadas 5×4). La semana 4 de cada bloque es descarga: mismo peso, 1 serie menos.</p>
+  main { padding-block: 26px 60px; }
+  section[hidden] { display: none; }
+  h2 { font: 700 38px/1 var(--display); text-transform: uppercase; margin: 0 0 20px; padding-left: 14px; border-left: 5px solid var(--green); }
+  h2 em { font-style: normal; color: var(--green); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px; margin-bottom: 14px; }
+  .card.hl { background: #0c1a22; border-left: 4px solid var(--blue); }
+  .card h3 { font: 700 21px/1.1 var(--display); text-transform: uppercase; letter-spacing: .02em; margin: 0 0 12px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .card p { margin: 0 0 8px; } .card p:last-child { margin-bottom: 0; }
+  b, strong { font-weight: 700; }
+  .g { color: var(--green); } .bl { color: var(--blue); } .r { color: var(--red); } .mut { color: var(--mut); }
+  .small { font-size: 14px; }
+  ol, ul { margin: 0; padding-left: 20px; } li { margin: 4px 0; }
 
-  <div class="card"><h3>Lunes · Fuerza A, piernas <span class="tag">Gimnasio</span></h3><ul>
-    <li>Calentamiento dinámico <span class="dose">10 min</span></li>
-    <li>Peso muerto con trap bar <span class="dose">4×5 · desc. 2:30</span></li>
-    <li>Sentadilla búlgara <span class="dose">3×8 por pierna</span></li>
-    <li>Hip thrust <span class="dose">3×10</span></li>
-    <li>Salto al cajón <span class="dose">4×4, máxima calidad</span></li>
-    <li>Pallof press <span class="dose">3×10 por lado</span></li>
-    <li>Gemelo a una pierna <span class="dose">3×12</span></li>
-  </ul></div>
+  .grid2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; }
+  .stat { background: var(--card-2); border-radius: 12px; padding: 12px; }
+  .stat .k { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--mut); font-weight: 600; }
+  .stat .v { font: 700 26px/1.1 var(--display); }
 
-  <div class="card"><h3>Martes · Pista, red <span class="tag">Pista</span></h3><ul>
-    <li>Split step + desplazamiento lateral <span class="dose">4×30 s</span></li>
-    <li>Volea de bloqueo <span class="dose">15 min</span></li>
-    <li>Bandeja cruzada y recuperar red <span class="dose">3×12</span></li>
-    <li>Víbora a la reja <span class="dose">3×10</span></li>
-  </ul></div>
+  .day { display: grid; grid-template-columns: 54px minmax(0,1fr); gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); align-items: center; }
+  .day:last-child { border-bottom: 0; }
+  .day .d { font: 700 20px/1 var(--display); color: var(--blue); text-transform: uppercase; }
+  .tag { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 6px; margin-left: 6px; vertical-align: 2px; }
+  .t-gym { background: rgba(63,182,242,.16); color: var(--blue); }
+  .t-pista { background: rgba(61,220,132,.16); color: var(--green); }
+  .t-rec { background: rgba(155,176,189,.16); color: var(--mut); }
 
-  <div class="card"><h3>Miércoles · Movilidad <span class="tag">Casa</span></h3><ul>
-    <li>Movilidad cadera, torácica y hombro <span class="dose">20 min</span></li>
-    <li>Rotación externa de hombro <span class="dose">3×15</span></li>
-  </ul></div>
+  .ex { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 4px 12px; padding: 11px 0; border-bottom: 1px solid var(--line); }
+  .ex:last-child { border-bottom: 0; }
+  .ex .n { font-weight: 700; }
+  .ex .dose { font: 700 18px/1.2 var(--display); color: var(--green); text-align: right; white-space: nowrap; }
+  .ex .why { grid-column: 1 / -1; color: var(--mut); font-size: 14px; }
 
-  <div class="card"><h3>Jueves · Fuerza B, tren superior <span class="tag">Gimnasio</span></h3><ul>
-    <li>Dominada lastrada <span class="dose">4×5 · desc. 2:00</span></li>
-    <li>Press banca con mancuernas <span class="dose">4×6</span></li>
-    <li>Remo con mancuerna <span class="dose">3×10</span></li>
-    <li>Press landmine con giro <span class="dose">3×8 por lado</span></li>
-    <li>Lanzamiento rotacional balón medicinal <span class="dose">4×5 por lado</span></li>
-    <li>Rotación externa de hombro <span class="dose">3×15</span></li>
-  </ul></div>
+  .phase { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; margin-bottom: 14px; }
+  .phase div { border: 1px solid var(--line); border-radius: 12px; padding: 12px; background: var(--card); }
+  .phase .w { font: 700 13px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--blue); }
+  .phase .t { font: 700 22px/1.15 var(--display); text-transform: uppercase; margin-top: 4px; }
 
-  <div class="card"><h3>Viernes · Pista, fondo y pared <span class="tag">Pista</span></h3><ul>
-    <li>Salida de pared de fondo <span class="dose">4×10</span></li>
-    <li>Bandeja cruzada <span class="dose">3×10</span></li>
-    <li>Puntos condicionados (solo vale ganar desde la red) <span class="dose">20 min</span></li>
-  </ul></div>
+  .macro { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 8px; text-align: center; margin-top: 12px; }
+  .macro div { background: var(--card-2); border-radius: 10px; padding: 10px 4px; }
+  .macro b { display: block; font: 700 24px/1 var(--display); }
+  .meal { display: grid; grid-template-columns: 110px minmax(0,1fr); gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+  .meal:last-child { border-bottom: 0; }
+  .meal span:first-child { color: var(--blue); font-weight: 700; }
 
-  <div class="card"><h3>Sábado · Partido</h3><p class="note" style="margin:0">Objetivo: subir a la red después de cada bandeja. Domingo descanso.</p></div>
+  .no li { list-style: none; margin-left: -20px; }
+  .no li::before { content: "✕ "; color: var(--red); font-weight: 700; }
 
-  <h2>Registro de pesos (sobrecarga progresiva)</h2>
-  <p class="note">Apunta el peso de la última serie de cada semana. Si completas todas las reps con margen, la semana siguiente sube: +5 kg trap bar e hip thrust, +2 kg mancuernas, +2,5 kg dominadas. Se guarda en este móvil.</p>
-  <div class="card scroll"><table id="log"></table></div>
+  .scroll { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
+  th, td { border-bottom: 1px solid var(--line); padding: 7px 5px; text-align: left; white-space: nowrap; }
+  th { color: var(--mut); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
+  input { width: 66px; font: 600 15px var(--body); padding: 6px 7px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); }
+  input:focus-visible { outline: 2px solid var(--green); }
+  footer { text-align: center; color: var(--mut); font-size: 13px; padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px)); }
+</style>
 
-  <h2>Nutrición</h2>
-  <div class="card">
-    <p style="margin:0"><b>Días de entreno:</b> 2.850 kcal · 150 g proteína · 400 g hidratos · 70 g grasa</p>
-    <p style="margin:6px 0 0"><b>Días de descanso:</b> 2.500 kcal · 150 g proteína · 305 g hidratos · 75 g grasa</p>
+<header>
+  <div class="wrap">
+    <div class="brand">Coach <span>Huguet</span> · Pádel</div>
+    <h1>Adrià <em>Huguet</em></h1>
+    <p class="quote">"Más rápido al primer paso, más explosivo en el salto, más fresco en el tercer set."</p>
+    <div class="pills">
+      <span class="pill p-amber">🔥 2.850 kcal/día</span>
+      <span class="pill p-blue">⚡ P150 · C400 · G70</span>
+      <span class="pill p-green">🎾 Potencia · velocidad · agilidad</span>
+      <span class="pill p-red">🏋️ 2 gym + 3 pista</span>
+      <span class="pill p-blue">💧 3 L agua</span>
+    </div>
   </div>
-  <div class="card"><h3>Pautas</h3><ul>
-    <li>Proteína en 4 tomas de 30 a 40 g.</li>
-    <li>Comida con hidratos 2 o 3 horas antes de entrenar; después, proteína + hidratos.</li>
-    <li>Agua: 2,6 L al día + medio litro por hora de pádel. Con calor, sales.</li>
-    <li>Creatina 3 a 5 g al día.</li>
-    <li>Si bajas más de 0,5 kg en 2 semanas, suma 150 kcal en hidratos.</li>
-  </ul></div>
-  <div class="card"><h3>Menú ejemplo (día de entreno)</h3><ul>
-    <li><b>Desayuno:</b> 80 g avena, 300 ml leche o kéfir, 1 plátano, 2 huevos.</li>
-    <li><b>Comida:</b> 120 g arroz (crudo), 180 g pollo, verdura, 1 cda aceite de oliva.</li>
-    <li><b>Antes de pista:</b> 2 tostadas integrales con pavo y 1 fruta.</li>
-    <li><b>Cena:</b> 200 g salmón o ternera, 300 g patata o boniato, ensalada.</li>
-    <li><b>Antes de dormir:</b> 250 g skyr o yogur griego con 30 g de nueces.</li>
-  </ul></div>
-  <p class="note">Calorías calculadas para unos 30 años. Dime tu edad y lo ajusto.</p>
+</header>
+
+<nav aria-label="Secciones">
+  <div class="in" role="tablist">
+    <button role="tab" data-t="perfil" aria-selected="true">Perfil</button>
+    <button role="tab" data-t="estrategia" aria-selected="false">Estrategia</button>
+    <button role="tab" data-t="entreno" aria-selected="false">Entreno</button>
+    <button role="tab" data-t="agilidad" aria-selected="false">Agilidad</button>
+    <button role="tab" data-t="pista" aria-selected="false">Pista</button>
+    <button role="tab" data-t="dieta" aria-selected="false">Dieta</button>
+    <button role="tab" data-t="mente" aria-selected="false">Mente</button>
+    <button role="tab" data-t="progreso" aria-selected="false">📊 Progreso</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- PERFIL -->
+  <section id="perfil">
+    <h2>Perfil <em>actual</em></h2>
+    <div class="card">
+      <div class="grid2">
+        <div class="stat"><div class="k">Peso</div><div class="v">75 kg</div></div>
+        <div class="stat"><div class="k">Altura</div><div class="v">1,80 m</div></div>
+        <div class="stat"><div class="k">Posición</div><div class="v">Revés</div></div>
+        <div class="stat"><div class="k">Estado</div><div class="v">Seco y definido</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>🎯 Objetivos a 8 semanas</h3>
+      <ol>
+        <li><b>Salto más alto:</b> mejorar el salto vertical respecto al test de la semana 0.</li>
+        <li><b>Primer paso más rápido:</b> bajar el tiempo del sprint de 5 m y del test de 4 esquinas.</li>
+        <li><b>Más potencia de pala:</b> más velocidad en remate y bandeja con la rotación de cadera.</li>
+        <li><b>Cero lesiones:</b> hombro, codo y tobillo fuertes. Prevención 3 días por semana.</li>
+        <li><b>Mantener 74-76 kg</b> sin perder la definición.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>📅 Plan</h3>
+      <p>Del <b>26 de octubre</b> al <b>20 de diciembre</b> de 2026. Dos bloques de 4 semanas; la cuarta semana de cada bloque es de descarga.</p>
+      <p class="mut small">Antes de empezar (semana 0) haz los tests de la pestaña Progreso para tener tu punto de partida.</p>
+    </div>
+  </section>
+
+  <!-- ESTRATEGIA -->
+  <section id="estrategia" hidden>
+    <h2>Tu <em>estrategia</em></h2>
+    <div class="card hl">
+      <p>⚡ <b>Objetivo:</b> rendimiento en pista, <b>no hipertrofia</b>. Buscamos que tu cuerpo produzca fuerza <b>rápido</b>, no que crezca.</p>
+      <p>🎾 <b>Lo que manda es la pista:</b> el gimnasio está al servicio del pádel. Si un ejercicio te deja pesado para jugar, lo ajustamos.</p>
+      <p>⚖️ <b>Peso estable:</b> comes en mantenimiento. Más kilos no te hacen más rápido.</p>
+    </div>
+    <div class="card">
+      <h3>⏱️ Descanso entre series</h3>
+      <p><b class="g">2 a 3 minutos</b> en fuerza y potencia; <b class="g">60 a 90 segundos</b> en sprints y agilidad. Cada repetición tiene que salir a máxima velocidad: si llegas cansado, entrenas lento y aprendes a ser lento.</p>
+    </div>
+    <div class="card">
+      <h3>🔥 Intensidad</h3>
+      <p><b class="r">Nunca al fallo.</b> Termina cada serie con 2 o 3 repeticiones en la recámara. Pocas reps (3 a 5), peso moderado-alto y <b>intención explosiva</b> en cada una.</p>
+      <p>Si la velocidad cae (la barra o el salto se nota más lento), <b>corta la serie</b>.</p>
+    </div>
+    <div class="card">
+      <h3>🗓️ Semana tipo</h3>
+      <div class="day"><span class="d">Lun</span><span>Fuerza-potencia de piernas <span class="tag t-gym">Gym</span></span></div>
+      <div class="day"><span class="d">Mar</span><span>Agilidad + técnica de red <span class="tag t-pista">Pista</span></span></div>
+      <div class="day"><span class="d">Mié</span><span>Movilidad y prevención <span class="tag t-rec">Casa</span></span></div>
+      <div class="day"><span class="d">Jue</span><span>Potencia de tren superior y rotación <span class="tag t-gym">Gym</span></span></div>
+      <div class="day"><span class="d">Vie</span><span>Velocidad + fondo y pared <span class="tag t-pista">Pista</span></span></div>
+      <div class="day"><span class="d">Sáb</span><span>Partido <span class="tag t-pista">Pista</span></span></div>
+      <div class="day"><span class="d">Dom</span><span>Descanso total <span class="tag t-rec">Off</span></span></div>
+    </div>
+    <div class="card">
+      <h3>📈 Progresión</h3>
+      <div class="phase" style="margin-bottom:0">
+        <div><div class="w">Sem 1-4</div><div class="t">Fuerza explosiva</div><p class="mut small" style="margin:6px 0 0">Base de fuerza con reps rápidas.</p></div>
+        <div><div class="w">Sem 5-8</div><div class="t">Potencia y velocidad</div><p class="mut small" style="margin:6px 0 0">Menos peso, más velocidad y contrastes.</p></div>
+      </div>
+      <p class="small" style="margin-top:12px">Sube carga solo si todas las reps salen rápidas. Semanas 4 y 8: <b>descarga</b>, mismo peso con una serie menos.</p>
+    </div>
+  </section>
+
+  <!-- ENTRENO -->
+  <section id="entreno" hidden>
+    <h2>Tu <em>entreno</em></h2>
+    <div class="card hl"><p>Antes de cada sesión: <b>10 min de calentamiento</b> (movilidad de tobillo, cadera y hombro, skipping, saltos suaves y 3 sprints cortos). Después: <b>prevención</b>.</p></div>
+
+    <div class="card">
+      <h3>Lunes · Piernas explosivas</h3>
+      <div class="ex"><span class="n">Salto al cajón</span><span class="dose">4×3</span><span class="why">Primero, fresco. Cae suave y baja andando. Descanso 90 s.</span></div>
+      <div class="ex"><span class="n">Peso muerto con trap bar</span><span class="dose">4×4</span><span class="why">Sem 1-4: peso con el que te sobren 3 reps, subida rápida. Sem 5-8: 5×3 y tras cada serie 3 saltos (contraste).</span></div>
+      <div class="ex"><span class="n">Sentadilla búlgara explosiva</span><span class="dose">3×5/pierna</span><span class="why">Bajada controlada, subida lo más rápida posible.</span></div>
+      <div class="ex"><span class="n">Salto horizontal a una pierna</span><span class="dose">3×3/pierna</span><span class="why">Aterriza y aguanta 2 s. Clave para la arrancada lateral.</span></div>
+      <div class="ex"><span class="n">Nórdico de isquios</span><span class="dose">3×5</span><span class="why">Prevención de isquios para los sprints.</span></div>
+      <div class="ex"><span class="n">Pallof press</span><span class="dose">3×10/lado</span><span class="why">Core antirrotación: golpes más estables.</span></div>
+    </div>
+
+    <div class="card">
+      <h3>Jueves · Rotación y tren superior</h3>
+      <div class="ex"><span class="n">Lanzamiento rotacional de balón medicinal</span><span class="dose">4×4/lado</span><span class="why">3-4 kg contra la pared. La cadera gira antes que el brazo, como en el remate.</span></div>
+      <div class="ex"><span class="n">Slam de balón medicinal</span><span class="dose">3×5</span><span class="why">Máxima velocidad hacia abajo. Transfiere al remate y la víbora.</span></div>
+      <div class="ex"><span class="n">Press landmine a una mano con giro</span><span class="dose">3×5/lado</span><span class="why">Empuje desde la pierna de atrás.</span></div>
+      <div class="ex"><span class="n">Dominada</span><span class="dose">4×4</span><span class="why">Con poco lastre o ninguno, subida rápida.</span></div>
+      <div class="ex"><span class="n">Remo con mancuerna</span><span class="dose">3×8/lado</span><span class="why">Equilibra el hombro del lado de la pala.</span></div>
+    </div>
+
+    <div class="card">
+      <h3>🛡️ Prevención (lun, mié y jue)</h3>
+      <div class="ex"><span class="n">Rotación externa de hombro con banda</span><span class="dose">3×15</span><span class="why">Codo pegado al cuerpo, lento.</span></div>
+      <div class="ex"><span class="n">Extensión excéntrica de muñeca</span><span class="dose">3×15</span><span class="why">Mancuerna ligera, bajada en 3 s. Protege el codo.</span></div>
+      <div class="ex"><span class="n">Gemelo a una pierna</span><span class="dose">3×12</span><span class="why">Tobillo y Aquiles para los cambios de dirección.</span></div>
+      <div class="ex"><span class="n">Copenhague (aductores)</span><span class="dose">3×20 s/lado</span><span class="why">Prevención de ingle en desplazamientos laterales.</span></div>
+    </div>
+  </section>
+
+  <!-- AGILIDAD -->
+  <section id="agilidad" hidden>
+    <h2>Velocidad y <em>agilidad</em></h2>
+    <div class="card hl"><p>⚡ Siempre <b>al principio</b> de la sesión de pista, después del calentamiento y nunca cansado. Calidad máxima, descanso completo.</p></div>
+    <div class="card">
+      <h3>Martes · Agilidad</h3>
+      <div class="ex"><span class="n">Split step reactivo</span><span class="dose">5×6</span><span class="why">Un compañero señala un lado al golpear: split step y salida al cono. Descanso 60 s.</span></div>
+      <div class="ex"><span class="n">4 esquinas</span><span class="dose">4×20 s</span><span class="why">Desde el centro a las 4 esquinas de la red en orden aleatorio, volviendo siempre al centro.</span></div>
+      <div class="ex"><span class="n">Escalera de agilidad</span><span class="dose">4 patrones ×2</span><span class="why">Dentro-fuera lateral, carioca, icky shuffle. Apoyos cortos y rápidos.</span></div>
+    </div>
+    <div class="card">
+      <h3>Viernes · Velocidad</h3>
+      <div class="ex"><span class="n">Sprint de 5 m desde split step</span><span class="dose">6×1</span><span class="why">Descanso 60 s. Lo que importa es el primer paso.</span></div>
+      <div class="ex"><span class="n">Desplazamiento lateral con freno</span><span class="dose">4×4</span><span class="why">3 pasos laterales, frena en una pierna y vuelve. Rodilla alineada.</span></div>
+      <div class="ex"><span class="n">Carrera atrás y remate</span><span class="dose">3×5</span><span class="why">Paso cruzado hacia atrás y gesto de remate sin bola. Vuelve a la red.</span></div>
+    </div>
+  </section>
+
+  <!-- PISTA -->
+  <section id="pista" hidden>
+    <h2>Técnica en <em>pista</em></h2>
+    <div class="card">
+      <h3>Martes · Red</h3>
+      <div class="ex"><span class="n">Volea de bloqueo</span><span class="dose">15 min</span><span class="why">Pala delante y alta, sin armado.</span></div>
+      <div class="ex"><span class="n">Bandeja cruzada y recuperar red</span><span class="dose">3×12</span><span class="why">Después de cada bandeja, vuelve a la red.</span></div>
+      <div class="ex"><span class="n">Víbora a la reja</span><span class="dose">3×10</span><span class="why">Impacto lateral, termina con la pala abajo.</span></div>
+    </div>
+    <div class="card">
+      <h3>Viernes · Fondo y pared</h3>
+      <div class="ex"><span class="n">Salida de pared de fondo</span><span class="dose">4×10</span><span class="why">Deja salir la bola y gira los hombros antes de que bote.</span></div>
+      <div class="ex"><span class="n">Puntos condicionados</span><span class="dose">20 min</span><span class="why">Solo vale ganar desde la red. Objetivo: recuperar la red tras bandeja 7 de cada 10 veces.</span></div>
+    </div>
+    <div class="card">
+      <h3>Sábado · Partido</h3>
+      <p>Elige un objetivo antes de empezar (por ejemplo: subir a la red después de cada bandeja) y apunta al final qué ha salido bien.</p>
+    </div>
+  </section>
+
+  <!-- DIETA -->
+  <section id="dieta" hidden>
+    <h2>Tu <em>dieta</em></h2>
+    <div class="card hl">
+      <p>📊 <b>Metabolismo:</b> unas 1.730 kcal en reposo · gasto con tu actividad ≈ 2.850 kcal. <b>Comes en mantenimiento.</b></p>
+      <p>⚖️ <b>La báscula manda:</b> pésate los lunes en ayunas. Si bajas más de 0,5 kg en 2 semanas, súmale 150 kcal <b>en hidratos</b>.</p>
+      <p>⚡ <b>Hidratos = velocidad:</b> son el combustible de los esfuerzos explosivos. No los recortes en días de pista.</p>
+    </div>
+    <div class="card">
+      <h3>Día de entreno o pista</h3>
+      <p><b style="font:700 32px/1 var(--display)">2.850</b> <span class="mut">kcal</span></p>
+      <div class="macro"><div><b class="bl">150 g</b><span class="mut small">Proteína</span></div><div><b class="g">400 g</b><span class="mut small">Hidratos</span></div><div><b style="color:var(--amber)">70 g</b><span class="mut small">Grasa</span></div></div>
+    </div>
+    <div class="card">
+      <h3>Día de descanso</h3>
+      <p><b style="font:700 32px/1 var(--display)">2.500</b> <span class="mut">kcal</span></p>
+      <div class="macro"><div><b class="bl">150 g</b><span class="mut small">Proteína</span></div><div><b class="g">305 g</b><span class="mut small">Hidratos</span></div><div><b style="color:var(--amber)">75 g</b><span class="mut small">Grasa</span></div></div>
+    </div>
+    <div class="card">
+      <h3>🍽️ Menú ejemplo</h3>
+      <div class="meal"><span>Desayuno</span><span>80 g avena, 300 ml leche o kéfir, 1 plátano, 2 huevos</span></div>
+      <div class="meal"><span>Comida</span><span>120 g arroz (crudo), 180 g pollo, verdura, 1 cda aceite de oliva</span></div>
+      <div class="meal"><span>Pre-pista</span><span>2 tostadas integrales con pavo y 1 fruta (2 h antes)</span></div>
+      <div class="meal"><span>Cena</span><span>200 g salmón o ternera, 300 g patata o boniato, ensalada</span></div>
+      <div class="meal"><span>Antes de dormir</span><span>250 g skyr o yogur griego con 30 g de nueces</span></div>
+    </div>
+    <div class="card">
+      <h3>🎾 Día de partido o torneo</h3>
+      <ul>
+        <li>Comida rica en hidratos 2-3 h antes; nada nuevo ese día.</li>
+        <li>Entre partidos: plátano, dátiles o bebida isotónica.</li>
+        <li>Medio litro de agua por hora de juego; con calor, sales.</li>
+        <li>Creatina 3-5 g cada día. Cafeína opcional 45 min antes de competir.</li>
+      </ul>
+    </div>
+    <p class="mut small">Calorías calculadas para unos 30 años. Dime tu edad exacta y lo ajusto.</p>
+  </section>
+
+  <!-- MENTE -->
+  <section id="mente" hidden>
+    <h2>Tu <em>mente</em></h2>
+    <div class="card">
+      <h3>🧠 Mentalidad de competición</h3>
+      <ol>
+        <li><b>Calidad antes que cantidad.</b> Una repetición lenta no suma.</li>
+        <li><b>Rutina entre puntos.</b> Respira, mira las cuerdas, decide el siguiente punto.</li>
+        <li><b>Objetivos de proceso.</b> "Subo a la red tras la bandeja", no "gano el partido".</li>
+        <li><b>Dormir es entrenar.</b> 8 horas: ahí se gana la velocidad.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>⚠️ Lo que no debes hacer</h3>
+      <ul class="no">
+        <li>Entrenar al fallo</li>
+        <li>Hacer velocidad o agilidad cansado</li>
+        <li>Saltarte el calentamiento o la prevención</li>
+        <li>Pierna pesada el día antes de un torneo</li>
+        <li>Dormir menos de 7 horas</li>
+        <li>Recortar hidratos los días de pista</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROGRESO -->
+  <section id="progreso" hidden>
+    <h2>Tu <em>progreso</em></h2>
+    <div class="card hl"><p>Rellena los tests en las semanas <b>0, 4 y 8</b>, y los pesos cada semana. Se guarda en este móvil.</p></div>
+    <div class="card">
+      <h3>🏁 Tests de rendimiento</h3>
+      <div class="scroll"><table id="tests"></table></div>
+      <p class="mut small" style="margin-top:10px">Salto: alcance en pared o app de salto. Sprint 5 m y 4 esquinas: cronómetro, mejor de 3 intentos.</p>
+    </div>
+    <div class="card">
+      <h3>🏋️ Cargas semanales (kg)</h3>
+      <div class="scroll"><table id="cargas"></table></div>
+    </div>
+  </section>
 </main>
+
+<footer class="wrap">Coach Huguet · actualizado el 23 oct 2026</footer>
 
 <script>
   (function () {
-    var ex = ['Trap bar', 'Búlgara', 'Hip thrust', 'Dominada (lastre)', 'Banca manc.', 'Remo manc.'];
-    var key = 'planning-adria-pesos';
+    var tabs = document.querySelectorAll('nav button');
+    function show(t) {
+      tabs.forEach(function (b) { b.setAttribute('aria-selected', String(b.dataset.t === t)); });
+      document.querySelectorAll('main section').forEach(function (s) { s.hidden = s.id !== t; });
+    }
+    tabs.forEach(function (b) {
+      b.addEventListener('click', function () {
+        show(b.dataset.t);
+        b.scrollIntoView({ inline: 'center', block: 'nearest' });
+        var nav = document.querySelector('nav');
+        if (window.scrollY > nav.offsetTop) window.scrollTo(0, nav.offsetTop);
+      });
+    });
+    var h = (location.hash || '').slice(1);
+    if (document.getElementById(h) && h !== 'perfil') show(h);
+
+    var key = 'coach-huguet-adria';
     var data = {};
     try { data = JSON.parse(localStorage.getItem(key)) || {}; } catch (e) {}
-    var t = document.getElementById('log');
-    var h = '<tr><th>Semana</th>' + ex.map(function (e) { return '<th>' + e + ' (kg)</th>'; }).join('') + '</tr>';
-    for (var w = 1; w <= 8; w++) {
-      h += '<tr><td>' + w + (w === 4 || w === 8 ? ' (desc.)' : '') + '</td>';
-      ex.forEach(function (e, i) {
-        var id = w + '-' + i;
-        h += '<td><input id="p' + id + '" data-k="' + id + '" inputmode="decimal" value="' + (data[id] || '') + '" aria-label="' + e + ' semana ' + w + '"></td>';
+    function table(id, cols, rows) {
+      var html = '<tr><th></th>' + cols.map(function (c) { return '<th>' + c + '</th>'; }).join('') + '</tr>';
+      rows.forEach(function (r, ri) {
+        html += '<tr><td>' + r + '</td>' + cols.map(function (c, ci) {
+          var k = id + '-' + ri + '-' + ci;
+          return '<td><input inputmode="decimal" data-k="' + k + '" value="' + (data[k] || '').replace(/"/g, '') + '" aria-label="' + r + ', ' + c + '"></td>';
+        }).join('') + '</tr>';
       });
-      h += '</tr>';
+      var t = document.getElementById(id);
+      t.innerHTML = html;
+      t.addEventListener('input', function (ev) {
+        data[ev.target.dataset.k] = ev.target.value;
+        try { localStorage.setItem(key, JSON.stringify(data)); } catch (e) {}
+      });
     }
-    t.innerHTML = h;
-    t.addEventListener('input', function (ev) {
-      data[ev.target.dataset.k] = ev.target.value;
-      try { localStorage.setItem(key, JSON.stringify(data)); } catch (e) {}
-    });
+    table('tests', ['Sem 0', 'Sem 4', 'Sem 8'], ['Salto vertical (cm)', 'Sprint 5 m (s)', '4 esquinas (s)', 'Peso corporal (kg)']);
+    var weeks = []; for (var i = 1; i <= 8; i++) weeks.push('S' + i + (i === 4 || i === 8 ? '·D' : ''));
+    table('cargas', weeks, ['Trap bar', 'Búlgara', 'Balón medicinal', 'Landmine', 'Dominada (lastre)']);
   })();
 </script>
+<!--BODY-END-->
 </body>
 </html>
