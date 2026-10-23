@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#081016">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Coach Huguet">
+</head>
+<body>
+<!--BODY-START-->
+<title>Coach Huguet · Isaac Elías</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+  /* Misma estética que el resto de clientes: verde y azul sobre fondo oscuro. */
+  :root {
+    --bg: #081016;
+    --card: #111b23;
+    --card-2: #16232d;
+    --line: #22323e;
+    --ink: #eef4f7;
+    --mut: #9bb0bd;
+    --green: #3ddc84;
+    --blue: #3fb6f2;
+    --amber: #f2b33f;
+    --red: #ff6b6b;
+    --display: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+    --body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 var(--body); -webkit-font-smoothing: antialiased; }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+  .wrap { max-width: 680px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+  /* Cabecera */
+  header { padding-block: 28px 18px; text-align: center; background: radial-gradient(120% 80% at 50% 0%, rgba(61,220,132,.16), transparent 60%); }
+  .brand { font: 700 13px/1 var(--body); letter-spacing: .28em; text-transform: uppercase; color: var(--green); }
+  .brand span { color: var(--blue); }
+  h1 { font: 700 46px/0.95 var(--display); text-transform: uppercase; margin: 10px 0 6px; letter-spacing: .01em; }
+  h1 em { font-style: normal; color: var(--green); }
+  .quote { color: var(--mut); font-style: italic; max-width: 34em; margin: 0 auto; font-size: 15px; }
+  .pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 18px; }
+  .pill { border: 1.5px solid; border-radius: 999px; padding: 6px 14px; font-weight: 600; font-size: 14px; white-space: nowrap; }
+  .p-amber { color: var(--amber); } .p-blue { color: var(--blue); } .p-green { color: var(--green); } .p-red { color: var(--red); }
+
+  /* Pestañas */
+  nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-top: 1px solid var(--line); border-bottom: 2px solid var(--green); }
+  nav .in { display: flex; overflow-x: auto; scrollbar-width: none; max-width: 680px; margin: 0 auto; }
+  nav .in::-webkit-scrollbar { display: none; }
+  nav button {
+    flex: none; background: none; border: 0; color: var(--mut); font: 700 14px/1 var(--body); letter-spacing: .1em; text-transform: uppercase;
+    padding: 17px 16px 15px; border-bottom: 3px solid transparent; cursor: pointer;
+  }
+  nav button[aria-selected="true"] { color: var(--green); border-bottom-color: var(--green); }
+  nav button:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
+
+  main { padding-block: 26px 60px; }
+  section[hidden] { display: none; }
+  h2 { font: 700 38px/1 var(--display); text-transform: uppercase; margin: 0 0 20px; padding-left: 14px; border-left: 5px solid var(--green); }
+  h2 em { font-style: normal; color: var(--green); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px; margin-bottom: 14px; }
+  .card.hl { background: #0c1a22; border-left: 4px solid var(--blue); }
+  .card h3 { font: 700 21px/1.1 var(--display); text-transform: uppercase; letter-spacing: .02em; margin: 0 0 12px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .card p { margin: 0 0 8px; } .card p:last-child { margin-bottom: 0; }
+  b, strong { font-weight: 700; }
+  .g { color: var(--green); } .bl { color: var(--blue); } .r { color: var(--red); } .mut { color: var(--mut); }
+  .small { font-size: 14px; }
+  ol, ul { margin: 0; padding-left: 20px; } li { margin: 4px 0; }
+
+  .grid2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; }
+  .stat { background: var(--card-2); border-radius: 12px; padding: 12px; }
+  .stat .k { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--mut); font-weight: 600; }
+  .stat .v { font: 700 26px/1.1 var(--display); }
+
+  .day { display: grid; grid-template-columns: 54px minmax(0,1fr); gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); align-items: center; }
+  .day:last-child { border-bottom: 0; }
+  .day .d { font: 700 20px/1 var(--display); color: var(--blue); text-transform: uppercase; }
+  .tag { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 6px; margin-left: 6px; vertical-align: 2px; }
+  .t-gym { background: rgba(63,182,242,.16); color: var(--blue); }
+  .t-pista { background: rgba(61,220,132,.16); color: var(--green); }
+  .t-box { background: rgba(255,107,107,.16); color: var(--red); }
+  .t-rec { background: rgba(155,176,189,.16); color: var(--mut); }
+
+  .ex { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 4px 12px; padding: 11px 0; border-bottom: 1px solid var(--line); }
+  .ex:last-child { border-bottom: 0; }
+  .ex .n { font-weight: 700; }
+  .ex .dose { font: 700 18px/1.2 var(--display); color: var(--green); text-align: right; white-space: nowrap; }
+  .ex .why { grid-column: 1 / -1; color: var(--mut); font-size: 14px; }
+
+  .phase { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; margin-bottom: 14px; }
+  .phase div { border: 1px solid var(--line); border-radius: 12px; padding: 12px; background: var(--card); }
+  .phase .w { font: 700 13px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--blue); }
+  .phase .t { font: 700 22px/1.15 var(--display); text-transform: uppercase; margin-top: 4px; }
+
+  .macro { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 8px; text-align: center; margin-top: 12px; }
+  .macro div { background: var(--card-2); border-radius: 10px; padding: 10px 4px; }
+  .macro b { display: block; font: 700 24px/1 var(--display); }
+  .meal { display: grid; grid-template-columns: 110px minmax(0,1fr); gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+  .meal:last-child { border-bottom: 0; }
+  .meal span:first-child { color: var(--blue); font-weight: 700; }
+
+  .no li { list-style: none; margin-left: -20px; }
+  .no li::before { content: "✕ "; color: var(--red); font-weight: 700; }
+
+  .scroll { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
+  th, td { border-bottom: 1px solid var(--line); padding: 7px 5px; text-align: left; white-space: nowrap; }
+  th { color: var(--mut); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
+  input { width: 66px; font: 600 15px var(--body); padding: 6px 7px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); }
+  input:focus-visible { outline: 2px solid var(--green); }
+  footer { text-align: center; color: var(--mut); font-size: 13px; padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px)); }
+</style>
+
+<header>
+  <div class="wrap">
+    <div class="brand">Coach <span>Huguet</span> · Hipertrofia</div>
+    <h1>Isaac <em>Elías</em></h1>
+    <p class="quote">"Cada semana un poco más de peso o una repetición más. Así se construye músculo."</p>
+    <div class="pills">
+      <span class="pill p-amber">🔥 kcal: pendiente de datos</span>
+      <span class="pill p-blue">🥩 Proteína 2 g/kg</span>
+      <span class="pill p-green">💪 Ganancia muscular</span>
+      <span class="pill p-red">🏋️ 4 gym + 1 boxeo</span>
+      <span class="pill p-blue">💧 3 L agua</span>
+    </div>
+  </div>
+</header>
+
+<nav aria-label="Secciones">
+  <div class="in" role="tablist">
+    <button role="tab" data-t="perfil" aria-selected="true">Perfil</button>
+    <button role="tab" data-t="estrategia" aria-selected="false">Estrategia</button>
+    <button role="tab" data-t="entreno" aria-selected="false">Entreno</button>
+    <button role="tab" data-t="boxeo" aria-selected="false">Boxeo</button>
+    <button role="tab" data-t="dieta" aria-selected="false">Dieta</button>
+    <button role="tab" data-t="mente" aria-selected="false">Mente</button>
+    <button role="tab" data-t="progreso" aria-selected="false">📊 Progreso</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- PERFIL -->
+  <section id="perfil">
+    <h2>Perfil <em>actual</em></h2>
+    <div class="card">
+      <div class="grid2">
+        <div class="stat"><div class="k">Peso</div><div class="v">— kg</div></div>
+        <div class="stat"><div class="k">Altura</div><div class="v">— m</div></div>
+        <div class="stat"><div class="k">Edad</div><div class="v">— años</div></div>
+        <div class="stat"><div class="k">Objetivo</div><div class="v">Hipertrofia</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>🎯 Objetivos a 8 semanas</h3>
+      <ol>
+        <li><b>Ganar músculo:</b> subir de peso poco a poco, entre 0,25 y 0,5 kg por semana.</li>
+        <li><b>Más fuerza:</b> subir las cargas de los ejercicios principales cada semana.</li>
+        <li><b>Más volumen visible:</b> brazo, pecho y espalda, medidos en las semanas 0, 4 y 8.</li>
+        <li><b>Mantener el boxeo:</b> buena forma física sin que robe recuperación al gimnasio.</li>
+        <li><b>Cero lesiones:</b> técnica limpia y calentamiento en todas las sesiones.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>📅 Plan</h3>
+      <p>Del <b>26 de octubre</b> al <b>20 de diciembre</b> de 2026. Dos bloques de 4 semanas; la cuarta semana de cada bloque es de descarga.</p>
+      <p class="mut small">Antes de empezar (semana 0) pésate y toma las medidas de la pestaña Progreso para tener tu punto de partida.</p>
+    </div>
+  </section>
+
+  <!-- ESTRATEGIA -->
+  <section id="estrategia" hidden>
+    <h2>Tu <em>estrategia</em></h2>
+    <div class="card hl">
+      <p>💪 <b>Objetivo:</b> hipertrofia. Buscamos que el músculo <b>crezca</b>: volumen de trabajo suficiente, cerca del fallo y con progresión semanal.</p>
+      <p>🍽️ <b>Sin comida no hay músculo:</b> comes en ligero superávit, unas 300 kcal por encima de tu gasto.</p>
+      <p>😴 <b>El músculo crece descansando:</b> cada grupo muscular tiene una semana entera para recuperarse.</p>
+    </div>
+    <div class="card">
+      <h3>⏱️ Descanso entre series</h3>
+      <p><b class="g">2 a 3 minutos</b> en los ejercicios grandes (press, remo, sentadilla); <b class="g">60 a 90 segundos</b> en los de aislamiento (curls, extensiones, aperturas).</p>
+    </div>
+    <div class="card">
+      <h3>🔥 Intensidad</h3>
+      <p>Termina cada serie con <b>1 o 2 repeticiones en la recámara</b>. En la última serie de los ejercicios de aislamiento puedes llegar <b class="r">al fallo</b>.</p>
+      <p>Bajada controlada (2-3 s) y subida firme. Sin rebotes ni balanceos.</p>
+    </div>
+    <div class="card">
+      <h3>🗓️ Semana tipo</h3>
+      <div class="day"><span class="d">Lun</span><span>Pecho + tríceps <span class="tag t-gym">Gym</span></span></div>
+      <div class="day"><span class="d">Mar</span><span>Espalda + bíceps <span class="tag t-gym">Gym</span></span></div>
+      <div class="day"><span class="d">Mié</span><span>Pierna <span class="tag t-gym">Gym</span></span></div>
+      <div class="day"><span class="d">Jue</span><span>Boxeo <span class="tag t-box">Boxeo</span></span></div>
+      <div class="day"><span class="d">Vie</span><span>Brazo <span class="tag t-gym">Gym</span></span></div>
+      <div class="day"><span class="d">Sáb</span><span>Descanso activo: paseo o movilidad <span class="tag t-rec">Casa</span></span></div>
+      <div class="day"><span class="d">Dom</span><span>Descanso total <span class="tag t-rec">Off</span></span></div>
+    </div>
+    <div class="card">
+      <h3>📈 Progresión</h3>
+      <div class="phase" style="margin-bottom:0">
+        <div><div class="w">Sem 1-4</div><div class="t">Base de volumen</div><p class="mut small" style="margin:6px 0 0">Rango alto de reps, técnica perfecta.</p></div>
+        <div><div class="w">Sem 5-8</div><div class="t">Más carga</div><p class="mut small" style="margin:6px 0 0">Una serie más en los básicos y más peso.</p></div>
+      </div>
+      <p class="small" style="margin-top:12px"><b>Doble progresión:</b> cuando completes todas las series en el máximo del rango (por ejemplo 3×12 de un 3×8-12), sube el peso y vuelve a 8. Semanas 4 y 8: <b>descarga</b>, mismo peso con una serie menos.</p>
+    </div>
+  </section>
+
+  <!-- ENTRENO -->
+  <section id="entreno" hidden>
+    <h2>Tu <em>entreno</em></h2>
+    <div class="card hl"><p>Antes de cada sesión: <b>10 min de calentamiento</b> (5 min de cardio suave, movilidad de hombro y cadera) y <b>2 series de aproximación</b> ligeras en el primer ejercicio.</p></div>
+
+    <div class="card">
+      <h3>Lunes · Pecho + tríceps</h3>
+      <div class="ex"><span class="n">Press banca con barra</span><span class="dose">4×6-8</span><span class="why">Escápulas atrás y abajo, pies firmes. Sem 5-8: 5 series.</span></div>
+      <div class="ex"><span class="n">Press inclinado con mancuernas</span><span class="dose">3×8-10</span><span class="why">Banco a 30°. Parte alta del pecho.</span></div>
+      <div class="ex"><span class="n">Aperturas en polea o contractor</span><span class="dose">3×12-15</span><span class="why">Estira bien abajo y aprieta 1 s al cerrar.</span></div>
+      <div class="ex"><span class="n">Fondos en paralelas</span><span class="dose">3×8-12</span><span class="why">Cuerpo algo inclinado hacia delante. Si te sobran reps, con lastre.</span></div>
+      <div class="ex"><span class="n">Press francés con barra Z</span><span class="dose">3×10-12</span><span class="why">Codos quietos, bajada lenta hacia la frente.</span></div>
+      <div class="ex"><span class="n">Extensión de tríceps en polea con cuerda</span><span class="dose">3×12-15</span><span class="why">Abre la cuerda al final. Última serie al fallo.</span></div>
+    </div>
+
+    <div class="card">
+      <h3>Martes · Espalda + bíceps</h3>
+      <div class="ex"><span class="n">Dominadas (o jalón al pecho)</span><span class="dose">4×6-10</span><span class="why">Pecho hacia la barra, sin balanceo. Sem 5-8: 5 series.</span></div>
+      <div class="ex"><span class="n">Remo con barra</span><span class="dose">4×8-10</span><span class="why">Torso a 45°, tira hacia el ombligo.</span></div>
+      <div class="ex"><span class="n">Remo en polea baja</span><span class="dose">3×10-12</span><span class="why">Junta las escápulas y aguanta 1 s.</span></div>
+      <div class="ex"><span class="n">Pullover en polea alta</span><span class="dose">3×12-15</span><span class="why">Brazos casi rectos. Aísla el dorsal.</span></div>
+      <div class="ex"><span class="n">Face pull</span><span class="dose">3×15</span><span class="why">Hombro posterior y salud del hombro.</span></div>
+      <div class="ex"><span class="n">Curl con barra</span><span class="dose">3×8-10</span><span class="why">Codos pegados, sin impulso de cadera.</span></div>
+      <div class="ex"><span class="n">Curl martillo</span><span class="dose">3×10-12</span><span class="why">Braquial y antebrazo: más grosor de brazo.</span></div>
+    </div>
+
+    <div class="card">
+      <h3>Miércoles · Pierna</h3>
+      <div class="ex"><span class="n">Sentadilla con barra</span><span class="dose">4×6-8</span><span class="why">Profundidad hasta romper la paralela. Sem 5-8: 5 series.</span></div>
+      <div class="ex"><span class="n">Peso muerto rumano</span><span class="dose">3×8-10</span><span class="why">Cadera atrás, espalda neutra. Isquios y glúteo.</span></div>
+      <div class="ex"><span class="n">Prensa</span><span class="dose">3×10-12</span><span class="why">Recorrido completo, sin bloquear rodillas.</span></div>
+      <div class="ex"><span class="n">Sentadilla búlgara</span><span class="dose">3×10/pierna</span><span class="why">Mancuernas en las manos. Glúteo y cuádriceps.</span></div>
+      <div class="ex"><span class="n">Curl femoral</span><span class="dose">3×12-15</span><span class="why">Bajada en 3 s.</span></div>
+      <div class="ex"><span class="n">Gemelo de pie</span><span class="dose">4×12-15</span><span class="why">Pausa de 1 s arriba y estiramiento completo abajo.</span></div>
+    </div>
+
+    <div class="card">
+      <h3>Viernes · Brazo</h3>
+      <div class="ex"><span class="n">Press banca agarre cerrado</span><span class="dose">4×8-10</span><span class="why">Manos a la anchura de los hombros. El básico del tríceps.</span></div>
+      <div class="ex"><span class="n">Curl con barra Z</span><span class="dose">4×8-10</span><span class="why">Más peso que el martes, misma técnica estricta.</span></div>
+      <div class="ex"><span class="n">Extensión sobre la cabeza en polea</span><span class="dose">3×10-12</span><span class="why">Estira la cabeza larga del tríceps.</span></div>
+      <div class="ex"><span class="n">Curl inclinado con mancuernas</span><span class="dose">3×10-12</span><span class="why">Banco a 45°, brazos colgando. Estira el bíceps.</span></div>
+      <div class="ex"><span class="n">Superserie: curl en polea + extensión en polea</span><span class="dose">3×12-15</span><span class="why">Sin descanso entre los dos; 60 s al terminar. Bombeo final.</span></div>
+      <div class="ex"><span class="n">Elevaciones laterales</span><span class="dose">4×12-15</span><span class="why">Hombro lateral: brazos más anchos a la vista. Peso ligero, sin balanceo.</span></div>
+      <div class="ex"><span class="n">Curl de muñeca</span><span class="dose">2×15-20</span><span class="why">Antebrazo y agarre, útil también para el boxeo.</span></div>
+    </div>
+  </section>
+
+  <!-- BOXEO -->
+  <section id="boxeo" hidden>
+    <h2>Jueves de <em>boxeo</em></h2>
+    <div class="card hl"><p>🥊 El boxeo es tu <b>cardio y tu día de técnica</b>. Intensidad moderada: tiene que dejarte con energía para el brazo del viernes, no vacío.</p></div>
+    <div class="card">
+      <h3>Sesión tipo (60 min)</h3>
+      <div class="ex"><span class="n">Comba</span><span class="dose">3×3 min</span><span class="why">Calentamiento. 1 min de descanso entre asaltos.</span></div>
+      <div class="ex"><span class="n">Sombra</span><span class="dose">3×3 min</span><span class="why">Guardia arriba, pies vivos. Jab, directo, gancho y esquivas.</span></div>
+      <div class="ex"><span class="n">Saco: combinaciones</span><span class="dose">6×2 min</span><span class="why">Técnica antes que fuerza. 1 min de descanso.</span></div>
+      <div class="ex"><span class="n">Manoplas (si hay compañero o entrenador)</span><span class="dose">4×2 min</span><span class="why">Precisión y reacción.</span></div>
+      <div class="ex"><span class="n">Core</span><span class="dose">10 min</span><span class="why">Plancha, rueda abdominal y giros rusos.</span></div>
+    </div>
+    <div class="card">
+      <h3>⚖️ Cómo encaja con la hipertrofia</h3>
+      <ul>
+        <li>El jueves gastas más: <b>come un poco más</b> (ver Dieta).</li>
+        <li>Si un jueves llegas muy cansado, haz solo técnica y sombra.</li>
+        <li>Evita sparring duro: un golpe fuerte o una lesión de mano te para el gimnasio.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- DIETA -->
+  <section id="dieta" hidden>
+    <h2>Tu <em>dieta</em></h2>
+    <div class="card hl">
+      <p>📊 <b>Pendiente de tus datos:</b> con tu peso, altura y edad calculo las calorías exactas. Mientras tanto, las reglas por kilo de peso.</p>
+      <p>⚖️ <b>La báscula manda:</b> pésate los lunes en ayunas. Si no subes en 2 semanas, súmale 200 kcal; si subes más de 0,5 kg por semana, réstale 150.</p>
+      <p>🍽️ <b>Superávit pequeño:</b> unas 300 kcal por encima de tu gasto para ganar músculo con la menor grasa posible.</p>
+    </div>
+    <div class="card">
+      <h3>Reparto por kilo de peso</h3>
+      <p><b style="font:700 32px/1 var(--display)">— </b> <span class="mut">kcal (pendiente)</span></p>
+      <div class="macro"><div><b class="bl">2 g/kg</b><span class="mut small">Proteína</span></div><div><b class="g">4-5 g/kg</b><span class="mut small">Hidratos</span></div><div><b style="color:var(--amber)">0,9 g/kg</b><span class="mut small">Grasa</span></div></div>
+      <p class="mut small" style="margin-top:12px">Ejemplo: con 75 kg serían 150 g de proteína, 300-375 g de hidratos y 70 g de grasa al día.</p>
+    </div>
+    <div class="card">
+      <h3>🍽️ Menú ejemplo</h3>
+      <div class="meal"><span>Desayuno</span><span>80 g avena, 300 ml leche, 1 plátano, 3 huevos</span></div>
+      <div class="meal"><span>Comida</span><span>120 g arroz o pasta (crudo), 180 g pollo o ternera, verdura, 1 cda aceite de oliva</span></div>
+      <div class="meal"><span>Pre-entreno</span><span>2 tostadas con pavo y 1 fruta (1-2 h antes)</span></div>
+      <div class="meal"><span>Post-entreno</span><span>30 g proteína whey + 1 plátano o 2 tortitas de arroz</span></div>
+      <div class="meal"><span>Cena</span><span>200 g salmón, merluza o huevos, 300 g patata o boniato, ensalada</span></div>
+      <div class="meal"><span>Antes de dormir</span><span>250 g skyr o requesón con 30 g de nueces</span></div>
+    </div>
+    <div class="card">
+      <h3>💊 Suplementos útiles</h3>
+      <ul>
+        <li><b>Creatina:</b> 3-5 g cada día, también los de descanso.</li>
+        <li><b>Proteína whey:</b> solo si no llegas a tu proteína con comida.</li>
+        <li>Jueves de boxeo: añade un plátano o un puñado de arroz extra.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- MENTE -->
+  <section id="mente" hidden>
+    <h2>Tu <em>mente</em></h2>
+    <div class="card">
+      <h3>🧠 Mentalidad de constancia</h3>
+      <ol>
+        <li><b>Constancia antes que intensidad.</b> 8 semanas sin fallar ganan a 2 semanas a tope.</li>
+        <li><b>Apunta todo.</b> Si no sabes qué levantaste la semana pasada, no puedes superarlo.</li>
+        <li><b>Paciencia.</b> El músculo se nota en meses, no en días.</li>
+        <li><b>Dormir es crecer.</b> 7-9 horas: ahí se construye el músculo.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>⚠️ Lo que no debes hacer</h3>
+      <ul class="no">
+        <li>Cambiar de rutina cada semana</li>
+        <li>Sacrificar técnica por mover más peso</li>
+        <li>Saltarte comidas o quedarte corto de proteína</li>
+        <li>Saltarte el calentamiento</li>
+        <li>Hacer sparring duro el día antes de entrenar</li>
+        <li>Dormir menos de 7 horas</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROGRESO -->
+  <section id="progreso" hidden>
+    <h2>Tu <em>progreso</em></h2>
+    <div class="card hl"><p>Rellena las medidas en las semanas <b>0, 4 y 8</b>, y los pesos cada semana. Se guarda en este móvil.</p></div>
+    <div class="card">
+      <h3>📏 Peso y medidas</h3>
+      <div class="scroll"><table id="tests"></table></div>
+      <p class="mut small" style="margin-top:10px">Mide en ayunas, siempre a la misma hora. Brazo: en la parte más ancha con el bíceps contraído. Cintura: a la altura del ombligo.</p>
+    </div>
+    <div class="card">
+      <h3>🏋️ Cargas semanales (kg)</h3>
+      <div class="scroll"><table id="cargas"></table></div>
+      <p class="mut small" style="margin-top:10px">Apunta el peso de tu mejor serie de la semana.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">Coach Huguet · actualizado el 23 oct 2026</footer>
+
+<script>
+  (function () {
+    var tabs = document.querySelectorAll('nav button');
+    function show(t) {
+      tabs.forEach(function (b) { b.setAttribute('aria-selected', String(b.dataset.t === t)); });
+      document.querySelectorAll('main section').forEach(function (s) { s.hidden = s.id !== t; });
+    }
+    tabs.forEach(function (b) {
+      b.addEventListener('click', function () {
+        show(b.dataset.t);
+        b.scrollIntoView({ inline: 'center', block: 'nearest' });
+        var nav = document.querySelector('nav');
+        if (window.scrollY > nav.offsetTop) window.scrollTo(0, nav.offsetTop);
+      });
+    });
+    var h = (location.hash || '').slice(1);
+    if (document.getElementById(h) && h !== 'perfil') show(h);
+
+    var key = 'coach-huguet-isaac-elias';
+    var data = {};
+    try { data = JSON.parse(localStorage.getItem(key)) || {}; } catch (e) {}
+    function table(id, cols, rows) {
+      var html = '<tr><th></th>' + cols.map(function (c) { return '<th>' + c + '</th>'; }).join('') + '</tr>';
+      rows.forEach(function (r, ri) {
+        html += '<tr><td>' + r + '</td>' + cols.map(function (c, ci) {
+          var k = id + '-' + ri + '-' + ci;
+          return '<td><input inputmode="decimal" data-k="' + k + '" value="' + (data[k] || '').replace(/"/g, '') + '" aria-label="' + r + ', ' + c + '"></td>';
+        }).join('') + '</tr>';
+      });
+      var t = document.getElementById(id);
+      t.innerHTML = html;
+      t.addEventListener('input', function (ev) {
+        data[ev.target.dataset.k] = ev.target.value;
+        try { localStorage.setItem(key, JSON.stringify(data)); } catch (e) {}
+      });
+    }
+    table('tests', ['Sem 0', 'Sem 4', 'Sem 8'], ['Peso corporal (kg)', 'Brazo contraído (cm)', 'Pecho (cm)', 'Cintura (cm)', 'Muslo (cm)']);
+    var weeks = []; for (var i = 1; i <= 8; i++) weeks.push('S' + i + (i === 4 || i === 8 ? '·D' : ''));
+    table('cargas', weeks, ['Press banca', 'Press inclinado', 'Dominada / jalón', 'Remo con barra', 'Sentadilla', 'Peso muerto rumano', 'Curl con barra', 'Press cerrado']);
+  })();
+</script>
+<!--BODY-END-->
+</body>
+</html>
