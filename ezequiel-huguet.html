@@ -178,6 +178,62 @@
   input:focus-visible { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(61,220,132,.2); }
   footer { text-align: center; color: var(--mut); font-size: 13px; padding-bottom: calc(28px + env(safe-area-inset-bottom, 0px)); }
   @media (max-width: 380px) { .meal { grid-template-columns: 1fr; gap: 2px; } }
+
+  /* Modo entreno: series marcables y cuenta atrás de descanso */
+  .wk-days { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin: 0 -16px 16px; padding: 0 16px; }
+  .wk-days::-webkit-scrollbar { display: none; }
+  .wk-days button {
+    flex: none; font: 600 14px/1.2 var(--body); color: var(--mut); background: var(--card); border: 1px solid var(--line-2);
+    border-radius: 14px; padding: 10px 14px; cursor: pointer; text-align: left; max-width: 220px; white-space: normal;
+  }
+  .wk-days button b { display: block; font: 700 16px/1 var(--display); text-transform: uppercase; color: var(--ink); margin-bottom: 3px; letter-spacing: .03em; }
+  .wk-days button[aria-pressed="true"] { border-color: var(--green); background: rgba(61,220,132,.1); }
+  .wk-days button[aria-pressed="true"] b { color: var(--green); }
+  .wk-top { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .wk-bar { flex: 1; height: 8px; border-radius: 8px; background: var(--card-2); overflow: hidden; }
+  .wk-bar i { display: block; height: 100%; width: 0; background: var(--grad); border-radius: 8px; transition: width .3s; }
+  .wk-count { font: 700 18px/1 var(--display); white-space: nowrap; }
+  .wk-reset { font: 600 13px var(--body); color: var(--mut); background: none; border: 1px solid var(--line-2); border-radius: 10px; padding: 7px 10px; cursor: pointer; }
+  .wk-ex { counter-increment: wk; }
+  .wk-ex.done { opacity: .55; }
+  .wk-head { display: grid; grid-template-columns: 32px minmax(0,1fr) auto; gap: 4px 12px; align-items: center; }
+  .wk-head::before {
+    content: counter(wk); width: 32px; height: 32px; border-radius: 10px; display: grid; place-items: center;
+    font: 700 15px/1 var(--display); color: #04140b; background: var(--grad);
+  }
+  .wk-ex.done .wk-head::before { content: "✓"; }
+  .wk-name { font-weight: 700; font-size: 16.5px; line-height: 1.3; }
+  .wk-meta { grid-column: 2 / -1; display: flex; flex-wrap: wrap; gap: 6px; }
+  .wk-chip { font: 700 14px/1 var(--display); letter-spacing: .02em; padding: 6px 9px; border-radius: 8px; background: var(--card-2); color: var(--mut); }
+  .wk-chip.r { color: var(--green); background: rgba(61,220,132,.1); }
+  .wk-chip.t { color: var(--blue); background: rgba(63,182,242,.1); }
+  .wk-why { color: var(--mut); font-size: 14px; margin: 8px 0 0 44px; }
+  .wk-sets { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 0 44px; }
+  .wk-sets button {
+    width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--line-2); background: rgba(0,0,0,.2); color: var(--ink);
+    font: 700 18px/1 var(--display); cursor: pointer; transition: transform .1s, background .2s;
+  }
+  .wk-sets button:active { transform: scale(.92); }
+  .wk-sets button.on { background: var(--grad); border-color: transparent; color: #04140b; }
+  .wk-sets button.one { width: auto; padding: 0 18px; border-radius: 24px; font-size: 16px; text-transform: uppercase; letter-spacing: .04em; }
+  .wk-done { text-align: center; }
+  .wk-done b { display: block; font: 700 30px/1.1 var(--display); text-transform: uppercase; margin-bottom: 6px; }
+  .wk-timer {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; padding: 14px 16px calc(14px + env(safe-area-inset-bottom, 0px));
+    background: rgba(10,19,26,.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-top: 1px solid var(--line-2);
+    box-shadow: 0 -12px 30px -10px rgba(0,0,0,.6); transform: translateY(110%); transition: transform .25s ease;
+  }
+  .wk-timer.show { transform: none; }
+  .wk-timer .in { max-width: 720px; margin: 0 auto; display: grid; grid-template-columns: auto minmax(0,1fr); gap: 4px 16px; align-items: center; }
+  .wk-clock { grid-row: 1 / span 2; font: 700 52px/1 var(--display); font-variant-numeric: tabular-nums; color: var(--green); min-width: 2.6em; }
+  .wk-timer.end .wk-clock { color: var(--amber); animation: pulse .8s ease infinite alternate; }
+  @keyframes pulse { to { opacity: .45; } }
+  .wk-lbl { font-size: 13px; color: var(--mut); line-height: 1.35; }
+  .wk-lbl b { color: var(--ink); display: block; font-size: 15px; }
+  .wk-btns { display: flex; gap: 6px; }
+  .wk-btns button { flex: 1; font: 700 14px var(--body); color: var(--ink); background: var(--card-2); border: 1px solid var(--line-2); border-radius: 10px; padding: 9px 0; cursor: pointer; }
+  .wk-btns button.go { background: var(--grad); color: #04140b; border-color: transparent; }
+  .wk-pad { height: 120px; }
 </style>
 
 <header>
@@ -200,6 +256,7 @@
     <button role="tab" data-t="perfil" aria-selected="true">Perfil</button>
     <button role="tab" data-t="estrategia" aria-selected="false">Estrategia</button>
     <button role="tab" data-t="entreno" aria-selected="false">Entreno</button>
+    <button role="tab" data-t="entrenar" aria-selected="false">▶ Entrenar</button>
     <button role="tab" data-t="niveles" aria-selected="false">Niveles</button>
     <button role="tab" data-t="dieta" aria-selected="false">Dieta</button>
     <button role="tab" data-t="progreso" aria-selected="false">📊 Progreso</button>
@@ -321,6 +378,15 @@
       <div class="ex"><span class="n">Caminar rápido, bici o elíptica</span><span class="dose">30-40 min</span><span class="why">Ritmo en el que puedas hablar pero no cantar. Corazón sano y mejor recuperación.</span></div>
       <div class="ex"><span class="n">Movilidad (jueves)</span><span class="dose">10 min</span><span class="why">Cadera, columna torácica, tobillo y hombro.</span></div>
     </div>
+  </section>
+
+  <!-- ENTRENAR -->
+  <section id="entrenar" data-rest="120,75" hidden>
+    <h2>Entrena <em>ahora</em></h2>
+    <div class="card hl"><p>Elige el día, marca cada serie al terminarla y el descanso empieza solo. Cuando acabe, el móvil pita y vibra.</p><p class="mut small">Se guarda en este móvil durante el día.</p></div>
+    <div class="wk-days"></div>
+    <div class="wk-list"></div>
+    <div class="wk-pad"></div>
   </section>
 
   <!-- NIVELES -->
@@ -458,6 +524,169 @@
     table('tests', ['Sem 0', 'Sem 4', 'Sem 8'], ['Dominadas (reps · nivel)', 'Flexiones (reps · nivel)', 'Plancha (s)', 'Sentadilla 8 reps (kg)']);
     var weeks = []; for (var i = 1; i <= 8; i++) weeks.push('S' + i + (i === 4 || i === 8 ? '·D' : ''));
     table('cargas', weeks, ['Dominadas (reps)', 'Flexiones (reps)', 'Sentadilla (kg)', 'Peso muerto rumano (kg)', 'Remo mancuerna (kg)', 'Press hombro (kg)', 'Gemelo (kg)']);
+  })();
+</script>
+<script>
+  // Modo entreno: lee los días de la pestaña de entreno, permite marcar series y lanza la cuenta atrás del descanso.
+  (function () {
+    var root = document.getElementById('entrenar');
+    if (!root) return;
+    var ca = document.documentElement.lang === 'ca';
+    var T = ca ? {
+      set: 'Sèrie', sets: 'sèries', done: 'Fet', rest: 'Descans', next: 'Següent', last: 'Última sèrie de l’entrenament',
+      skip: 'Saltar', reset: 'Reiniciar', go: 'Som-hi! Següent sèrie', finish: 'Entrenament complet!', finishTxt: 'Bona feina. Estira 5 minuts i apunta les càrregues a Progrés.',
+      confirm: 'Vols reiniciar el dia?', days: ['diumenge','dilluns','dimarts','dimecres','dijous','divendres','dissabte']
+    } : {
+      set: 'Serie', sets: 'series', done: 'Hecho', rest: 'Descanso', next: 'Siguiente', last: 'Última serie del entreno',
+      skip: 'Saltar', reset: 'Reiniciar', go: '¡Vamos! Siguiente serie', finish: '¡Entreno completado!', finishTxt: 'Buen trabajo. Estira 5 minutos y apunta las cargas en Progreso.',
+      confirm: '¿Reiniciar el día?', days: ['domingo','lunes','martes','miércoles','jueves','viernes','sábado']
+    };
+    var restCfg = (root.dataset.rest || '120,75').split(',').map(Number);
+
+    // Días y ejercicios a partir de las tarjetas existentes
+    var days = [];
+    document.querySelectorAll('#entreno .card').forEach(function (card) {
+      var exs = card.querySelectorAll('.ex');
+      var h3 = card.querySelector('h3');
+      if (!exs.length || !h3) return;
+      var title = '';
+      h3.childNodes.forEach(function (n) { if (!(n.classList && n.classList.contains('tag'))) title += n.textContent; });
+      title = title.trim();
+      var list = [];
+      exs.forEach(function (ex, i) {
+        var dose = ex.querySelector('.dose').textContent.trim();
+        var why = (ex.querySelector('.why') || {}).textContent || '';
+        var m = dose.match(/^(\d+)\s*[a-zà-ú]*\s*×\s*(.+)$/i);
+        var r = why.match(/descans[oa]?\s+(?:de\s+)?(\d+)\s*(s|min)\b/i);
+        var rest = r ? (+r[1]) * (r[2].toLowerCase() === 'min' ? 60 : 1) : restCfg[i < 2 ? 0 : 1];
+        list.push({ name: ex.querySelector('.n').textContent.trim(), why: why.trim(), sets: m ? +m[1] : 1, reps: m ? m[2].trim() : dose, rest: rest, timed: !m });
+      });
+      days.push({ title: title, ex: list });
+    });
+    if (!days.length) return;
+
+    var key = 'coach-huguet-entrenar-' + location.pathname.split('/').pop();
+    var today = new Date().toDateString();
+    var st = {};
+    try { st = JSON.parse(localStorage.getItem(key)) || {}; } catch (e) {}
+    if (st.date !== today) st = { date: today, done: {} };
+    if (st.day == null) {
+      var wd = T.days[new Date().getDay()];
+      st.day = 0;
+      days.forEach(function (d, i) { if (d.title.split('·')[0].toLowerCase().indexOf(wd) > -1 && st.day === 0) st.day = i; });
+    }
+    function save() { try { localStorage.setItem(key, JSON.stringify(st)); } catch (e) {} }
+    function doneOf(di) { return st.done[di] || (st.done[di] = days[di].ex.map(function (e) { return Array(e.sets).fill(false); })); }
+    function fmt(s) { s = Math.max(0, Math.ceil(s)); return Math.floor(s / 60) + ':' + ('0' + s % 60).slice(-2); }
+
+    var daysEl = root.querySelector('.wk-days'), listEl = root.querySelector('.wk-list');
+    function renderDays() {
+      daysEl.innerHTML = days.map(function (d, i) {
+        var p = d.title.split('·');
+        return '<button aria-pressed="' + (i === st.day) + '" data-d="' + i + '"><b>' + p[0].trim() + '</b>' + (p[1] || '').trim() + '</button>';
+      }).join('');
+    }
+    function render() {
+      var d = days[st.day], done = doneOf(st.day), tot = 0, ok = 0;
+      done.forEach(function (a) { a.forEach(function (v) { tot++; if (v) ok++; }); });
+      var html = '<div class="wk-top"><div class="wk-bar"><i style="width:' + (tot ? ok / tot * 100 : 0) + '%"></i></div><span class="wk-count">' + ok + '/' + tot + '</span><button class="wk-reset">' + T.reset + '</button></div>';
+      html += '<div class="card" style="counter-reset:wk">';
+      d.ex.forEach(function (e, ei) {
+        var all = done[ei].every(Boolean);
+        html += '<div class="ex wk-ex' + (all ? ' done' : '') + '" style="display:block"><div class="wk-head"><span class="wk-name">' + e.name + '</span><span></span>' +
+          '<div class="wk-meta"><span class="wk-chip">' + e.sets + ' ' + (e.sets === 1 ? T.set.toLowerCase() : T.sets) + '</span><span class="wk-chip r">' + e.reps + '</span>' +
+          (e.sets > 1 || ei < d.ex.length - 1 ? '<span class="wk-chip t">⏱ ' + fmt(e.rest) + '</span>' : '') + '</div></div>' +
+          (e.why ? '<p class="wk-why">' + e.why + '</p>' : '') + '<div class="wk-sets">';
+        done[ei].forEach(function (v, si) {
+          html += '<button class="' + (v ? 'on' : '') + (e.sets === 1 ? ' one' : '') + '" data-e="' + ei + '" data-s="' + si + '" aria-pressed="' + v + '" aria-label="' + e.name + ', ' + T.set + ' ' + (si + 1) + '">' +
+            (e.sets === 1 ? (v ? '✓ ' : '') + T.done : (v ? '✓' : si + 1)) + '</button>';
+        });
+        html += '</div></div>';
+      });
+      html += '</div>';
+      if (tot && ok === tot) html += '<div class="card hl wk-done"><b>🏆 ' + T.finish + '</b><p>' + T.finishTxt + '</p></div>';
+      listEl.innerHTML = html;
+    }
+
+    // Cuenta atrás
+    var bar = document.createElement('div');
+    bar.className = 'wk-timer';
+    bar.innerHTML = '<div class="in"><div class="wk-clock">0:00</div><div class="wk-lbl"></div><div class="wk-btns"><button data-a="-15">−15 s</button><button data-a="15">+15 s</button><button data-a="skip" class="go">' + T.skip + '</button></div></div>';
+    document.body.appendChild(bar);
+    var clock = bar.querySelector('.wk-clock'), lbl = bar.querySelector('.wk-lbl'), tick = null, audio = null, rang = false;
+    function beep() {
+      try {
+        audio = audio || new (window.AudioContext || window.webkitAudioContext)();
+        [0, .25, .5].forEach(function (t, i) {
+          var o = audio.createOscillator(), g = audio.createGain();
+          o.frequency.value = i === 2 ? 1320 : 880; o.connect(g); g.connect(audio.destination);
+          g.gain.setValueAtTime(.25, audio.currentTime + t); g.gain.exponentialRampToValueAtTime(.001, audio.currentTime + t + .2);
+          o.start(audio.currentTime + t); o.stop(audio.currentTime + t + .22);
+        });
+      } catch (e) {}
+      if (navigator.vibrate) navigator.vibrate([250, 120, 250, 120, 400]);
+    }
+    function nextLabel() {
+      var d = days[st.day], done = doneOf(st.day);
+      for (var ei = 0; ei < d.ex.length; ei++) for (var si = 0; si < done[ei].length; si++)
+        if (!done[ei][si]) return '<b>' + d.ex[ei].name + '</b>' + T.set + ' ' + (si + 1) + '/' + d.ex[ei].sets + ' · ' + d.ex[ei].reps;
+      return '<b>' + T.last + '</b>';
+    }
+    function update() {
+      var left = (st.endAt - Date.now()) / 1000;
+      if (left <= 0) {
+        clock.textContent = '0:00';
+        bar.classList.add('end');
+        if (!rang) { rang = true; beep(); lbl.innerHTML = '<b>' + T.go + '</b>' + nextLabel().replace(/<\/?b>/g, ' '); }
+        if (left < -20) stop();
+        return;
+      }
+      clock.textContent = fmt(left);
+    }
+    function start(sec) {
+      st.endAt = Date.now() + sec * 1000; rang = false; save();
+      bar.classList.remove('end'); bar.classList.add('show');
+      lbl.innerHTML = T.rest + ' · ' + T.next + ':' + nextLabel();
+      clearInterval(tick); tick = setInterval(update, 250); update();
+    }
+    function stop() { clearInterval(tick); tick = null; st.endAt = null; save(); bar.classList.remove('show', 'end'); }
+    bar.addEventListener('click', function (ev) {
+      var a = ev.target.dataset.a; if (!a) return;
+      if (a === 'skip') return stop();
+      st.endAt += (+a) * 1000; rang = false; bar.classList.remove('end'); save(); update();
+    });
+
+    // Pantalla encendida mientras se entrena
+    var lock = null;
+    function wake() { if (navigator.wakeLock && !root.hidden && !lock) navigator.wakeLock.request('screen').then(function (l) { lock = l; l.addEventListener('release', function () { lock = null; }); }).catch(function () {}); }
+    document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible') { wake(); if (st.endAt) update(); } });
+    new MutationObserver(function () {
+      if (root.hidden) { bar.classList.remove('show'); if (lock) lock.release(); }
+      else {
+        wake();
+        if (st.endAt) { bar.classList.add('show'); if (!tick) { lbl.innerHTML = T.rest + ' · ' + T.next + ':' + nextLabel(); tick = setInterval(update, 250); update(); } }
+      }
+    }).observe(root, { attributes: true, attributeFilter: ['hidden'] });
+
+    daysEl.addEventListener('click', function (ev) {
+      var b = ev.target.closest('button'); if (!b) return;
+      st.day = +b.dataset.d; save(); stop(); renderDays(); render();
+    });
+    listEl.addEventListener('click', function (ev) {
+      var b = ev.target.closest('button'); if (!b) return;
+      if (b.classList.contains('wk-reset')) { if (confirm(T.confirm)) { delete st.done[st.day]; stop(); save(); render(); } return; }
+      var d = days[st.day], done = doneOf(st.day), ei = +b.dataset.e, si = +b.dataset.s;
+      done[ei][si] = !done[ei][si]; save(); render();
+      if (done[ei][si]) {
+        var left = done.some(function (a) { return a.some(function (v) { return !v; }); });
+        if (left) start(d.ex[ei].rest); else stop();
+        if (audio && audio.state === 'suspended') audio.resume();
+        else if (!audio) { try { audio = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {} }
+      }
+    });
+    renderDays(); render();
+    if (st.endAt && st.endAt < Date.now() - 20000) { st.endAt = null; save(); }
+    if (st.endAt && !root.hidden) { bar.classList.add('show'); lbl.innerHTML = T.rest + ' · ' + T.next + ':' + nextLabel(); tick = setInterval(update, 250); update(); }
   })();
 </script>
 <!--BODY-END-->
