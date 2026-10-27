@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#070d12">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Coach Huguet">
+<title>Coach Huguet · Llistats gratuïts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+  /* Mateix disseny que els plannings: verd i blau sobre fons fosc. */
+  :root {
+    --bg: #070d12;
+    --card: rgba(19,30,39,.78);
+    --card-2: #172633;
+    --line: rgba(155,190,210,.12);
+    --line-2: rgba(155,190,210,.2);
+    --ink: #eef4f7;
+    --mut: #93a8b5;
+    --green: #3ddc84;
+    --blue: #3fb6f2;
+    --amber: #f2b33f;
+    --red: #ff6b6b;
+    --grad: linear-gradient(135deg, #3ddc84 0%, #3fb6f2 100%);
+    --shadow: 0 1px 0 rgba(255,255,255,.04) inset, 0 10px 30px -12px rgba(0,0,0,.6);
+    --display: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+    --body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; color: var(--ink); font: 16px/1.55 var(--body); -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(900px 500px at 85% -10%, rgba(63,182,242,.14), transparent 60%),
+      radial-gradient(800px 500px at 0% 0%, rgba(61,220,132,.12), transparent 55%),
+      var(--bg);
+    background-attachment: fixed;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+  /* Capçalera */
+  header { padding-block: 36px 26px; text-align: center; }
+  .brand {
+    display: inline-flex; align-items: center; gap: 8px; font: 700 12px/1 var(--body); letter-spacing: .24em; text-transform: uppercase;
+    color: var(--green); padding: 8px 14px; border: 1px solid var(--line-2); border-radius: 999px; background: rgba(255,255,255,.03);
+  }
+  .brand::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--grad); box-shadow: 0 0 10px var(--green); }
+  .brand span { color: var(--blue); }
+  h1 { font: 700 clamp(48px, 13vw, 72px)/0.9 var(--display); text-transform: uppercase; margin: 18px 0 12px; letter-spacing: .005em; }
+  h1 em, h2 em { font-style: normal; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .quote { color: var(--mut); font-style: italic; max-width: 32em; margin: 0 auto; font-size: 15px; }
+
+  main { padding-block: 12px 64px; }
+  h2 { font: 700 40px/1 var(--display); text-transform: uppercase; margin: 0 0 22px; letter-spacing: .01em; }
+  h2::after { content: ""; display: block; width: 44px; height: 4px; border-radius: 4px; background: var(--grad); margin-top: 12px; }
+  .wk { display: block; font: 700 12px/1 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 20px; margin-bottom: 14px;
+    box-shadow: var(--shadow); backdrop-filter: blur(4px);
+  }
+  .card.hl { background: linear-gradient(135deg, rgba(61,220,132,.10), rgba(63,182,242,.08)), var(--card); border-color: rgba(63,182,242,.28); }
+  .card h3 {
+    display: flex; align-items: center; gap: 10px; font: 700 22px/1.1 var(--display); text-transform: uppercase; letter-spacing: .02em;
+    margin: -2px 0 14px; padding-bottom: 14px; border-bottom: 1px solid var(--line);
+  }
+  .card p { margin: 0 0 10px; } .card p:last-child { margin-bottom: 0; }
+  b, strong { font-weight: 700; }
+  .mut { color: var(--mut); }
+  ul { margin: 0; padding-left: 20px; } li { margin: 6px 0; }
+  li::marker { color: var(--green); font-weight: 700; }
+
+  /* Exercicis numerats */
+  .list { counter-reset: ex; }
+  .ex { display: grid; grid-template-columns: 32px minmax(0,1fr) auto; gap: 4px 12px; padding: 14px 0; border-bottom: 1px solid var(--line); align-items: center; counter-increment: ex; }
+  .ex:last-child { border-bottom: 0; padding-bottom: 2px; }
+  .ex::before {
+    content: counter(ex); grid-row: 1 / span 3; align-self: start; width: 32px; height: 32px; border-radius: 10px; display: grid; place-items: center;
+    font: 700 15px/1 var(--display); color: #04140b; background: var(--grad);
+  }
+  .ex .n { font-weight: 700; font-size: 16.5px; }
+  .ex .dose {
+    font: 700 16px/1 var(--display); letter-spacing: .02em; color: var(--green); white-space: nowrap; justify-self: end;
+    padding: 7px 11px; border-radius: 10px; background: rgba(61,220,132,.1); border: 1px solid rgba(61,220,132,.22);
+  }
+  .ex .why { grid-column: 2 / -1; color: var(--mut); font-size: 14px; }
+  .ex .mat { grid-column: 2 / -1; font-size: 13px; font-weight: 600; color: var(--amber); }
+  .tag { display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: .04em; padding: 3px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
+  .t-forca { background: rgba(63,182,242,.16); color: var(--blue); }
+  .t-rot { background: rgba(242,179,63,.16); color: var(--amber); }
+  .t-exp { background: rgba(255,107,107,.16); color: var(--red); }
+
+  /* Llistats anteriors */
+  details.old { margin-bottom: 14px; }
+  details.old > summary {
+    list-style: none; cursor: pointer; font: 700 20px/1.2 var(--display); text-transform: uppercase; letter-spacing: .02em;
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px 18px;
+  }
+  details.old > summary::-webkit-details-marker { display: none; }
+  details.old > summary .wk { margin-bottom: 4px; }
+  details.old[open] > summary { margin-bottom: 14px; }
+  .sep { font: 700 26px/1 var(--display); text-transform: uppercase; color: var(--mut); margin: 40px 0 16px; }
+
+  footer { text-align: center; color: var(--mut); font-size: 13px; padding-bottom: calc(28px + env(safe-area-inset-bottom, 0px)); }
+  @media (max-width: 420px) { .ex { grid-template-columns: 32px minmax(0,1fr); } .ex .dose { grid-column: 2; justify-self: start; } .ex::before { grid-row: 1 / span 4; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">Coach <span>Huguet</span> · Gratis</div>
+    <h1>Llistats <em>setmanals</em></h1>
+    <p class="quote">Cada setmana un tema nou i 5 exercicis per treballar-lo. Gratis, per a tu.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!--
+    Per afegir una setmana nova: copia el bloc <section class="week"> d'aquesta setmana,
+    posa'l just a sota d'aquest comentari i canvia data, tema i exercicis.
+    La setmana anterior passa a sota de «Llistats anteriors», dins d'un <details class="old">.
+  -->
+
+  <!-- SETMANA 27/10/2026 · REMAT -->
+  <section class="week" id="remat">
+    <span class="wk">Setmana del 27 d'octubre de 2026</span>
+    <h2>Un bon <em>remat</em></h2>
+
+    <div class="card hl">
+      <p>Un remat potent no surt només del braç. La força neix als <b>peus</b>, puja per les <b>cames</b>, gira amb el <b>tronc</b> i arriba a la pala. Aquests 5 exercicis treballen les tres coses: <b>transferència de força</b>, <b>rotació</b> i <b>força explosiva</b>.</p>
+    </div>
+
+    <div class="card">
+      <h3>🎾 Els 5 exercicis</h3>
+      <div class="list">
+        <div class="ex">
+          <span class="n">Llançament de pilota medicinal per sobre del cap <span class="tag t-forca">Transferència</span></span>
+          <span class="dose">3 × 6</span>
+          <span class="why">Peus a l'amplada de les espatlles, flexiona una mica els genolls i llança la pilota cap endavant per sobre del cap, estirant tot el cos com en un remat. La força comença a les cames, no als braços.</span>
+          <span class="mat">Material: pilota medicinal de 2-4 kg i una paret o un espai obert</span>
+        </div>
+        <div class="ex">
+          <span class="n">Llançament rotacional contra la paret <span class="tag t-rot">Rotació</span></span>
+          <span class="dose">3 × 6 / costat</span>
+          <span class="why">De costat a la paret, carrega el pes a la cama de darrere i gira malucs i tronc per llançar la pilota amb força. Primer giren els malucs, després les espatlles.</span>
+          <span class="mat">Material: pilota medicinal de 2-4 kg i una paret</span>
+        </div>
+        <div class="ex">
+          <span class="n">Llenyataire amb goma, de dalt a baix <span class="tag t-rot">Rotació</span></span>
+          <span class="dose">3 × 8 / costat</span>
+          <span class="why">Goma enganxada a dalt. Estira en diagonal des de sobre l'espatlla fins al maluc contrari, girant el tronc i pivotant el peu de darrere. És el mateix recorregut que fa la pala en el remat.</span>
+          <span class="mat">Material: goma elàstica de resistència mitjana o politja</span>
+        </div>
+        <div class="ex">
+          <span class="n">Salt vertical amb braçada de remat <span class="tag t-exp">Explosiva</span></span>
+          <span class="dose">4 × 5</span>
+          <span class="why">Baixa ràpid, salta tan alt com puguis i a dalt fes el gest del remat amb el braç. Cau suau i reinicia. Cada salt ha de ser al màxim, sense presses entre repeticions.</span>
+          <span class="mat">Material: cap (opcional: la pala a la mà per fer el gest real)</span>
+        </div>
+        <div class="ex">
+          <span class="n">Press landmine a un braç amb impuls de cames <span class="tag t-forca">Transferència</span></span>
+          <span class="dose">3 × 6 / braç</span>
+          <span class="why">Amb la barra a l'alçada de l'espatlla, fes una mitja flexió de genolls i empeny la barra amunt i endavant aprofitant l'impuls de les cames i el gir del tronc. Sense barra, fes-ho amb una manuella.</span>
+          <span class="mat">Material: barra amb un disc (landmine) o una manuella</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>📋 Com fer-los</h3>
+      <ul>
+        <li><b>2 cops per setmana</b>, en dies que no siguin seguits.</li>
+        <li>Escalfa 8-10 minuts abans: mobilitat d'espatlles, malucs i uns quants salts suaus.</li>
+        <li>Descansa <b>60-90 segons</b> entre sèries. Volem velocitat, no cansament.</li>
+        <li>Si la tècnica es perd, para. <b>Millor 4 repeticions bones que 6 dolentes.</b></li>
+      </ul>
+    </div>
+  </section>
+
+  <!--
+  <p class="sep">Llistats anteriors</p>
+  <details class="old">
+    <summary><span class="wk">Setmana del ...</span>Tema</summary>
+    ... contingut de la setmana ...
+  </details>
+  -->
+
+  <div class="card hl">
+    <h3>💬 Vols més?</h3>
+    <p>Cada setmana hi haurà un llistat nou. Si vols un planning fet a la teva mida, escriu-me i en parlem.</p>
+  </div>
+
+</main>
+
+<footer class="wrap">Coach Huguet · actualitzat el 27 d'oct. de 2026</footer>
+
+</body>
+</html>

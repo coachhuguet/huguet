@@ -9,4 +9,6 @@ Plannings de cada cliente, uno por fichero HTML.
 | Ezequiel Huguet | `ezequiel-huguet.html` |
 | Elena Alvarez | `elena-alvarez.html` |
 
+Llistats gratuïts setmanals per a seguidors (no és un client): `gratis.html`.
+
 Con GitHub Pages activado, cada planning se abre en `https://coachhuguet.github.io/huguet/<fichero>.html`.
