@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#070d12">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Coach Huguet">
+</head>
+<body>
+<!--BODY-START-->
+<title>Coach Huguet · Elena Alvarez</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+  /* Disseny modern: verd i blau sobre fons fosc, targetes amb relleu suau. */
+  :root {
+    --bg: #070d12;
+    --bg-2: #0a131a;
+    --card: rgba(19,30,39,.78);
+    --card-2: #172633;
+    --line: rgba(155,190,210,.12);
+    --line-2: rgba(155,190,210,.2);
+    --ink: #eef4f7;
+    --mut: #93a8b5;
+    --green: #3ddc84;
+    --blue: #3fb6f2;
+    --amber: #f2b33f;
+    --red: #ff6b6b;
+    --grad: linear-gradient(135deg, #3ddc84 0%, #3fb6f2 100%);
+    --shadow: 0 1px 0 rgba(255,255,255,.04) inset, 0 10px 30px -12px rgba(0,0,0,.6);
+    --display: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+    --body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; color: var(--ink); font: 16px/1.55 var(--body); -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(900px 500px at 85% -10%, rgba(63,182,242,.14), transparent 60%),
+      radial-gradient(800px 500px at 0% 0%, rgba(61,220,132,.12), transparent 55%),
+      var(--bg);
+    background-attachment: fixed;
+  }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+  .wrap { max-width: 720px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+  /* Capçalera */
+  header { padding-block: 36px 26px; text-align: center; }
+  .brand {
+    display: inline-flex; align-items: center; gap: 8px; font: 700 12px/1 var(--body); letter-spacing: .24em; text-transform: uppercase;
+    color: var(--green); padding: 8px 14px; border: 1px solid var(--line-2); border-radius: 999px; background: rgba(255,255,255,.03);
+  }
+  .brand::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--grad); box-shadow: 0 0 10px var(--green); }
+  .brand span { color: var(--blue); }
+  h1 { font: 700 clamp(48px, 13vw, 72px)/0.9 var(--display); text-transform: uppercase; margin: 18px 0 12px; letter-spacing: .005em; }
+  h1 em { font-style: normal; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .quote { color: var(--mut); font-style: italic; max-width: 32em; margin: 0 auto; font-size: 15px; }
+  .pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 22px; }
+  .pill {
+    border: 1px solid var(--line-2); border-radius: 12px; padding: 8px 12px; font-weight: 600; font-size: 13.5px; white-space: nowrap;
+    background: rgba(255,255,255,.035); backdrop-filter: blur(6px); color: var(--ink);
+  }
+  .p-amber { box-shadow: inset 3px 0 0 var(--amber); } .p-blue { box-shadow: inset 3px 0 0 var(--blue); }
+  .p-green { box-shadow: inset 3px 0 0 var(--green); } .p-red { box-shadow: inset 3px 0 0 var(--red); }
+
+  /* Pestanyes */
+  nav {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; padding: 10px 0;
+    background: rgba(7,13,18,.82); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .in {
+    display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; max-width: 720px; margin: 0 auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  nav .in::-webkit-scrollbar { display: none; }
+  nav button {
+    flex: none; background: none; border: 1px solid transparent; color: var(--mut); font: 600 14px/1 var(--body); letter-spacing: .04em;
+    padding: 10px 16px; border-radius: 999px; cursor: pointer; transition: color .2s, background .2s;
+  }
+  nav button:hover { color: var(--ink); background: rgba(255,255,255,.04); }
+  nav button[aria-selected="true"] { color: #04140b; background: var(--grad); font-weight: 700; box-shadow: 0 6px 18px -6px rgba(61,220,132,.55); }
+  nav button:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+  main { padding-block: 28px 64px; }
+  section[hidden] { display: none; }
+  section { animation: in .35s ease both; }
+  @keyframes in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { section { animation: none; } html { scroll-behavior: auto; } }
+  h2 { font: 700 40px/1 var(--display); text-transform: uppercase; margin: 0 0 22px; letter-spacing: .01em; }
+  h2 em { font-style: normal; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  h2::after { content: ""; display: block; width: 44px; height: 4px; border-radius: 4px; background: var(--grad); margin-top: 12px; }
+
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 20px; margin-bottom: 14px;
+    box-shadow: var(--shadow); backdrop-filter: blur(4px);
+  }
+  .card.hl {
+    background: linear-gradient(135deg, rgba(61,220,132,.10), rgba(63,182,242,.08)) , var(--card);
+    border-color: rgba(63,182,242,.28);
+  }
+  .card h3 {
+    display: flex; align-items: center; gap: 10px; font: 700 22px/1.1 var(--display); text-transform: uppercase; letter-spacing: .02em;
+    margin: -2px 0 14px; padding-bottom: 14px; border-bottom: 1px solid var(--line);
+  }
+  .card p { margin: 0 0 10px; } .card p:last-child { margin-bottom: 0; }
+  b, strong { font-weight: 700; }
+  .g { color: var(--green); } .bl { color: var(--blue); } .r { color: var(--red); } .mut { color: var(--mut); }
+  .small { font-size: 14px; }
+  ol, ul { margin: 0; padding-left: 20px; } li { margin: 6px 0; }
+  li::marker { color: var(--green); font-weight: 700; }
+
+  .grid2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; }
+  .stat { background: var(--card-2); border: 1px solid var(--line); border-radius: 14px; padding: 14px; position: relative; overflow: hidden; }
+  .stat::after { content: ""; position: absolute; inset: auto 0 0 0; height: 3px; background: var(--grad); opacity: .7; }
+  .stat .k { font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--mut); font-weight: 600; }
+  .stat .v { font: 700 28px/1.1 var(--display); margin-top: 4px; }
+
+  .day { display: grid; grid-template-columns: 56px minmax(0,1fr); gap: 12px; padding: 8px; margin: 0 -8px; border-radius: 12px; align-items: center; }
+  .day:nth-of-type(odd) { background: rgba(255,255,255,.025); }
+  .day .d {
+    font: 700 16px/1 var(--display); color: var(--blue); text-transform: uppercase; letter-spacing: .06em; text-align: center;
+    padding: 9px 0; border-radius: 10px; background: rgba(63,182,242,.1);
+  }
+  .tag { display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: .04em; padding: 3px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
+  .t-gym { background: rgba(63,182,242,.16); color: var(--blue); }
+  .t-pista { background: rgba(61,220,132,.16); color: var(--green); }
+  .t-box { background: rgba(255,107,107,.16); color: var(--red); }
+  .t-cardio { background: rgba(242,179,63,.16); color: var(--amber); }
+  .t-rec { background: rgba(155,176,189,.14); color: var(--mut); }
+
+  .ex { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 4px 12px; padding: 13px 0; border-bottom: 1px solid var(--line); align-items: center; }
+  .ex:last-child { border-bottom: 0; padding-bottom: 2px; }
+  .ex .n { font-weight: 700; font-size: 16.5px; }
+  .ex .dose {
+    font: 700 16px/1 var(--display); letter-spacing: .02em; color: var(--green); white-space: nowrap; justify-self: end;
+    padding: 7px 11px; border-radius: 10px; background: rgba(61,220,132,.1); border: 1px solid rgba(61,220,132,.22);
+  }
+  .ex .why { grid-column: 1 / -1; color: var(--mut); font-size: 14px; }
+
+  /* Entrenament: cada exercici numerat */
+  #entreno .card { counter-reset: ex; }
+  #entreno .ex { grid-template-columns: 32px minmax(0,1fr) auto; counter-increment: ex; }
+  #entreno .ex::before {
+    content: counter(ex); grid-row: 1 / span 2; align-self: start; width: 32px; height: 32px; border-radius: 10px; display: grid; place-items: center;
+    font: 700 15px/1 var(--display); color: #04140b; background: var(--grad);
+  }
+  #entreno .ex .why { grid-column: 2 / -1; }
+  #entreno .card:not(.hl) h3 { font-size: 24px; }
+  #entreno .card:not(.hl) { border-top: 3px solid transparent; background: linear-gradient(#121d26, #121d26) padding-box, linear-gradient(90deg, var(--green), var(--blue)) border-box; border-left-color: var(--line); border-right-color: var(--line); border-bottom-color: var(--line); }
+
+  .phase { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; margin-bottom: 14px; }
+  .phase div { border: 1px solid var(--line); border-radius: 14px; padding: 14px; background: var(--card-2); }
+  .phase .w { font: 700 12px/1 var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--blue); }
+  .phase .t { font: 700 22px/1.15 var(--display); text-transform: uppercase; margin-top: 6px; }
+
+  .macro { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 8px; text-align: center; margin-top: 14px; }
+  .macro div { background: var(--card-2); border: 1px solid var(--line); border-radius: 14px; padding: 12px 4px; }
+  .macro b { display: block; font: 700 24px/1 var(--display); margin-bottom: 4px; }
+  .meal { display: grid; grid-template-columns: 110px minmax(0,1fr); gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+  .meal:last-child { border-bottom: 0; }
+  .meal span:first-child { color: var(--blue); font-weight: 700; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; padding-top: 2px; }
+
+  .no li { list-style: none; margin-left: -20px; }
+  .no li::before { content: "✕ "; color: var(--red); font-weight: 700; }
+
+  .scroll { overflow-x: auto; border-radius: 12px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
+  th, td { border-bottom: 1px solid var(--line); padding: 8px 5px; text-align: left; white-space: nowrap; }
+  th { color: var(--mut); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; }
+  tr:last-child td { border-bottom: 0; }
+  input { width: 66px; font: 600 15px var(--body); padding: 7px 8px; border: 1px solid var(--line-2); border-radius: 10px; background: rgba(0,0,0,.25); color: var(--ink); transition: border-color .2s; }
+  input:focus-visible { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(61,220,132,.2); }
+  footer { text-align: center; color: var(--mut); font-size: 13px; padding-bottom: calc(28px + env(safe-area-inset-bottom, 0px)); }
+  @media (max-width: 380px) { .meal { grid-template-columns: 1fr; gap: 2px; } }
+
+  /* Modo entreno: series marcables y cuenta atrás de descanso */
+  .wk-days { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin: 0 -16px 16px; padding: 0 16px; }
+  .wk-days::-webkit-scrollbar { display: none; }
+  .wk-days button {
+    flex: none; font: 600 14px/1.2 var(--body); color: var(--mut); background: var(--card); border: 1px solid var(--line-2);
+    border-radius: 14px; padding: 10px 14px; cursor: pointer; text-align: left; max-width: 220px; white-space: normal;
+  }
+  .wk-days button b { display: block; font: 700 16px/1 var(--display); text-transform: uppercase; color: var(--ink); margin-bottom: 3px; letter-spacing: .03em; }
+  .wk-days button[aria-pressed="true"] { border-color: var(--green); background: rgba(61,220,132,.1); }
+  .wk-days button[aria-pressed="true"] b { color: var(--green); }
+  .wk-top { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .wk-bar { flex: 1; height: 8px; border-radius: 8px; background: var(--card-2); overflow: hidden; }
+  .wk-bar i { display: block; height: 100%; width: 0; background: var(--grad); border-radius: 8px; transition: width .3s; }
+  .wk-count { font: 700 18px/1 var(--display); white-space: nowrap; }
+  .wk-reset { font: 600 13px var(--body); color: var(--mut); background: none; border: 1px solid var(--line-2); border-radius: 10px; padding: 7px 10px; cursor: pointer; }
+  .wk-ex { counter-increment: wk; }
+  .wk-ex.done { opacity: .55; }
+  .wk-head { display: grid; grid-template-columns: 32px minmax(0,1fr) auto; gap: 4px 12px; align-items: center; }
+  .wk-head::before {
+    content: counter(wk); width: 32px; height: 32px; border-radius: 10px; display: grid; place-items: center;
+    font: 700 15px/1 var(--display); color: #04140b; background: var(--grad);
+  }
+  .wk-ex.done .wk-head::before { content: "✓"; }
+  .wk-name { font-weight: 700; font-size: 16.5px; line-height: 1.3; }
+  .wk-meta { grid-column: 2 / -1; display: flex; flex-wrap: wrap; gap: 6px; }
+  .wk-chip { font: 700 14px/1 var(--display); letter-spacing: .02em; padding: 6px 9px; border-radius: 8px; background: var(--card-2); color: var(--mut); }
+  .wk-chip.r { color: var(--green); background: rgba(61,220,132,.1); }
+  .wk-chip.t { color: var(--blue); background: rgba(63,182,242,.1); }
+  .wk-why { color: var(--mut); font-size: 14px; margin: 8px 0 0 44px; }
+  .wk-sets { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 0 44px; }
+  .wk-sets button {
+    width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--line-2); background: rgba(0,0,0,.2); color: var(--ink);
+    font: 700 18px/1 var(--display); cursor: pointer; transition: transform .1s, background .2s;
+  }
+  .wk-sets button:active { transform: scale(.92); }
+  .wk-sets button.on { background: var(--grad); border-color: transparent; color: #04140b; }
+  .wk-sets button.one { width: auto; padding: 0 18px; border-radius: 24px; font-size: 16px; text-transform: uppercase; letter-spacing: .04em; }
+  .wk-done { text-align: center; }
+  .wk-done b { display: block; font: 700 30px/1.1 var(--display); text-transform: uppercase; margin-bottom: 6px; }
+  .wk-timer {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; padding: 14px 16px calc(14px + env(safe-area-inset-bottom, 0px));
+    background: rgba(10,19,26,.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-top: 1px solid var(--line-2);
+    box-shadow: 0 -12px 30px -10px rgba(0,0,0,.6); transform: translateY(110%); transition: transform .25s ease;
+  }
+  .wk-timer.show { transform: none; }
+  .wk-timer .in { max-width: 720px; margin: 0 auto; display: grid; grid-template-columns: auto minmax(0,1fr); gap: 4px 16px; align-items: center; }
+  .wk-clock { grid-row: 1 / span 2; font: 700 52px/1 var(--display); font-variant-numeric: tabular-nums; color: var(--green); min-width: 2.6em; }
+  .wk-timer.end .wk-clock { color: var(--amber); animation: pulse .8s ease infinite alternate; }
+  @keyframes pulse { to { opacity: .45; } }
+  .wk-lbl { font-size: 13px; color: var(--mut); line-height: 1.35; }
+  .wk-lbl b { color: var(--ink); display: block; font-size: 15px; }
+  .wk-btns { display: flex; gap: 6px; }
+  .wk-btns button { flex: 1; font: 700 14px var(--body); color: var(--ink); background: var(--card-2); border: 1px solid var(--line-2); border-radius: 10px; padding: 9px 0; cursor: pointer; }
+  .wk-btns button.go { background: var(--grad); color: #04140b; border-color: transparent; }
+  .wk-pad { height: 120px; }
+</style>
+
+<header>
+  <div class="wrap">
+    <div class="brand">Coach <span>Huguet</span> · Força a casa</div>
+    <h1>Elena <em>Alvarez</em></h1>
+    <p class="quote">"No cal un gimnàs per fer-se forta: cal constància i fer bé cada repetició."</p>
+    <div class="pills">
+      <span class="pill p-green">💪 Full body</span>
+      <span class="pill p-blue">🔁 Circuit × 3 voltes</span>
+      <span class="pill p-amber">🏠 A casa</span>
+      <span class="pill p-red">⏱️ 35-40 min</span>
+      <span class="pill p-blue">📅 3 dies/setmana</span>
+    </div>
+  </div>
+</header>
+
+<nav aria-label="Seccions">
+  <div class="in" role="tablist">
+    <button role="tab" data-t="perfil" aria-selected="true">Perfil</button>
+    <button role="tab" data-t="estrategia" aria-selected="false">Estratègia</button>
+    <button role="tab" data-t="entreno" aria-selected="false">Circuit</button>
+    <button role="tab" data-t="entrenar" aria-selected="false">▶ Entrena</button>
+    <button role="tab" data-t="progreso" aria-selected="false">📊 Progrés</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- PERFIL -->
+  <section id="perfil">
+    <h2>Perfil <em>actual</em></h2>
+    <div class="card">
+      <div class="grid2">
+        <div class="stat"><div class="k">Pes</div><div class="v">— kg</div></div>
+        <div class="stat"><div class="k">Alçada</div><div class="v">— m</div></div>
+        <div class="stat"><div class="k">Edat</div><div class="v">— anys</div></div>
+        <div class="stat"><div class="k">Objectiu</div><div class="v">Força</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>🎯 Objectius a 8 setmanes</h3>
+      <ol>
+        <li><b>Guanyar força a tot el cos:</b> cames, glutis, esquena, pit, espatlles i core.</li>
+        <li><b>Constància:</b> 3 circuits per setmana, sense saltar-ne cap.</li>
+        <li><b>Més repeticions o més pes</b> cada setmana amb la mateixa tècnica.</li>
+        <li><b>Core fort:</b> passar de la roda de genolls a recorreguts més llargs.</li>
+        <li><b>Zero lesions:</b> escalfament sempre i tècnica neta.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>🧰 Material</h3>
+      <ul>
+        <li><b>2 manuelles</b></li>
+        <li><b>Gomes elàstiques</b> (minibanda i/o goma llarga)</li>
+        <li><b>Roda abdominal</b></li>
+        <li><b>Pes corporal</b> i una estoreta</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>📅 Pla</h3>
+      <p>Del <b>2 de novembre</b> al <b>27 de desembre</b> de 2026 (8 setmanes).</p>
+      <p class="mut small">Abans de començar (setmana 0) fes els tests de la pestanya Progrés per tenir el punt de partida.</p>
+    </div>
+  </section>
+
+  <!-- ESTRATEGIA -->
+  <section id="estrategia" hidden>
+    <h2>La teva <em>estratègia</em></h2>
+    <div class="card hl">
+      <p>🔁 <b>Com funciona el circuit:</b> fas els 9 exercicis seguits, un darrere l'altre, amb <b>20 s de descans</b> entre exercicis. Quan acabes el 9, descanses <b>2 minuts</b> i tornes a començar. <b>3 voltes</b> en total.</p>
+      <p>💪 <b>Full body:</b> cada volta treballa cames, glutis, esquena, pit, espatlles i core.</p>
+    </div>
+    <div class="card">
+      <h3>🗓️ Setmana tipus</h3>
+      <div class="day"><span class="d">Dl</span><span>Circuit full body <span class="tag t-gym">Força</span></span></div>
+      <div class="day"><span class="d">Dt</span><span>Caminar 30-45 min <span class="tag t-rec">Actiu</span></span></div>
+      <div class="day"><span class="d">Dc</span><span>Circuit full body <span class="tag t-gym">Força</span></span></div>
+      <div class="day"><span class="d">Dj</span><span>Caminar o mobilitat <span class="tag t-rec">Actiu</span></span></div>
+      <div class="day"><span class="d">Dv</span><span>Circuit full body <span class="tag t-gym">Força</span></span></div>
+      <div class="day"><span class="d">Ds</span><span>Activitat lliure <span class="tag t-cardio">Lliure</span></span></div>
+      <div class="day"><span class="d">Dg</span><span>Descans <span class="tag t-rec">Off</span></span></div>
+      <p class="mut small" style="margin-top:10px">Si un dia no pots, mou el circuit al dia següent, però deixa sempre <b>un dia de descans</b> entre dos circuits.</p>
+    </div>
+    <div class="card">
+      <h3>🔥 Intensitat</h3>
+      <p>Acaba cada exercici amb <b>2 repeticions a la recambra</b>: cansada, però amb la tècnica intacta.</p>
+      <p>Baixada controlada (2-3 s) i pujada ferma. Respira: deixa anar l'aire en l'esforç.</p>
+    </div>
+    <div class="card">
+      <h3>📈 Progressió</h3>
+      <div class="phase" style="margin-bottom:0">
+        <div><div class="w">Set 1-2</div><div class="t">Tècnica</div><p class="mut small" style="margin:6px 0 0">Repeticions de la part baixa del rang, sense pressa.</p></div>
+        <div><div class="w">Set 3-4</div><div class="t">Més reps</div><p class="mut small" style="margin:6px 0 0">Puja cap a la part alta del rang.</p></div>
+        <div><div class="w">Set 5-6</div><div class="t">Més tensió</div><p class="mut small" style="margin:6px 0 0">Goma més dura o baixada en 3-4 s.</p></div>
+        <div><div class="w">Set 7-8</div><div class="t">Menys descans</div><p class="mut small" style="margin:6px 0 0">Descans entre voltes de 2 min a 90 s.</p></div>
+      </div>
+      <p class="small" style="margin-top:12px">Quan una volta et surti fàcil a dalt del rang, <b>fes-la més difícil</b>: més pes a la manuella, goma més forta o una variant més exigent.</p>
+    </div>
+  </section>
+
+  <!-- CIRCUIT -->
+  <section id="entreno" hidden>
+    <h2>El teu <em>circuit</em></h2>
+    <div class="card hl">
+      <p><b>Escalfament (8 min):</b> 1 min de marxa activa, 10 cercles de braços, 10 rotacions de maluc, 10 esquats sense pes, 10 separacions amb goma i 20 s de planxa.</p>
+      <p class="small">Fes els 9 exercicis seguits i repeteix <b>3 voltes</b>. Descans: <b>20 s</b> entre exercicis i <b>2 min</b> entre voltes.</p>
+    </div>
+
+    <div class="card">
+      <h3>Circuit · Full body <span class="tag t-gym">3 voltes</span></h3>
+      <div class="ex"><span class="n">Esquat goblet amb manuella</span><span class="dose">3×12-15</span><span class="why">Manuella al pit, peus a l'amplada de les espatlles. Baixa fins on mantinguis l'esquena recta.</span></div>
+      <div class="ex"><span class="n">Flexions</span><span class="dose">3×8-12</span><span class="why">De genolls si cal. Cos en línia, pit fins a prop del terra.</span></div>
+      <div class="ex"><span class="n">Rem amb 2 manuelles inclinada</span><span class="dose">3×12</span><span class="why">Tronc inclinat endavant, esquena recta. Porta els colzes cap enrere i ajunta les escàpules.</span></div>
+      <div class="ex"><span class="n">Pes mort romanès amb manuelles</span><span class="dose">3×12</span><span class="why">Maluc enrere, genolls lleugerament flexionats. Notaràs els isquiotibials.</span></div>
+      <div class="ex"><span class="n">Pont de glutis amb minibanda</span><span class="dose">3×15</span><span class="why">Goma sobre els genolls, empeny-los cap enfora. 1 s apretant a dalt.</span></div>
+      <div class="ex"><span class="n">Press d'espatlles amb manuelles</span><span class="dose">3×10-12</span><span class="why">Dreta o asseguda. Abdomen ferm, sense arquejar l'esquena.</span></div>
+      <div class="ex"><span class="n">Gambada enrere alterna</span><span class="dose">3×10/cama</span><span class="why">Amb manuelles a les mans quan et surti fàcil. Genoll del darrere fins a prop del terra.</span></div>
+      <div class="ex"><span class="n">Separació amb goma (band pull-apart)</span><span class="dose">3×15</span><span class="why">Braços rectes a l'alçada del pit. Obre fins tocar el pit amb la goma. Postura i espatlla sana.</span></div>
+      <div class="ex"><span class="n">Roda abdominal de genolls</span><span class="dose">3×6-10</span><span class="why">Avança només fins on puguis tornar sense enfonsar la zona lumbar. Core fort.</span></div>
+    </div>
+
+    <div class="card">
+      <h3>🧘 Tornada a la calma (5 min)</h3>
+      <ul>
+        <li>Estirament de quàdriceps i isquiotibials: 30 s per cama.</li>
+        <li>Estirament de pit a la paret: 30 s per costat.</li>
+        <li>Postura del nen: 45 s respirant a fons.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>🔄 Si un exercici et costa massa</h3>
+      <ul>
+        <li><b>Flexions:</b> amb les mans sobre el sofà o una taula.</li>
+        <li><b>Roda abdominal:</b> planxa frontal de 20-30 s.</li>
+        <li><b>Gambada:</b> sense pes o agafada a una cadira.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ENTRENAR -->
+  <section id="entrenar" data-rest="20,20" data-circuit="120" hidden>
+    <h2>Entrena <em>ara</em></h2>
+    <div class="card hl"><p>Marca cada exercici en acabar-lo i el descans comença sol: 20 s entre exercicis i 2 min entre voltes. Quan s’acabi, sonarà i vibrarà el mòbil.</p><p class="mut small">Es guarda en aquest mòbil durant el dia.</p></div>
+    <div class="wk-days"></div>
+    <div class="wk-list"></div>
+    <div class="wk-pad"></div>
+  </section>
+
+  <!-- PROGRES -->
+  <section id="progreso" hidden>
+    <h2>El teu <em>progrés</em></h2>
+    <div class="card hl"><p>Omple els tests les setmanes <b>0, 4 i 8</b>, i el circuit cada setmana. Es desa en aquest mòbil.</p></div>
+    <div class="card">
+      <h3>🏁 Tests</h3>
+      <div class="scroll"><table id="tests"></table></div>
+      <p class="mut small" style="margin-top:10px">Flexions: màximes seguides amb bona tècnica (apunta si són de genolls). Planxa: temps màxim amb l'esquena recta.</p>
+    </div>
+    <div class="card">
+      <h3>🔁 Registre setmanal</h3>
+      <div class="scroll"><table id="cargas"></table></div>
+      <p class="mut small" style="margin-top:10px">Apunta el pes de les manuelles que fas servir i el temps total de les 3 voltes.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">Coach Huguet · actualitzat el 27 d'oct. de 2026</footer>
+
+<script>
+  (function () {
+    var tabs = document.querySelectorAll('nav button');
+    function show(t) {
+      tabs.forEach(function (b) { b.setAttribute('aria-selected', String(b.dataset.t === t)); });
+      document.querySelectorAll('main section').forEach(function (s) { s.hidden = s.id !== t; });
+    }
+    tabs.forEach(function (b) {
+      b.addEventListener('click', function () {
+        show(b.dataset.t);
+        b.scrollIntoView({ inline: 'center', block: 'nearest' });
+        var nav = document.querySelector('nav');
+        if (window.scrollY > nav.offsetTop) window.scrollTo(0, nav.offsetTop);
+      });
+    });
+    var h = (location.hash || '').slice(1);
+    if (document.getElementById(h) && h !== 'perfil') show(h);
+
+    var key = 'coach-huguet-elena-alvarez';
+    var data = {};
+    try { data = JSON.parse(localStorage.getItem(key)) || {}; } catch (e) {}
+    function table(id, cols, rows) {
+      var html = '<tr><th></th>' + cols.map(function (c) { return '<th>' + c + '</th>'; }).join('') + '</tr>';
+      rows.forEach(function (r, ri) {
+        html += '<tr><td>' + r + '</td>' + cols.map(function (c, ci) {
+          var k = id + '-' + ri + '-' + ci;
+          return '<td><input inputmode="decimal" data-k="' + k + '" value="' + (data[k] || '').replace(/"/g, '') + '" aria-label="' + r + ', ' + c + '"></td>';
+        }).join('') + '</tr>';
+      });
+      var t = document.getElementById(id);
+      t.innerHTML = html;
+      t.addEventListener('input', function (ev) {
+        data[ev.target.dataset.k] = ev.target.value;
+        try { localStorage.setItem(key, JSON.stringify(data)); } catch (e) {}
+      });
+    }
+    table('tests', ['Set 0', 'Set 4', 'Set 8'], ['Pes corporal (kg)', 'Cintura (cm)', 'Flexions màximes', 'Planxa (s)', 'Roda abdominal màx.']);
+    var weeks = []; for (var i = 1; i <= 8; i++) weeks.push('S' + i);
+    table('cargas', weeks, ['Pes manuelles (kg)', 'Temps 3 voltes (min)', 'Flexions (volta 1)', 'Roda abdominal (volta 1)']);
+  })();
+</script>
+<script>
+  // Modo entreno: lee los días de la pestaña de entreno, permite marcar series y lanza la cuenta atrás del descanso.
+  (function () {
+    var root = document.getElementById('entrenar');
+    if (!root) return;
+    var ca = document.documentElement.lang === 'ca';
+    var T = ca ? {
+      set: 'Sèrie', sets: 'sèries', done: 'Fet', rest: 'Descans', next: 'Següent', last: 'Última sèrie de l’entrenament',
+      skip: 'Saltar', reset: 'Reiniciar', go: 'Som-hi! Següent sèrie', finish: 'Entrenament complet!', finishTxt: 'Bona feina. Estira 5 minuts i apunta les càrregues a Progrés.',
+      confirm: 'Vols reiniciar el dia?', days: ['diumenge','dilluns','dimarts','dimecres','dijous','divendres','dissabte']
+    } : {
+      set: 'Serie', sets: 'series', done: 'Hecho', rest: 'Descanso', next: 'Siguiente', last: 'Última serie del entreno',
+      skip: 'Saltar', reset: 'Reiniciar', go: '¡Vamos! Siguiente serie', finish: '¡Entreno completado!', finishTxt: 'Buen trabajo. Estira 5 minutos y apunta las cargas en Progreso.',
+      confirm: '¿Reiniciar el día?', days: ['domingo','lunes','martes','miércoles','jueves','viernes','sábado']
+    };
+    var restCfg = (root.dataset.rest || '120,75').split(',').map(Number);
+    // Circuit: es fa una volta de tots els exercicis i data-circuit és el descans entre voltes
+    var circuit = root.dataset.circuit ? +root.dataset.circuit : 0;
+    if (circuit) { T.set = ca ? 'Volta' : 'Vuelta'; T.sets = ca ? 'voltes' : 'vueltas'; }
+
+    // Días y ejercicios a partir de las tarjetas existentes
+    var days = [];
+    document.querySelectorAll('#entreno .card').forEach(function (card) {
+      var exs = card.querySelectorAll('.ex');
+      var h3 = card.querySelector('h3');
+      if (!exs.length || !h3) return;
+      var title = '';
+      h3.childNodes.forEach(function (n) { if (!(n.classList && n.classList.contains('tag'))) title += n.textContent; });
+      title = title.trim();
+      var list = [];
+      exs.forEach(function (ex, i) {
+        var dose = ex.querySelector('.dose').textContent.trim();
+        var why = (ex.querySelector('.why') || {}).textContent || '';
+        var m = dose.match(/^(\d+)\s*[a-zà-ú]*\s*×\s*(.+)$/i);
+        var r = why.match(/descans[oa]?\s+(?:de\s+)?(\d+)\s*(s|min)\b/i);
+        var rest = r ? (+r[1]) * (r[2].toLowerCase() === 'min' ? 60 : 1) : restCfg[i < 2 ? 0 : 1];
+        list.push({ name: ex.querySelector('.n').textContent.trim(), why: why.trim(), sets: m ? +m[1] : 1, reps: m ? m[2].trim() : dose, rest: rest, timed: !m });
+      });
+      if (circuit) list[list.length - 1].rest = circuit;
+      days.push({ title: title, ex: list });
+    });
+    if (!days.length) return;
+
+    var key = 'coach-huguet-entrenar-' + location.pathname.split('/').pop();
+    var today = new Date().toDateString();
+    var st = {};
+    try { st = JSON.parse(localStorage.getItem(key)) || {}; } catch (e) {}
+    if (st.date !== today) st = { date: today, done: {} };
+    if (st.day == null) {
+      var wd = T.days[new Date().getDay()];
+      st.day = 0;
+      days.forEach(function (d, i) { if (d.title.split('·')[0].toLowerCase().indexOf(wd) > -1 && st.day === 0) st.day = i; });
+    }
+    function save() { try { localStorage.setItem(key, JSON.stringify(st)); } catch (e) {} }
+    function doneOf(di) { return st.done[di] || (st.done[di] = days[di].ex.map(function (e) { return Array(e.sets).fill(false); })); }
+    function fmt(s) { s = Math.max(0, Math.ceil(s)); return Math.floor(s / 60) + ':' + ('0' + s % 60).slice(-2); }
+
+    var daysEl = root.querySelector('.wk-days'), listEl = root.querySelector('.wk-list');
+    function renderDays() {
+      daysEl.innerHTML = days.map(function (d, i) {
+        var p = d.title.split('·');
+        return '<button aria-pressed="' + (i === st.day) + '" data-d="' + i + '"><b>' + p[0].trim() + '</b>' + (p[1] || '').trim() + '</button>';
+      }).join('');
+    }
+    function render() {
+      var d = days[st.day], done = doneOf(st.day), tot = 0, ok = 0;
+      done.forEach(function (a) { a.forEach(function (v) { tot++; if (v) ok++; }); });
+      var html = '<div class="wk-top"><div class="wk-bar"><i style="width:' + (tot ? ok / tot * 100 : 0) + '%"></i></div><span class="wk-count">' + ok + '/' + tot + '</span><button class="wk-reset">' + T.reset + '</button></div>';
+      html += '<div class="card" style="counter-reset:wk">';
+      d.ex.forEach(function (e, ei) {
+        var all = done[ei].every(Boolean);
+        html += '<div class="ex wk-ex' + (all ? ' done' : '') + '" style="display:block"><div class="wk-head"><span class="wk-name">' + e.name + '</span><span></span>' +
+          '<div class="wk-meta"><span class="wk-chip">' + e.sets + ' ' + (e.sets === 1 ? T.set.toLowerCase() : T.sets) + '</span><span class="wk-chip r">' + e.reps + '</span>' +
+          (e.sets > 1 || ei < d.ex.length - 1 ? '<span class="wk-chip t">⏱ ' + fmt(e.rest) + '</span>' : '') + '</div></div>' +
+          (e.why ? '<p class="wk-why">' + e.why + '</p>' : '') + '<div class="wk-sets">';
+        done[ei].forEach(function (v, si) {
+          html += '<button class="' + (v ? 'on' : '') + (e.sets === 1 ? ' one' : '') + '" data-e="' + ei + '" data-s="' + si + '" aria-pressed="' + v + '" aria-label="' + e.name + ', ' + T.set + ' ' + (si + 1) + '">' +
+            (e.sets === 1 ? (v ? '✓ ' : '') + T.done : (v ? '✓' : si + 1)) + '</button>';
+        });
+        html += '</div></div>';
+      });
+      html += '</div>';
+      if (tot && ok === tot) html += '<div class="card hl wk-done"><b>🏆 ' + T.finish + '</b><p>' + T.finishTxt + '</p></div>';
+      listEl.innerHTML = html;
+    }
+
+    // Cuenta atrás
+    var bar = document.createElement('div');
+    bar.className = 'wk-timer';
+    bar.innerHTML = '<div class="in"><div class="wk-clock">0:00</div><div class="wk-lbl"></div><div class="wk-btns"><button data-a="-15">−15 s</button><button data-a="15">+15 s</button><button data-a="skip" class="go">' + T.skip + '</button></div></div>';
+    document.body.appendChild(bar);
+    var clock = bar.querySelector('.wk-clock'), lbl = bar.querySelector('.wk-lbl'), tick = null, audio = null, rang = false;
+    function beep() {
+      try {
+        audio = audio || new (window.AudioContext || window.webkitAudioContext)();
+        [0, .25, .5].forEach(function (t, i) {
+          var o = audio.createOscillator(), g = audio.createGain();
+          o.frequency.value = i === 2 ? 1320 : 880; o.connect(g); g.connect(audio.destination);
+          g.gain.setValueAtTime(.25, audio.currentTime + t); g.gain.exponentialRampToValueAtTime(.001, audio.currentTime + t + .2);
+          o.start(audio.currentTime + t); o.stop(audio.currentTime + t + .22);
+        });
+      } catch (e) {}
+      if (navigator.vibrate) navigator.vibrate([250, 120, 250, 120, 400]);
+    }
+    function nextLabel() {
+      var d = days[st.day], done = doneOf(st.day);
+      if (circuit) {
+        for (var s = 0; s < d.ex[0].sets; s++) for (var e = 0; e < d.ex.length; e++)
+          if (done[e][s] === false) return '<b>' + d.ex[e].name + '</b>' + T.set + ' ' + (s + 1) + '/' + d.ex[e].sets + ' · ' + d.ex[e].reps;
+        return '<b>' + T.last + '</b>';
+      }
+      for (var ei = 0; ei < d.ex.length; ei++) for (var si = 0; si < done[ei].length; si++)
+        if (!done[ei][si]) return '<b>' + d.ex[ei].name + '</b>' + T.set + ' ' + (si + 1) + '/' + d.ex[ei].sets + ' · ' + d.ex[ei].reps;
+      return '<b>' + T.last + '</b>';
+    }
+    function update() {
+      var left = (st.endAt - Date.now()) / 1000;
+      if (left <= 0) {
+        clock.textContent = '0:00';
+        bar.classList.add('end');
+        if (!rang) { rang = true; beep(); lbl.innerHTML = '<b>' + T.go + '</b>' + nextLabel().replace(/<\/?b>/g, ' '); }
+        if (left < -20) stop();
+        return;
+      }
+      clock.textContent = fmt(left);
+    }
+    function start(sec) {
+      st.endAt = Date.now() + sec * 1000; rang = false; save();
+      bar.classList.remove('end'); bar.classList.add('show');
+      lbl.innerHTML = T.rest + ' · ' + T.next + ':' + nextLabel();
+      clearInterval(tick); tick = setInterval(update, 250); update();
+    }
+    function stop() { clearInterval(tick); tick = null; st.endAt = null; save(); bar.classList.remove('show', 'end'); }
+    bar.addEventListener('click', function (ev) {
+      var a = ev.target.dataset.a; if (!a) return;
+      if (a === 'skip') return stop();
+      st.endAt += (+a) * 1000; rang = false; bar.classList.remove('end'); save(); update();
+    });
+
+    // Pantalla encendida mientras se entrena
+    var lock = null;
+    function wake() { if (navigator.wakeLock && !root.hidden && !lock) navigator.wakeLock.request('screen').then(function (l) { lock = l; l.addEventListener('release', function () { lock = null; }); }).catch(function () {}); }
+    document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible') { wake(); if (st.endAt) update(); } });
+    new MutationObserver(function () {
+      if (root.hidden) { bar.classList.remove('show'); if (lock) lock.release(); }
+      else {
+        wake();
+        if (st.endAt) { bar.classList.add('show'); if (!tick) { lbl.innerHTML = T.rest + ' · ' + T.next + ':' + nextLabel(); tick = setInterval(update, 250); update(); } }
+      }
+    }).observe(root, { attributes: true, attributeFilter: ['hidden'] });
+
+    daysEl.addEventListener('click', function (ev) {
+      var b = ev.target.closest('button'); if (!b) return;
+      st.day = +b.dataset.d; save(); stop(); renderDays(); render();
+    });
+    listEl.addEventListener('click', function (ev) {
+      var b = ev.target.closest('button'); if (!b) return;
+      if (b.classList.contains('wk-reset')) { if (confirm(T.confirm)) { delete st.done[st.day]; stop(); save(); render(); } return; }
+      var d = days[st.day], done = doneOf(st.day), ei = +b.dataset.e, si = +b.dataset.s;
+      done[ei][si] = !done[ei][si]; save(); render();
+      if (done[ei][si]) {
+        var left = done.some(function (a) { return a.some(function (v) { return !v; }); });
+        if (left) start(d.ex[ei].rest); else stop();
+        if (audio && audio.state === 'suspended') audio.resume();
+        else if (!audio) { try { audio = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {} }
+      }
+    });
+    renderDays(); render();
+    if (st.endAt && st.endAt < Date.now() - 20000) { st.endAt = null; save(); }
+    if (st.endAt && !root.hidden) { bar.classList.add('show'); lbl.innerHTML = T.rest + ' · ' + T.next + ':' + nextLabel(); tick = setInterval(update, 250); update(); }
+  })();
+</script>
+<!--BODY-END-->
+</body>
+</html>
