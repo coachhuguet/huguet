@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#070d12">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Coach Huguet">
+<title>Coach Huguet · Setmana pàdel + força</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+  /* Mateix disseny que els plannings: verd i blau sobre fons fosc. */
+  :root {
+    --bg: #070d12;
+    --card: rgba(19,30,39,.78);
+    --card-2: #172633;
+    --line: rgba(155,190,210,.12);
+    --line-2: rgba(155,190,210,.2);
+    --ink: #eef4f7;
+    --mut: #93a8b5;
+    --green: #3ddc84;
+    --blue: #3fb6f2;
+    --amber: #f2b33f;
+    --red: #ff6b6b;
+    --grad: linear-gradient(135deg, #3ddc84 0%, #3fb6f2 100%);
+    --shadow: 0 1px 0 rgba(255,255,255,.04) inset, 0 10px 30px -12px rgba(0,0,0,.6);
+    --display: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+    --body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; color: var(--ink); font: 16px/1.55 var(--body); -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(900px 500px at 85% -10%, rgba(63,182,242,.14), transparent 60%),
+      radial-gradient(800px 500px at 0% 0%, rgba(61,220,132,.12), transparent 55%),
+      var(--bg);
+    background-attachment: fixed;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+  /* Capçalera */
+  header { padding-block: 36px 26px; text-align: center; }
+  .brand {
+    display: inline-flex; align-items: center; gap: 8px; font: 700 12px/1 var(--body); letter-spacing: .24em; text-transform: uppercase;
+    color: var(--green); padding: 8px 14px; border: 1px solid var(--line-2); border-radius: 999px; background: rgba(255,255,255,.03);
+  }
+  .brand::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--grad); box-shadow: 0 0 10px var(--green); }
+  .brand span { color: var(--blue); }
+  h1 { font: 700 clamp(48px, 13vw, 72px)/0.9 var(--display); text-transform: uppercase; margin: 18px 0 12px; letter-spacing: .005em; }
+  h1 em, h2 em { font-style: normal; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .quote { color: var(--mut); font-style: italic; max-width: 32em; margin: 0 auto; font-size: 15px; }
+
+  main { padding-block: 12px 64px; }
+  h2 { font: 700 40px/1 var(--display); text-transform: uppercase; margin: 0 0 22px; letter-spacing: .01em; }
+  h2::after { content: ""; display: block; width: 44px; height: 4px; border-radius: 4px; background: var(--grad); margin-top: 12px; }
+  .wk { display: block; font: 700 12px/1 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 20px; margin-bottom: 14px;
+    box-shadow: var(--shadow); backdrop-filter: blur(4px);
+  }
+  .card.hl { background: linear-gradient(135deg, rgba(61,220,132,.10), rgba(63,182,242,.08)), var(--card); border-color: rgba(63,182,242,.28); }
+  .card h3 {
+    display: flex; align-items: center; gap: 10px; font: 700 22px/1.1 var(--display); text-transform: uppercase; letter-spacing: .02em;
+    margin: -2px 0 14px; padding-bottom: 14px; border-bottom: 1px solid var(--line);
+  }
+  .card p { margin: 0 0 10px; } .card p:last-child { margin-bottom: 0; }
+  b, strong { font-weight: 700; }
+  .mut { color: var(--mut); }
+  ul { margin: 0; padding-left: 20px; } li { margin: 6px 0; }
+  li::marker { color: var(--green); font-weight: 700; }
+
+  /* Setmana tipus */
+  .day { display: grid; grid-template-columns: 56px minmax(0,1fr); gap: 4px 12px; padding: 10px 8px; margin: 0 -8px; border-radius: 12px; align-items: center; }
+  .day:nth-of-type(odd) { background: rgba(255,255,255,.025); }
+  .day .d {
+    grid-row: 1 / span 2; align-self: start;
+    font: 700 16px/1 var(--display); color: var(--blue); text-transform: uppercase; letter-spacing: .06em; text-align: center;
+    padding: 9px 0; border-radius: 10px; background: rgba(63,182,242,.1);
+  }
+  .day .w { font-weight: 700; }
+  .day .s { color: var(--mut); font-size: 14px; }
+  .tag { display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: .04em; padding: 3px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
+  .t-gym { background: rgba(63,182,242,.16); color: var(--blue); }
+  .t-pista { background: rgba(61,220,132,.16); color: var(--green); }
+  .t-rec { background: rgba(155,176,189,.14); color: var(--mut); }
+
+  footer { text-align: center; color: var(--mut); font-size: 13px; padding-bottom: calc(28px + env(safe-area-inset-bottom, 0px)); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">Coach <span>Huguet</span> · Gratis</div>
+    <h1>La teva <em>setmana</em></h1>
+    <p class="quote">2 partits de pàdel i 2 dies de força. Una setmana organitzada perquè arribis fresc als partits i et facis més fort sense lesionar-te.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="setmana">
+    <span class="wk">Planning setmanal · pàdel + força</span>
+    <h2>Setmana <em>tipus</em></h2>
+
+    <div class="card hl">
+      <p>La clau no és entrenar més, sinó <b>posar cada cosa al seu dia</b>. La força de cames va lluny dels partits, el tren superior al mig de la setmana, i sempre hi ha un dia per recuperar abans de tornar a jugar.</p>
+    </div>
+
+    <div class="card">
+      <h3>🗓️ La setmana</h3>
+      <div class="day"><span class="d">Dl</span><span class="w">Força · cames i core <span class="tag t-gym">Gimnàs</span></span><span class="s">Esquat, pont de glutis, gambes i planxes. És el dia més dur de la setmana.</span></div>
+      <div class="day"><span class="d">Dt</span><span class="w">Partit 1 <span class="tag t-pista">Pista</span></span><span class="s">Escalfa 10 minuts abans de jugar: mobilitat, salts suaus i cops a mig ritme.</span></div>
+      <div class="day"><span class="d">Dc</span><span class="w">Recuperació activa <span class="tag t-rec">Suau</span></span><span class="s">20-30 minuts de caminar, bici suau o mobilitat. Res que cansi.</span></div>
+      <div class="day"><span class="d">Dj</span><span class="w">Força · tren superior i prevenció <span class="tag t-gym">Gimnàs</span></span><span class="s">Rem, empenta, espatlla, avantbraç i rotacions de tronc. Cames lleugeres o res.</span></div>
+      <div class="day"><span class="d">Dv</span><span class="w">Descans <span class="tag t-rec">Off</span></span><span class="s">Dia lliure. Si et ve de gust, estiraments o mobilitat suau.</span></div>
+      <div class="day"><span class="d">Ds</span><span class="w">Partit 2 <span class="tag t-pista">Pista</span></span><span class="s">Mateix escalfament que el dimarts. Arribes amb les cames fresques.</span></div>
+      <div class="day"><span class="d">Dg</span><span class="w">Descans total <span class="tag t-rec">Off</span></span><span class="s">Descansa, menja bé i dorm. La setmana torna a començar dilluns.</span></div>
+    </div>
+
+    <div class="card">
+      <h3>🔁 Si jugues altres dies</h3>
+      <ul>
+        <li><b>Cap dia de força de cames just abans d'un partit.</b> Deixa-hi com a mínim un dia pel mig.</li>
+        <li><b>El dia després d'un partit</b>, millor recuperació o tren superior que no pas cames.</li>
+        <li><b>Entre les dues sessions de força</b>, deixa-hi almenys un dia de diferència.</li>
+        <li><b>Un dia de descans total</b> a la setmana, sempre.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>✅ Recorda</h3>
+      <ul>
+        <li>Escalfa sempre abans de jugar i abans de fer força.</li>
+        <li>A la força, millor poc pes i bona tècnica que molt pes i mala tècnica.</li>
+        <li>Si un dia vas molt cansat o amb molèsties, canvia la força per mobilitat. No passa res.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="card hl">
+    <h3>💬 Vols més?</h3>
+    <p>Quins exercicis, quantes sèries i quin pes fer cada dia depèn de tu: del teu nivell, del teu joc i dels teus objectius. <b>Escriu-me i t'ho preparo a la teva mida.</b></p>
+  </div>
+
+</main>
+
+<footer class="wrap">Coach Huguet · actualitzat el 29 d'oct. de 2026</footer>
+
+</body>
+</html>
