@@ -8,6 +8,7 @@ Plannings de cada cliente, uno por fichero HTML.
 | Isaac Elíes | `isaac-elies.html` |
 | Ezequiel Huguet | `ezequiel-huguet.html` |
 | Elena Alvarez | `elena-alvarez.html` |
+| Jowni | `jowni.html` |
 
 Llistats gratuïts per a seguidors (no són clients): `gratis.html` (remat), `colze.html` (mal de colze) i `setmana.html` (setmana tipus: 2 partits + força).
 
