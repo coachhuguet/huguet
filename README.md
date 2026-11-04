@@ -12,4 +12,6 @@ Plannings de cada cliente, uno por fichero HTML.
 
 Llistats gratuïts per a seguidors (no són clients): `gratis.html` (remat), `colze.html` (mal de colze) i `setmana.html` (setmana tipus: 2 partits + força).
 
+Plantilla para un cliente nuevo: `plantilla.html` (mismo diseño que Jowni). El diseño común (estilo, muñecos animados, registro de kg/reps y envío a la hoja de Google) está en `comu/`; ver `CLAUDE.md`.
+
 Con GitHub Pages activado, cada planning se abre en `https://coachhuguet.github.io/huguet/<fichero>.html`.

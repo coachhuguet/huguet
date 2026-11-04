@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#070d12">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Coach Huguet">
+</head>
+<body>
+<!--BODY-START-->
+<!--
+  PLANTILLA DE CLIENT NOU · Coach Huguet
+  1. Copia aquest fitxer amb el nom del client (p. ex. pau.html) i afegeix-lo a la taula del README.
+  2. Canvia NOM pel nom del client (títol, h1, data-client, fotos i clau de localStorage del final).
+     data-client és el nom de la pestanya del full de Google: "Registre NOM" (es crea sola).
+  3. Omple el perfil, l'estratègia, la dieta i els dies d'entreno.
+     Cada exercici: <div class="ex" data-fig="clau"> · claus dels ninots a comu/ninots.js (bench, squat, pushup, plank...).
+  4. El disseny, els ninots animats, el registre de kg/reps i l'enviament al full vénen de comu/: no s'han de copiar.
+-->
+<title>Coach Huguet · NOM</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="comu/coach.css?v=3">
+
+<header>
+  <div class="wrap">
+    <div class="brand">Coach <span>Huguet</span> · Hipertròfia</div>
+    <h1><em>NOM</em></h1>
+    <p class="quote">"Frase motivadora del client."</p>
+    <div class="pills">
+      <span class="pill p-amber">🔥 0.000 kcal/dia</span>
+      <span class="pill p-blue">🥩 Proteïna 0 g/kg</span>
+      <span class="pill p-green">💪 Objectiu</span>
+      <span class="pill p-red">🏋️ 0 dies de gimnàs</span>
+      <span class="pill p-blue">💧 3 L d'aigua</span>
+    </div>
+  </div>
+</header>
+
+<nav aria-label="Seccions">
+  <div class="in" role="tablist">
+    <button role="tab" data-t="perfil" aria-selected="true">Perfil</button>
+    <button role="tab" data-t="estrategia" aria-selected="false">Estratègia</button>
+    <button role="tab" data-t="entreno" aria-selected="false">Entreno</button>
+    <button role="tab" data-t="entrenar" aria-selected="false">▶ Entrenar</button>
+    <button role="tab" data-t="dieta" aria-selected="false">Dieta</button>
+    <button role="tab" data-t="progreso" aria-selected="false">📊 Progrés</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- PERFIL -->
+  <section id="perfil">
+    <h2>Perfil <em>actual</em></h2>
+    <div class="card">
+      <div class="grid2">
+        <div class="stat"><div class="k">Pes</div><div class="v">— kg</div></div>
+        <div class="stat"><div class="k">Alçada</div><div class="v">— m</div></div>
+        <div class="stat"><div class="k">Edat</div><div class="v">— anys</div></div>
+        <div class="stat"><div class="k">Objectiu</div><div class="v">—</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>🎯 Objectius a 8 setmanes</h3>
+      <ol>
+        <li><b>Objectiu 1:</b> explicació.</li>
+        <li><b>Objectiu 2:</b> explicació.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>📅 Pla</h3>
+      <p>Del <b>data d'inici</b> al <b>data final</b>. Dos blocs de 4 setmanes; la quarta setmana de cada bloc és de descàrrega.</p>
+      <p class="mut small">Abans de començar (setmana 0) pesa't i pren les mesures a la pestanya Progrés per tenir el punt de partida.</p>
+    </div>
+    <div class="card">
+      <h3>📸 Perfil d'inici</h3>
+      <div class="fotos">
+        <figure><img src="fotos/NOM/cara.jpg" alt="De cara" loading="lazy" onerror="this.remove()"><figcaption>De cara</figcaption></figure>
+        <figure><img src="fotos/NOM/costat-dret.jpg" alt="Costat dret" loading="lazy" onerror="this.remove()"><figcaption>Costat dret</figcaption></figure>
+        <figure><img src="fotos/NOM/costat-esquerre.jpg" alt="Costat esquerre" loading="lazy" onerror="this.remove()"><figcaption>Costat esquerre</figcaption></figure>
+        <figure><img src="fotos/NOM/esquena.jpg" alt="D'esquena" loading="lazy" onerror="this.remove()"><figcaption>D'esquena</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESTRATEGIA -->
+  <section id="estrategia" hidden>
+    <h2>La teva <em>estratègia</em></h2>
+    <div class="card hl">
+      <p>💪 <b>Objectiu:</b> explicació.</p>
+    </div>
+    <div class="card">
+      <h3>⏱️ Descans entre sèries</h3>
+      <p><b class="g">2 minuts</b> als dos primers exercicis de cada dia; <b class="g">60 a 90 segons</b> a la resta.</p>
+    </div>
+    <div class="card">
+      <h3>🗓️ Setmana tipus</h3>
+      <div class="day"><span class="d">Dl</span><span>Sessió <span class="tag t-gym">Gym</span></span></div>
+      <div class="day"><span class="d">Dt</span><span>Descans <span class="tag t-rec">Off</span></span></div>
+    </div>
+  </section>
+
+  <!-- ENTRENO: cada targeta és un dia ("Dia · Nom"); cada .ex és un exercici amb data-fig (ninot) i dosi "sèries×reps" -->
+  <section id="entreno" hidden>
+    <h2>El teu <em>entreno</em></h2>
+    <div class="card hl"><p>Abans de cada sessió: <b>10 min d'escalfament</b> i <b>2 sèries d'aproximació</b> lleugeres al primer exercici.</p></div>
+
+    <div class="card">
+      <h3>Dilluns · Empenta</h3>
+      <div class="ex" data-fig="bench"><span class="n">Press banca a la màquina Smith</span><span class="dose">3×6-10</span><span class="why">Indicació tècnica.</span></div>
+      <div class="ex" data-fig="lateral"><span class="n">Elevacions laterals</span><span class="dose">3×12-20</span><span class="why">Indicació tècnica.</span></div>
+    </div>
+  </section>
+
+  <!-- ENTRENAR: es construeix sol a partir de la pestanya Entreno -->
+  <section id="entrenar" data-client="NOM" data-rest="120,75" hidden>
+    <h2>Entrena <em>ara</em></h2>
+    <div class="card hl"><p>Tria el dia i apunta el <b>pes i les repeticions</b> de cada sèrie. Marca ○ en acabar-la i el descans comença sol. Quan acabis, toca <b>Enviar l'entreno al coach</b>.</p><p class="mut small">Tot queda guardat a l'historial de la pestanya Progrés.</p></div>
+    <div class="wk-days"></div>
+    <div class="wk-list"></div>
+    <div class="wk-pad"></div>
+  </section>
+
+  <!-- DIETA -->
+  <section id="dieta" hidden>
+    <h2>La teva <em>dieta</em></h2>
+    <div class="card">
+      <h3>Calories i macros</h3>
+      <p><b style="font:700 32px/1 var(--display)">0.000</b> <span class="mut">kcal al dia</span></p>
+      <div class="macro"><div><b class="bl">0 g/kg</b><span class="mut small">Proteïna</span></div><div><b class="g">0 g/kg</b><span class="mut small">Hidrats</span></div><div><b style="color:var(--amber)">0 g/kg</b><span class="mut small">Greix</span></div></div>
+    </div>
+    <div class="card">
+      <h3>🍽️ Menú exemple</h3>
+      <div class="meal"><span>Esmorzar</span><span>…</span></div>
+      <div class="meal"><span>Dinar</span><span>…</span></div>
+      <div class="meal"><span>Sopar</span><span>…</span></div>
+    </div>
+  </section>
+
+  <!-- PROGRES -->
+  <section id="progreso" hidden>
+    <h2>El teu <em>progrés</em></h2>
+    <div class="card hl"><p>Apunta el pes i les mesures <b>cada dues setmanes</b>. Es guarda en aquest mòbil.</p></div>
+    <div class="card">
+      <h3>📒 Historial d'entrenos</h3>
+      <div id="historial"></div>
+    </div>
+    <div class="card">
+      <h3>📏 Pes i mesures</h3>
+      <div class="scroll"><table id="medidas"></table></div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">Coach Huguet · actualitzat el DATA</footer>
+<script>
+  (function () {
+    var tabs = document.querySelectorAll('nav button');
+    function show(t) {
+      tabs.forEach(function (b) { b.setAttribute('aria-selected', String(b.dataset.t === t)); });
+      document.querySelectorAll('main section').forEach(function (s) { s.hidden = s.id !== t; });
+    }
+    tabs.forEach(function (b) {
+      b.addEventListener('click', function () {
+        show(b.dataset.t);
+        b.scrollIntoView({ inline: 'center', block: 'nearest' });
+        var nav = document.querySelector('nav');
+        if (window.scrollY > nav.offsetTop) window.scrollTo(0, nav.offsetTop);
+      });
+    });
+    var h = (location.hash || '').slice(1);
+    if (document.getElementById(h) && h !== 'perfil') show(h);
+
+    var key = 'coach-huguet-NOM';
+    var data = {};
+    try { data = JSON.parse(localStorage.getItem(key)) || {}; } catch (e) {}
+    function table(id, cols, rows) {
+      var html = '<tr><th></th>' + cols.map(function (c) { return '<th>' + c + '</th>'; }).join('') + '</tr>';
+      rows.forEach(function (r, ri) {
+        html += '<tr><td>' + r + '</td>' + cols.map(function (c, ci) {
+          var k = id + '-' + ri + '-' + ci;
+          return '<td><input inputmode="decimal" data-k="' + k + '" value="' + (data[k] || '').replace(/"/g, '') + '" aria-label="' + r + ', ' + c + '"></td>';
+        }).join('') + '</tr>';
+      });
+      var t = document.getElementById(id);
+      t.innerHTML = html;
+      t.addEventListener('input', function (ev) {
+        data[ev.target.dataset.k] = ev.target.value;
+        try { localStorage.setItem(key, JSON.stringify(data)); } catch (e) {}
+      });
+    }
+    table('medidas', ['Set 0', 'Set 2', 'Set 4', 'Set 6', 'Set 8'], ['Pes (kg)', 'Cintura (cm)', 'Espatlles (cm)', 'Cama (cm)']);
+  })();
+</script>
+<script src="comu/ninots.js?v=3"></script>
+<script src="comu/registre.js?v=3"></script>
+<script src="comu/entrenar.js?v=3"></script>
+<!--BODY-END-->
+</body>
+</html>

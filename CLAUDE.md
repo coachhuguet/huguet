@@ -1,0 +1,28 @@
+# Coach Huguet · com treballar en aquest repo
+
+Cada client té un HTML senzill (`<client>.html`), publicat a `https://coachhuguet.github.io/huguet/<client>.html`.
+Els canvis es pugen directament a `main`.
+
+## Disseny comú (el del Jowni)
+
+Tot el que és igual per a tots els clients viu a `comu/` i cada HTML només té el seu contingut:
+
+- `comu/coach.css` · l'estil (verd i blau sobre fons fosc).
+- `comu/ninots.js` · els ninots animats. A cada exercici: `<div class="ex" data-fig="clau">`. Les claus són a la llista `F` del fitxer
+  (bench, benchbar, dbbench, incline, chestpress, fly, dips, pushup, military, ohp, lateral, facepull, extrot, landmine, pushdown, overhead,
+  skull, lat, pullup, rings, row, bbrow, dbrow, cablerow, bandrow, invrow, pullover, curlbar, curldb, cablecurl, inclinecurl, wrist, squat,
+  bbsquat, goblet, jumpsquat, legpress, legcurl, legext, rdl, rdldb, bulgarian, bulgarsmith, lunge, lateralsquat, stepup, nordic, bridge,
+  calves, seatedcalf, plank, sideplank, copenhagen, deadbug, rollout, superman, pallof, woodchop, boxjump, slam, rotthrow, chestpass,
+  lateralhop, splitstep, run, walk, farmer). Si un exercici nou no en té cap que encaixi, afegeix-ne un a `F` i comprova'l visualment.
+- `comu/entrenar.js` · pestanya ▶ Entrenar: kg i reps per sèrie, descans, historial (`#historial` a Progrés) i enviament al full.
+- `comu/registre.js` · adreça de l'Apps Script (`/exec`) on s'envien els entrenos.
+- `apps-script/registre.gs` · el codi de l'Apps Script del full de Google: cada client escriu a la seva pestanya `Registre <Nom>`,
+  que es crea sola. El nom surt de `data-client` de `<section id="entrenar">` o, si no n'hi ha, del títol `h1`.
+
+Si canvies alguna cosa de `comu/`, puja el número `?v=` a tots els HTML perquè els mòbils no facin servir la versió vella.
+
+## Client nou
+
+1. Copia `plantilla.html` a `<nom>.html` i segueix el comentari de dalt (canviar `NOM`, omplir perfil, dies i exercicis amb `data-fig`).
+2. Afegeix-lo a la taula del `README.md`.
+3. No cal tocar el full de Google: la pestanya `Registre <Nom>` apareix sola el primer cop que el client envia un entreno.
