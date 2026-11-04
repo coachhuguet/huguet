@@ -644,7 +644,7 @@
     });
   })();
 </script>
-<script src="registre.js"></script>
+<script src="registre.js?v=2"></script>
 <script>
   // Modo entreno: lee los días de la pestaña de entreno, permite marcar series y lanza la cuenta atrás del descanso.
   (function () {
@@ -738,17 +738,17 @@
       if (sheet) {
         clearTimeout(timer);
         R.push({ client: who.trim(), date: h.date, day: h.day, ex: h.ex }).then(function (ok) {
-          if (btn) btn.textContent = ok ? '✓ Guardat al full del coach' : 'Sense connexió: s\'enviarà sol més tard';
+          if (btn) btn.textContent = ok ? '✓ Enviat al coach' : 'Sense connexió: s\'enviarà sol més tard';
         });
         return;
       }
-      window.open('https://wa.me/?text=' + encodeURIComponent(summary(h)), '_blank');
+      if (btn) btn.textContent = 'No s\'ha pogut connectar amb el full. Torna-ho a provar.';
     }
     function renderHist() {
       var box = document.getElementById('historial'); if (!box) return;
       var ks = Object.keys(hist).sort().reverse();
       box.innerHTML = ks.length ? ks.slice(0, 30).map(function (k) {
-        return '<div class="hist-item"><pre>' + esc(summary(hist[k])) + '</pre><button data-h="' + esc(k) + '">' + (sheet ? '💾 Tornar a guardar al full' : '📤 Enviar al coach') + '</button></div>';
+        return '<div class="hist-item"><pre>' + esc(summary(hist[k])) + '</pre><button data-h="' + esc(k) + '">' + '📤 Tornar a enviar al coach' + '</button></div>';
       }).join('') : '<p class="mut small">Encara no hi ha cap entreno apuntat. Fes-ho des de la pestanya ▶ Entrenar.</p>';
     }
     var hb = document.getElementById('historial');
@@ -784,7 +784,7 @@
         });
         html += '</div>' + (prev ? '<p class="wk-hint">En gris, el que vas fer l\'últim dia.</p>' : '') + '</div>';
       });
-      html += '</div><button class="wk-send" data-send="1">' + (sheet ? '💾 Guardar l\'entreno al full del coach' : '📤 Enviar l\'entreno al coach') + '</button>' + (sheet ? '<p class="mut small" style="text-align:center;margin-top:8px">Es guarda sol mentre apuntes; el botó és per assegurar-ho en acabar.</p>' : '');
+      html += '</div><button class="wk-send" data-send="1">' + '📤 Enviar l\'entreno al coach' + '</button>' + '<p class="mut small" style="text-align:center;margin-top:8px">Es guarda sol mentre apuntes; el botó és per assegurar-ho en acabar.</p>';
       if (tot && ok === tot) html += '<div class="card hl wk-done"><b>🏆 ' + T.finish + '</b><p>' + T.finishTxt + '</p></div>';
       listEl.innerHTML = html;
     }
