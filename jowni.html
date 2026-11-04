@@ -241,6 +241,17 @@
   .fotos img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .fotos figcaption { position: relative; z-index: 1; font-size: 12.5px; font-weight: 600; color: var(--mut); padding: 4px 10px; border-radius: 999px; background: rgba(7,13,18,.7); }
   .fotos figure:has(img) figcaption { position: absolute; left: 8px; bottom: 8px; color: var(--ink); }
+  .fig { grid-column: 1 / -1; display: block; width: 100%; max-width: 300px; height: auto; margin: 8px 0 2px; padding: 6px 8px 2px; border-radius: 14px; background: var(--card-2); border: 1px solid var(--line-2); }
+  #entreno .ex .fig { grid-column: 2 / -1; }
+  .fig line, .fig circle { fill: none; stroke: var(--ink); stroke-width: 4; stroke-linecap: round; }
+  .fig .hd { fill: var(--ink); stroke-width: 0; }
+  .fig .far { opacity: .3; }
+  .fig .gr { stroke: var(--line-2); stroke-width: 2.5; }
+  .fig .eq, .fig .db { stroke: var(--green); stroke-width: 3; }
+  .fig .db { stroke-width: 6; }
+  .fig .eqc { stroke: var(--green); stroke-width: 2.5; fill: rgba(61,220,132,.25); }
+  .fig .cab { stroke: var(--blue); stroke-width: 1.5; stroke-dasharray: 4 3; }
+  .wk-ex .fig { margin: 10px 0 0; }
 </style>
 
 <header>
@@ -353,40 +364,40 @@
 
     <div class="card">
       <h3>Dilluns · Empenta</h3>
-      <div class="ex"><span class="n">Press banca a la màquina Smith</span><span class="dose">3×6-10</span><span class="why">Barra guiada. Escàpules enrere i avall; la barra baixa fins a tocar el pit.</span></div>
-      <div class="ex"><span class="n">Press inclinat amb manuelles</span><span class="dose">3×8-12</span><span class="why">Banc a 30°. Part alta del pit.</span></div>
-      <div class="ex"><span class="n">Press militar amb manuelles</span><span class="dose">3×8-12</span><span class="why">Assegut amb respatller vertical, sense arquejar la zona lumbar.</span></div>
-      <div class="ex"><span class="n">Elevacions laterals</span><span class="dose">3×12-20</span><span class="why">Fins a l'alçada de les espatlles, sense impuls.</span></div>
-      <div class="ex"><span class="n">Extensió de tríceps a la politja</span><span class="dose">3×10-15</span><span class="why">Colzes enganxats al cos, estira fins a baix del tot.</span></div>
-      <div class="ex"><span class="n">Extensió de tríceps a la nuca</span><span class="dose">3×10</span><span class="why">Colzes amunt al costat del cap. Màxim estirament del tríceps.</span></div>
+      <div class="ex" data-fig="bench"><span class="n">Press banca a la màquina Smith</span><span class="dose">3×6-10</span><span class="why">Barra guiada. Escàpules enrere i avall; la barra baixa fins a tocar el pit.</span></div>
+      <div class="ex" data-fig="incline"><span class="n">Press inclinat amb manuelles</span><span class="dose">3×8-12</span><span class="why">Banc a 30°. Part alta del pit.</span></div>
+      <div class="ex" data-fig="military"><span class="n">Press militar amb manuelles</span><span class="dose">3×8-12</span><span class="why">Assegut amb respatller vertical, sense arquejar la zona lumbar.</span></div>
+      <div class="ex" data-fig="lateral"><span class="n">Elevacions laterals</span><span class="dose">3×12-20</span><span class="why">Fins a l'alçada de les espatlles, sense impuls.</span></div>
+      <div class="ex" data-fig="pushdown"><span class="n">Extensió de tríceps a la politja</span><span class="dose">3×10-15</span><span class="why">Colzes enganxats al cos, estira fins a baix del tot.</span></div>
+      <div class="ex" data-fig="overhead"><span class="n">Extensió de tríceps a la nuca</span><span class="dose">3×10</span><span class="why">Colzes amunt al costat del cap. Màxim estirament del tríceps.</span></div>
     </div>
 
     <div class="card">
       <h3>Dimarts · Tracció</h3>
-      <div class="ex"><span class="n">Jalón al pit (politja alta)</span><span class="dose">3×8-12</span><span class="why">Barra cap a la part alta del pit, colzes avall i enrere, sense balancejar-te.</span></div>
-      <div class="ex"><span class="n">Rem amb pit recolzat</span><span class="dose">3×8-12</span><span class="why">El pit no se separa del suport. Estira amb l'esquena, no amb els braços.</span></div>
-      <div class="ex"><span class="n">Pullover a la politja amb corda</span><span class="dose">3×10-12</span><span class="why">Braços gairebé estirats, porta la corda fins a les cuixes. Dorsal pur.</span></div>
-      <div class="ex"><span class="n">Face pull</span><span class="dose">2×12-15</span><span class="why">Estira cap a la cara obrint els colzes. Salut de l'espatlla.</span></div>
-      <div class="ex"><span class="n">Curl de bíceps amb barra</span><span class="dose">3×10-12</span><span class="why">Colzes quiets, sense impuls d'esquena.</span></div>
-      <div class="ex"><span class="n">Curl martell</span><span class="dose">3×10-12</span><span class="why">Palmells mirant-se. Braquial i avantbraç.</span></div>
+      <div class="ex" data-fig="lat"><span class="n">Jalón al pit (politja alta)</span><span class="dose">3×8-12</span><span class="why">Barra cap a la part alta del pit, colzes avall i enrere, sense balancejar-te.</span></div>
+      <div class="ex" data-fig="row"><span class="n">Rem amb pit recolzat</span><span class="dose">3×8-12</span><span class="why">El pit no se separa del suport. Estira amb l'esquena, no amb els braços.</span></div>
+      <div class="ex" data-fig="pullover"><span class="n">Pullover a la politja amb corda</span><span class="dose">3×10-12</span><span class="why">Braços gairebé estirats, porta la corda fins a les cuixes. Dorsal pur.</span></div>
+      <div class="ex" data-fig="facepull"><span class="n">Face pull</span><span class="dose">2×12-15</span><span class="why">Estira cap a la cara obrint els colzes. Salut de l'espatlla.</span></div>
+      <div class="ex" data-fig="curlbar"><span class="n">Curl de bíceps amb barra</span><span class="dose">3×10-12</span><span class="why">Colzes quiets, sense impuls d'esquena.</span></div>
+      <div class="ex" data-fig="curldb"><span class="n">Curl martell</span><span class="dose">3×10-12</span><span class="why">Palmells mirant-se. Braquial i avantbraç.</span></div>
     </div>
 
     <div class="card">
       <h3>Dimecres · Cama</h3>
-      <div class="ex"><span class="n">Sentadilla a la màquina Smith</span><span class="dose">3×6-10</span><span class="why">Barra guiada. Peus una mica avançats, baixa fins al paral·lel amb l'esquena recta.</span></div>
-      <div class="ex"><span class="n">Premsa de cames</span><span class="dose">3×10-15</span><span class="why">Peus a l'amplada de les espatlles. No bloquegis els genolls a dalt.</span></div>
-      <div class="ex"><span class="n">Curl femoral</span><span class="dose">3×10-15</span><span class="why">Baixada lenta, sense aixecar el maluc.</span></div>
-      <div class="ex"><span class="n">Extensió de quàdriceps</span><span class="dose">2×12-15</span><span class="why">Pausa d'1 s a dalt.</span></div>
-      <div class="ex"><span class="n">Bessons</span><span class="dose">3×10-15</span><span class="why">Pausa a dalt i estirament complet a baix.</span></div>
+      <div class="ex" data-fig="squat"><span class="n">Sentadilla a la màquina Smith</span><span class="dose">3×6-10</span><span class="why">Barra guiada. Peus una mica avançats, baixa fins al paral·lel amb l'esquena recta.</span></div>
+      <div class="ex" data-fig="legpress"><span class="n">Premsa de cames</span><span class="dose">3×10-15</span><span class="why">Peus a l'amplada de les espatlles. No bloquegis els genolls a dalt.</span></div>
+      <div class="ex" data-fig="legcurl"><span class="n">Curl femoral</span><span class="dose">3×10-15</span><span class="why">Baixada lenta, sense aixecar el maluc.</span></div>
+      <div class="ex" data-fig="legext"><span class="n">Extensió de quàdriceps</span><span class="dose">2×12-15</span><span class="why">Pausa d'1 s a dalt.</span></div>
+      <div class="ex" data-fig="calves"><span class="n">Bessons</span><span class="dose">3×10-15</span><span class="why">Pausa a dalt i estirament complet a baix.</span></div>
     </div>
 
     <div class="card">
       <h3>Divendres · Torso complet</h3>
-      <div class="ex"><span class="n">Press de pit a la màquina</span><span class="dose">3×8-12</span><span class="why">Ajusta el seient perquè els mànecs quedin a l'alçada del pit.</span></div>
-      <div class="ex"><span class="n">Jalón al pit</span><span class="dose">3×8-12</span><span class="why">Colzes avall i enrere, sense balancejar-te.</span></div>
-      <div class="ex"><span class="n">Elevacions laterals</span><span class="dose">3×12-20</span><span class="why">Fins a l'alçada de les espatlles, sense impuls.</span></div>
-      <div class="ex"><span class="n">Curl de bíceps amb manuelles</span><span class="dose">2×10-15</span><span class="why">Colzes quiets, gira el canell cap a fora a dalt.</span></div>
-      <div class="ex"><span class="n">Extensió de tríceps per sobre del cap</span><span class="dose">2×10-15</span><span class="why">Amb politja o manuella. Màxim estirament del tríceps.</span></div>
+      <div class="ex" data-fig="chestpress"><span class="n">Press de pit a la màquina</span><span class="dose">3×8-12</span><span class="why">Ajusta el seient perquè els mànecs quedin a l'alçada del pit.</span></div>
+      <div class="ex" data-fig="lat"><span class="n">Jalón al pit</span><span class="dose">3×8-12</span><span class="why">Colzes avall i enrere, sense balancejar-te.</span></div>
+      <div class="ex" data-fig="lateral"><span class="n">Elevacions laterals</span><span class="dose">3×12-20</span><span class="why">Fins a l'alçada de les espatlles, sense impuls.</span></div>
+      <div class="ex" data-fig="curldb"><span class="n">Curl de bíceps amb manuelles</span><span class="dose">2×10-15</span><span class="why">Colzes quiets, gira el canell cap a fora a dalt.</span></div>
+      <div class="ex" data-fig="overhead"><span class="n">Extensió de tríceps per sobre del cap</span><span class="dose">2×10-15</span><span class="why">Amb politja o manuella. Màxim estirament del tríceps.</span></div>
     </div>
   </section>
 
@@ -483,6 +494,136 @@
   })();
 </script>
 <script>
+  // Dibuixos animats dels exercicis: ninot que es mou entre la posició inicial i la final.
+  (function () {
+    var L = { t: 32, h: 9, u: 17, f: 16, th: 21, sh: 21 };
+    var G = 104;
+    var F = {
+      bench: { a: { P: [94, 70], t: 180, W: [74, 60], eb: 1, F: [114, 104], kb: -1 }, b: { W: [66, 37] },
+        props: [['l', 36, 74, 108, 74, 'gr'], ['l', 44, 74, 44, 104, 'gr'], ['l', 100, 74, 100, 104, 'gr'], ['l', 82, -8, 82, 104, 'gr'], ['o', 'W', 7]] },
+      incline: { a: { P: [96, 78], t: -150, W: [72, 56], eb: 1, F: [120, 104], kb: -1 }, b: { W: [86, 30] },
+        props: [['l', 98, 82, 62, 61, 'gr'], ['l', 98, 82, 120, 82, 'gr'], ['l', 100, 82, 100, 104, 'gr'], ['d', 'W']] },
+      military: { a: { P: [80, 80], t: -90, W: [84, 46], eb: -1, F: [102, 104], kb: -1 }, b: { W: [81, 15] },
+        props: [['l', 75, 84, 75, 42, 'gr'], ['l', 73, 84, 100, 84, 'gr'], ['l', 88, 84, 88, 104, 'gr'], ['d', 'W']] },
+      lateral: { front: 1, a: { P: [80, 62], t: -90, W: [68, 64], W2: [92, 64], eb: 1, F: [74, 104], F2: [86, 104] }, b: { W: [42, 28], W2: [118, 28] },
+        props: [['d', 'W'], ['d', 'W2']] },
+      pushdown: { a: { P: [76, 63], t: -82, W: [96, 38], eb: 1, F: [76, 104], kb: -1 }, b: { W: [84, 63] },
+        props: [['c', 104, -6, 'W'], ['o', 'W', 3]] },
+      overhead: { a: { P: [78, 63], t: -90, W: [68, 22], eb: -1, F: [78, 104], kb: -1 }, b: { W: [80, -1] },
+        props: [['d', 'W']] },
+      lat: { a: { P: [74, 84], t: -98, W: [77, 20], eb: 1, F: [98, 104], kb: -1 }, b: { W: [80, 50] },
+        props: [['l', 60, 88, 90, 88, 'gr'], ['l', 76, 88, 76, 104, 'gr'], ['l', 88, 76, 100, 76, 'gr'], ['c', 77, -10, 'W'], ['o', 'W', 3]] },
+      row: { a: { P: [60, 84], t: -55, W: [94, 86], eb: 1, F: [88, 104], kb: -1 }, b: { W: [78, 74] },
+        props: [['l', 66, 87, 84, 61, 'gr'], ['l', 75, 74, 75, 104, 'gr'], ['l', 46, 88, 66, 88, 'gr'], ['o', 'W', 3]] },
+      pullover: { a: { P: [70, 64], t: -62, W: [110, 8], eb: 1, F: [72, 104], kb: -1 }, b: { W: [82, 64] },
+        props: [['c', 132, -6, 'W'], ['o', 'W', 3]] },
+      facepull: { a: { P: [70, 63], t: -96, W: [100, 31], eb: 1, F: [72, 104], kb: -1 }, b: { W: [76, 22] },
+        props: [['c', 134, 28, 'W'], ['o', 'W', 3]] },
+      curlbar: { a: { P: [78, 63], t: -90, W: [82, 64], eb: 1, F: [78, 104], kb: -1 }, b: { W: [90, 36] },
+        props: [['o', 'W', 5]] },
+      curldb: { a: { P: [78, 63], t: -90, W: [82, 64], eb: 1, F: [78, 104], kb: -1 }, b: { W: [90, 36] },
+        props: [['d', 'W']] },
+      squat: { a: { P: [86, 63], t: -88, Wr: [-3, 3], eb: -1, F: [88, 104], kb: -1 }, b: { P: [66, 84], t: -58 },
+        props: [['l', 100, -8, 100, 104, 'gr'], ['o', 'N', 6]] },
+      legpress: { a: { P: [56, 84], t: -155, W: [52, 92], eb: 1, F: [76, 64], kb: -1 }, b: { F: [84, 56] },
+        props: [['l', 60, 89, 26, 74, 'gr'], ['l', 72, 76, 112, 36, 'gr'], ['p', 'F', 8, 8]] },
+      legcurl: { a: { P: [70, 80], t: -100, W: [80, 84], eb: 1, F: [112, 82], kb: -1 }, b: { F: [84, 99] },
+        props: [['l', 60, 85, 92, 85, 'gr'], ['l', 62, 85, 57, 46, 'gr'], ['l', 76, 85, 76, 104, 'gr'], ['o', 'F', 4]] },
+      legext: { a: { P: [70, 80], t: -95, W: [80, 84], eb: 1, F: [88, 102], kb: -1 }, b: { F: [111, 78] },
+        props: [['l', 60, 85, 92, 85, 'gr'], ['l', 62, 85, 59, 46, 'gr'], ['l', 76, 85, 76, 104, 'gr'], ['o', 'F', 4]] },
+      calves: { a: { P: [78, 60], t: -90, W: [80, 62], eb: 1, F: [78, 101], T: [89, 104], kb: -1 }, b: { P: [80, 53], W: [82, 55], F: [80, 94] },
+        props: [['l', 84, 104, 120, 104, 'eq']] },
+      chestpress: { a: { P: [70, 82], t: -90, W: [78, 52], eb: 1, F: [94, 104], kb: -1 }, b: { W: [102, 50] },
+        props: [['l', 65, 86, 65, 42, 'gr'], ['l', 63, 86, 90, 86, 'gr'], ['l', 76, 86, 76, 104, 'gr'], ['m', 122, 6, 'W'], ['o', 'W', 3]] }
+    };
+    function rad(a) { return a * Math.PI / 180; }
+    function ik(o, tg, l1, l2, s) {
+      var dx = tg[0] - o[0], dy = tg[1] - o[1], d = Math.min(Math.hypot(dx, dy), l1 + l2 - .01), b = Math.atan2(dy, dx);
+      d = Math.max(d, Math.abs(l1 - l2) + .01);
+      var a = Math.acos((l1 * l1 + d * d - l2 * l2) / (2 * l1 * d)), j = [o[0] + l1 * Math.cos(b + s * a), o[1] + l1 * Math.sin(b + s * a)];
+      return [j, [j[0] + l2 * Math.cos(Math.atan2(tg[1] - j[1], tg[0] - j[0])), j[1] + l2 * Math.sin(Math.atan2(tg[1] - j[1], tg[0] - j[0]))]];
+    }
+    function mix(a, b, k) {
+      var r = {};
+      for (var key in a) {
+        var v = a[key], w = key in b ? b[key] : v;
+        r[key] = Array.isArray(v) ? [v[0] + (w[0] - v[0]) * k, v[1] + (w[1] - v[1]) * k] : (typeof v === 'number' ? v + (w - v) * k : v);
+      }
+      return r;
+    }
+    function solve(def, p) {
+      var g = {}, P = p.P, t = rad(p.t);
+      g.P = P; g.N = [P[0] + L.t * Math.cos(t), P[1] + L.t * Math.sin(t)]; g.H = [g.N[0] + L.h * Math.cos(t), g.N[1] + L.h * Math.sin(t)];
+      var segs = [['P', 'N']], sh1 = g.N, sh2 = g.N, hp1 = P, hp2 = P;
+      if (def.front) {
+        g.S1 = sh1 = [g.N[0] - 9, g.N[1] + 2]; g.S2 = sh2 = [g.N[0] + 9, g.N[1] + 2]; g.Q1 = hp1 = [P[0] - 5, P[1]]; g.Q2 = hp2 = [P[0] + 5, P[1]];
+        segs.push(['S1', 'S2'], ['Q1', 'Q2']);
+      }
+      var W = p.Wr ? [g.N[0] + p.Wr[0], g.N[1] + p.Wr[1]] : p.W;
+      var a = ik(sh1, W, L.u, L.f, p.eb); g.E = a[0]; g.W = a[1];
+      segs.push([def.front ? 'S1' : 'N', 'E'], ['E', 'W']);
+      if (p.W2) { a = ik(sh2, p.W2, L.u, L.f, -p.eb); g.E2 = a[0]; g.W2 = a[1]; segs.push(['S2', 'E2'], ['E2', 'W2']); }
+      var k = ik(hp1, p.F, L.th, L.sh, def.front ? 1 : p.kb); g.K = k[0]; g.F = k[1];
+      segs.push([def.front ? 'Q1' : 'P', 'K'], ['K', 'F']);
+      if (p.F2) { k = ik(hp2, p.F2, L.th, L.sh, -1); g.K2 = k[0]; g.F2 = k[1]; segs.push(['Q2', 'K2'], ['K2', 'F2']); }
+      if (p.T) { g.T = p.T; segs.push(['F', 'T']); }
+      return { g: g, segs: segs };
+    }
+    function shapes(def, s) {
+      var g = s.g, out = [];
+      s.segs.forEach(function (q) { out.push({ e: 'line', c: '', v: [g[q[0]][0], g[q[0]][1], g[q[1]][0], g[q[1]][1]] }); });
+      out.push({ e: 'circle', c: 'hd', r: 6, v: [g.H[0], g.H[1]] });
+      def.props.forEach(function (pr) {
+        if (pr[0] === 'l') out.push({ e: 'line', c: pr[5], v: pr.slice(1, 5) });
+        else if (pr[0] === 'o') out.push({ e: 'circle', c: 'eqc', r: pr[2], v: [g[pr[1]][0], g[pr[1]][1]] });
+        else if (pr[0] === 'd') { var w = g[pr[1]]; out.push({ e: 'line', c: 'db', v: [w[0] - 5, w[1], w[0] + 5, w[1]] }); }
+        else if (pr[0] === 'c') out.push({ e: 'line', c: 'cab', v: [pr[1], pr[2], g[pr[3]][0], g[pr[3]][1]] }, { e: 'circle', c: 'eqc', r: 3, v: [pr[1], pr[2]] });
+        else if (pr[0] === 'm') out.push({ e: 'line', c: 'eq', v: [pr[1], pr[2], g[pr[3]][0], g[pr[3]][1]] });
+        else if (pr[0] === 'p') { var f = g[pr[1]]; out.push({ e: 'line', c: 'eq', v: [f[0] - pr[2], f[1] - pr[3], f[0] + pr[2], f[1] + pr[3]] }); }
+      });
+      return out;
+    }
+    var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var attrs = { line: ['x1', 'y1', 'x2', 'y2'], circle: ['cx', 'cy'] }, cache = {}, N = 24;
+    function framesOf(key) {
+      if (cache[key]) return cache[key];
+      var def = F[key], A = def.a, B = mix(A, def.b, 1), fr = [];
+      for (var i = 0; i <= N; i++) fr.push(shapes(def, solve(def, mix(A, B, i / N))));
+      return (cache[key] = fr);
+    }
+    function el(sh, extra) {
+      var a = attrs[sh.e].map(function (at, i) { return at + '="' + sh.v[i].toFixed(1) + '"'; }).join(' ');
+      return '<' + sh.e + ' class="' + (sh.c + extra).trim() + '" ' + a + (sh.r ? ' r="' + sh.r + '"' : '') + '/>';
+    }
+    function svg(key) {
+      if (!F[key]) return '';
+      var fr = framesOf(key), html = '<svg class="fig" data-k="' + key + '" viewBox="0 -12 160 122" role="img" aria-label="Dibuix de l\'exercici"><line class="gr" x1="6" y1="' + G + '" x2="154" y2="' + G + '"/>';
+      if (still) fr[0].forEach(function (sh) { html += el(sh, ' far'); });
+      (still ? fr[N] : fr[0]).forEach(function (sh) { html += el(sh, ''); });
+      return html + '</svg>';
+    }
+    // Moviment: anada i tornada suau cada 3,2 s, només als dibuixos visibles.
+    if (!still) (function tick(now) {
+      var u = (now % 3200) / 1600, k = (1 - Math.cos(Math.PI * (u > 1 ? 2 - u : u))) / 2, x = k * N, i = Math.min(Math.floor(x), N - 1), w = x - i;
+      document.querySelectorAll('svg.fig[data-k]').forEach(function (s) {
+        if (!s.getClientRects().length) return;
+        var fr = framesOf(s.dataset.k), kids = s.children;
+        fr[i].forEach(function (sh, si) {
+          var n2 = fr[i + 1][si], node = kids[si + 1];
+          attrs[sh.e].forEach(function (at, ai) { node.setAttribute(at, (sh.v[ai] + (n2.v[ai] - sh.v[ai]) * w).toFixed(1)); });
+        });
+      });
+      requestAnimationFrame(tick);
+    })(0);
+    document.querySelectorAll('.ex[data-fig]').forEach(function (ex) {
+      var why = ex.querySelector('.why');
+      var html = svg(ex.dataset.fig);
+      if (!html) return;
+      if (why) why.insertAdjacentHTML('afterend', html); else ex.insertAdjacentHTML('beforeend', html);
+    });
+  })();
+</script>
+<script>
   // Modo entreno: lee los días de la pestaña de entreno, permite marcar series y lanza la cuenta atrás del descanso.
   (function () {
     var root = document.getElementById('entrenar');
@@ -515,7 +656,8 @@
         var m = dose.match(/^(\d+)\s*[a-zà-ú]*\s*×\s*(.+)$/i);
         var r = why.match(/descans[oa]?\s+(?:de\s+)?(\d+)\s*(s|min)\b/i);
         var rest = r ? (+r[1]) * (r[2].toLowerCase() === 'min' ? 60 : 1) : restCfg[i < 2 ? 0 : 1];
-        list.push({ name: ex.querySelector('.n').textContent.trim(), why: why.trim(), sets: m ? +m[1] : 1, reps: m ? m[2].trim() : dose, rest: rest, timed: !m });
+        var fig = ex.querySelector('.fig');
+        list.push({ name: ex.querySelector('.n').textContent.trim(), why: why.trim(), sets: m ? +m[1] : 1, reps: m ? m[2].trim() : dose, rest: rest, timed: !m, fig: fig ? fig.outerHTML : '' });
       });
       days.push({ title: title, ex: list });
     });
@@ -552,7 +694,7 @@
         html += '<div class="ex wk-ex' + (all ? ' done' : '') + '" style="display:block"><div class="wk-head"><span class="wk-name">' + e.name + '</span><span></span>' +
           '<div class="wk-meta"><span class="wk-chip">' + e.sets + ' ' + (e.sets === 1 ? T.set.toLowerCase() : T.sets) + '</span><span class="wk-chip r">' + e.reps + '</span>' +
           (e.sets > 1 || ei < d.ex.length - 1 ? '<span class="wk-chip t">⏱ ' + fmt(e.rest) + '</span>' : '') + '</div></div>' +
-          (e.why ? '<p class="wk-why">' + e.why + '</p>' : '') + '<div class="wk-sets">';
+          (e.why ? '<p class="wk-why">' + e.why + '</p>' : '') + e.fig + '<div class="wk-sets">';
         done[ei].forEach(function (v, si) {
           html += '<button class="' + (v ? 'on' : '') + (e.sets === 1 ? ' one' : '') + '" data-e="' + ei + '" data-s="' + si + '" aria-pressed="' + v + '" aria-label="' + e.name + ', ' + T.set + ' ' + (si + 1) + '">' +
             (e.sets === 1 ? (v ? '✓ ' : '') + T.done : (v ? '✓' : si + 1)) + '</button>';
