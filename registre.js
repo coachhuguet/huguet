@@ -1,6 +1,6 @@
 // Coach Huguet · connexió amb el full de Google del registre d'entrenos (comú per a tots els clients).
 // Enganxa aquí l'adreça de l'aplicació web de l'Apps Script (acaba en /exec).
-window.COACH_SHEET_URL = '';
+window.COACH_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwVmAZ3daHjIefZRkJt7oiUv9nN0ufo15Bmdg7m9-C-xeM3ZhRC-xeZKpNvbefKnIbZQg/exec';
 
 window.coachRegistre = (function () {
   var PKEY = 'coach-huguet-pendents';
