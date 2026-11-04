@@ -644,6 +644,7 @@
     });
   })();
 </script>
+<script src="registre.js"></script>
 <script>
   // Modo entreno: lee los días de la pestaña de entreno, permite marcar series y lanza la cuenta atrás del descanso.
   (function () {
@@ -717,7 +718,7 @@
       var k = date + '|' + d.title;
       if (ex.length) hist[k] = { date: date, day: d.title, ex: ex }; else delete hist[k];
       try { localStorage.setItem(hkey, JSON.stringify(hist)); } catch (e) {}
-      renderHist();
+      renderHist(); sync(di);
     }
     function summary(h) {
       var p = h.date.split('-');
@@ -725,19 +726,33 @@
         return '• ' + x.n + ': ' + x.s.map(function (r) { return r ? (r[0] || '—') + ' kg × ' + (r[1] || '—') : '—'; }).join(', ');
       }).join('\n');
     }
-    function send(h) {
+    var R = window.coachRegistre, sheet = R && R.active(), timer = null;
+    function sync(di) {
+      if (!sheet) return;
+      var k = iso(new Date()) + '|' + days[di].title, h = hist[k];
+      clearTimeout(timer);
+      timer = setTimeout(function () { R.push({ client: who.trim(), date: iso(new Date()), day: days[di].title, ex: h ? h.ex : [] }); }, 3000);
+    }
+    function send(h, btn) {
       if (!h) { alert('Apunta primer el pes i les repeticions d\'alguna sèrie.'); return; }
+      if (sheet) {
+        clearTimeout(timer);
+        R.push({ client: who.trim(), date: h.date, day: h.day, ex: h.ex }).then(function (ok) {
+          if (btn) btn.textContent = ok ? '✓ Guardat al full del coach' : 'Sense connexió: s\'enviarà sol més tard';
+        });
+        return;
+      }
       window.open('https://wa.me/?text=' + encodeURIComponent(summary(h)), '_blank');
     }
     function renderHist() {
       var box = document.getElementById('historial'); if (!box) return;
       var ks = Object.keys(hist).sort().reverse();
       box.innerHTML = ks.length ? ks.slice(0, 30).map(function (k) {
-        return '<div class="hist-item"><pre>' + esc(summary(hist[k])) + '</pre><button data-h="' + esc(k) + '">📤 Enviar al coach</button></div>';
+        return '<div class="hist-item"><pre>' + esc(summary(hist[k])) + '</pre><button data-h="' + esc(k) + '">' + (sheet ? '💾 Tornar a guardar al full' : '📤 Enviar al coach') + '</button></div>';
       }).join('') : '<p class="mut small">Encara no hi ha cap entreno apuntat. Fes-ho des de la pestanya ▶ Entrenar.</p>';
     }
     var hb = document.getElementById('historial');
-    if (hb) hb.addEventListener('click', function (ev) { var b = ev.target.closest('button[data-h]'); if (b) send(hist[b.dataset.h]); });
+    if (hb) hb.addEventListener('click', function (ev) { var b = ev.target.closest('button[data-h]'); if (b) send(hist[b.dataset.h], b); });
     function doneOf(di) { return st.done[di] || (st.done[di] = days[di].ex.map(function (e) { return Array(e.sets).fill(false); })); }
     function fmt(s) { s = Math.max(0, Math.ceil(s)); return Math.floor(s / 60) + ':' + ('0' + s % 60).slice(-2); }
 
@@ -769,7 +784,7 @@
         });
         html += '</div>' + (prev ? '<p class="wk-hint">En gris, el que vas fer l\'últim dia.</p>' : '') + '</div>';
       });
-      html += '</div><button class="wk-send" data-send="1">📤 Enviar l\'entreno al coach</button>';
+      html += '</div><button class="wk-send" data-send="1">' + (sheet ? '💾 Guardar l\'entreno al full del coach' : '📤 Enviar l\'entreno al coach') + '</button>' + (sheet ? '<p class="mut small" style="text-align:center;margin-top:8px">Es guarda sol mentre apuntes; el botó és per assegurar-ho en acabar.</p>' : '');
       if (tot && ok === tot) html += '<div class="card hl wk-done"><b>🏆 ' + T.finish + '</b><p>' + T.finishTxt + '</p></div>';
       listEl.innerHTML = html;
     }
@@ -847,7 +862,7 @@
     });
     listEl.addEventListener('click', function (ev) {
       var b = ev.target.closest('button'); if (!b) return;
-      if (b.dataset.send) { var k = iso(new Date()) + '|' + days[st.day].title; return send(hist[k]); }
+      if (b.dataset.send) { var k = iso(new Date()) + '|' + days[st.day].title; return send(hist[k], b); }
       if (b.classList.contains('wk-reset')) { if (confirm(T.confirm)) { delete st.done[st.day]; if (st.log) delete st.log[st.day]; stop(); save(); record(st.day); render(); } return; }
       var d = days[st.day], done = doneOf(st.day), ei = +b.dataset.e, si = +b.dataset.s;
       done[ei][si] = !done[ei][si]; save(); render();
