@@ -10,7 +10,7 @@
   var ca = document.documentElement.lang === 'ca';
   var T = ca ? {
     set: 'Sèrie', sets: 'sèries', done: 'Fet', rest: 'Descans', next: 'Següent', last: 'Última sèrie de l’entrenament',
-    skip: 'Saltar', reset: 'Reiniciar', go: 'Som-hi! Següent sèrie', finish: 'Entrenament complet!', finishTxt: 'Bona feina. Estira 5 minuts.',
+    skip: 'Saltar', reset: 'Reiniciar', go: 'Som-hi! Següent sèrie', finish: 'Entrenament complet!', finishTxt: 'Bona feina. Camina 2-3 minuts per baixar pulsacions.',
     confirm: 'Vols reiniciar el dia?', days: ['diumenge','dilluns','dimarts','dimecres','dijous','divendres','dissabte'],
     first: 'Apunta primer el pes i les repeticions d\'alguna sèrie.', sent: '✓ Enviat al coach', later: 'Sense connexió: s\'enviarà sol més tard',
     fail: 'No s\'ha pogut connectar amb el full. Torna-ho a provar.', resend: '📤 Tornar a enviar al coach', send: '📤 Enviar l\'entreno al coach',
@@ -18,14 +18,14 @@
     prev: 'En gris, el que vas fer l\'últim dia.', title: 'Entreno'
   } : {
     set: 'Serie', sets: 'series', done: 'Hecho', rest: 'Descanso', next: 'Siguiente', last: 'Última serie del entreno',
-    skip: 'Saltar', reset: 'Reiniciar', go: '¡Vamos! Siguiente serie', finish: '¡Entreno completado!', finishTxt: 'Buen trabajo. Estira 5 minutos y apunta las cargas en Progreso.',
+    skip: 'Saltar', reset: 'Reiniciar', go: '¡Vamos! Siguiente serie', finish: '¡Entreno completado!', finishTxt: 'Buen trabajo. Camina 2-3 minutos para bajar pulsaciones.',
     confirm: '¿Reiniciar el día?', days: ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'],
     first: 'Apunta primero el peso y las repeticiones de alguna serie.', sent: '✓ Enviado al coach', later: 'Sin conexión: se enviará solo más tarde',
     fail: 'No se ha podido conectar con la hoja. Vuelve a probar.', resend: '📤 Volver a enviar al coach', send: '📤 Enviar el entreno al coach',
     autosave: 'Se guarda solo mientras apuntas; el botón es para asegurarlo al terminar.', empty: 'Todavía no hay ningún entreno apuntado. Hazlo desde la pestaña ▶ Entrenar.',
     prev: 'En gris, lo que hiciste el último día.', title: 'Entreno'
   };
-  if (!ca) T.finishTxt = 'Buen trabajo. Estira 5 minutos.';
+  if (!ca) T.finishTxt = 'Buen trabajo. Camina 2-3 minutos para bajar pulsaciones.';
   // Circuit: es fa una volta de tots els exercicis i data-circuit és el descans entre voltes
   var circuit = root.dataset.circuit ? +root.dataset.circuit : 0;
   if (circuit) { T.set = ca ? 'Volta' : 'Vuelta'; T.sets = ca ? 'voltes' : 'vueltas'; }
