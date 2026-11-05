@@ -19,7 +19,7 @@ Tot el que és igual per a tots els clients viu a `comu/` i cada HTML només té
 - `apps-script/registre.gs` · el codi de l'Apps Script del full de Google: cada client escriu a la seva pestanya `Registre <Nom>`,
   que es crea sola. El nom surt de `data-client` de `<section id="entrenar">` o, si no n'hi ha, del títol `h1`.
   Els tests i les mesures de Progrés (totes les taules menys `#cargas`) s'envien sols des de `comu/registre.js` i van a la mateixa
-  pestanya, a la cantonada (a partir de la columna J). Si canvies `registre.gs`, cal tornar-lo a implementar com a versió nova.
+  pestanya, a l'A3 (taules amb color); el registre d'entrenos va a H3. Si canvies `registre.gs`, cal tornar-lo a implementar com a versió nova.
 
 Si canvies alguna cosa de `comu/`, puja el número `?v=` a tots els HTML perquè els mòbils no facin servir la versió vella.
 
