@@ -21,10 +21,16 @@ Tot el que és igual per a tots els clients viu a `comu/` i cada HTML només té
   Els tests i les mesures de Progrés (totes les taules menys `#cargas`) s'envien sols des de `comu/registre.js` i van a la mateixa
   pestanya, a l'A3 (taules amb color); el registre d'entrenos va a H3. Si canvies `registre.gs`, cal tornar-lo a implementar com a versió nova.
 
+- `app/` i `sw.js` · perquè cada pàgina es pugui instal·lar com a app al mòbil (Android: Chrome ⋮ → Instal·la l'aplicació).
+  Cada HTML té el seu manifest `app/<client>.webmanifest` (enllaçat al `<head>`), les icones són a `app/` i el service worker
+  `sw.js` (a l'arrel) guarda l'última còpia per si no hi ha connexió.
+
 Si canvies alguna cosa de `comu/`, puja el número `?v=` a tots els HTML perquè els mòbils no facin servir la versió vella.
 
 ## Client nou
 
 1. Copia `plantilla.html` a `<nom>.html` i segueix el comentari de dalt (canviar `NOM`, omplir perfil, dies i exercicis amb `data-fig`).
-2. Afegeix-lo a la taula del `README.md`.
-3. No cal tocar el full de Google: la pestanya `Registre <Nom>` apareix sola el primer cop que el client envia un entreno.
+2. Copia `app/plantilla.webmanifest` a `app/<nom>.webmanifest`, canvia-hi `plantilla` pel nom del fitxer i `NOM` pel nom del client,
+   i al `<head>` del HTML canvia `app/plantilla.webmanifest` per `app/<nom>.webmanifest`.
+3. Afegeix-lo a la taula del `README.md`.
+4. No cal tocar el full de Google: la pestanya `Registre <Nom>` apareix sola el primer cop que el client envia un entreno.

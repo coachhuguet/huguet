@@ -7,6 +7,11 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Coach Huguet">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="app/plantilla.webmanifest">
+<link rel="icon" href="app/icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="app/apple-touch-icon.png">
+<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js');</script>
 </head>
 <body>
 <!--BODY-START-->
@@ -14,6 +19,7 @@
   PLANTILLA DE CLIENT NOU · Coach Huguet
   1. Copia aquest fitxer amb el nom del client (p. ex. pau.html) i afegeix-lo a la taula del README.
   2. Canvia NOM pel nom del client (títol, h1, data-client, fotos i clau de localStorage del final).
+     App al mòbil: copia app/plantilla.webmanifest a app/<nom>.webmanifest (canvia-hi plantilla i NOM) i posa'l al <link rel="manifest"> de dalt.
      data-client és el nom de la pestanya del full de Google: "Registre NOM" (es crea sola).
   3. Omple el perfil, l'estratègia, la dieta i els dies d'entreno.
      Cada exercici: <div class="ex" data-fig="clau"> · claus dels ninots a comu/ninots.js (bench, squat, pushup, plank...).

@@ -1,0 +1,25 @@
+{
+  "id": "../elena-alvarez.html",
+  "name": "Coach Huguet · Elena Alvarez",
+  "short_name": "Coach Huguet",
+  "start_url": "../elena-alvarez.html",
+  "scope": "../",
+  "display": "standalone",
+  "background_color": "#070d12",
+  "theme_color": "#070d12",
+  "lang": "ca",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
