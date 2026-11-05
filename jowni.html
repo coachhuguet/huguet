@@ -26,13 +26,11 @@
   <div class="wrap">
     <div class="brand">Coach <span>Huguet</span> · Hipertròfia</div>
     <h1><em>Jowni</em></h1>
-    <p class="quote">"Menjar, entrenar, descansar. I cada setmana una mica més de pes a la barra."</p>
+    <p class="quote">"Cada setmana una mica més de pes a la barra."</p>
     <div class="pills">
-      <span class="pill p-amber">🔥 2.800 kcal/dia</span>
-      <span class="pill p-blue">🥩 Proteïna 1,4 g/kg</span>
-      <span class="pill p-green">💪 Guanyar massa muscular</span>
-      <span class="pill p-red">🏋️ 4 dies de gimnàs</span>
-      <span class="pill p-blue">💧 3 L d'aigua</span>
+      <span class="pill p-green">💪 Rutina de gimnàs</span>
+      <span class="pill p-red">🏋️ 4 dies</span>
+      <span class="pill p-blue">⏱️ Descans 1-2 min</span>
     </div>
   </div>
 </header>
@@ -41,16 +39,17 @@
   <div class="in" role="tablist">
     <button role="tab" data-t="perfil" aria-selected="true">Perfil</button>
     <button role="tab" data-t="estrategia" aria-selected="false">Estratègia</button>
-    <button role="tab" data-t="entreno" aria-selected="false">Entreno</button>
     <button role="tab" data-t="entrenar" aria-selected="false">▶ Entrenar</button>
-    <button role="tab" data-t="dieta" aria-selected="false">Dieta</button>
-    <button role="tab" data-t="progreso" aria-selected="false">📊 Progrés</button>
   </div>
 </nav>
 
 <main class="wrap">
 
   <!-- PERFIL -->
+
+  <!-- ESTRATEGIA -->
+
+  <!-- ENTRENO -->
   <section id="perfil">
     <h2>Perfil <em>actual</em></h2>
     <div class="card">
@@ -67,38 +66,25 @@
         <li><b>Guanyar massa muscular:</b> pujar uns 2-3 kg de pes, sobretot múscul, sense acumular greix.</li>
         <li><b>Més força als bàsics:</b> pujar càrregues cada setmana a la sentadilla i el press banca a la Smith, al press militar i al jalón.</li>
         <li><b>Cos equilibrat:</b> cama, pit, espatlla, esquena i braç treballats amb el mateix compromís.</li>
-        <li><b>Menjar bé:</b> arribar cada dia a les 2.800 kcal i a la proteïna.</li>
         <li><b>Tècnica neta i zero lesions:</b> escalfament sempre i recorregut complet.</li>
       </ol>
     </div>
     <div class="card">
       <h3>📅 Pla</h3>
       <p>Del <b>9 de novembre de 2026</b> al <b>3 de gener de 2027</b>. Dos blocs de 4 setmanes; la quarta setmana de cada bloc és de descàrrega.</p>
-      <p class="mut small">Abans de començar (setmana 0) pesa't i pren les mesures a la pestanya Progrés per tenir el punt de partida.</p>
-    </div>
-    <div class="card">
-      <h3>📸 Perfil d'inici</h3>
-      <div class="fotos">
-        <figure><img src="fotos/jowni/cara.jpg" alt="Jowni de cara" loading="lazy" onerror="this.remove()"><figcaption>De cara</figcaption></figure>
-        <figure><img src="fotos/jowni/costat-dret.jpg" alt="Jowni de costat dret" loading="lazy" onerror="this.remove()"><figcaption>Costat dret</figcaption></figure>
-        <figure><img src="fotos/jowni/costat-esquerre.jpg" alt="Jowni de costat esquerre" loading="lazy" onerror="this.remove()"><figcaption>Costat esquerre</figcaption></figure>
-        <figure><img src="fotos/jowni/esquena.jpg" alt="Jowni d'esquena" loading="lazy" onerror="this.remove()"><figcaption>D'esquena</figcaption></figure>
-      </div>
     </div>
   </section>
 
-  <!-- ESTRATEGIA -->
   <section id="estrategia" hidden>
     <h2>La teva <em>estratègia</em></h2>
     <div class="card hl">
       <p>💪 <b>Objectiu:</b> hipertròfia. Rangs de <b>8 a 12 repeticions</b>, prou volum i cada setmana una mica més de pes o de repeticions.</p>
       <p>🗂️ <b>4 dies a la setmana:</b> empenta, tracció, cama i torso complet. Cada múscul es treballa dues vegades per setmana.</p>
-      <p>🍝 <b>El menjar és la meitat del pla:</b> mira la pestanya Dieta.</p>
       <p>😴 <b>El múscul creix descansant:</b> dorm 8 hores i aprofita el cap de setmana per recuperar.</p>
     </div>
     <div class="card">
       <h3>⏱️ Descans entre sèries</h3>
-      <p><b class="g">2 minuts</b> als dos primers exercicis de cada dia (els més pesats); <b class="g">60 a 90 segons</b> a la resta.</p>
+      <p><b class="g">2 minuts</b> als dos primers exercicis de cada dia (els més pesats); <b class="g">90 segons</b> a la resta. Quan marques la sèrie a ▶ Entrenar, el descans comença sol.</p>
     </div>
     <div class="card">
       <h3>🔥 Intensitat</h3>
@@ -125,7 +111,14 @@
     </div>
   </section>
 
-  <!-- ENTRENO -->
+  <section id="entrenar" data-simple data-rest="120,90" hidden>
+    <h2>Entrena <em>ara</em></h2>
+    <div class="card hl"><p>Tria el dia. Cada exercici té les <b>sèries i les repeticions</b>: toca el número de la sèrie quan l'acabis i el <b>descans</b> comença sol.</p><p class="mut small">Abans de començar, 10 min d'escalfament i 2 sèries lleugeres al primer exercici.</p></div>
+    <div class="wk-days"></div>
+    <div class="wk-list"></div>
+    <div class="wk-pad"></div>
+  </section>
+
   <section id="entreno" hidden>
     <h2>El teu <em>entreno</em></h2>
     <div class="card hl"><p>Abans de cada sessió: <b>10 min d'escalfament</b> (5 min de bici o el·líptica i mobilitat de la zona del dia) i <b>2 sèries d'aproximació</b> lleugeres al primer exercici.</p></div>
@@ -170,63 +163,13 @@
   </section>
 
   <!-- ENTRENAR -->
-  <section id="entrenar" data-rest="120,75" hidden>
-    <h2>Entrena <em>ara</em></h2>
-    <div class="card hl"><p>Tria el dia i apunta el <b>pes i les repeticions</b> de cada sèrie. Marca ○ en acabar-la i el descans comença sol. Quan acabis, toca <b>Enviar l'entreno al coach</b>.</p><p class="mut small">Tot queda guardat a l'historial de la pestanya Progrés.</p></div>
-    <div class="wk-days"></div>
-    <div class="wk-list"></div>
-    <div class="wk-pad"></div>
-  </section>
 
   <!-- DIETA -->
-  <section id="dieta" hidden>
-    <h2>La teva <em>dieta</em></h2>
-    <div class="card hl">
-      <p>📊 <b>Les teves calories:</b> <b>2.800 kcal</b> al dia, amb <b>1,4 g de proteïna per quilo</b>.</p>
-      <p>⚖️ <b>Control del pes:</b> pesa't cada dues setmanes. L'objectiu és que el pes pugi a poc a poc mentre la cintura es manté; si en 2 setmanes la bàscula no es mou, ho ajustarem.</p>
-      <p>🍽️ <b>5 menjades al dia</b> amb proteïna a cadascuna, i molta verdura i fruita.</p>
-    </div>
-    <div class="card">
-      <h3>Calories i macros</h3>
-      <p><b style="font:700 32px/1 var(--display)">2.800</b> <span class="mut">kcal al dia</span></p>
-      <div class="macro"><div><b class="bl">1,4 g/kg</b><span class="mut small">Proteïna</span></div><div><b class="g">6,5 g/kg</b><span class="mut small">Hidrats</span></div><div><b style="color:var(--amber)">1 g/kg</b><span class="mut small">Greix</span></div></div>
-      <p class="mut small" style="margin-top:12px">Amb els teus 68 kg: 95 g de proteïna, 445 g d'hidrats i 70 g de greix al dia.</p>
-    </div>
-    <div class="card">
-      <h3>🍽️ Menú exemple</h3>
-      <div class="meal"><span>Esmorzar</span><span>90 g de civada amb 300 ml de llet, 1 plàtan + 2 ous remenats (≈ 28 g proteïna)</span></div>
-      <div class="meal"><span>Dinar</span><span>130 g d'arròs o pasta (en cru), 110 g de pit de pollastre o vedella, verdura i 1 cullerada d'oli d'oliva (≈ 32 g proteïna)</span></div>
-      <div class="meal"><span>Berenar</span><span>Iogurt natural amb 1 fruita, un grapat de fruits secs i 2 torrades amb mel o melmelada (≈ 10 g proteïna)</span></div>
-      <div class="meal"><span>Sopar</span><span>100 g de peix, tonyina o truita de 2 ous, 300 g de patata o boniat, 1 llesca de pa i amanida amb oli (≈ 22 g proteïna)</span></div>
-      <div class="meal"><span>Abans de dormir</span><span>Un got de llet amb 40 g de cereals o 1 plàtan (≈ 8 g proteïna)</span></div>
-    </div>
-    <div class="card">
-      <h3>💊 Suplements útils</h3>
-      <ul>
-        <li><b>Creatina:</b> 3-5 g cada dia, a qualsevol hora. El suplement amb més evidència per guanyar força i múscul.</li>
-        <li><b>Proteïna en pols:</b> només si amb el menjar no arribes als 95 g de proteïna.</li>
-        <li class="mut small">Si prens alguna medicació, consulta-ho abans amb el metge.</li>
-      </ul>
-    </div>
-  </section>
 
   <!-- PROGRESO -->
-  <section id="progreso" hidden>
-    <h2>El teu <em>progrés</em></h2>
-    <div class="card hl"><p>Apunta el pes i les mesures <b>cada dues setmanes</b>. Es guarda en aquest mòbil i arriba al coach.</p></div>
-    <div class="card">
-      <h3>📒 Historial d'entrenos</h3>
-      <div id="historial"></div>
-    </div>
-    <div class="card">
-      <h3>📏 Pes i mesures</h3>
-      <div class="scroll"><table id="medidas"></table></div>
-      <p class="mut small" style="margin-top:10px">Mesura't en dejú, sempre a la mateixa hora. Cintura: a l'alçada del melic. Espatlles: el contorn per la part més ampla. Cama: la cuixa a la part més ampla, dempeus.</p>
-    </div>
-  </section>
 </main>
 
-<footer class="wrap">Coach Huguet · actualitzat el 5 nov 2026</footer>
+<footer class="wrap">Coach Huguet · actualitzat el 5 nov 2026 · rutina</footer>
 <script>
   (function () {
     var tabs = document.querySelectorAll('nav button');
@@ -245,30 +188,10 @@
     var h = (location.hash || '').slice(1);
     if (document.getElementById(h) && h !== 'perfil') show(h);
 
-    var key = 'coach-huguet-jowni';
-    var data = {};
-    try { data = JSON.parse(localStorage.getItem(key)) || {}; } catch (e) {}
-    function table(id, cols, rows) {
-      var html = '<tr><th></th>' + cols.map(function (c) { return '<th>' + c + '</th>'; }).join('') + '</tr>';
-      rows.forEach(function (r, ri) {
-        html += '<tr><td>' + r + '</td>' + cols.map(function (c, ci) {
-          var k = id + '-' + ri + '-' + ci;
-          return '<td><input inputmode="decimal" data-k="' + k + '" value="' + (data[k] || '').replace(/"/g, '') + '" aria-label="' + r + ', ' + c + '"></td>';
-        }).join('') + '</tr>';
-      });
-      var t = document.getElementById(id);
-      t.innerHTML = html;
-      t.addEventListener('input', function (ev) {
-        data[ev.target.dataset.k] = ev.target.value;
-        try { localStorage.setItem(key, JSON.stringify(data)); } catch (e) {}
-      });
-    }
-    table('medidas', ['Set 0', 'Set 2', 'Set 4', 'Set 6', 'Set 8'], ['Pes (kg)', 'Cintura (cm)', 'Espatlles (cm)', 'Cama (cm)']);
   })();
 </script>
 <script src="comu/ninots.js?v=4"></script>
-<script src="comu/registre.js?v=5"></script>
-<script src="comu/entrenar.js?v=4"></script>
+<script src="comu/entrenar.js?v=5"></script>
 <!--BODY-END-->
 </body>
 </html>

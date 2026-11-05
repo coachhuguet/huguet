@@ -3,6 +3,7 @@
 // llança el compte enrere del descans, guarda l'historial (#historial) i ho envia al full de Google del coach.
 // Opcions a <section id="entrenar">: data-rest="120,75" (descans dels 2 primers exercicis, i de la resta),
 // data-circuit="120" (circuit: es fa una volta de tots els exercicis; és el descans entre voltes),
+// data-simple (només marcar sèries i descans, sense kg/reps ni enviament),
 // data-client="Nom" (nom de la pestanya del full: "Registre Nom"; si no hi és, s'agafa el títol h1).
 (function () {
   var root = document.getElementById('entrenar');
@@ -30,6 +31,8 @@
   var circuit = root.dataset.circuit ? +root.dataset.circuit : 0;
   if (circuit) { T.set = ca ? 'Volta' : 'Vuelta'; T.sets = ca ? 'voltes' : 'vueltas'; }
   var restCfg = (root.dataset.rest || '120,75').split(',').map(Number);
+  // data-simple: només la rutina (sense apuntar kg/reps, sense historial ni enviament al coach).
+  var simple = root.hasAttribute('data-simple');
 
   // Días y ejercicios a partir de las tarjetas existentes
   var days = [];
@@ -50,7 +53,7 @@
       var fig = ex.querySelector('.fig');
       var reps = m ? m[2].trim() : dose;
       // Sense pes ni repeticions (temps o distància): només es marca la sèrie, sense apuntar kg/reps.
-      var plain = !m || reps === '1' || /^\d[\d\s,.\-–]*(s|seg|min|m)\b/i.test(reps);
+      var plain = simple || !m || reps === '1' || /^\d[\d\s,.\-–]*(s|seg|min|m)\b/i.test(reps);
       list.push({ name: ex.querySelector('.n').textContent.trim(), why: why.trim(), sets: m ? +m[1] : 1, reps: reps, rest: rest, timed: !m, plain: plain, fig: fig ? fig.outerHTML : '' });
     });
     if (circuit) list[list.length - 1].rest = circuit;
@@ -165,7 +168,7 @@
       });
       html += '</div>' + (prev ? '<p class="wk-hint">' + T.prev + '</p>' : '') + '</div>';
     });
-    html += '</div><button class="wk-send" data-send="1">' + T.send + '</button>' + '<p class="mut small" style="text-align:center;margin-top:8px">' + T.autosave + '</p>';
+    html += '</div>' + (simple ? '' : '<button class="wk-send" data-send="1">' + T.send + '</button>' + '<p class="mut small" style="text-align:center;margin-top:8px">' + T.autosave + '</p>');
     if (tot && ok === tot) html += '<div class="card hl wk-done"><b>🏆 ' + T.finish + '</b><p>' + T.finishTxt + '</p></div>';
     listEl.innerHTML = html;
   }
