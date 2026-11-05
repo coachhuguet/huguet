@@ -24,5 +24,38 @@ window.coachRegistre = (function () {
   }
   window.addEventListener('online', flush);
   setTimeout(flush, 1500);
+
+  // Tests i mesures de la pestanya Progrés (totes les taules menys "cargas"): van a una cantonada de la pestanya del client.
+  function client() {
+    var r = document.getElementById('entrenar');
+    return ((r && r.dataset.client) || (document.querySelector('h1') || {}).textContent || '').replace(/\s+/g, ' ').trim();
+  }
+  function taules() {
+    var sec = document.getElementById('progreso');
+    return sec ? [].filter.call(sec.querySelectorAll('table'), function (t) { return t.id !== 'cargas'; }) : [];
+  }
+  function tests() {
+    var buit = true, tables = taules().map(function (t) {
+      var h = t.closest('.card') && t.closest('.card').querySelector('h3');
+      var rows = [].map.call(t.querySelectorAll('tr'), function (tr) {
+        return [].map.call(tr.children, function (c) {
+          var i = c.querySelector('input'), v = (i ? i.value : c.textContent).trim();
+          if (i && v) buit = false;
+          return v;
+        });
+      });
+      return { title: h ? h.textContent.trim() : t.id, rows: rows };
+    });
+    return buit ? null : { type: 'tests', client: client(), tables: tables };
+  }
+  var tt = null;
+  function pushTests() {
+    var d = tests(); if (!d || !window.COACH_SHEET_URL) return;
+    var k = d.client + '|tests', p = load(); p[k] = d; store(p);
+    clearTimeout(tt); tt = setTimeout(function () { post(k, d); }, 3000);
+  }
+  var sec = document.getElementById('progreso');
+  if (sec) sec.addEventListener('input', function (ev) { var t = ev.target.closest('table'); if (t && t.id !== 'cargas') pushTests(); });
+  setTimeout(pushTests, 2000);
   return { push: push, active: function () { return !!window.COACH_SHEET_URL; } };
 })();
