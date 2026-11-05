@@ -130,7 +130,16 @@
   }
   var hb = document.getElementById('historial');
   if (hb) hb.addEventListener('click', function (ev) { var b = ev.target.closest('button[data-h]'); if (b) send(hist[b.dataset.h], b); });
-  function doneOf(di) { return st.done[di] || (st.done[di] = days[di].ex.map(function (e) { return Array(e.sets).fill(false); })); }
+  // Si el coach canvia el nombre d'exercicis o de sèries, el que hi havia guardat d'avui s'adapta al planning nou.
+  function doneOf(di) {
+    var cur = st.done[di] || [];
+    st.done[di] = days[di].ex.map(function (e, ei) {
+      var a = (cur[ei] || []).slice(0, e.sets);
+      while (a.length < e.sets) a.push(false);
+      return a;
+    });
+    return st.done[di];
+  }
   function fmt(s) { s = Math.max(0, Math.ceil(s)); return Math.floor(s / 60) + ':' + ('0' + s % 60).slice(-2); }
 
   var daysEl = root.querySelector('.wk-days'), listEl = root.querySelector('.wk-list');
