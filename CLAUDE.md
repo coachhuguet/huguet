@@ -32,6 +32,7 @@ Si canvies alguna cosa de `comu/`, puja el número `?v=` a tots els HTML perquè
 
 - `base.html` · planificació base comuna (perfil en 3 eixos, fases, setmanes tipus, sessió A-F, prevenció, control). És la guia de l'Adrià,
   no d'un client. `plantilla-padel.html` és la plantilla de client ja omplerta amb aquesta base (I · F1 · C2, 3 dies de força).
+  Només és per als clients nous: els HTML dels clients que ja existien no s'han de passar a aquesta base.
 
 ## Client nou
 
