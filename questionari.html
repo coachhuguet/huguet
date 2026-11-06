@@ -150,7 +150,7 @@
       { k: 'Lloc', t: 'one', r: 1, o: ['Gimnàs complet', 'Gimnàs petit / del pàdel', 'A casa', 'A l\'aire lliure', 'Barrejat'] },
       { k: 'Material a casa', t: 'multi', h: 'Si entrenes a casa o vols fer algun dia fora del gimnàs.', o: ['Res', 'Manuelles', 'Barra i discos', 'Kettlebell', 'Gomes elàstiques', 'Barra de dominades', 'Banc', 'TRX / anelles', 'Bici o cinta'] }
     ] },
-    { s: '🍽️ Alimentació', q: [
+    { s: '🍽️ Alimentació', n: 'La dieta la prepara un nutricionista.', q: [
       { k: 'Vols pauta d\'alimentació', t: 'one', o: ['Sí, una dieta', 'Només consells', 'No'] },
       { k: 'Com menges ara', t: 'one', o: ['Bastant bé', 'Regular', 'Malament'] },
       { k: 'Restriccions', t: 'multi', o: ['Cap', 'Vegetarià', 'Vegà', 'Sense lactosa', 'Sense gluten', 'Al·lèrgies'] }
@@ -175,7 +175,7 @@
     return '<div class="q" data-k="' + esc(x.k) + '"><label for="' + id + '">' + lab + '</label>' + inp + '</div>';
   }
   form.innerHTML = Q.map(function (sec) {
-    return '<div class="card"><h3>' + esc(sec.s) + '</h3>' + sec.q.map(function (x) {
+    return '<div class="card"><h3>' + esc(sec.s) + '</h3>' + (sec.n ? '<p class="small mut" style="margin:-6px 0 4px">' + esc(sec.n) + '</p>' : '') + sec.q.map(function (x) {
       return x.row ? '<div class="nums">' + x.row.map(field).join('') + '</div>' : field(x);
     }).join('') + '</div>';
   }).join('') + '<button class="send" type="submit">Veure el resum</button><p id="msg" class="small mut"></p>';
