@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#070d12">
+<meta name="robots" content="noindex">
+<link rel="icon" href="app/icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="app/apple-touch-icon.png">
+</head>
+<body>
+<!--BODY-START-->
+<!--
+  PLANIFICACIÓ BASE · Coach Huguet (guia per a l'Adrià, no és d'un client)
+  Resum aplicable del document "Sistema integral de preparació física per a pàdel amateur".
+  Per fer el planning d'un client: qüestionari → perfil (pestanya Perfil) → fase (Fases) → setmana (Setmana)
+  → copiar plantilla-padel.html i adaptar-la.
+-->
+<title>Coach Huguet · Planificació base</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="comu/coach.css?v=3">
+
+<header>
+  <div class="wrap">
+    <div class="brand">Coach <span>Huguet</span> · Mètode</div>
+    <h1>Planificació <em>base</em></h1>
+    <p class="quote">"La mateixa base per a tothom; la dosi, la fase i la setmana, per a cadascú."</p>
+    <div class="pills">
+      <span class="pill p-green">🧭 Perfil en 3 eixos</span>
+      <span class="pill p-blue">📆 Blocs de 8 setmanes</span>
+      <span class="pill p-amber">🎾 La setmana gira al voltant dels partits</span>
+      <span class="pill p-red">🩹 Prevenció 2-3 dies</span>
+    </div>
+  </div>
+</header>
+
+<nav aria-label="Seccions">
+  <div class="in" role="tablist">
+    <button role="tab" data-t="flux" aria-selected="true">Flux</button>
+    <button role="tab" data-t="perfil" aria-selected="false">Perfil</button>
+    <button role="tab" data-t="fases" aria-selected="false">Fases</button>
+    <button role="tab" data-t="setmana" aria-selected="false">Setmana</button>
+    <button role="tab" data-t="sessio" aria-selected="false">Sessió</button>
+    <button role="tab" data-t="prevencio" aria-selected="false">Prevenció</button>
+    <button role="tab" data-t="control" aria-selected="false">Control</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- FLUX -->
+  <section id="flux">
+    <h2>Com fer el planning d'un <em>client</em></h2>
+    <div class="card hl">
+      <p>Tots els clients parteixen d'aquesta base. El que canvia és <b>on entren</b> (fase), <b>quants dies</b> tenen (setmana) i <b>quanta dosi</b> toleren (volum, intensitat i salts).</p>
+    </div>
+    <div class="card">
+      <h3>📋 Passos</h3>
+      <ol>
+        <li><b>Qüestionari inicial</b> (<a class="bl" href="questionari.html">questionari.html</a>): dades, objectiu, temps, experiència, pàdel, salut.</li>
+        <li><b>Perfil en 3 eixos</b>: nivell de pàdel, experiència en força i context (pestanya Perfil).</li>
+        <li><b>Setmana 0</b>: tests de partida (pestanya Control).</li>
+        <li><b>Fase d'entrada</b> i bloc de 8 setmanes (pestanya Fases).</li>
+        <li><b>Setmana tipus</b> segons dies de força i de pàdel (pestanya Setmana).</li>
+        <li><b>Sessions</b> amb l'estructura A-F i els exercicis del catàleg (pestanya Sessió).</li>
+        <li>Copiar <b>plantilla-padel.html</b> a <code>&lt;nom&gt;.html</code> i adaptar-la.</li>
+        <li><b>Seguiment</b>: semàfor setmanal i tests a les setmanes 4 i 8. Al final del bloc, s'avança de fase o es repeteix.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>🏆 Prioritats físiques del jugador amateur</h3>
+      <div class="ex"><span class="n">1 · Força general i excèntrica</span><span class="dose">Molt alta</span><span class="why">Base de la frenada, del salt i de la prevenció.</span></div>
+      <div class="ex"><span class="n">2 · Capacitat de frenada</span><span class="dose">Alta</span><span class="why">Desacceleracions constants a la pista.</span></div>
+      <div class="ex"><span class="n">3 · Força unilateral i lateral</span><span class="dose">Alta</span><span class="why">Al pàdel tot passa sobre una cama.</span></div>
+      <div class="ex"><span class="n">4 · Capacitat dels teixits</span><span class="dose">Alta</span><span class="why">Colze, espatlla, genoll, lumbar, turmell i engonal.</span></div>
+      <div class="ex"><span class="n">5 · Base aeròbica</span><span class="dose">Alta en sedentaris</span><span class="why">Recuperar entre punts i entre partits.</span></div>
+      <div class="ex"><span class="n">6 · Acceleració 0-5 m</span><span class="dose">Moderada</span><span class="why">El primer pas guanya el punt.</span></div>
+      <div class="ex"><span class="n">7 · Potència</span><span class="dose">Moderada</span><span class="why">Salts, remats i rotació. Depèn del nivell.</span></div>
+      <div class="ex"><span class="n">8 · Mobilitat</span><span class="dose">Si hi ha dèficit</span><span class="why">Turmell, maluc, toràcica i espatlla.</span></div>
+    </div>
+  </section>
+
+  <!-- PERFIL -->
+  <section id="perfil" hidden>
+    <h2>Perfil en <em>3 eixos</em></h2>
+    <div class="card hl"><p>Cada client té un codi de tres parts, per exemple <b>I · F1 · C2</b> (intermedi, poca força, disponibilitat estàndard). Aquest és el <b>perfil de referència</b> de la plantilla.</p></div>
+    <div class="card">
+      <h3>🎾 Eix 1 · Nivell de pàdel</h3>
+      <div class="ex"><span class="n">P · Principiant</span><span class="dose">&lt; 2 anys</span><span class="why">Qüestionari: "No hi jugo" o "Iniciació". Prioritat: base aeròbica, força general, control motor.</span></div>
+      <div class="ex"><span class="n">I · Intermedi</span><span class="dose">2-5 anys</span><span class="why">Qüestionari: "Intermedi". Prioritat: força, frenada i acceleració curta.</span></div>
+      <div class="ex"><span class="n">A · Avançat</span><span class="dose">&gt; 5 anys</span><span class="why">Qüestionari: "Avançat" o "Competició". Prioritat: potència, canvi de direcció, gestió de calendari.</span></div>
+    </div>
+    <div class="card">
+      <h3>🏋️ Eix 2 · Experiència en força</h3>
+      <div class="ex"><span class="n">F0 · Sense experiència</span><span class="dose">Adaptació 8-12 setm.</span><span class="why">Qüestionari: "Mai" o "No els he fet mai".</span></div>
+      <div class="ex"><span class="n">F1 · Poca</span><span class="dose">Adaptació 4-6 setm.</span><span class="why">"Menys de 6 mesos" o "6 mesos - 2 anys" amb tècnica que "conec una mica", o entrena "a vegades".</span></div>
+      <div class="ex"><span class="n">F2 · Experiència</span><span class="dose">Força amb 2 setm. d'intro</span><span class="why">"2 - 5 anys", entrena regularment i "els domino bé".</span></div>
+      <div class="ex"><span class="n">F3 · Molta</span><span class="dose">Potència i velocitat</span><span class="why">"Més de 5 anys" i força relativa alta (esquat &gt; 1,5× pes corporal en homes, 1,2× en dones, orientatiu). Força en manteniment.</span></div>
+    </div>
+    <div class="card">
+      <h3>📅 Eix 3 · Context (se'n poden sumar diversos)</h3>
+      <div class="ex"><span class="n">C1 · Poc temps</span><span class="dose">2 × 30-45 min</span><span class="why">Sessions de cos sencer, 3-4 multiarticulars en superseries, prevenció dins l'escalfament.</span></div>
+      <div class="ex"><span class="n">C2 · Estàndard</span><span class="dose">2-3 × 60 min</span><span class="why">Pàdel 1-2 dies. Model base.</span></div>
+      <div class="ex"><span class="n">C3 · Molts partits</span><span class="dose">Pàdel 3-4 dies</span><span class="why">Menys volum de força i més qualitat; prioritat a recuperació i teixits. Poca pliometria extra.</span></div>
+      <div class="ex"><span class="n">C4 · Competició</span><span class="dose">Tornejos de cap de setmana</span><span class="why">Microcicle de competició (pestanya Setmana).</span></div>
+      <div class="ex"><span class="n">V · Veterà</span><span class="dose">+45-50 anys</span><span class="why">O baixa capacitat de recuperació. Escalfament de 15 min, pliometria de baix impacte, més tendó d'Aquil·les, bessons i espatlla. 72 h entre sessions d'alt impacte.</span></div>
+      <div class="ex"><span class="n">L · Lesió o dolor</span><span class="dose">Adaptar</span><span class="why">Qüestionari "Molèsties o lesions". Substituir dins el mateix patró i coordinar amb el fisio.</span></div>
+    </div>
+    <div class="card">
+      <h3>🎛️ Dosi segons el perfil</h3>
+      <div class="scroll"><table>
+        <tr><th>Perfil</th><th>Força/setm.</th><th>Sèries/patró/setm.</th><th>Intensitat</th><th>Salts</th></tr>
+        <tr><td>P · F0</td><td>2 dies</td><td>4-6</td><td>RIR 3-4 · 8-12 r</td><td>Baix impacte: calaix, aterratges</td></tr>
+        <tr><td>I · F1</td><td>2-3 dies</td><td>6-10</td><td>RIR 2-3 · 5-10 r</td><td>Moderats: horitzontals, laterals, pogo</td></tr>
+        <tr><td>A · F2-F3</td><td>3-4 dies</td><td>8-12</td><td>RIR 1-3 · 3-8 r</td><td>Alts: reactius, contrastos</td></tr>
+        <tr><td>V</td><td>2-3 dies</td><td>4-8</td><td>RIR 2-3, pot ser alta</td><td>Progressius i de baix volum</td></tr>
+        <tr><td>C1</td><td>2 dies</td><td>4-6</td><td>RIR 1-3</td><td>Dins l'escalfament</td></tr>
+        <tr><td>C3</td><td>2 dies</td><td>4-6</td><td>RIR 2-3, poc volum</td><td>Mínims: el pàdel ja en dona</td></tr>
+      </table></div>
+      <p class="mut small" style="margin-top:10px">Sèries efectives per patró principal (genoll, maluc, empenta, tracció) sumant tota la setmana. Sexe: mateix programa; en dones, punts més llargs (una mica més de resistència específica).</p>
+    </div>
+    <div class="card">
+      <h3>🎯 Objectiu del qüestionari → èmfasi</h3>
+      <div class="ex"><span class="n">Rendir més al pàdel</span><span class="dose">Base</span><span class="why">Seqüència completa de fases.</span></div>
+      <div class="ex"><span class="n">Prevenir lesions / tornar de lesió</span><span class="dose">Força + teixits</span><span class="why">Allargar adaptació i força; prevenció 3 dies; potència més tard.</span></div>
+      <div class="ex"><span class="n">Perdre greix</span><span class="dose">Base + aeròbic</span><span class="why">Afegir 1-2 × 25-35 min de Z2 en dies separats de la potència; dèficit moderat a la dieta.</span></div>
+      <div class="ex"><span class="n">Guanyar múscul</span><span class="dose">Més volum</span><span class="why">Bloc d'adaptació II llarg (8-12 r, 8-10 sèries/patró) i complementaris; potència en manteniment.</span></div>
+      <div class="ex"><span class="n">Guanyar força</span><span class="dose">Força I i II</span><span class="why">Dos blocs de força abans de potència.</span></div>
+      <div class="ex"><span class="n">Salut i forma</span><span class="dose">C1-C2</span><span class="why">Adaptació + força general; potència de baix impacte.</span></div>
+    </div>
+  </section>
+
+  <!-- FASES -->
+  <section id="fases" hidden>
+    <h2>Fases i <em>blocs</em></h2>
+    <div class="card hl">
+      <p>Seqüència <b>força → potència → velocitat → específica</b>. Totes les capacitats hi són sempre; el que canvia és quina és prioritat i quina es manté.</p>
+      <p>Cada planning de client és un <b>bloc de 8 setmanes = 2 mesocicles de 4</b> (3 de càrrega + 1 de descàrrega, setmanes 4 i 8).</p>
+    </div>
+    <div class="card">
+      <h3>🧱 Les fases</h3>
+      <div class="ex"><span class="n">1 · Adaptació I</span><span class="dose">RIR 3-4 · 10-15 r · 4-6 sèries</span><span class="why">Aprendre els 6 patrons i tolerar càrrega. Circuits, tempo controlat, isomètrics. Descans 60-90 s.</span></div>
+      <div class="ex"><span class="n">2 · Adaptació II</span><span class="dose">RIR 2-3 · 8-12 r · 6-10 sèries</span><span class="why">Capacitat de treball i massa muscular: unilateral, tronc, bessons. Descans 90-120 s.</span></div>
+      <div class="ex"><span class="n">3 · Força I</span><span class="dose">RIR 2 · 5-8 r · 6-8 sèries</span><span class="why">Força bilateral i unilateral, frenada bàsica, adductors i isquios. Descans 2-3 min.</span></div>
+      <div class="ex"><span class="n">4 · Força II</span><span class="dose">RIR 1-2 · 3-6 r · 5-7 sèries</span><span class="why">Força màxima relativa, ondulació setmanal (dia pesat i dia moderat). Aterratges des de calaix.</span></div>
+      <div class="ex"><span class="n">5 · Força-potència</span><span class="dose">4-6 pesades + 3-5 balístiques</span><span class="why">Contrastos (pesat + salt), càrregues del 30-60 % a velocitat màxima. Talla la sèrie si la velocitat cau.</span></div>
+      <div class="ex"><span class="n">6 · Potència</span><span class="dose">60-120 salts/setm.</span><span class="why">Pliometria lateral i reactiva, llançaments rotacionals. +10-20 contactes/setm. si no hi ha dolor tendinós.</span></div>
+      <div class="ex"><span class="n">7 · Velocitat i canvi de direcció</span><span class="dose">6-12 esprints curts/sessió</span><span class="why">Sortides de 3-5 m, frenades en 2-3 passos, split step, canvis de 45-180°, drills reactius. Sempre fresc.</span></div>
+      <div class="ex"><span class="n">8 · Específica</span><span class="dose">Treball:pausa 1:1 a 1:2</span><span class="why">Intervals de 5-15 s amb 10-25 s de pausa en patrons de pista; força pesada de baix volum (2-3 sèries).</span></div>
+      <div class="ex"><span class="n">9 · Manteniment</span><span class="dose">1-2 sèries pesades/patró</span><span class="why">En temporada de partits o tornejos: + 1 exercici balístic. Prioritat als partits.</span></div>
+      <div class="ex"><span class="n">10 · Transició</span><span class="dose">0-2 sessions</span><span class="why">Altres esports, mobilitat, 1 sessió de força opcional. 3-4 setmanes.</span></div>
+    </div>
+    <div class="card">
+      <h3>🚪 On entra cada client (primer bloc de 8 setmanes)</h3>
+      <div class="ex"><span class="n">F0</span><span class="dose">Adaptació I → II</span><span class="why">I el segon bloc, Adaptació II → Força I. Potència només amb salts de baix impacte; velocitat en forma de joc.</span></div>
+      <div class="ex"><span class="n">F1</span><span class="dose">Adaptació → Força I</span><span class="why">Perfil de referència de la plantilla (setmanes 1-4 i 5-8).</span></div>
+      <div class="ex"><span class="n">F2</span><span class="dose">Força I → Força II</span><span class="why">Amb 2 setmanes d'introducció. Després, Força-potència → Potència.</span></div>
+      <div class="ex"><span class="n">F3</span><span class="dose">Força-potència → Velocitat</span><span class="why">Força en manteniment amb 1-2 sèries pesades per patró.</span></div>
+      <div class="ex"><span class="n">V</span><span class="dose">Blocs de 4-6 setm.</span><span class="why">Descàrrega cada 3-4 setmanes; potència tot l'any amb poc volum; més teixits.</span></div>
+      <div class="ex"><span class="n">C4 / temporada</span><span class="dose">Manteniment</span><span class="why">Els blocs de desenvolupament van a les finestres sense tornejos. Si hi ha 2 tornejos objectiu, dos cicles de 6 mesos.</span></div>
+      <div class="ex"><span class="n">Dolor o recaiguda</span><span class="dose">Tornar a Adaptació</span><span class="why">Menys volum a la zona afectada, mantenir la resta.</span></div>
+    </div>
+    <div class="card">
+      <h3>✅ Quan es passa a la fase següent</h3>
+      <div class="ex"><span class="n">Adaptació → Força</span><span class="dose">Tècnica</span><span class="why">6 patrons correctes; 3×10 a RIR 2 en goblet i pes mort romanès; agulletes &lt; 3/10 a les 48 h.</span></div>
+      <div class="ex"><span class="n">Força → Potència</span><span class="dose">Força</span><span class="why">Millora de força estimada; aterratges estables; sense dolor de tendó rotulià ni d'Aquil·les.</span></div>
+      <div class="ex"><span class="n">Potència → Velocitat</span><span class="dose">Salt</span><span class="why">CMJ mantingut o millor; frenada tècnica correcta; confiança en els canvis de direcció.</span></div>
+      <div class="ex"><span class="n">Drop jumps</span><span class="dose">Requisit</span><span class="why">20 aterratges des de 30 cm sense genoll cap a dins i esquat ≥ 1× pes corporal.</span></div>
+    </div>
+    <div class="card">
+      <h3>🗓️ Temporada de referència (12 mesos)</h3>
+      <div class="scroll"><table>
+        <tr><th>Mesos</th><th>Fase</th><th>Força/setm.</th></tr>
+        <tr><td>Set · Oct</td><td>Adaptació I i II</td><td>2-3</td></tr>
+        <tr><td>Nov · Des</td><td>Força I i II (+ reavaluació)</td><td>2-3</td></tr>
+        <tr><td>Gen · Feb</td><td>Força-potència i Potència</td><td>2-3</td></tr>
+        <tr><td>Març</td><td>Velocitat i canvi de direcció (+ reavaluació)</td><td>2 + 1 velocitat</td></tr>
+        <tr><td>Abr · Maig</td><td>Específica I i II</td><td>2</td></tr>
+        <tr><td>Juny</td><td>Manteniment (+ reavaluació)</td><td>1-2</td></tr>
+        <tr><td>Juliol</td><td>Reforç de força-potència o manteniment</td><td>2-3</td></tr>
+        <tr><td>Agost</td><td>Transició i revisió anual</td><td>0-2</td></tr>
+      </table></div>
+      <p class="mut small" style="margin-top:10px">Si el client comença a mig any, entra per la fase que li toca segons el perfil i s'ajusta al seu calendari de partits.</p>
+    </div>
+  </section>
+
+  <!-- SETMANA -->
+  <section id="setmana" hidden>
+    <h2>Setmana <em>tipus</em></h2>
+    <div class="card hl">
+      <p>La setmana s'organitza <b>al voltant dels partits</b>. Tres regles fixes:</p>
+      <ol>
+        <li>Força pesada i excèntric intens (nòrdic, búlgares pesades, frenades) <b>com a mínim 48 h abans</b> d'un partit important.</li>
+        <li>Velocitat i potència sempre <b>en estat fresc</b>, al principi de la sessió.</li>
+        <li>L'endemà d'un partit exigent: <b>recuperació</b> o càrrega baixa. El partit compta com a sessió de resistència i d'excèntric.</li>
+      </ol>
+      <p class="small">FA = força A (genoll + empenta, més pesada) · FB = força B (maluc + tracció, més ràpida) · FC = velocitat, frenada i teixits · P = pàdel · R = recuperació.</p>
+    </div>
+    <div class="card">
+      <h3>A · 2 dies de força + pàdel 1-2 (C1-C2)</h3>
+      <div class="day"><span class="d">Dl</span><span>FA · potència breu + esquat, press, unilateral, tronc <span class="tag t-gym">60 min</span></span></div>
+      <div class="day"><span class="d">Dt</span><span>Caminar i mobilitat <span class="tag t-rec">20-30 min</span></span></div>
+      <div class="day"><span class="d">Dc</span><span>Pàdel <span class="tag t-pista">Pista</span></span></div>
+      <div class="day"><span class="d">Dj</span><span>FB · llançaments + pes mort, rem, adductors, rotadors <span class="tag t-gym">60 min</span></span></div>
+      <div class="day"><span class="d">Dv</span><span>Descans <span class="tag t-rec">Off</span></span></div>
+      <div class="day"><span class="d">Ds</span><span>Partit <span class="tag t-pista">Pista</span></span></div>
+      <div class="day"><span class="d">Dg</span><span>Activitat lleugera opcional <span class="tag t-rec">Off</span></span></div>
+    </div>
+    <div class="card">
+      <h3>B · 3 dies de força + pàdel 1-2 (C2) · la de la plantilla</h3>
+      <div class="day"><span class="d">Dl</span><span>FA · salts + esquat, press, búlgar, tronc <span class="tag t-gym">60-70 min</span></span></div>
+      <div class="day"><span class="d">Dt</span><span>Pàdel, joc o classe <span class="tag t-pista">Pista</span></span></div>
+      <div class="day"><span class="d">Dc</span><span>FC · acceleracions, frenades, Copenhaguen, bessons, rotadors <span class="tag t-gym">45-50 min</span></span></div>
+      <div class="day"><span class="d">Dj</span><span>Mobilitat i aeròbic suau opcional <span class="tag t-rec">20-40 min</span></span></div>
+      <div class="day"><span class="d">Dv</span><span>FB · llançaments + pes mort, rem, hip thrust <span class="tag t-gym">60 min</span></span></div>
+      <div class="day"><span class="d">Ds</span><span>Partit <span class="tag t-pista">Pista</span></span></div>
+      <div class="day"><span class="d">Dg</span><span>Descans <span class="tag t-rec">Off</span></span></div>
+    </div>
+    <div class="card">
+      <h3>C · 4 dies de força (A · F2-F3, fase de desenvolupament)</h3>
+      <div class="day"><span class="d">Dl</span><span>Tren inferior pesat · salts + esquat, búlgar, nòrdic <span class="tag t-gym">60 min</span></span></div>
+      <div class="day"><span class="d">Dt</span><span>Tren superior + rotació · llançaments + press, dominades, rem, rotadors <span class="tag t-gym">50-60 min</span></span></div>
+      <div class="day"><span class="d">Dc</span><span>Pàdel <span class="tag t-pista">Pista</span></span></div>
+      <div class="day"><span class="d">Dj</span><span>Tren inferior ràpid · esprints, frenades, pes mort ràpid, salts laterals <span class="tag t-gym">50 min</span></span></div>
+      <div class="day"><span class="d">Dv</span><span>Tren superior + teixits · press inclinat, rem, avantbraç, tronc <span class="tag t-gym">45 min</span></span></div>
+      <div class="day"><span class="d">Ds</span><span>Partit <span class="tag t-pista">Pista</span></span></div>
+      <div class="day"><span class="d">Dg</span><span>Descans <span class="tag t-rec">Off</span></span></div>
+    </div>
+    <div class="card">
+      <h3>D · Pàdel 3-4 dies + força 2 (C3)</h3>
+      <div class="day"><span class="d">Dl</span><span>FA sense pliometria extra, poc volum <span class="tag t-gym">50 min</span></span></div>
+      <div class="day"><span class="d">Dt</span><span>Partit o entrenament <span class="tag t-pista">Pista</span></span></div>
+      <div class="day"><span class="d">Dc</span><span>Teixits: rotadors, avantbraç, bessons, mobilitat <span class="tag t-rec">25-30 min</span></span></div>
+      <div class="day"><span class="d">Dj</span><span>Classe tècnica <span class="tag t-pista">Pista</span></span></div>
+      <div class="day"><span class="d">Dv</span><span>FB curta · pes mort, rem, Copenhaguen, llançament <span class="tag t-gym">40 min</span></span></div>
+      <div class="day"><span class="d">Ds</span><span>Partit <span class="tag t-pista">Pista</span></span></div>
+      <div class="day"><span class="d">Dg</span><span>Partit opcional o descans <span class="tag t-rec">Variable</span></span></div>
+      <p class="mut small" style="margin-top:8px">Aquí la pista ja dona salts, frenades i desplaçaments. El que falta sol ser força i teixits.</p>
+    </div>
+    <div class="card">
+      <h3>E · Setmana de torneig (C4)</h3>
+      <div class="day"><span class="d">Dl</span><span>Recuperació: caminar, mobilitat, com t'has trobat <span class="tag t-rec">20-30 min</span></span></div>
+      <div class="day"><span class="d">Dt</span><span>FA de manteniment · potència breu + 2-3 sèries pesades/patró <span class="tag t-gym">45-50 min</span></span></div>
+      <div class="day"><span class="d">Dc</span><span>Entrenament tècnic-tàctic <span class="tag t-pista">Pista</span></span></div>
+      <div class="day"><span class="d">Dj</span><span>FC curta · acceleracions, rotadors, bessons <span class="tag t-gym">30-35 min</span></span></div>
+      <div class="day"><span class="d">Dv</span><span>Descans o activació de 15 min <span class="tag t-rec">Curta</span></span></div>
+      <div class="day"><span class="d">Ds</span><span>Torneig <span class="tag t-pista">Pista</span></span></div>
+      <div class="day"><span class="d">Dg</span><span>Torneig <span class="tag t-pista">Pista</span></span></div>
+    </div>
+    <div class="card">
+      <h3>📊 Dins d'un mesocicle (exemple Força I)</h3>
+      <div class="scroll"><table>
+        <tr><th></th><th>S1 intro</th><th>S2</th><th>S3</th><th>S4 desc.</th><th>Torneig</th></tr>
+        <tr><td>Sèries/exercici</td><td>3</td><td>3-4</td><td>4</td><td>2</td><td>2</td></tr>
+        <tr><td>Reps</td><td>8</td><td>6-8</td><td>5-6</td><td>5-6</td><td>3-5</td></tr>
+        <tr><td>RIR</td><td>3</td><td>2</td><td>1-2</td><td>3-4</td><td>2-3</td></tr>
+        <tr><td>Salts/setm.</td><td>40</td><td>60</td><td>80</td><td>30</td><td>20-30</td></tr>
+        <tr><td>Càrrega total</td><td>Base</td><td>+10-15 %</td><td>+10-15 %</td><td>−30-50 %</td><td>−30-40 %</td></tr>
+      </table></div>
+      <p class="mut small" style="margin-top:10px">La descàrrega és activa: mateix pes, menys sèries. Es pot moure a festes, vacances o tornejos.</p>
+    </div>
+  </section>
+
+  <!-- SESSIO -->
+  <section id="sessio" hidden>
+    <h2>La sessió <em>estàndard</em></h2>
+    <div class="card hl"><p>Totes les sessions segueixen els blocs <b>A a F</b>. Es trien els blocs segons la fase i el temps. Ordre: <b>velocitat o potència → força pesada → teixits → resistència</b>.</p></div>
+    <div class="card">
+      <h3>🧩 Blocs</h3>
+      <div class="ex"><span class="n">A · Escalfament general</span><span class="dose">6-8 min</span><span class="why">3-5 min de bici, comba o carrera suau + mobilitat de turmell, maluc, toràcica i espatlla.</span></div>
+      <div class="ex"><span class="n">B · Escalfament específic</span><span class="dose">6-10 min</span><span class="why">Pont, bird dog, esquat sense pes, frontissa, aterratges, 2-3 sèries d'aproximació. Dies de velocitat: skipping, progressions de 10 m, split step.</span></div>
+      <div class="ex"><span class="n">C · Potència o velocitat</span><span class="dose">8-15 min</span><span class="why">Salts, llançaments, acceleracions o reactius. Sempre abans de la força.</span></div>
+      <div class="ex"><span class="n">D · Força principal</span><span class="dose">20-30 min</span><span class="why">3-4 multiarticulars. Durant la setmana: genoll, maluc, empenta, tracció, unilateral i tronc.</span></div>
+      <div class="ex"><span class="n">E · Teixits</span><span class="dose">10-15 min</span><span class="why">2-4 exercicis de prevenció en superseries (pestanya Prevenció).</span></div>
+      <div class="ex"><span class="n">F · Tornada a la calma</span><span class="dose">3-5 min</span><span class="why">Caminar, respirar, apuntar com ha anat (esforç 1-10 i molèsties).</span></div>
+    </div>
+    <div class="card">
+      <h3>📚 Catàleg per patró (de més fàcil a més difícil)</h3>
+      <div class="ex"><span class="n">Genoll</span><span class="dose">Progressió</span><span class="why">Esquat goblet → esquat amb barra o frontal → búlgar → step-up, esquat lateral, step-down excèntric. <span class="mut">Ninots: goblet, bbsquat, bulgarian.</span></span></div>
+      <div class="ex"><span class="n">Maluc</span><span class="dose">Progressió</span><span class="why">Pes mort romanès amb manuelles → amb barra o trap bar → hip thrust → nòrdic. <span class="mut">Ninots: rdldb, rdl, bridge, nordic.</span></span></div>
+      <div class="ex"><span class="n">Empenta</span><span class="dose">Progressió</span><span class="why">Flexions → press amb manuelles → press de banca → press militar a una mà → landmine. <span class="mut">Ninots: pushup, dbbench, ohp, landmine.</span></span></div>
+      <div class="ex"><span class="n">Tracció</span><span class="dose">Progressió</span><span class="why">Rem amb manuella → rem invertit → jaló al pit → dominades assistides → dominades. <span class="mut">Ninots: dbrow, invrow, lat, pullup.</span></span></div>
+      <div class="ex"><span class="n">Potència</span><span class="dose">Progressió</span><span class="why">Salt a calaix → CMJ → salt horitzontal i lateral → reactius. Llançaments rotacionals i al pit. <span class="mut">Ninots: boxjump, jumpsquat, lateralhop, rotthrow, chestpass, slam.</span></span></div>
+      <div class="ex"><span class="n">Velocitat i frenada</span><span class="dose">Progressió</span><span class="why">Frenada en 2-3 passos → sortida de 5 m des de split step → canvis de direcció → reactius amb senyal. <span class="mut">Ninots: run, splitstep.</span></span></div>
+      <div class="ex"><span class="n">Tronc</span><span class="dose">Progressió</span><span class="why">Antiextensió, antiflexió lateral, antirotació i rotació controlada; transports. <span class="mut">Ninots: deadbug, plank, sideplank, pallof, woodchop, farmer.</span></span></div>
+    </div>
+    <div class="card">
+      <h3>⏱️ Sessió curta (C1, 30-35 min)</h3>
+      <div class="ex"><span class="n">A + B</span><span class="dose">6 min</span><span class="why">Comba 2 min + 6 moviments de mobilitat + 2 sèries d'aproximació.</span></div>
+      <div class="ex"><span class="n">C</span><span class="dose">4 min</span><span class="why">3×3 salts a calaix o llançaments rotacionals.</span></div>
+      <div class="ex"><span class="n">D superseries</span><span class="dose">18 min</span><span class="why">Goblet 3×6-8 + rem 3×8; pes mort romanès 3×8 + flexions o press 3×8.</span></div>
+      <div class="ex"><span class="n">E</span><span class="dose">5 min</span><span class="why">Pallof + rotació externa amb goma, 2 voltes.</span></div>
+    </div>
+    <div class="card">
+      <h3>👴 Veterans</h3>
+      <ul>
+        <li>Escalfament de 15 min com a mínim, amb turmell i Aquil·les (pogos suaus progressius).</li>
+        <li>Primer salts de baix impacte; màxim 40-60 contactes per sessió al principi.</li>
+        <li>Càrregues relativament altes (RIR 2-3) si la tècnica és bona: és segur i efectiu.</li>
+        <li>72 h entre sessions d'alt impacte (incloent partits exigents) si cal.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PREVENCIO -->
+  <section id="prevencio" hidden>
+    <h2>Prevenció i <em>teixits</em></h2>
+    <div class="card hl"><p>La força és la millor prevenció (redueix les lesions esportives a la meitat aproximadament). A més, <b>2-3 cops per setmana, 12-15 min</b> al bloc E: cada dia 3-4 regions, de manera que totes surtin almenys 2 cops per setmana.</p></div>
+    <div class="card">
+      <h3>🩹 Per regió</h3>
+      <div class="ex" data-fig="extrot"><span class="n">Espatlla · rotació externa amb goma a 0° i 90°</span><span class="dose">3×10-15</span><span class="why">RIR 2-3. + Y-T-W en banc inclinat 2×10 (1-2 kg).</span></div>
+      <div class="ex" data-fig="wrist"><span class="n">Colze · extensió de canell excèntrica</span><span class="dose">3×12-15</span><span class="why">Tempo 3-0-1. + pronosupinació amb martell 2×12-15. +0,5-1 kg quan 3×15 sigui fàcil.</span></div>
+      <div class="ex" data-fig="farmer"><span class="n">Avantbraç · farmer carry</span><span class="dose">2-3×20-30 s</span><span class="why">Prensió.</span></div>
+      <div class="ex" data-fig="pallof"><span class="n">Lumbar i tronc · Pallof, pont lateral, bird dog</span><span class="dose">2× cada</span><span class="why">Control i resistència del tronc.</span></div>
+      <div class="ex" data-fig="copenhagen"><span class="n">Engonal · Copenhaguen</span><span class="dose">2-3×6-10 s</span><span class="why">Curt amb genoll recolzat → llarg. Al futbol, 41 % menys problemes d'engonal.</span></div>
+      <div class="ex" data-fig="nordic"><span class="n">Isquios · nòrdic</span><span class="dose">2×4-6</span><span class="why">1-2 cops/setm. Mai el dia abans d'un partit.</span></div>
+      <div class="ex" data-fig="bulgarian"><span class="n">Genoll · búlgar, step-down, isomètric</span><span class="dose">2-3×8-10</span><span class="why">O 4×30-45 s isomètric. + frenades programades 2×4.</span></div>
+      <div class="ex" data-fig="calves"><span class="n">Turmell i Aquil·les · bessons i soli</span><span class="dose">3×10-15</span><span class="why">Genoll estès i flexionat. Progressa a una cama, amb càrrega i pogos.</span></div>
+      <div class="ex"><span class="n">Turmell · equilibri a una cama</span><span class="dose">2×30 s</span><span class="why">Amb pertorbacions, ulls tancats, aterratges a una cama.</span></div>
+    </div>
+    <div class="card">
+      <h3>🚦 Dolor durant l'exercici</h3>
+      <div class="ex"><span class="n">0-2 / 10</span><span class="dose">Verd</span><span class="why">Es continua i es progressa.</span></div>
+      <div class="ex"><span class="n">3-5 / 10 i no empitjora l'endemà</span><span class="dose">Groc</span><span class="why">Es manté la càrrega, no es progressa.</span></div>
+      <div class="ex"><span class="n">&gt; 5 / 10, nocturn o empitjora l'endemà</span><span class="dose">Vermell</span><span class="why">Substituir dins el mateix patró (p. ex. búlgar → step-up). Si dura més d'1-2 setmanes, derivar al fisio.</span></div>
+    </div>
+  </section>
+
+  <!-- CONTROL -->
+  <section id="control" hidden>
+    <h2>Progressió i <em>control</em></h2>
+    <div class="card">
+      <h3>📈 Doble progressió amb RIR</h3>
+      <ol>
+        <li>Cada exercici té un rang i un RIR (p. ex. 3×6-8, RIR 2).</li>
+        <li>Totes les sèries al màxim del rang amb el RIR i bona tècnica → <b>puja el mínim</b> (2-5 % o el disc més petit) i torna al mínim del rang.</li>
+        <li>Més dur del previst → mateixa càrrega; si es repeteix dues sessions, −5-10 %.</li>
+        <li>Si la tècnica cau, la sèrie s'acaba: <b>la tècnica mana</b>.</li>
+        <li>En potència i velocitat no s'afegeix volum si la qualitat cau; primer més complexitat, després més volum.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>🚦 Semàfor setmanal</h3>
+      <p class="small">Groc suma 1 punt, vermell 2.</p>
+      <div class="scroll"><table>
+        <tr><th>Indicador</th><th>Groc (1)</th><th>Vermell (2)</th></tr>
+        <tr><td>Benestar</td><td>Pitjor 2-3 dies</td><td>Molt pitjor 3+ dies</td></tr>
+        <tr><td>Son</td><td>&lt; 6 h dues nits</td><td>&lt; 6 h tres o més</td></tr>
+        <tr><td>RIR real</td><td>1 rep pitjor</td><td>2+ reps pitjor</td></tr>
+        <tr><td>Salt o test</td><td>Per sota un cop</td><td>Per sota dos cops seguits</td></tr>
+        <tr><td>Dolor</td><td>3-5/10</td><td>&gt; 5/10 o empitjora</td></tr>
+        <tr><td>Càrrega setmanal</td><td>+15-30 %</td><td>&gt; +30 % o torneig</td></tr>
+      </table></div>
+      <div class="ex" style="margin-top:10px"><span class="n">0-1 punts</span><span class="dose">Verd</span><span class="why">Progressar.</span></div>
+      <div class="ex"><span class="n">2-3 punts</span><span class="dose">Mantenir</span><span class="why">Res nou aquesta setmana.</span></div>
+      <div class="ex"><span class="n">4-5 punts</span><span class="dose">−30-50 % volum</span><span class="why">Mateixa intensitat.</span></div>
+      <div class="ex"><span class="n">6 o més</span><span class="dose">Descàrrega</span><span class="why">Menys volum i intensitat; revisar son, estrès i calendari.</span></div>
+    </div>
+    <div class="card">
+      <h3>🏁 Tests (setmanes 0, 4 i 8)</h3>
+      <p class="small">Sempre igual: mateixa hora (± 2 h), mateix escalfament i calçat, 48 h sense partit exigent. Ordre: mobilitat → salts → velocitat → força.</p>
+      <div class="ex"><span class="n">Mobilitat de turmell (lunge test)</span><span class="dose">cm</span><span class="why">Dit gros a la paret. Diferència &gt; 2 cm entre cames: treballar-la.</span></div>
+      <div class="ex"><span class="n">Salt vertical (CMJ)</span><span class="dose">cm</span><span class="why">App de salt (My Jump) o abast a la paret; el millor de 3-5. Unilateral si cal veure asimetries (&gt; 10-15 %).</span></div>
+      <div class="ex"><span class="n">Salt horitzontal a peus junts</span><span class="dose">cm</span><span class="why">El millor de 3.</span></div>
+      <div class="ex"><span class="n">Esprint de 5 i 10 m</span><span class="dose">s</span><span class="why">Millor amb vídeo a càmera lenta; el millor de 2-3.</span></div>
+      <div class="ex"><span class="n">5-0-5 (canvi de direcció)</span><span class="dose">s</span><span class="why">5 m, girar 180° i tornar, amb cada cama.</span></div>
+      <div class="ex"><span class="n">Força submàxima</span><span class="dose">kg × reps</span><span class="why">Esquat, pes mort, press i rem: 3-8 reps a RIR 1-2. Mai 1RM directe en principiants.</span></div>
+      <p class="mut small" style="margin-top:8px">Bateria completa cada 10-14 setmanes; entre blocs n'hi ha prou amb salt i 1-2 exercicis de força de referència.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">Coach Huguet · planificació base · actualitzat el 6 de nov. de 2026</footer>
+
+<script>
+  (function () {
+    var tabs = document.querySelectorAll('nav button');
+    function show(t) {
+      tabs.forEach(function (b) { b.setAttribute('aria-selected', String(b.dataset.t === t)); });
+      document.querySelectorAll('main section').forEach(function (s) { s.hidden = s.id !== t; });
+    }
+    tabs.forEach(function (b) {
+      b.addEventListener('click', function () {
+        show(b.dataset.t);
+        b.scrollIntoView({ inline: 'center', block: 'nearest' });
+        var nav = document.querySelector('nav');
+        if (window.scrollY > nav.offsetTop) window.scrollTo(0, nav.offsetTop);
+      });
+    });
+    var h = (location.hash || '').slice(1);
+    if (document.getElementById(h) && h !== 'flux') show(h);
+  })();
+</script>
+<script src="comu/ninots.js?v=4"></script>
+<!--BODY-END-->
+</body>
+</html>

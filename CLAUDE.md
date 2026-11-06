@@ -30,9 +30,12 @@ Tot el que és igual per a tots els clients viu a `comu/` i cada HTML només té
 
 Si canvies alguna cosa de `comu/`, puja el número `?v=` a tots els HTML perquè els mòbils no facin servir la versió vella.
 
+- `base.html` · planificació base comuna (perfil en 3 eixos, fases, setmanes tipus, sessió A-F, prevenció, control). És la guia de l'Adrià,
+  no d'un client. `plantilla-padel.html` és la plantilla de client ja omplerta amb aquesta base (I · F1 · C2, 3 dies de força).
+
 ## Client nou
 
-1. Copia `plantilla.html` a `<nom>.html` i segueix el comentari de dalt (canviar `NOM`, omplir perfil, dies i exercicis amb `data-fig`).
+1. Copia `plantilla.html` (o `plantilla-padel.html` per a pàdel, i adapta-la amb `base.html`) a `<nom>.html` i segueix el comentari de dalt (canviar `NOM`, omplir perfil, dies i exercicis amb `data-fig`).
 2. Copia `app/plantilla.webmanifest` a `app/<nom>.webmanifest`, canvia-hi `plantilla` pel nom del fitxer i `NOM` pel nom del client,
    i al `<head>` del HTML canvia `app/plantilla.webmanifest` per `app/<nom>.webmanifest`.
 3. Afegeix-lo a la taula del `README.md`.
