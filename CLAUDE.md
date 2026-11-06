@@ -22,7 +22,7 @@ Tot el que és igual per a tots els clients viu a `comu/` i cada HTML només té
   pestanya, a l'A3 (taules amb color); el registre d'entrenos va a H3. Si canvies `registre.gs`, cal tornar-lo a implementar com a versió nova.
 
 - `questionari.html` · qüestionari inicial, el mateix enllaç per a tots els clients. Les preguntes són a la llista `Q` del fitxer;
-  s'envia al mateix Apps Script (`type: 'questionari'`), que l'escriu a la pestanya `Qüestionaris` (una fila per persona) i envia un correu al propietari del full.
+  en acabar, el client veu el resum i l'envia a l'Adrià per WhatsApp amb un botó (número a `TEL`); no passa pel full de Google.
 
 - `app/` i `sw.js` · perquè cada pàgina es pugui instal·lar com a app al mòbil (Android: Chrome ⋮ → Instal·la l'aplicació).
   Cada HTML té el seu manifest `app/<client>.webmanifest` (enllaçat al `<head>`), les icones són a `app/` i el service worker

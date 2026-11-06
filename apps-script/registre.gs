@@ -9,9 +9,6 @@
  *   A3 cap avall: les taules de tests i mesures de la pestanya Progrés, una sota l'altra (columnes A-F).
  *   H3 cap avall: el registre d'entrenos (Data, Sessió, Exercici, Sèrie, Kg, Reps), cada sessió d'un color.
  * Cada sessió (data + dia) es reescriu sencera, així si el client corregeix una dada no es duplica.
- *
- * El qüestionari inicial (questionari.html, el mateix enllaç per a tothom) va a la pestanya "Qüestionaris":
- * una fila per resposta, una columna per pregunta, i a més s'envia un correu al propietari del full amb el resum.
  */
 var COLS = ['Data', 'Sessió', 'Exercici', 'Sèrie', 'Kg', 'Reps'];
 var TOP = 3;   // fila on comencen les taules
@@ -25,7 +22,6 @@ function doPost(e) {
   var lock = LockService.getScriptLock();
   lock.waitLock(20000);
   try {
-    if (d.type === 'questionari') { escriuQuestionari(d); return ContentService.createTextOutput('ok'); }
     var sh = full(d.client);
     migra(sh);
     if (d.type === 'tests') escriuTests(sh, d.tables || []);
@@ -185,47 +181,4 @@ function nomesDe(sh, client) {
 function num(v) {
   var s = String(v == null ? '' : v).trim();
   return /^-?\d+([.,]\d+)?$/.test(s) ? parseFloat(s.replace(',', '.')) : v;
-}
-
-// ---------- Qüestionari inicial (pestanya "Qüestionaris") ----------
-
-function escriuQuestionari(d) {
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var sh = ss.getSheetByName('Qüestionaris') || ss.insertSheet('Qüestionaris', 0);
-  var ans = d.answers || [];
-  var head = sh.getLastColumn() ? sh.getRange(1, 1, 1, sh.getLastColumn()).getDisplayValues()[0] : [];
-  if (!head.length || head[0] !== 'Rebut') head = ['Rebut'];
-  // Si hi ha preguntes noves, s'afegeixen com a columnes al final.
-  ans.forEach(function (a) { if (head.indexOf(a[0]) < 0) head.push(a[0]); });
-  if (sh.getMaxColumns() < head.length) sh.insertColumnsAfter(sh.getMaxColumns(), head.length - sh.getMaxColumns());
-  sh.getRange(1, 1, 1, head.length).setValues([head])
-    .setBackground(VERD).setFontColor('#ffffff').setFontWeight('bold').setVerticalAlignment('middle').setWrap(true);
-  sh.setFrozenRows(1);
-  sh.setFrozenColumns(2);
-  var fila = head.map(function () { return ''; });
-  var ara = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'dd/MM/yyyy HH:mm');
-  fila[0] = ara;
-  ans.forEach(function (a) { fila[head.indexOf(a[0])] = a[0] === 'Contacte' ? a[1] : num(a[1]); });
-  var r = sh.getLastRow() + 1;
-  sh.getRange(r, 1, 1, head.length).setValues([fila]).setVerticalAlignment('top').setWrap(true)
-    .setBackground(r % 2 ? '#ffffff' : VERD_CLAR);
-  sh.getRange(1, 1, r, head.length).setBorder(true, true, true, true, true, true, VORA, SpreadsheetApp.BorderStyle.SOLID);
-  sh.setColumnWidth(1, 110);
-  for (var c = 2; c <= head.length; c++) sh.setColumnWidth(c, 150);
-
-  // Correu al propietari del full amb el resum (si falla, la fila ja està guardada).
-  try {
-    var nom = String(d.client || 'Sense nom');
-    var cos = ans.filter(function (a) { return a[1] !== ''; }).map(function (a) { return a[0] + ': ' + a[1]; }).join('\n');
-    var html = '<h2 style="color:' + VERD + '">Qüestionari de ' + esc(nom) + '</h2><table style="border-collapse:collapse;font-family:sans-serif;font-size:14px">' +
-      ans.filter(function (a) { return a[1] !== ''; }).map(function (a) {
-        return '<tr><td style="padding:6px 10px;border:1px solid ' + VORA + ';background:' + GRIS + ';font-weight:bold">' + esc(a[0]) +
-          '</td><td style="padding:6px 10px;border:1px solid ' + VORA + '">' + esc(a[1]) + '</td></tr>';
-      }).join('') + '</table><p><a href="' + ss.getUrl() + '">Obrir el full</a></p>';
-    MailApp.sendEmail({ to: Session.getEffectiveUser().getEmail(), subject: '🏁 Qüestionari nou: ' + nom, body: cos, htmlBody: html });
-  } catch (err) {}
-}
-
-function esc(s) {
-  return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
 }

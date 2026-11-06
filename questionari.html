@@ -9,8 +9,8 @@
 <!--
   QÜESTIONARI INICIAL · Coach Huguet
   El mateix enllaç per a tots els clients: https://coachhuguet.github.io/huguet/questionari.html
-  Les respostes van al mateix Apps Script que els entrenos (comu/registre.js) i surten a la pestanya
-  "Qüestionaris" del full de Google (una fila per persona) + un correu a Adrià amb el resum.
+  En acabar, el client veu el resum i amb un botó l'envia per WhatsApp a l'Adrià (número a TEL, a baix).
+  No cal cap compte ni full de Google.
   Per afegir o treure preguntes, edita la llista Q de baix: el nom de cada pregunta és la columna del full.
 -->
 <title>Coach Huguet · Qüestionari inicial</title>
@@ -50,6 +50,14 @@
   #msg { text-align: center; margin-top: 12px; min-height: 1.5em; }
   .ok { text-align: center; padding: 30px 20px; }
   .ok .big { font: 700 44px/1 var(--display); text-transform: uppercase; margin-bottom: 12px; }
+  a.send { display: block; text-align: center; text-decoration: none; margin-top: 14px; }
+  .send.wa { background: #25d366; box-shadow: 0 10px 26px -10px rgba(37,211,102,.6); }
+  .mini { display: flex; gap: 8px; margin-top: 10px; }
+  .mini button { flex: 1; font: 700 14px var(--body); color: var(--ink); background: var(--card-2); border: 1px solid var(--line-2); border-radius: 10px; padding: 10px 0; cursor: pointer; }
+  #resum h4 { font: 700 17px/1 var(--display); text-transform: uppercase; letter-spacing: .04em; color: var(--green); margin: 16px 0 6px; }
+  #resum h4:first-of-type { margin-top: 4px; }
+  #resum .rw { display: grid; grid-template-columns: 44% 1fr; gap: 8px; padding: 5px 0; border-bottom: 1px solid var(--line); font-size: 14.5px; }
+  #resum .rw span:first-child { color: var(--mut); }
   .ok .big em { font-style: normal; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
 </style>
 </head>
@@ -65,17 +73,27 @@
 
 <main class="wrap">
   <form id="f" novalidate></form>
-  <div id="fet" class="card hl ok" hidden>
-    <div class="big">Rebut, <em id="fetNom">gràcies</em>!</div>
-    <p>Ja tinc les teves respostes. Me les miro i et preparo la rutina.</p>
-    <p class="mut small">Si vols canviar alguna cosa, torna a omplir-lo: m'arribarà la versió nova.</p>
+  <div id="fet" hidden>
+    <div class="card hl ok">
+      <div class="big">Últim <em>pas</em></div>
+      <p>Envia'm les respostes per WhatsApp amb aquest botó (el missatge ja surt escrit, només cal enviar-lo).</p>
+      <a id="wa" class="send wa" href="#" target="_blank" rel="noopener">Enviar per WhatsApp</a>
+      <div class="mini">
+        <button type="button" id="copia">Copiar el text</button>
+        <button type="button" id="edita">Tornar a editar</button>
+      </div>
+      <p id="msg2" class="small mut"></p>
+    </div>
+    <div class="card" id="resum"></div>
   </div>
 </main>
-
-<script src="comu/registre.js?v=5"></script>
 <script>
 (function () {
   // t: one = una opció · multi = diverses · text · num · long (text llarg) · r: obligatòria
+  // Número de WhatsApp de l'Adrià amb prefix i sense espais (p. ex. '34612345678').
+  // Si és buit, WhatsApp deixa triar a qui enviar-ho.
+  var TEL = '';
+
   var Q = [
     { s: '👤 Sobre tu', q: [
       { k: 'Nom', t: 'text', r: 1, ph: 'Nom i cognom' },
@@ -160,7 +178,7 @@
     return '<div class="card"><h3>' + esc(sec.s) + '</h3>' + sec.q.map(function (x) {
       return x.row ? '<div class="nums">' + x.row.map(field).join('') + '</div>' : field(x);
     }).join('') + '</div>';
-  }).join('') + '<button class="send" type="submit">Enviar</button><p id="msg" class="small mut"></p>';
+  }).join('') + '<button class="send" type="submit">Veure el resum</button><p id="msg" class="small mut"></p>';
   var def = {}; all.forEach(function (x) { def[x.k] = x; });
 
   form.addEventListener('click', function (e) {
@@ -206,6 +224,9 @@
   llegeix();
 
   var msg = document.getElementById('msg');
+  document.getElementById('edita').onclick = function () {
+    document.getElementById('fet').hidden = true; form.hidden = false; llegeix();
+  };
   form.addEventListener('submit', function (e) {
     e.preventDefault(); llegeix();
     var falta = [].filter.call(form.querySelectorAll('.q'), function (q) { return def[q.dataset.k].r && !val[q.dataset.k]; });
@@ -215,21 +236,30 @@
       falta[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
-    var btn = form.querySelector('.send'); btn.disabled = true; btn.textContent = 'Enviant…'; msg.textContent = '';
-    var data = { type: 'questionari', client: val['Nom'], answers: all.map(function (x) { return [x.k, val[x.k] || '']; }) };
-    fetch(window.COACH_SHEET_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(data) })
-      .then(function () {
-        try { localStorage.removeItem('coach-questionari'); } catch (e) {}
-        form.hidden = true;
-        document.getElementById('fetNom').textContent = val['Nom'].split(' ')[0];
-        var ok = document.getElementById('fet'); ok.hidden = false;
-        document.getElementById('prog').style.width = '100%';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      })
-      .catch(function () {
-        btn.disabled = false; btn.textContent = 'Enviar';
-        msg.innerHTML = '<span class="r">No s\'ha pogut enviar (sense connexió?). Les respostes estan guardades: torna-ho a provar.</span>';
+    // Resum: el text per WhatsApp i la targeta per veure-ho (o fer-ne captura)
+    var txt = ['🏁 *QÜESTIONARI INICIAL · ' + val['Nom'] + '*'], html = '';
+    Q.forEach(function (sec) {
+      var xs = []; sec.q.forEach(function (x) { (x.row || [x]).forEach(function (y) { if (val[y.k]) xs.push(y); }); });
+      if (!xs.length) return;
+      txt.push('', '*' + sec.s + '*');
+      html += '<h4>' + esc(sec.s) + '</h4>';
+      xs.forEach(function (y) {
+        txt.push('• ' + y.k + ': ' + val[y.k]);
+        html += '<div class="rw"><span>' + esc(y.k) + '</span><span>' + esc(val[y.k]) + '</span></div>';
       });
+    });
+    txt = txt.join('\n');
+    document.getElementById('resum').innerHTML = html;
+    document.getElementById('wa').href = 'https://wa.me/' + TEL + '?text=' + encodeURIComponent(txt);
+    document.getElementById('copia').onclick = function () {
+      var m = document.getElementById('msg2');
+      (navigator.clipboard ? navigator.clipboard.writeText(txt) : Promise.reject())
+        .then(function () { m.textContent = 'Copiat! Enganxa-ho al xat amb l\'Adrià.'; }, function () { m.textContent = 'No s\'ha pogut copiar: fes una captura de pantalla del resum.'; });
+    };
+    form.hidden = true;
+    document.getElementById('fet').hidden = false;
+    document.getElementById('prog').style.width = '100%';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 })();
 </script>
