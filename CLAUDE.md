@@ -21,6 +21,9 @@ Tot el que és igual per a tots els clients viu a `comu/` i cada HTML només té
   Els tests i les mesures de Progrés (totes les taules menys `#cargas`) s'envien sols des de `comu/registre.js` i van a la mateixa
   pestanya, a l'A3 (taules amb color); el registre d'entrenos va a H3. Si canvies `registre.gs`, cal tornar-lo a implementar com a versió nova.
 
+- `questionari.html` · qüestionari inicial, el mateix enllaç per a tots els clients. Les preguntes són a la llista `Q` del fitxer;
+  s'envia al mateix Apps Script (`type: 'questionari'`), que l'escriu a la pestanya `Qüestionaris` (una fila per persona) i envia un correu al propietari del full.
+
 - `app/` i `sw.js` · perquè cada pàgina es pugui instal·lar com a app al mòbil (Android: Chrome ⋮ → Instal·la l'aplicació).
   Cada HTML té el seu manifest `app/<client>.webmanifest` (enllaçat al `<head>`), les icones són a `app/` i el service worker
   `sw.js` (a l'arrel) guarda l'última còpia per si no hi ha connexió.

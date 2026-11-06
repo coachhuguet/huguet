@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#070d12">
+<link rel="icon" href="app/icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="app/apple-touch-icon.png">
+<!--
+  QÜESTIONARI INICIAL · Coach Huguet
+  El mateix enllaç per a tots els clients: https://coachhuguet.github.io/huguet/questionari.html
+  Les respostes van al mateix Apps Script que els entrenos (comu/registre.js) i surten a la pestanya
+  "Qüestionaris" del full de Google (una fila per persona) + un correu a Adrià amb el resum.
+  Per afegir o treure preguntes, edita la llista Q de baix: el nom de cada pregunta és la columna del full.
+-->
+<title>Coach Huguet · Qüestionari inicial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="comu/coach.css?v=3">
+<style>
+  .bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; height: 5px; background: rgba(255,255,255,.06); }
+  .bar i { display: block; height: 100%; width: 0; background: var(--grad); transition: width .3s; }
+  .q { padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .q:last-child { border-bottom: 0; padding-bottom: 2px; }
+  .q > label, .q > .l { display: block; font-weight: 700; margin-bottom: 10px; }
+  .q .h { display: block; font-weight: 500; font-size: 13.5px; color: var(--mut); margin-top: 2px; }
+  .q .req { color: var(--green); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chips button {
+    font: 600 14.5px/1.2 var(--body); color: var(--ink); background: rgba(0,0,0,.2); border: 1.5px solid var(--line-2);
+    border-radius: 999px; padding: 10px 14px; cursor: pointer; transition: background .15s, border-color .15s, transform .1s;
+  }
+  .chips button:active { transform: scale(.96); }
+  .chips button[aria-pressed="true"] { background: var(--grad); border-color: transparent; color: #04140b; font-weight: 700; }
+  .q input, .q textarea {
+    width: 100%; font: 600 16px var(--body); padding: 11px 12px; border-radius: 12px; border: 1px solid var(--line-2);
+    background: rgba(0,0,0,.25); color: var(--ink);
+  }
+  .q textarea { min-height: 76px; resize: vertical; font-weight: 500; }
+  .q input:focus-visible, .q textarea:focus-visible { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(61,220,132,.2); }
+  .nums { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; }
+  .nums .q { border: 0; padding: 6px 0; }
+  .q.err > label, .q.err > .l { color: var(--red); }
+  .send {
+    width: 100%; font: 700 20px/1 var(--display); text-transform: uppercase; letter-spacing: .06em; color: #04140b;
+    background: var(--grad); border: 0; border-radius: 16px; padding: 18px; cursor: pointer; box-shadow: 0 10px 26px -10px rgba(61,220,132,.6);
+  }
+  .send:disabled { opacity: .6; }
+  #msg { text-align: center; margin-top: 12px; min-height: 1.5em; }
+  .ok { text-align: center; padding: 30px 20px; }
+  .ok .big { font: 700 44px/1 var(--display); text-transform: uppercase; margin-bottom: 12px; }
+  .ok .big em { font-style: normal; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+</style>
+</head>
+<body>
+<div class="bar"><i id="prog"></i></div>
+<header>
+  <div class="wrap">
+    <div class="brand">Coach <span>Huguet</span> · Inici</div>
+    <h1>Qüestionari <em>inicial</em></h1>
+    <p class="quote">3 minuts. Toca les opcions que encaixin amb tu: amb això preparo la teva rutina a mida.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <form id="f" novalidate></form>
+  <div id="fet" class="card hl ok" hidden>
+    <div class="big">Rebut, <em id="fetNom">gràcies</em>!</div>
+    <p>Ja tinc les teves respostes. Me les miro i et preparo la rutina.</p>
+    <p class="mut small">Si vols canviar alguna cosa, torna a omplir-lo: m'arribarà la versió nova.</p>
+  </div>
+</main>
+
+<script src="comu/registre.js?v=5"></script>
+<script>
+(function () {
+  // t: one = una opció · multi = diverses · text · num · long (text llarg) · r: obligatòria
+  var Q = [
+    { s: '👤 Sobre tu', q: [
+      { k: 'Nom', t: 'text', r: 1, ph: 'Nom i cognom' },
+      { k: 'Contacte', t: 'text', ph: 'WhatsApp o Instagram', h: 'Per enviar-te la rutina.' },
+      { row: [
+        { k: 'Edat', t: 'num', ph: 'anys' },
+        { k: 'Sexe', t: 'one', o: ['Home', 'Dona'] }
+      ] },
+      { row: [
+        { k: 'Alçada (cm)', t: 'num', ph: '175' },
+        { k: 'Pes (kg)', t: 'num', ph: '72' }
+      ] }
+    ] },
+    { s: '🎯 Objectiu', q: [
+      { k: 'Objectiu principal', t: 'one', r: 1, o: ['Perdre greix', 'Guanyar massa muscular', 'Perdre greix i guanyar múscul', 'Guanyar força', 'Rendir més al pàdel', 'Prevenir lesions', 'Salut i estar en forma', 'Tornar després d\'una lesió'] },
+      { k: 'També m\'agradaria', t: 'multi', h: 'Opcional, pots marcar-ne diverses.', o: ['Perdre greix', 'Guanyar múscul', 'Més força', 'Més resistència', 'Més velocitat i explosivitat', 'Més mobilitat', 'Menys mal d\'esquena', 'Millorar la postura'] },
+      { k: 'Data clau', t: 'text', ph: 'Ex.: torneig al març, casament al juny…', h: 'Opcional: si tens una data o esdeveniment a l\'horitzó.' }
+    ] },
+    { s: '📅 Temps', q: [
+      { k: 'Dies a la setmana', t: 'one', r: 1, o: ['1', '2', '3', '4', '5', '6'] },
+      { k: 'Temps per sessió', t: 'one', r: 1, o: ['30 min', '45 min', '1 h', '1 h 15', '1 h 30 o més'] },
+      { k: 'Dies que pots', t: 'multi', o: ['Dl', 'Dt', 'Dc', 'Dj', 'Dv', 'Ds', 'Dg'] },
+      { k: 'Moment del dia', t: 'multi', o: ['Matí', 'Migdia', 'Tarda', 'Vespre'] }
+    ] },
+    { s: '🏋️ Experiència', q: [
+      { k: 'Temps entrenant força', t: 'one', r: 1, o: ['Mai', 'Menys de 6 mesos', '6 mesos - 2 anys', '2 - 5 anys', 'Més de 5 anys'] },
+      { k: 'Ara mateix', t: 'one', o: ['Entreno regularment', 'Entreno a vegades', 'Fa temps que no entreno', 'No he entrenat mai'] },
+      { k: 'Tècnica dels bàsics', t: 'one', h: 'Sentadilla, pes mort, press de banca, rem…', o: ['No els he fet mai', 'Els conec una mica', 'Els domino bé'] },
+      { k: 'Altres esports', t: 'multi', o: ['Córrer', 'Bici', 'Natació', 'Futbol', 'Tennis', 'Arts marcials', 'Classes dirigides', 'Cap'] },
+      { k: 'Feina / dia a dia', t: 'one', o: ['Assegut gairebé tot el dia', 'Molt de peu o caminant', 'Feina física'] }
+    ] },
+    { s: '🎾 Pàdel', q: [
+      { k: 'Nivell de pàdel', t: 'one', o: ['No hi jugo', 'Iniciació', 'Intermedi', 'Avançat', 'Competició'] },
+      { k: 'Partits per setmana', t: 'one', o: ['0', '1', '2', '3', '4 o més'] },
+      { k: 'Posició', t: 'one', o: ['Drive', 'Revés', 'Les dues'] },
+      { k: 'Mà dominant', t: 'one', o: ['Dreta', 'Esquerra'] }
+    ] },
+    { s: '💪 Com estàs de forma', q: [
+      { k: 'Flexions seguides', t: 'one', h: 'Ben fetes, pit a terra. Si no ho saps, aproxima.', o: ['0', '1-5', '6-15', '16-30', 'Més de 30'] },
+      { k: 'Planxa abdominal', t: 'one', o: ['Menys de 30 s', '30 s - 1 min', '1 - 2 min', 'Més de 2 min'] },
+      { k: 'Sentadilla fins a baix', t: 'one', h: 'Sense pes, cul per sota dels genolls.', o: ['Sí, sense problema', 'Amb molèsties', 'No hi arribo'] },
+      { k: 'Dominades', t: 'one', o: ['Cap', '1-3', '4-8', 'Més de 8'] },
+      { k: 'Córrer 20 min sense parar', t: 'one', o: ['Sí', 'Amb pauses', 'No'] },
+      { k: 'Tocar-te les puntes dels peus', t: 'one', h: 'Dret i amb les cames estirades.', o: ['Sí', 'Gairebé', 'No'] }
+    ] },
+    { s: '🩺 Salut', q: [
+      { k: 'Molèsties o lesions ara', t: 'multi', r: 1, o: ['Cap', 'Espatlla', 'Colze', 'Canell', 'Cervicals', 'Lumbar', 'Maluc', 'Genoll', 'Turmell', 'Peu / fascitis', 'Altres'] },
+      { k: 'Detall lesions', t: 'long', ph: 'Què et fa mal, des de quan, si t\'han operat, lesions antigues…', h: 'Opcional, però m\'ajuda molt.' },
+      { k: 'Condicions mèdiques', t: 'multi', o: ['Cap', 'Tensió alta', 'Problemes de cor', 'Diabetis', 'Asma', 'Embaràs / postpart', 'Medicació habitual', 'Altres'] },
+      { k: 'Hores de son', t: 'one', o: ['Menys de 6', '6-7', '7-8', 'Més de 8'] },
+      { k: 'Nivell d\'estrès', t: 'one', o: ['Baix', 'Mitjà', 'Alt'] }
+    ] },
+    { s: '🏠 On entrenaràs', q: [
+      { k: 'Lloc', t: 'one', r: 1, o: ['Gimnàs complet', 'Gimnàs petit / del pàdel', 'A casa', 'A l\'aire lliure', 'Barrejat'] },
+      { k: 'Material a casa', t: 'multi', h: 'Si entrenes a casa o vols fer algun dia fora del gimnàs.', o: ['Res', 'Manuelles', 'Barra i discos', 'Kettlebell', 'Gomes elàstiques', 'Barra de dominades', 'Banc', 'TRX / anelles', 'Bici o cinta'] }
+    ] },
+    { s: '🍽️ Alimentació', q: [
+      { k: 'Vols pauta d\'alimentació', t: 'one', o: ['Sí, una dieta', 'Només consells', 'No'] },
+      { k: 'Com menges ara', t: 'one', o: ['Bastant bé', 'Regular', 'Malament'] },
+      { k: 'Restriccions', t: 'multi', o: ['Cap', 'Vegetarià', 'Vegà', 'Sense lactosa', 'Sense gluten', 'Al·lèrgies'] }
+    ] },
+    { s: '✍️ Per acabar', q: [
+      { k: 'Exercicis que t\'agraden / odies', t: 'long', ph: 'Ex.: m\'encanten les dominades, odio córrer…' },
+      { k: 'Alguna cosa més', t: 'long', ph: 'El que creguis que he de saber.' }
+    ] }
+  ];
+
+  var form = document.getElementById('f'), val = {}, all = [];
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function field(x) {
+    all.push(x);
+    var id = 'q' + all.length, lab = esc(x.k) + (x.r ? ' <span class="req">*</span>' : '') + (x.h ? '<span class="h">' + esc(x.h) + '</span>' : '');
+    if (x.t === 'one' || x.t === 'multi') {
+      return '<div class="q" data-k="' + esc(x.k) + '"><span class="l">' + lab + '</span><div class="chips" role="group">' +
+        x.o.map(function (o) { return '<button type="button" aria-pressed="false" data-v="' + esc(o) + '">' + esc(o) + '</button>'; }).join('') + '</div></div>';
+    }
+    var inp = x.t === 'long' ? '<textarea id="' + id + '" placeholder="' + esc(x.ph || '') + '"></textarea>'
+      : '<input id="' + id + '" ' + (x.t === 'num' ? 'type="number" inputmode="decimal"' : 'type="text"') + ' placeholder="' + esc(x.ph || '') + '">';
+    return '<div class="q" data-k="' + esc(x.k) + '"><label for="' + id + '">' + lab + '</label>' + inp + '</div>';
+  }
+  form.innerHTML = Q.map(function (sec) {
+    return '<div class="card"><h3>' + esc(sec.s) + '</h3>' + sec.q.map(function (x) {
+      return x.row ? '<div class="nums">' + x.row.map(field).join('') + '</div>' : field(x);
+    }).join('') + '</div>';
+  }).join('') + '<button class="send" type="submit">Enviar</button><p id="msg" class="small mut"></p>';
+  var def = {}; all.forEach(function (x) { def[x.k] = x; });
+
+  form.addEventListener('click', function (e) {
+    var b = e.target.closest('.chips button'); if (!b) return;
+    var q = b.closest('.q'), x = def[q.dataset.k], on = b.getAttribute('aria-pressed') !== 'true';
+    if (x.t === 'one') [].forEach.call(q.querySelectorAll('button'), function (o) { o.setAttribute('aria-pressed', 'false'); });
+    // "Cap" / "Res" treu la resta i a l'inrevés
+    if (x.t === 'multi' && on) {
+      var excl = /^(Cap|Res)$/.test(b.dataset.v);
+      [].forEach.call(q.querySelectorAll('button'), function (o) {
+        if (o !== b && (excl || /^(Cap|Res)$/.test(o.dataset.v))) o.setAttribute('aria-pressed', 'false');
+      });
+    }
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    q.classList.remove('err');
+    llegeix();
+  });
+  form.addEventListener('input', function (e) { var q = e.target.closest('.q'); if (q) q.classList.remove('err'); llegeix(); });
+
+  function llegeix() {
+    var fets = 0;
+    [].forEach.call(form.querySelectorAll('.q'), function (q) {
+      var x = def[q.dataset.k], v;
+      if (x.t === 'one' || x.t === 'multi') v = [].map.call(q.querySelectorAll('button[aria-pressed="true"]'), function (b) { return b.dataset.v; }).join(', ');
+      else v = q.querySelector('input,textarea').value.trim();
+      val[x.k] = v; if (v) fets++;
+    });
+    document.getElementById('prog').style.width = Math.round(100 * fets / all.length) + '%';
+    try { localStorage.setItem('coach-questionari', JSON.stringify(val)); } catch (e) {}
+  }
+
+  // Recupera el que s'havia omplert si es tanca la pàgina a mitges
+  try {
+    var desat = JSON.parse(localStorage.getItem('coach-questionari')) || {};
+    [].forEach.call(form.querySelectorAll('.q'), function (q) {
+      var x = def[q.dataset.k], v = desat[x.k]; if (!v) return;
+      if (x.t === 'one' || x.t === 'multi') {
+        var vs = v.split(', ');
+        [].forEach.call(q.querySelectorAll('button'), function (b) { if (vs.indexOf(b.dataset.v) >= 0) b.setAttribute('aria-pressed', 'true'); });
+      } else q.querySelector('input,textarea').value = v;
+    });
+  } catch (e) {}
+  llegeix();
+
+  var msg = document.getElementById('msg');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault(); llegeix();
+    var falta = [].filter.call(form.querySelectorAll('.q'), function (q) { return def[q.dataset.k].r && !val[q.dataset.k]; });
+    falta.forEach(function (q) { q.classList.add('err'); });
+    if (falta.length) {
+      msg.innerHTML = '<span class="r">Falten ' + falta.length + ' preguntes obligatòries (*).</span>';
+      falta[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    var btn = form.querySelector('.send'); btn.disabled = true; btn.textContent = 'Enviant…'; msg.textContent = '';
+    var data = { type: 'questionari', client: val['Nom'], answers: all.map(function (x) { return [x.k, val[x.k] || '']; }) };
+    fetch(window.COACH_SHEET_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(data) })
+      .then(function () {
+        try { localStorage.removeItem('coach-questionari'); } catch (e) {}
+        form.hidden = true;
+        document.getElementById('fetNom').textContent = val['Nom'].split(' ')[0];
+        var ok = document.getElementById('fet'); ok.hidden = false;
+        document.getElementById('prog').style.width = '100%';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      })
+      .catch(function () {
+        btn.disabled = false; btn.textContent = 'Enviar';
+        msg.innerHTML = '<span class="r">No s\'ha pogut enviar (sense connexió?). Les respostes estan guardades: torna-ho a provar.</span>';
+      });
+  });
+})();
+</script>
+</body>
+</html>
