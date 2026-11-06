@@ -207,20 +207,10 @@
       val[x.k] = v; if (v) fets++;
     });
     document.getElementById('prog').style.width = Math.round(100 * fets / all.length) + '%';
-    try { localStorage.setItem('coach-questionari', JSON.stringify(val)); } catch (e) {}
   }
 
-  // Recupera el que s'havia omplert si es tanca la pàgina a mitges
-  try {
-    var desat = JSON.parse(localStorage.getItem('coach-questionari')) || {};
-    [].forEach.call(form.querySelectorAll('.q'), function (q) {
-      var x = def[q.dataset.k], v = desat[x.k]; if (!v) return;
-      if (x.t === 'one' || x.t === 'multi') {
-        var vs = v.split(', ');
-        [].forEach.call(q.querySelectorAll('button'), function (b) { if (vs.indexOf(b.dataset.v) >= 0) b.setAttribute('aria-pressed', 'true'); });
-      } else q.querySelector('input,textarea').value = v;
-    });
-  } catch (e) {}
+  // No es guarda res al mòbil: cada persona que obre l'enllaç troba el qüestionari en blanc.
+  try { localStorage.removeItem('coach-questionari'); } catch (e) {}
   llegeix();
 
   var msg = document.getElementById('msg');
@@ -261,6 +251,22 @@
     document.getElementById('prog').style.width = '100%';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+
+  // Un cop enviat per WhatsApp, s'esborra tot perquè el següent no vegi les respostes de l'anterior.
+  var enviat = false;
+  document.getElementById('wa').addEventListener('click', function () {
+    enviat = true;
+    setTimeout(function () {
+      form.reset();
+      [].forEach.call(form.querySelectorAll('button[aria-pressed="true"]'), function (b) { b.setAttribute('aria-pressed', 'false'); });
+      for (var k in val) val[k] = '';
+      document.getElementById('msg2').textContent = 'Enviat ✓ Les respostes ja s\'han esborrat d\'aquesta pàgina.';
+      var ed = document.getElementById('edita'); ed.textContent = 'Nou qüestionari';
+      ed.onclick = function () { location.reload(); };
+    }, 800);
+  });
+  // Si es torna a la pàgina (botó enrere) després d'enviar, es recarrega en blanc.
+  window.addEventListener('pageshow', function (e) { if (e.persisted && enviat) location.reload(); });
 })();
 </script>
 </body>
