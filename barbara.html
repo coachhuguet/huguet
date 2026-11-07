@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#070d12">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Coach Huguet">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="app/barbara.webmanifest">
+<link rel="icon" href="app/icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="app/apple-touch-icon.png">
+<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js');</script>
+</head>
+<body>
+<!--BODY-START-->
+<!--
+  BÀRBARA · Coach Huguet
+  Nivell 1 (iniciació) segons prompt-rutines.md · veterana (55 anys) i dona.
+  3 sessions de força (Dl A, Dc B, Dv C suau) + pista Dt i Dj + 1 partit Ds.
+  Bloc de 6 setmanes: S4 descàrrega, S6 retest.
+  Supòsits pendents de confirmar: sense lesions ni dolor, gimnàs complet, sense competició propera.
+-->
+<title>Coach Huguet · Bàrbara</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="comu/coach.css?v=3">
+
+<header>
+  <div class="wrap">
+    <div class="brand">Coach <span>Huguet</span> · Pàdel</div>
+    <h1><em>Bàrbara</em></h1>
+    <p class="quote">"Primer aprendre a moure's i a aterrar. Després, més pes."</p>
+    <div class="pills">
+      <span class="pill p-green">🎾 Frenada · estabilitat · zero molèsties</span>
+      <span class="pill p-red">🏋️ 3 sessions de força + 1 partit</span>
+      <span class="pill p-blue">🩹 Bessons, genoll i espatlla</span>
+      <span class="pill p-amber">📅 Bloc de 6 setmanes</span>
+    </div>
+  </div>
+</header>
+
+<nav aria-label="Seccions">
+  <div class="in" role="tablist">
+    <button role="tab" data-t="perfil" aria-selected="true">Perfil</button>
+    <button role="tab" data-t="estrategia" aria-selected="false">Estratègia</button>
+    <button role="tab" data-t="entreno" aria-selected="false">Setmana</button>
+    <button role="tab" data-t="entrenar" aria-selected="false">▶ Entrena</button>
+    <button role="tab" data-t="progreso" aria-selected="false">📊 Progrés</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- PERFIL -->
+  <section id="perfil">
+    <h2>Perfil <em>actual</em></h2>
+    <div class="card">
+      <div class="grid2">
+        <div class="stat"><div class="k">Edat</div><div class="v">55 anys</div></div>
+        <div class="stat"><div class="k">Pàdel</div><div class="v">Molts anys</div></div>
+        <div class="stat"><div class="k">Nivell físic</div><div class="v">1 · Iniciació</div></div>
+        <div class="stat"><div class="k">Força</div><div class="v">Bàsica de gimnàs</div></div>
+      </div>
+      <p class="mut small" style="margin-top:10px">Mai ha fet preparació física específica per al pàdel. Com que és nutricionista, la dieta la porta ella.</p>
+    </div>
+    <div class="card">
+      <h3>🎯 Objectius a 6 setmanes</h3>
+      <ol>
+        <li><b>Base de força:</b> 3×12 d'esquat goblet, gambada i pes mort amb kettlebell a RPE 6, amb bona tècnica i sense dolor.</li>
+        <li><b>Aterrar bé:</b> 52 contactes de salt per sessió amb el genoll alineat, sense que se'n vagi cap a dins.</li>
+        <li><b>Teixits forts:</b> 25 elevacions de bessons a una cama i 30 s de planxa lateral per costat.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>📅 Pla</h3>
+      <p>6 setmanes. La <b>setmana 4</b> és de descàrrega i la <b>setmana 6</b> és la del retest.</p>
+      <p class="mut small">Abans de començar (setmana 0) fes els tests de la pestanya Progrés per tenir el punt de partida.</p>
+    </div>
+  </section>
+
+  <!-- ESTRATEGIA -->
+  <section id="estrategia" hidden>
+    <h2>La teva <em>estratègia</em></h2>
+    <div class="card hl">
+      <p>🧱 <b>Primer tolerar la càrrega:</b> pesos lleugers i bona tècnica. Res d'esprints màxims ni de salts intensos en aquest bloc.</p>
+      <p>⏳ <b>Escalfament llarg:</b> 12 minuts abans de cada sessió, sense saltar-te'l.</p>
+      <p>🩹 <b>Bessons, genoll i espatlla</b> treballats cada setmana. Si hi ha dolor, no s'entrena a sobre.</p>
+    </div>
+    <div class="card">
+      <h3>⏱️ Descans entre sèries</h3>
+      <p><b class="g">60 a 75 segons</b> a la força i <b class="g">45 segons</b> al core i a la prevenció. Salts: 60 segons entre sèries.</p>
+    </div>
+    <div class="card">
+      <h3>🔥 Intensitat</h3>
+      <p><b class="r">Mai a la fallada.</b> RPE 5-6 sobre 10: acaba cada sèrie amb 4-5 repeticions a la recambra.</p>
+      <p>Si la tècnica s'espatlla o hi ha dolor de més de 3 sobre 10, la sèrie s'acaba aquí.</p>
+    </div>
+    <div class="card">
+      <h3>🗓️ Setmana tipus</h3>
+      <div class="day"><span class="d">Dl</span><span>Força A: cames i rem <span class="tag t-gym">Gimnàs</span></span></div>
+      <div class="day"><span class="d">Dt</span><span>Pàdel <span class="tag t-pista">Pista</span></span></div>
+      <div class="day"><span class="d">Dc</span><span>Força B: una cama i empenta <span class="tag t-gym">Gimnàs</span></span></div>
+      <div class="day"><span class="d">Dj</span><span>Pàdel <span class="tag t-pista">Pista</span></span></div>
+      <div class="day"><span class="d">Dv</span><span>Força C: suau, sense salts <span class="tag t-gym">Gimnàs</span></span></div>
+      <div class="day"><span class="d">Ds</span><span>Partit <span class="tag t-pista">Pista</span></span></div>
+      <div class="day"><span class="d">Dg</span><span>Descans o 20-30 min de caminar o bici suau <span class="tag t-rec">Suau</span></span></div>
+    </div>
+    <div class="card">
+      <h3>📈 Progressió</h3>
+      <div class="scroll"><table>
+        <tr><th>Set</th><th>Força A i B</th><th>Força C</th><th>Salts/sessió</th></tr>
+        <tr><td>1</td><td>3×10 · RPE 5</td><td>2 sèries · RPE 5</td><td>40</td></tr>
+        <tr><td>2</td><td>3×11 · RPE 5-6</td><td>Igual</td><td>44</td></tr>
+        <tr><td>3</td><td>3×12 · RPE 6</td><td>3×10 step-up i press</td><td>48</td></tr>
+        <tr><td>4 · D</td><td>2×10 · RPE 5</td><td>Només prevenció i core</td><td>30</td></tr>
+        <tr><td>5</td><td>3×10 amb més kg · RPE 6</td><td>3×10 · RPE 5-6</td><td>48</td></tr>
+        <tr><td>6</td><td>3×12 · RPE 6 + retest</td><td>Igual</td><td>52</td></tr>
+      </table></div>
+      <p class="small" style="margin-top:12px">Si el divendres arribes amb les cames pesades, la Força C es fa el dijous abans de la pista.</p>
+    </div>
+  </section>
+
+  <!-- ENTRENO: dosi de la setmana 1; la progressió és a Estratègia -->
+  <section id="entreno" hidden>
+    <h2>La teva <em>setmana</em></h2>
+    <div class="card hl">
+      <p>3 sessions de força + 2 dies de pista + 1 partit. Abans de les sessions A i B, <b>12 min d'escalfament</b>: 5 min de bici o el·líptica, 5 min de mobilitat de turmell, maluc i tòrax, i monster walk amb goma 2×8 passes per costat.</p>
+      <p class="small">La dosi és la de la <b>setmana 1</b>. Com puja cada setmana ho tens a la pestanya Estratègia.</p>
+    </div>
+
+    <div class="card">
+      <h3>Dilluns · Força A: cames i rem <span class="tag t-gym">Mitjana</span></h3>
+      <div class="ex" data-fig="calves"><span class="n">Saltirons de turmell al lloc</span><span class="dose">3×8</span><span class="why">Cau de puntetes i en silenci. Descans 60 s.</span></div>
+      <div class="ex" data-fig="jumpsquat"><span class="n">Aterratge controlat (snap down)</span><span class="dose">3×5</span><span class="why">Aguanta 2 s a baix, amb el genoll damunt del peu.</span></div>
+      <div class="ex" data-fig="splitstep"><span class="n">Split-step + 2 passos laterals</span><span class="dose">3×5/costat</span><span class="why">Al 60-70 %, peus amples i pit amunt.</span></div>
+      <div class="ex" data-fig="goblet"><span class="n">Esquat goblet</span><span class="dose">3×10</span><span class="why">Baixa en 3 s, amb els genolls en línia amb els peus. RPE 5-6, descans 75 s.</span></div>
+      <div class="ex" data-fig="dbrow"><span class="n">Rem a un braç amb manuella</span><span class="dose">3×12/braç</span><span class="why">Sense girar el tronc. RPE 6.</span></div>
+      <div class="ex" data-fig="bridge"><span class="n">Pont de glutis</span><span class="dose">3×12</span><span class="why">Aguanta 1 s a dalt, sense arquejar l'esquena.</span></div>
+      <div class="ex" data-fig="deadbug"><span class="n">Dead bug</span><span class="dose">2×30 s</span><span class="why">La lumbar enganxada a terra tota l'estona.</span></div>
+      <div class="ex" data-fig="calves"><span class="n">Elevació de bessons dempeus</span><span class="dose">2×15</span><span class="why">Baixa en 3 s.</span></div>
+    </div>
+
+    <div class="card">
+      <h3>Dimecres · Força B: una cama i empenta <span class="tag t-gym">Mitjana</span></h3>
+      <div class="ex" data-fig="jumpsquat"><span class="n">Corda (dos peus)</span><span class="dose">3×15</span><span class="why">Salts baixos i rítmics. Descans 60 s.</span></div>
+      <div class="ex" data-fig="lateralhop"><span class="n">Saltirons laterals sobre una línia</span><span class="dose">3×6</span><span class="why">Aterra estable abans del salt següent.</span></div>
+      <div class="ex" data-fig="splitstep"><span class="n">Escala de coordinació + retrocés de 3 m</span><span class="dose">3×1</span><span class="why">Al 60-70 %, amb la mirada amunt.</span></div>
+      <div class="ex" data-fig="lunge"><span class="n">Gambada enrere</span><span class="dose">3×10/cama</span><span class="why">Genoll davanter alineat amb el peu. RPE 5-6, descans 75 s.</span></div>
+      <div class="ex" data-fig="rdl"><span class="n">Pes mort amb kettlebell</span><span class="dose">3×10</span><span class="why">Maluc enrere i esquena neutra.</span></div>
+      <div class="ex" data-fig="pushup"><span class="n">Flexions inclinades (mans al banc)</span><span class="dose">3×10</span><span class="why">El cos en bloc, de cap a talons.</span></div>
+      <div class="ex" data-fig="pallof"><span class="n">Pallof isomètric</span><span class="dose">2×20 s/costat</span><span class="why">Que el tronc no giri.</span></div>
+      <div class="ex" data-fig="calves"><span class="n">Bessons a una cama (excèntric)</span><span class="dose">2×12/cama</span><span class="why">Puja amb dues cames i baixa amb una, en 3 s.</span></div>
+    </div>
+
+    <div class="card">
+      <h3>Divendres · Força C: suau, sense salts <span class="tag t-rec">Suau</span></h3>
+      <p class="small">Escalfament de 8 min: mobilitat i bici. Demà hi ha partit: RPE 5 i res de salts.</p>
+      <div class="ex" data-fig="stepup"><span class="n">Step-up a calaix de 30 cm</span><span class="dose">2×10/cama</span><span class="why">Puja sense impulsar-te amb la cama de baix.</span></div>
+      <div class="ex" data-fig="bandrow"><span class="n">Rem amb goma o politja</span><span class="dose">3×12</span><span class="why">Omòplats enrere i avall.</span></div>
+      <div class="ex" data-fig="ohp"><span class="n">Press d'espatlla a una mà, mig agenollada</span><span class="dose">2×10/braç</span><span class="why">Costelles avall, sense arquejar l'esquena.</span></div>
+      <div class="ex" data-fig="sideplank"><span class="n">Planxa lateral</span><span class="dose">2×20 s/costat</span><span class="why">Maluc alt.</span></div>
+      <div class="ex" data-fig="extrot"><span class="n">Rotació externa amb goma</span><span class="dose">2×15</span><span class="why">Colze enganxat al cos.</span></div>
+      <div class="ex" data-fig="facepull"><span class="n">Y-T amb goma</span><span class="dose">2×12</span><span class="why">Sense aixecar les espatlles.</span></div>
+      <div class="ex" data-fig="wrist"><span class="n">Extensió excèntrica de canell</span><span class="dose">2×15</span><span class="why">Pes lleuger i baixada en 4 s. Protegeix el colze.</span></div>
+      <div class="ex" data-fig="lateralsquat"><span class="n">Equilibri a una cama sobre coixí</span><span class="dose">2×30 s/cama</span><span class="why">Que el genoll no se'n vagi cap a dins.</span></div>
+    </div>
+
+    <div class="card">
+      <h3>Dimarts i dijous · Pàdel · Dissabte · Partit <span class="tag t-pista">Pista</span></h3>
+      <p>Escalfament de 10-12 min abans de jugar. En acabar, apunta com t'has trobat de l'1 al 10 i si tens alguna molèstia al colze, la lumbar, el genoll, els bessons o l'espatlla.</p>
+      <p class="mut small">Diumenge: descans o 20-30 min de caminar o bici suau.</p>
+    </div>
+  </section>
+
+  <!-- ENTRENAR: es construeix sol a partir de la pestanya Setmana -->
+  <section id="entrenar" data-client="Bàrbara" data-rest="75,45" hidden>
+    <h2>Entrena <em>ara</em></h2>
+    <div class="card hl"><p>Tria el dia i apunta el <b>pes i les repeticions</b> de cada sèrie. Marca ○ en acabar-la i el descans comença sol. Quan acabis, toca <b>Enviar l'entreno al coach</b>.</p><p class="mut small">Tot queda guardat a l'historial de la pestanya Progrés.</p></div>
+    <div class="wk-days"></div>
+    <div class="wk-list"></div>
+    <div class="wk-pad"></div>
+  </section>
+
+  <!-- PROGRES -->
+  <section id="progreso" hidden>
+    <h2>El teu <em>progrés</em></h2>
+    <div class="card hl"><p>Omple els tests les setmanes <b>0 i 6</b>, el control de cada setmana i els pesos. Es desa en aquest mòbil i arriba al coach.</p></div>
+    <div class="card">
+      <h3>📒 Historial d'entrenos</h3>
+      <div id="historial"></div>
+    </div>
+    <div class="card">
+      <h3>🏁 Tests</h3>
+      <div class="scroll"><table id="tests"></table></div>
+      <p class="mut small" style="margin-top:10px">Fes-los sempre igual: mateixa hora, mateix escalfament i sense partit les 48 h abans. Salt: app de salt (o salt horitzontal si no en tens). Bessons i planxa: fins que la tècnica s'espatlli. Grava un aterratge en vídeo per veure si el genoll se'n va cap a dins.</p>
+    </div>
+    <div class="card">
+      <h3>🩺 Control setmanal</h3>
+      <div class="scroll"><table id="control"></table></div>
+      <p class="mut small" style="margin-top:10px">Dolor de 0 a 10 (el pitjor de la setmana) i benestar d'1 a 5. <b class="r">Baixa la càrrega</b> (fora salts i 2 sèries) si el dolor passa de 3 o encara hi és l'endemà, o si el benestar és de 2 o menys dos dies seguits.</p>
+    </div>
+    <div class="card">
+      <h3>🏋️ Càrregues setmanals (kg)</h3>
+      <div class="scroll"><table id="cargas"></table></div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">Coach Huguet · actualitzat el 7/11/2026</footer>
+
+<script>
+  (function () {
+    var tabs = document.querySelectorAll('nav button');
+    function show(t) {
+      tabs.forEach(function (b) { b.setAttribute('aria-selected', String(b.dataset.t === t)); });
+      document.querySelectorAll('main section').forEach(function (s) { s.hidden = s.id !== t; });
+    }
+    tabs.forEach(function (b) {
+      b.addEventListener('click', function () {
+        show(b.dataset.t);
+        b.scrollIntoView({ inline: 'center', block: 'nearest' });
+        var nav = document.querySelector('nav');
+        if (window.scrollY > nav.offsetTop) window.scrollTo(0, nav.offsetTop);
+      });
+    });
+    var h = (location.hash || '').slice(1);
+    if (document.getElementById(h) && h !== 'perfil') show(h);
+
+    var key = 'coach-huguet-barbara';
+    var data = {};
+    try { data = JSON.parse(localStorage.getItem(key)) || {}; } catch (e) {}
+    function table(id, cols, rows) {
+      var html = '<tr><th></th>' + cols.map(function (c) { return '<th>' + c + '</th>'; }).join('') + '</tr>';
+      rows.forEach(function (r, ri) {
+        html += '<tr><td>' + r + '</td>' + cols.map(function (c, ci) {
+          var k = id + '-' + ri + '-' + ci;
+          return '<td><input inputmode="decimal" data-k="' + k + '" value="' + (data[k] || '').replace(/"/g, '') + '" aria-label="' + r + ', ' + c + '"></td>';
+        }).join('') + '</tr>';
+      });
+      var t = document.getElementById(id);
+      t.innerHTML = html;
+      t.addEventListener('input', function (ev) {
+        data[ev.target.dataset.k] = ev.target.value;
+        try { localStorage.setItem(key, JSON.stringify(data)); } catch (e) {}
+      });
+    }
+    table('tests', ['Set 0', 'Set 6'], ['Salt CMJ (cm)', 'Bessons a una cama dreta (reps)', 'Bessons a una cama esquerra (reps)', 'Planxa lateral dreta (s)', 'Planxa lateral esquerra (s)', 'Equilibri a una cama (s)']);
+    var weeks = []; for (var i = 1; i <= 6; i++) weeks.push('S' + i + (i === 4 ? '·D' : ''));
+    table('control', weeks, ['Dolor màxim (0-10)', 'Benestar mitjà (1-5)', 'Sessions fetes (de 3)']);
+    table('cargas', weeks, ['Esquat goblet', 'Pes mort kettlebell', 'Gambada', 'Rem manuella', 'Step-up']);
+  })();
+</script>
+<script src="comu/ninots.js?v=4"></script>
+<script src="comu/registre.js?v=5"></script>
+<script src="comu/entrenar.js?v=6"></script>
+<!--BODY-END-->
+</body>
+</html>
