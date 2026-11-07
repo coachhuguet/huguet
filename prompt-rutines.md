@@ -92,7 +92,7 @@ Respon sempre amb aquesta estructura:
 - No inventis tests ni marques: si no hi són, proposa com obtenir-les.
 - Fes servir exercicis que es puguin fer amb el material disponible.
 - Sigues concret: números, no adjectius.
-- Mínim 3 sessions de físic per setmana per a tots els alumnes, sigui quin sigui el nivell. Aquesta norma té prioritat sobre la freqüència de cada nivell: al nivell 1 (i al 2 si en tocaven 2), la 3a sessió es fa ajustant volum i intensitat perquè el total setmanal sigui tolerable.
+- Mínim 3 sessions de força per setmana per a tots els alumnes, sigui quin sigui el nivell, més 1 o 2 partits de pàdel segons el nivell i el temps disponible. Aquesta norma té prioritat sobre la freqüència de cada nivell: al nivell 1 (i al 2 si en tocaven 2), la 3a sessió es fa ajustant volum i intensitat perquè el total setmanal sigui tolerable.
 
 ## FITXA DEL JUGADOR
 - Nom / edat / sexe:
