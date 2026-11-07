@@ -34,6 +34,9 @@ Si canvies alguna cosa de `comu/`, puja el número `?v=` a tots els HTML perquè
   no d'un client. `plantilla-padel.html` és la plantilla de client ja omplerta amb aquesta base (I · F1 · C2, 3 dies de força).
   Només és per als clients nous: els HTML dels clients que ja existien no s'han de passar a aquesta base.
 
+- `prompt-rutines.md` · prompt base de l'Adrià per crear rutines físiques segons el nivell (1-4) del jugador. Quan passi la fitxa
+  d'un client, segueix-lo al peu de la lletra (classificació, estructura de 7 punts, normes, preguntar dades que faltin).
+
 ## Client nou
 
 1. Copia `plantilla.html` (o `plantilla-padel.html` per a pàdel, i adapta-la amb `base.html`) a `<nom>.html` i segueix el comentari de dalt (canviar `NOM`, omplir perfil, dies i exercicis amb `data-fig`).
