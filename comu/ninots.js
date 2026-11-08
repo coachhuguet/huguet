@@ -24,6 +24,10 @@
     pushup: { a: { P: [89, 84.6], t: -155, W: [60, 103], eb: -1, F: [128, 103], kb: 1, T: [132, 104] }, b: { P: [87, 96.8], t: -171 },
       props: [] },
 
+    // Flexions inclinades: mans al banc, cos en bloc de cap a talons i el pit baixa fins al banc.
+    inclinepush: { a: { P: [95.8, 76], t: -140, W: [55, 84], eb: -1, F: [128, 103], kb: 1, T: [132, 104] }, b: { P: [90.9, 83.3], t: -152 },
+      props: [['l', 36, 84, 68, 84, 'gr'], ['l', 40, 84, 40, 104, 'gr'], ['l', 64, 84, 64, 104, 'gr']] },
+
     // ── Espatlla ──
     military: { a: { P: [80, 80], t: -90, E: [88, 62], W: [86, 46], F: [102, 104], kb: -1 }, b: { E: [81, 31], W: [81, 15] },
       props: [['l', 75, 84, 75, 42, 'gr'], ['l', 73, 84, 100, 84, 'gr'], ['l', 88, 84, 88, 104, 'gr'], ['d', 'W']] },
@@ -38,6 +42,13 @@
       props: [['c', 80, 26, 'W'], ['c', 80, 26, 'W2']] },
     extrot: { front: 1, a: { P: [80, 62], t: -90, E: [70, 48], W: [80, 52], ua2: 92, fa2: 92, F: [74, 104], F2: [86, 104] }, b: { W: [56, 47] },
       props: [['c', 146, 50, 'W'], ['o', 'W', 3]] },
+    // Press d'espatlla a una mà, mig agenollada: genoll del darrere a terra, tronc vertical i la manuella puja de l'espatlla a dalt.
+    kneelpress: { a: { Kp: [72, 102], th: 90, sa: 180, t: -90, E: [74, 64], W: [77, 49], F2: [96, 104], kb: -1 }, b: { E: [74, 32], W: [76, 16] },
+      props: [['d', 'W']] },
+    // Y-T amb goma, vist de davant: braços estirats, de baix a Y (diagonal amunt) i a T (horitzontal).
+    ytband: { front: 1, a: { P: [80, 62], t: -90, ua: 100, fa: 100, ua2: 80, fa2: 80, F: [74, 104], F2: [86, 104] },
+      m: { ua: -125, fa: -125, ua2: -55, fa2: -55 }, b: { ua: 180, fa: 180, ua2: 0, fa2: 0 },
+      props: [['o', 'W', 2], ['o', 'W2', 2]] },
     landmine: { a: { P: [80, 64], t: -90, W: [88, 36], eb: 1, F: [94, 104], F2: [64, 104], kb: -1 }, b: { t: -80, W: [110, 12] },
       props: [['m', 18, 103, 'W'], ['o', 'W', 4]] },
 
@@ -117,12 +128,20 @@
       props: [['l', 84, 84, 128, 84, 'gr'], ['l', 84, 84, 84, 104, 'gr'], ['l', 128, 84, 128, 104, 'gr'], ['d', 'W']] },
     nordic: { a: { Kp: [72, 102], th: 90, sa: 180, t: -90, Wr: [10, 14], eb: -1 }, b: { th: 20, t: -20, Wr: [16, 18] },
       props: [['o', 'F', 3], ['l', 40, 104, 80, 104, 'eq']] },
-    bridge: { a: { P: [84, 98], t: 180, W: [84, 103], eb: 1, F: [112, 103], kb: -1 }, b: { P: [82, 83], t: 150 },
+    // A dalt, espatlles, maluc i genoll en línia (sense hiperextensió lumbar).
+    bridge: { a: { P: [84, 98], t: 180, W: [84, 103], eb: 1, F: [112, 103], kb: -1 }, b: { P: [84.3, 89.2], t: 164 },
       props: [] },
-    calves: { a: { P: [78, 60], t: -90, W: [80, 62], eb: 1, F: [78, 101], T: [89, 104], kb: -1 }, b: { P: [80, 53], W: [82, 55], F: [80, 94] },
+    calves: { a: { P: [78, 59], t: -90, W: [80, 61], eb: 1, F: [78, 101], T: [89, 104], kb: -1 }, b: { P: [80, 52], W: [82, 54], F: [80, 94] },
       props: [['l', 84, 104, 120, 104, 'eq']] },
     seatedcalf: { a: { P: [68, 82], t: -88, W: [88, 78], eb: 1, F: [94, 100], T: [104, 102], kb: -1 }, b: { F: [94, 94] },
       props: [['l', 50, 86, 80, 86, 'gr'], ['l', 64, 86, 64, 104, 'gr'], ['l', 80, 74, 100, 74, 'eq'], ['l', 98, 104, 116, 104, 'eq']] },
+
+    // Pes mort amb kettlebell: frontissa de maluc amb una mica més de genoll; la kettlebell baixa fins a terra entre els peus.
+    kbdl: { a: { P: [80, 63], t: -90, Wr: [2, 31], eb: 1, F: [84, 104], kb: -1 }, b: { P: [68, 72], t: -28, Wr: [-10, 37] },
+      props: [['o', 'W', 6]] },
+    // Equilibri a una cama sobre coixí: genoll de recolzament lleugerament flexionat, l'altre amunt, petit balanceig.
+    balance: { a: { P: [80, 60], t: -90, W: [96, 58], eb: 1, F: [80, 101], F2: [96, 84], kb: -1 }, b: { P: [82, 60], t: -88, W: [98, 56], F2: [98, 83] },
+      props: [['l', 66, 102, 94, 102, 'eq']] },
 
     // ── Core ──
     plank: { a: { P: [92, 86], t: 180, E: [60, 103], W: [44, 103], F: [132, 102], kb: 1, T: [135, 104] }, b: { P: [92, 85] },
@@ -157,6 +176,18 @@
       props: [['l', 76, 104, 84, 104, 'eq']] },
     splitstep: { front: 1, a: { P: [80, 62], t: -90, ua: 115, fa: 60, ua2: 65, fa2: 120, F: [76, 104], F2: [84, 104] }, m: { P: [80, 54], F: [74, 96], F2: [86, 96] }, b: { P: [80, 72], F: [62, 104], F2: [98, 104] },
       props: [] },
+    // Saltirons de turmell: cames gairebé rectes, el rebot surt del turmell i es cau de puntetes.
+    pogo: { a: { P: [80, 58], t: -90, W: [82, 59], eb: 1, F: [80, 100], T: [88, 104], kb: -1 }, b: { P: [80, 50], W: [82, 51], F: [80, 92], T: [88, 96] },
+      props: [] },
+    // Snap down: de puntetes i braços amunt, cau ràpid a mig esquat amb els peus plans i els braços enrere.
+    snapdown: { a: { P: [80, 57], t: -90, W: [88, -5], eb: 1, F: [80, 98], T: [88, 104], kb: -1 }, b: { P: [72, 80], t: -65, W: [74, 74], F: [84, 103], T: [92, 104] },
+      props: [] },
+    // Corda, vist de davant: salts baixos amb els peus junts i les mans a l'alçada del maluc.
+    rope: { front: 1, a: { P: [80, 62], t: -90, ua: 110, fa: 160, ua2: 70, fa2: 20, F: [77, 104], F2: [83, 104] }, b: { P: [80, 56], F: [77, 98], F2: [83, 98] },
+      props: [['m', 80, 106, 'W'], ['m', 80, 106, 'W2']] },
+    // Escala de coordinació: passos curts i ràpids entre els travessers, de puntetes.
+    ladder: { a: { P: [80, 62], t: -84, W: [92, 58], W2: [70, 64], eb: 1, F: [90, 98], F2: [72, 104], kb: -1 }, b: { W: [70, 64], W2: [92, 58], F: [72, 104], F2: [90, 98] },
+      props: [['l', 50, 104, 56, 104, 'eq'], ['l', 66, 104, 76, 104, 'eq'], ['l', 86, 104, 96, 104, 'eq'], ['l', 106, 104, 112, 104, 'eq']] },
     run: { a: { P: [80, 60], t: -78, W: [98, 44], W2: [64, 62], eb: 1, F: [104, 92], F2: [56, 100], kb: -1 }, b: { W: [64, 62], W2: [98, 44], F: [56, 100], F2: [104, 92] },
       props: [] },
     walk: { a: { P: [80, 62], t: -88, W: [92, 62], W2: [70, 62], eb: 1, F: [96, 104], F2: [64, 104], kb: -1 }, b: { W: [70, 62], W2: [92, 62], F: [64, 104], F2: [96, 104] },

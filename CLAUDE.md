@@ -13,7 +13,7 @@ Tot el que és igual per a tots els clients viu a `comu/` i cada HTML només té
   skull, lat, pullup, rings, row, bbrow, dbrow, cablerow, bandrow, invrow, pullover, curlbar, curldb, cablecurl, inclinecurl, wrist, squat,
   bbsquat, goblet, jumpsquat, legpress, legcurl, legext, rdl, rdldb, bulgarian, bulgarsmith, lunge, lateralsquat, stepup, nordic, bridge,
   calves, seatedcalf, plank, sideplank, copenhagen, deadbug, rollout, superman, pallof, woodchop, boxjump, slam, rotthrow, chestpass,
-  lateralhop, splitstep, run, walk, farmer). Si un exercici nou no en té cap que encaixi, afegeix-ne un a `F` i comprova'l visualment.
+  lateralhop, splitstep, run, walk, farmer, kbdl, balance, inclinepush, kneelpress, ytband, pogo, snapdown, rope, ladder). Si un exercici nou no en té cap que encaixi, afegeix-ne un a `F` i comprova'l visualment.
 - `comu/entrenar.js` · pestanya ▶ Entrenar: kg i reps per sèrie, descans, historial (`#historial` a Progrés) i enviament al full.
 - `comu/registre.js` · adreça de l'Apps Script (`/exec`) on s'envien els entrenos.
 - `apps-script/registre.gs` · el codi de l'Apps Script del full de Google: cada client escriu a la seva pestanya `Registre <Nom>`,
