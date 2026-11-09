@@ -150,7 +150,8 @@
       props: [] },
     copenhagen: { front: 1, a: { P: [88, 96], t: -149.9, E: [56, 103], W: [44, 103], F: [122, 100], F2: [128, 79] }, b: { P: [88, 82], t: -172.6, F: [122, 86] },
       props: [['l', 112, 82, 144, 82, 'gr'], ['l', 138, 82, 138, 104, 'gr']] },
-    deadbug: { a: { P: [96, 96], t: 180, W: [64, 63], eb: 1, W2: [64, 63], th: -90, sa: 0, F2: [117, 74] }, b: { W2: [34, 92], F2: [136, 92] },
+    // Dead bug: braç i cama contraris. El braç del darrere va enrere i la cama del davant s'estira, sense que la lumbar s'aixequi.
+    deadbug: { a: { P: [96, 96], t: 180, W: [64, 63], eb: 1, W2: [64, 63], th: -90, sa: 0, F2: [117, 74] }, b: { W2: [34, 92], th: -14, sa: -6 },
       props: [] },
     rollout: { a: { Kp: [72, 102], th: 90, sa: 180, t: -42, W: [98, 98], eb: 1 }, b: { th: 150, t: -10, W: [146, 98] },
       props: [['o', 'W', 5]] },
@@ -176,6 +177,10 @@
       props: [['l', 76, 104, 84, 104, 'eq']] },
     splitstep: { front: 1, a: { P: [80, 62], t: -90, ua: 115, fa: 60, ua2: 65, fa2: 120, F: [76, 104], F2: [84, 104] }, m: { P: [80, 54], F: [74, 96], F2: [86, 96] }, b: { P: [80, 72], F: [62, 104], F2: [98, 104] },
       props: [] },
+    // Aterratge des de calaix baix: es baixa del calaix (no es salta amunt) i s'aterra amb els dos peus a mig esquat, genolls alineats.
+    boxland: { a: { P: [46, 47], t: -90, W: [50, 50], eb: 1, F: [46, 89], kb: -1 }, m: { P: [64, 44], t: -86, W: [74, 46], F: [66, 85] },
+      b: { P: [80, 78], t: -64, W: [100, 64], F: [94, 104] },
+      props: [['l', 28, 90, 58, 90, 'gr'], ['l', 28, 90, 28, 104, 'gr'], ['l', 58, 90, 58, 104, 'gr']] },
     // Saltirons de turmell: cames gairebé rectes, el rebot surt del turmell i es cau de puntetes.
     pogo: { a: { P: [80, 58], t: -90, W: [82, 59], eb: 1, F: [80, 100], T: [88, 104], kb: -1 }, b: { P: [80, 50], W: [82, 51], F: [80, 92], T: [88, 96] },
       props: [] },
@@ -188,6 +193,14 @@
     // Escala de coordinació: passos curts i ràpids entre els travessers, de puntetes.
     ladder: { a: { P: [80, 62], t: -84, W: [92, 58], W2: [70, 64], eb: 1, F: [90, 98], F2: [72, 104], kb: -1 }, b: { W: [70, 64], W2: [92, 58], F: [72, 104], F2: [90, 98] },
       props: [['l', 50, 104, 56, 104, 'eq'], ['l', 66, 104, 76, 104, 'eq'], ['l', 86, 104, 96, 104, 'eq'], ['l', 106, 104, 112, 104, 'eq']] },
+    // Frenada: de la carrera a una posició baixa i ampla, peu del davant clavat, maluc baix i tronc lleugerament enrere.
+    brake: { a: { P: [74, 60], t: -76, W: [94, 46], W2: [58, 62], eb: 1, F: [98, 92], F2: [50, 100], kb: -1 },
+      b: { P: [76, 74], t: -94, W: [92, 60], W2: [64, 64], F: [100, 104], F2: [54, 104] },
+      props: [] },
+    // Gambada lateral, vist de davant: peus junts, pas al costat i assegut sobre aquesta cama; l'altra queda estirada.
+    latlunge: { front: 1, a: { P: [80, 62], t: -90, E: [70, 52], W: [78, 44], E2: [90, 52], W2: [82, 44], F: [75, 104], F2: [85, 104] },
+      b: { P: [66, 80], t: -82, E: [58, 70], W: [68, 62], E2: [80, 68], W2: [72, 62], F: [54, 104], F2: [106, 104] },
+      props: [] },
     run: { a: { P: [80, 60], t: -78, W: [98, 44], W2: [64, 62], eb: 1, F: [104, 92], F2: [56, 100], kb: -1 }, b: { W: [64, 62], W2: [98, 44], F: [56, 100], F2: [104, 92] },
       props: [] },
     walk: { a: { P: [80, 62], t: -88, W: [92, 62], W2: [70, 62], eb: 1, F: [96, 104], F2: [64, 104], kb: -1 }, b: { W: [70, 62], W2: [92, 62], F: [64, 104], F2: [96, 104] },
@@ -239,10 +252,41 @@
     if (p.T) { g.T = p.T; segs.push(['F', 'T']); }
     return { g: g, segs: segs };
   }
+  // Figura completa: membres amb gruix (cuixa > canyella, braç > avantbraç), tronc, coll, cap, mans i peus.
+  // Vista de perfil: els membres del costat de darrere (o el duplicat si l'exercici és bilateral) es dibuixen més foscos al darrere.
+  function L2(c, a, b, w) { return { e: 'line', c: c, v: [a[0], a[1], b[0], b[1]] }; }
+  function foot(K, A, T, face, front, side) {
+    if (T) return [A, T];
+    if (front) return [[A[0] - side * 1, A[1]], [A[0] + side * 4, A[1]]];
+    var sx = A[0] - K[0], sy = A[1] - K[1], d = Math.hypot(sx, sy) || 1; sx /= d; sy /= d;
+    if (A[1] >= 97) return [[A[0] - 2 * face, A[1]], [A[0] + 7 * face, A[1]]];
+    if (Math.abs(sy) < .45) return [[A[0] - sx, A[1] - sy], [A[0] + 5 * sx, A[1] + 5 * sy]];
+    var px = -sy, py = sx; if (px * face < 0) { px = -px; py = -py; }
+    return [[A[0] - 1.5 * px, A[1] - 1.5 * py], [A[0] + 6 * px, A[1] + 6 * py]];
+  }
   function shapes(def, s) {
-    var g = s.g, out = [];
-    s.segs.forEach(function (q) { out.push({ e: 'line', c: '', v: [g[q[0]][0], g[q[0]][1], g[q[1]][0], g[q[1]][1]] }); });
-    out.push({ e: 'circle', c: 'hd', r: 6, v: [g.H[0], g.H[1]] });
+    var g = s.g, out = [], front = !!def.front, face = s.face || 1, k = 'ft';
+    var sh1 = front ? g.S1 : g.N, sh2 = front ? g.S2 : g.N, hp1 = front ? g.Q1 : g.P, hp2 = front ? g.Q2 : g.P;
+    var off = front ? [0, 0] : [-1.6 * face, -.6];
+    function sh(pt) { return [pt[0] + off[0], pt[1] + off[1]]; }
+    // Cama 2 (darrere): la pròpia o un duplicat de la cama 1.
+    var K2 = g.K2 || sh(g.K), F2 = g.F2 || sh(g.F), b2 = front ? '' : ' bk';
+    var f2 = foot(K2, F2, g.F2 ? null : (g.T ? sh(g.T) : null), face, front, 1);
+    out.push(L2('th' + b2, g.K2 ? hp2 : sh(hp2), K2), L2('sh' + b2, K2, F2), L2(k + b2, f2[0], f2[1]));
+    // Braç 2 (darrere).
+    var E2 = g.E2 || sh(g.E), W2 = g.W2 || sh(g.W);
+    out.push(L2('ua' + b2, g.E2 ? sh2 : sh(sh2), E2), L2('fa' + b2, E2, W2), { e: 'circle', c: 'hn' + b2, r: 2.4, v: W2 });
+    // Tronc, malucs i espatlles (de davant), coll i cap.
+    var mid = [g.P[0] + (g.N[0] - g.P[0]) * .15, g.P[1] + (g.N[1] - g.P[1]) * .15];
+    out.push(L2('pv', g.P, mid));
+    out.push(L2('tor', mid, g.N));
+    if (front) out.push(L2('shl', g.S1, g.S2), L2('hpl', g.Q1, g.Q2)); else out.push(L2('shl', g.N, g.N), L2('hpl', g.P, g.P));
+    out.push(L2('nk', g.N, [g.N[0] + (g.H[0] - g.N[0]) * .5, g.N[1] + (g.H[1] - g.N[1]) * .5]));
+    out.push({ e: 'circle', c: 'hd', r: 6.2, v: g.H });
+    // Cama 1 i braç 1 (davant).
+    var f1 = foot(g.K, g.F, g.T, face, front, -1);
+    out.push(L2('th', hp1, g.K), L2('sh', g.K, g.F), L2(k, f1[0], f1[1]));
+    out.push(L2('ua', sh1, g.E), L2('fa', g.E, g.W), { e: 'circle', c: 'hn', r: 2.4, v: g.W });
     def.props.forEach(function (pr) {
       if (pr[0] === 'l') out.push({ e: 'line', c: pr[5], v: pr.slice(1, 5) });
       else if (pr[0] === 'o') out.push({ e: 'circle', c: 'eqc', r: pr[2], v: [g[pr[1]][0], g[pr[1]][1]] });
@@ -258,9 +302,17 @@
   function framesOf(key) {
     if (cache[key]) return cache[key];
     var def = F[key], A = def.a, B = mix(A, def.b, 1), M = def.m ? mix(A, def.m, 1) : null, fr = [];
+    // Cap on mira la figura: def.face o, si no, cap on surt el genoll quan més doblegat està.
+    var face = def.face, best = 0;
+    if (!face) [A, B].concat(M ? [M] : []).forEach(function (p) {
+      var q = solve(def, p).g, o = q.K[0] - (q.P[0] + q.F[0]) / 2;
+      if (Math.abs(o) > Math.abs(best)) best = o;
+    });
+    face = face || (best < -1 ? -1 : 1);
     for (var i = 0; i <= N; i++) {
-      var k = i / N, p = !M ? mix(A, B, k) : k < .5 ? mix(A, M, k * 2) : mix(M, B, k * 2 - 1);
-      fr.push(shapes(def, solve(def, p)));
+      var k = i / N, p = !M ? mix(A, B, k) : k < .5 ? mix(A, M, k * 2) : mix(M, B, k * 2 - 1), sv = solve(def, p);
+      sv.face = face;
+      fr.push(shapes(def, sv));
     }
     return (cache[key] = fr);
   }
@@ -268,6 +320,11 @@
     var a = attrs[sh.e].map(function (at, i) { return at + '="' + sh.v[i].toFixed(1) + '"'; }).join(' ');
     return '<' + sh.e + ' class="' + (sh.c + extra).trim() + '" ' + a + (sh.r ? ' r="' + sh.r + '"' : '') + '/>';
   }
+  if (!document.getElementById('ninots-css')) document.head.insertAdjacentHTML('beforeend', '<style id="ninots-css">' +
+    '.fig .th{stroke-width:7.5}.fig .sh{stroke-width:5.6}.fig .ft{stroke-width:3.6}.fig .ua{stroke-width:5.4}.fig .fa{stroke-width:4.4}' +
+    '.fig .tor{stroke-width:12}.fig .pv{stroke-width:10}.fig .shl{stroke-width:7}.fig .hpl{stroke-width:8}.fig .nk{stroke-width:4.5}' +
+    '.fig .hn{fill:var(--ink);stroke-width:0}.fig .bk{stroke:#7d8d9a}.fig .hn.bk{fill:#7d8d9a}' +
+    '.fig .eq,.fig .db,.fig .eqc,.fig .cab{stroke-linecap:round}</style>');
   var label = document.documentElement.lang === 'es' ? 'Dibujo del ejercicio' : 'Dibuix de l\'exercici';
   function svg(key) {
     if (!F[key]) return '';
