@@ -37,6 +37,11 @@ Si canvies alguna cosa de `comu/`, puja el número `?v=` a tots els HTML perquè
 - `prompt-rutines.md` · prompt base de l'Adrià per crear rutines físiques segons el nivell (1-4) del jugador. Quan passi la fitxa
   d'un client, segueix-lo al peu de la lletra (classificació, estructura de 7 punts, normes, preguntar dades que faltin).
 
+- `guia-sessions-padel.pdf` i el resum `guia-sessions-padel.md` · la guia de sessions de l'Adrià per als **jugadors de pàdel**
+  (7 blocs, paràmetres per nivell, escales de graons, palanques, ajustos per perfil, microcicle). És la base de tota rutina per a un
+  jugador de pàdel, adaptant graó i intensitat a l'alumne. No s'aplica a clients amb un altre objectiu (p. ej. hipertròfia).
+  Regla de l'Adrià per sobre de tot: mínim 3 sessions de força/setmana a qualsevol nivell + 1 o 2 partits.
+
 ## Client nou
 
 1. Copia `plantilla.html` (o `plantilla-padel.html` per a pàdel, i adapta-la amb `base.html`) a `<nom>.html` i segueix el comentari de dalt (canviar `NOM`, omplir perfil, dies i exercicis amb `data-fig`).
