@@ -30,6 +30,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="comu/coach.css?v=3">
+<style>
+  #entreno .blk { display: flex; align-items: center; gap: 8px; margin: 18px 0 6px; padding: 6px 10px; border-radius: 10px; background: rgba(46, 204, 138, .08); border-left: 3px solid var(--green); }
+  #entreno .blk .bn { font: 700 15px/1 var(--display); color: var(--green); min-width: 14px; }
+  #entreno .blk b { font: 700 15px/1.2 var(--display); text-transform: uppercase; letter-spacing: .04em; }
+  #entreno .blk .bt { margin-left: auto; font-size: 12px; color: var(--mut); white-space: nowrap; }
+</style>
 
 <header>
   <div class="wrap">
@@ -147,60 +153,73 @@
   <section id="entreno" hidden>
     <h2>La teva <em>setmana</em></h2>
     <div class="card hl">
-      <p>3 sessions de força + 2 dies de pista + 1 partit. Cada sessió comença amb el <b>bloc 1 · escalfament (10 min)</b>: 4 min de bici, 4 min de mobilitat de turmell, maluc i tòrax, monster walk amb goma 1×8 per costat i, per acabar, 3 split-steps ràpids.</p>
+      <p>3 sessions de força + 2 dies de pista + 1 partit. Cada sessió té els <b>7 blocs</b> en aquest ordre: escalfament, velocitat i salts, esquat o bisagra, una cama, empènyer i estirar, tronc i prevenció.</p>
       <p class="small">La dosi és la de la <b>setmana 1</b>. Com puja cada setmana ho tens a la pestanya Estratègia.</p>
     </div>
 
     <div class="card">
       <h3>Dilluns · Força A: cos sencer <span class="tag t-gym">Moderada</span></h3>
-      <p class="mut small">Bloc 2 · velocitat i salts</p>
+      <div class="blk"><span class="bn">1</span><b>Escalfament</b><span class="bt">10 min</span></div>
+      <p class="small">4 min de bici · 4 min de mobilitat de turmell, maluc i tòrax · monster walk amb goma 1×8 per costat · per acabar, 3 split-steps ràpids.</p>
+      <div class="blk"><span class="bn">2</span><b>Velocitat i salts</b><span class="bt">8-12 min</span></div>
       <div class="ex" data-fig="splitstep"><span class="n">Split-step tècnic</span><span class="dose">3×4</span><span class="why">Graó 1 de velocitat. Petit rebot i cau amb els peus amples i el pes a la punta.</span></div>
       <div class="ex" data-fig="snapdown"><span class="n">Aterratge des de calaix de 20 cm</span><span class="dose">3×5</span><span class="why">Graó 1 de pliometria. Cau suau, aguanta 2 s amb el genoll damunt del peu.</span></div>
-      <p class="mut small">Bloc 3 · esquat</p>
+      <div class="blk"><span class="bn">3</span><b>Esquat</b><span class="bt">12-15 min</span></div>
       <div class="ex" data-fig="goblet"><span class="n">Esquat goblet</span><span class="dose">3×10</span><span class="why">Graó 2. Baixa en 3 s, genolls en línia amb els peus. RIR 4, descans 90 s.</span></div>
-      <p class="mut small">Bloc 4 · una cama i equilibri</p>
+      <div class="blk"><span class="bn">4</span><b>Una cama i equilibri</b><span class="bt">8-10 min</span></div>
       <div class="ex" data-fig="lunge"><span class="n">Gambada enrere</span><span class="dose">2×10/cama</span><span class="why">Graó 2. Comença per la cama dèbil. Genoll davanter alineat amb el peu.</span></div>
       <div class="ex" data-fig="balance"><span class="n">Equilibri a una cama</span><span class="dose">2×30 s/cama</span><span class="why">Graó 1 de turmell. Ulls oberts, el genoll no se'n va cap a dins.</span></div>
-      <p class="mut small">Bloc 5 · empènyer i estirar (2 : 1)</p>
+      <div class="blk"><span class="bn">5</span><b>Empènyer i estirar (2 : 1)</b><span class="bt">8 min</span></div>
       <div class="ex" data-fig="inclinepush"><span class="n">Flexions inclinades (mans al banc)</span><span class="dose">2×10</span><span class="why">Graó 1. El cos en bloc, de cap a talons.</span></div>
       <div class="ex" data-fig="bandrow"><span class="n">Rem amb goma</span><span class="dose">4×12</span><span class="why">Graó 1. Omòplats enrere i avall.</span></div>
-      <p class="mut small">Bloc 6 · tronc</p>
+      <div class="blk"><span class="bn">6</span><b>Tronc</b><span class="bt">5 min</span></div>
       <div class="ex" data-fig="deadbug"><span class="n">Dead bug</span><span class="dose">2×8/costat</span><span class="why">La lumbar enganxada a terra tota l'estona.</span></div>
-      <p class="mut small">Bloc 7 · prevenció i calma</p>
+      <div class="blk"><span class="bn">7</span><b>Prevenció i calma</b><span class="bt">7-10 min</span></div>
       <div class="ex" data-fig="extrot"><span class="n">Rotació externa amb goma, colze al costat</span><span class="dose">2×15</span><span class="why">Graó 1 d'espatlla.</span></div>
       <div class="ex" data-fig="wrist"><span class="n">Isomètric d'extensió de canell</span><span class="dose">3×30 s</span><span class="why">Graó 1 de colze. Aguanta el pes sense moure el canell.</span></div>
-      <div class="ex" data-fig="calves"><span class="n">Elevació de bessons a 2 cames</span><span class="dose">2×15</span><span class="why">Graó 1. Baixa en 3 s. Per acabar, 3 min de mobilitat.</span></div>
+      <div class="ex" data-fig="calves"><span class="n">Elevació de bessons a 2 cames</span><span class="dose">2×15</span><span class="why">Graó 1. Baixa en 3 s. Per acabar, 3 min de mobilitat i respiració.</span></div>
     </div>
 
     <div class="card">
       <h3>Dimecres · Força B: el dia més dur <span class="tag t-gym">Alta</span></h3>
-      <p class="mut small">Bloc 2 · velocitat i salts</p>
+      <div class="blk"><span class="bn">1</span><b>Escalfament</b><span class="bt">10 min</span></div>
+      <p class="small">4 min de bici · 4 min de mobilitat de turmell, maluc i tòrax · monster walk amb goma 1×8 per costat · per acabar, 3 split-steps ràpids.</p>
+      <div class="blk"><span class="bn">2</span><b>Velocitat i salts</b><span class="bt">8-12 min</span></div>
       <div class="ex" data-fig="run"><span class="n">Frenada en 3-4 passos</span><span class="dose">3×4</span><span class="why">Arrencada de 3 m al 70 % i frena baixa, sense que el genoll vagi cap a dins.</span></div>
       <div class="ex" data-fig="rope"><span class="n">Corda (dos peus)</span><span class="dose">3×10</span><span class="why">Salts baixos i rítmics.</span></div>
-      <p class="mut small">Bloc 3 · bisagra</p>
+      <div class="blk"><span class="bn">3</span><b>Bisagra</b><span class="bt">12-15 min</span></div>
       <div class="ex" data-fig="bridge"><span class="n">Hip thrust</span><span class="dose">3×10</span><span class="why">Graó 2. Esquena al banc i espatlles, maluc i genoll en línia a dalt. RIR 4, descans 90 s.</span></div>
-      <p class="mut small">Bloc 4 · una cama i multidireccional</p>
+      <div class="blk"><span class="bn">4</span><b>Una cama i multidireccional</b><span class="bt">8-10 min</span></div>
       <div class="ex" data-fig="lateralsquat"><span class="n">Gambada lateral</span><span class="dose">2×8/costat</span><span class="why">Graó 1 multidireccional. Maluc enrere i el peu sencer a terra.</span></div>
       <div class="ex" data-fig="balance"><span class="n">Equilibri a una cama</span><span class="dose">2×30 s/cama</span><span class="why">Graó 1 de turmell.</span></div>
-      <p class="mut small">Bloc 5 · empènyer i estirar (2 : 1)</p>
+      <div class="blk"><span class="bn">5</span><b>Empènyer i estirar (2 : 1)</b><span class="bt">8 min</span></div>
       <div class="ex" data-fig="inclinepush"><span class="n">Flexions inclinades (mans al banc)</span><span class="dose">2×10</span><span class="why">Graó 1.</span></div>
       <div class="ex" data-fig="dbrow"><span class="n">Rem a un braç amb manuella</span><span class="dose">4×10/braç</span><span class="why">Graó 3 (ve del gimnàs). Sense girar el tronc.</span></div>
-      <p class="mut small">Bloc 6 · tronc</p>
+      <div class="blk"><span class="bn">6</span><b>Tronc</b><span class="bt">5 min</span></div>
       <div class="ex" data-fig="plank"><span class="n">Planxa</span><span class="dose">2×25 s</span><span class="why">Glutis actius i sense arquejar l'esquena.</span></div>
-      <p class="mut small">Bloc 7 · prevenció i calma</p>
+      <div class="blk"><span class="bn">7</span><b>Prevenció i calma</b><span class="bt">7-10 min</span></div>
       <div class="ex" data-fig="extrot"><span class="n">Rotació externa amb goma, colze al costat</span><span class="dose">2×15</span><span class="why">Graó 1 d'espatlla.</span></div>
       <div class="ex" data-fig="wrist"><span class="n">Isomètric d'extensió de canell</span><span class="dose">3×30 s</span><span class="why">Graó 1 de colze.</span></div>
-      <div class="ex" data-fig="calves"><span class="n">Elevació de bessons a 2 cames</span><span class="dose">2×15</span><span class="why">Graó 1. Per acabar, 3 min de mobilitat.</span></div>
+      <div class="ex" data-fig="calves"><span class="n">Elevació de bessons a 2 cames</span><span class="dose">2×15</span><span class="why">Graó 1. Per acabar, 3 min de mobilitat i respiració.</span></div>
     </div>
 
     <div class="card">
       <h3>Dijous · Força C: suau, 40 min <span class="tag t-rec">Suau</span></h3>
-      <p class="small">Falten 48 h per al partit, així que res d'intens: velocitat només tècnica, sense salts i pesos lleugers (RIR 4). Escalfament de 8 min.</p>
+      <p class="small">Falten 48 h per al partit, així que res d'intens: velocitat només tècnica, sense salts i pesos lleugers (RIR 4).</p>
+      <div class="blk"><span class="bn">1</span><b>Escalfament</b><span class="bt">8 min</span></div>
+      <p class="small">4 min de bici · 4 min de mobilitat de turmell, maluc i tòrax.</p>
+      <div class="blk"><span class="bn">2</span><b>Velocitat (només tècnica)</b><span class="bt">4 min</span></div>
       <div class="ex" data-fig="splitstep"><span class="n">Split-step tècnic</span><span class="dose">2×4</span><span class="why">Sense salts, només el gest.</span></div>
+      <div class="blk"><span class="bn">3</span><b>Esquat</b><span class="bt">6 min</span></div>
       <div class="ex" data-fig="goblet"><span class="n">Esquat goblet lleuger</span><span class="dose">2×10</span><span class="why">El pes del dilluns menys un 20 %. Tècnica perfecta.</span></div>
+      <div class="blk"><span class="bn">4</span><b>Una cama i equilibri</b><span class="bt">8 min</span></div>
       <div class="ex" data-fig="lunge"><span class="n">Split squat (gambada estàtica)</span><span class="dose">2×8/cama</span><span class="why">Graó 1 d'una cama. Els peus no es mouen: baixa i puja.</span></div>
       <div class="ex" data-fig="balance"><span class="n">Equilibri a una cama</span><span class="dose">2×30 s/cama</span><span class="why">Graó 1 de turmell.</span></div>
+      <div class="blk"><span class="bn">5</span><b>Estirar</b><span class="bt">4 min</span></div>
       <div class="ex" data-fig="bandrow"><span class="n">Rem amb goma</span><span class="dose">2×12</span><span class="why">Omòplats enrere i avall.</span></div>
+      <div class="blk"><span class="bn">6</span><b>Tronc</b><span class="bt">3 min</span></div>
+      <div class="ex" data-fig="deadbug"><span class="n">Dead bug</span><span class="dose">2×6/costat</span><span class="why">Lent, la lumbar enganxada a terra.</span></div>
+      <div class="blk"><span class="bn">7</span><b>Prevenció i calma</b><span class="bt">10 min</span></div>
       <div class="ex" data-fig="extrot"><span class="n">Rotació externa amb goma, colze al costat</span><span class="dose">2×15</span><span class="why">Graó 1 d'espatlla.</span></div>
       <div class="ex" data-fig="wrist"><span class="n">Isomètric d'extensió de canell</span><span class="dose">3×30 s</span><span class="why">Graó 1 de colze.</span></div>
       <div class="ex" data-fig="calves"><span class="n">Elevació de bessons a 2 cames</span><span class="dose">2×15</span><span class="why">Per acabar, 5 min de mobilitat.</span></div>
