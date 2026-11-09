@@ -97,9 +97,10 @@
     inclinecurl: { a: { P: [80, 82], t: -118, ua: 98, fa: 96, th: 0, sa: 90 }, b: { fa: -30 },
       props: [['l', 86, 86, 62, 44, 'gr'], ['l', 74, 86, 106, 86, 'gr'], ['l', 92, 86, 92, 104, 'gr'], ['d', 'W']] },
     // Isomètric de canell: avantbraç recolzat a la cuixa i el canell aguanta en extensió, sense moure's.
-    // Isomètric de canell a politja: dret al costat de la politja baixa, colze a 90° enganxat al cos i el canell aguanta el pes sense moure's.
-    wristcable: { a: { P: [80, 63], t: -90, E: [81, 48], W: [97, 48], F: [82, 104], kb: -1 }, b: { W: [97, 47.5] },
-      props: [['c', 128, 100, 'W'], ['o', 'W', 2]] },
+    // Isomètric de canell a politja, vist de davant: com la rotació externa, colze enganxat a 90° i la politja a l'alçada de la mà
+    // estirant de costat; el canell només resisteix, sense moviment.
+    wristcable: { front: 1, a: { P: [80, 62], t: -90, E: [70, 48], W: [72, 50], ua2: 92, fa2: 92, F: [74, 104], F2: [86, 104] }, b: { W: [72, 49.6] },
+      props: [['c', 146, 50, 'W'], ['o', 'W', 3]] },
     wristiso: { a: { P: [70, 82], t: -62, E: [90, 70], W: [105, 70], th: 0, sa: 90 }, b: { W: [105, 69] },
       props: [['l', 54, 86, 96, 86, 'gr'], ['l', 74, 86, 74, 104, 'gr'], ['d', 'W']] },
     wrist: { a: { P: [70, 82], t: -62, E: [90, 70], W: [105, 76], th: 0, sa: 90 }, b: { W: [105, 64] },
