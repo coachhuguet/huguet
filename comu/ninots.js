@@ -50,10 +50,11 @@
       m: { ua: -125, fa: -125, ua2: -55, fa2: -55 }, b: { ua: 180, fa: 180, ua2: 0, fa2: 0 },
       props: [['o', 'W', 2], ['o', 'W2', 2]] },
     // Y-T a banc inclinat: pit recolzat al banc, braços penjant; pugen estirats fins a quedar en línia amb el tronc (Y).
-    ytbench: { a: { P: [98, 80], t: -140, W: [72, 94], eb: 1, F: [124, 104], kb: 1 }, b: { W: [46, 39] },
+    ytbench: { a: { P: [98, 80], t: -140, ua: 90, fa: 90, F: [124, 104], kb: 1 }, b: { ua: 220, fa: 220 },
       props: [['l', 104, 88, 64, 54, 'gr'], ['l', 92, 78, 92, 104, 'gr'], ['d', 'W']] },
-    landmine: { a: { P: [80, 64], t: -90, W: [88, 36], eb: 1, F: [94, 104], F2: [64, 104], kb: -1 }, b: { t: -80, W: [110, 12] },
-      props: [['m', 18, 103, 'W'], ['o', 'W', 4]] },
+    // Landmine press: de cara a l'ancoratge; la barra surt del terra davant i la mà l'empeny en diagonal amunt i endavant.
+    landmine: { a: { P: [72, 64], t: -90, W: [80, 38], eb: 1, F: [86, 104], F2: [58, 104], kb: -1 }, b: { t: -82, W: [100, 14] },
+      props: [['m', 152, 103, 'W'], ['o', 'W', 4]] },
 
     // ── Tríceps ──
     pushdown: { a: { P: [76, 63], t: -82, ua: 88, fa: -15, F: [76, 104], kb: -1 }, b: { fa: 85 },
@@ -96,6 +97,9 @@
     inclinecurl: { a: { P: [80, 82], t: -118, ua: 98, fa: 96, th: 0, sa: 90 }, b: { fa: -30 },
       props: [['l', 86, 86, 62, 44, 'gr'], ['l', 74, 86, 106, 86, 'gr'], ['l', 92, 86, 92, 104, 'gr'], ['d', 'W']] },
     // Isomètric de canell: avantbraç recolzat a la cuixa i el canell aguanta en extensió, sense moure's.
+    // Isomètric de canell a politja: dret al costat de la politja baixa, colze a 90° enganxat al cos i el canell aguanta el pes sense moure's.
+    wristcable: { a: { P: [80, 63], t: -90, E: [81, 48], W: [97, 48], F: [82, 104], kb: -1 }, b: { W: [97, 47.5] },
+      props: [['c', 128, 100, 'W'], ['o', 'W', 2]] },
     wristiso: { a: { P: [70, 82], t: -62, E: [90, 70], W: [105, 70], th: 0, sa: 90 }, b: { W: [105, 69] },
       props: [['l', 54, 86, 96, 86, 'gr'], ['l', 74, 86, 74, 104, 'gr'], ['d', 'W']] },
     wrist: { a: { P: [70, 82], t: -62, E: [90, 70], W: [105, 76], th: 0, sa: 90 }, b: { W: [105, 64] },
@@ -106,7 +110,7 @@
       props: [['l', 100, -8, 100, 104, 'gr'], ['o', 'N', 6]] },
     bbsquat: { a: { P: [86, 63], t: -88, Wr: [-3, 3], eb: -1, F: [88, 104], kb: -1 }, b: { P: [66, 84], t: -58 },
       props: [['o', 'N', 6]] },
-    goblet: { a: { P: [84, 63], t: -88, Wr: [9, 8], eb: -1, F: [88, 104], kb: -1 }, b: { P: [70, 86], t: -66 },
+    goblet: { a: { P: [84, 63], t: -88, Wr: [9, 8], eb: 1, F: [88, 104], kb: -1 }, b: { P: [70, 86], t: -66 },
       props: [['o', 'W', 5]] },
     jumpsquat: { a: { P: [66, 84], t: -58, Wr: [-3, 3], eb: -1, F: [88, 104], kb: -1 }, b: { P: [86, 52], t: -88, F: [88, 93] },
       props: [['l', 100, -8, 100, 104, 'gr'], ['o', 'N', 6]] },
@@ -169,7 +173,7 @@
       props: [['l', 112, 82, 144, 82, 'gr'], ['l', 138, 82, 138, 104, 'gr']] },
     // Copenhaguen curt: planxa lateral sobre el colze amb el genoll de dalt recolzat al banc; la cama de baix puja fins al banc.
     copenshort: { front: 1, a: { P: [88, 96], t: -149.9, E: [56, 103], W: [44, 103], F: [122, 100], F2: [128, 79] }, b: { P: [88, 82], t: -172.6, F: [122, 86] },
-      props: [['l', 100, 83, 116, 83, 'gr'], ['l', 110, 83, 110, 104, 'gr']] },
+      props: [['l', 118, 81, 142, 81, 'gr'], ['l', 136, 81, 136, 104, 'gr']] },
     // Dead bug: braç i cama contraris. El braç del darrere va enrere i la cama del davant s'estira, sense que la lumbar s'aixequi.
     deadbug: { a: { P: [96, 96], t: 180, W: [64, 63], eb: 1, W2: [64, 63], th: -90, sa: 0, F2: [117, 74] }, b: { W2: [34, 92], th: -14, sa: -6 },
       props: [] },
@@ -189,7 +193,8 @@
       props: [['l', 96, 84, 140, 84, 'gr'], ['l', 96, 84, 96, 104, 'gr'], ['l', 140, 84, 140, 104, 'gr']] },
     slam: { a: { P: [80, 63], t: -90, W: [82, -2], eb: 1, F: [86, 104], kb: -1 }, b: { P: [72, 74], t: -38, W: [106, 98] },
       props: [['o', 'W', 6]] },
-    rotthrow: { front: 1, a: { P: [80, 66], t: -90, W: [62, 62], W2: [66, 60], eb: 1, F: [64, 104], F2: [96, 104] }, b: { W: [106, 28], W2: [102, 30] },
+    // Llançament rotacional: la pilota surt del maluc d'un costat i acaba a l'alçada de l'espatlla de l'altre, cap a la paret.
+    rotthrow: { front: 1, a: { P: [80, 66], t: -90, E: [64, 48], W: [68, 60], E2: [80, 50], W2: [68, 60], F: [64, 104], F2: [96, 104] }, b: { E: [87, 40], W: [102, 38], E2: [95, 46], W2: [102, 38] },
       props: [['o', 'W', 6], ['l', 140, -8, 140, 104, 'gr']] },
     chestpass: { a: { P: [78, 64], t: -88, W: [92, 40], eb: 1, F: [92, 104], F2: [64, 104], kb: -1 }, b: { t: -80, W: [116, 36] },
       props: [['o', 'W', 6]] },
