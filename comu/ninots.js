@@ -49,6 +49,9 @@
     ytband: { front: 1, a: { P: [80, 62], t: -90, ua: 100, fa: 100, ua2: 80, fa2: 80, F: [74, 104], F2: [86, 104] },
       m: { ua: -125, fa: -125, ua2: -55, fa2: -55 }, b: { ua: 180, fa: 180, ua2: 0, fa2: 0 },
       props: [['o', 'W', 2], ['o', 'W2', 2]] },
+    // Y-T a banc inclinat: pit recolzat al banc, braços penjant; pugen estirats fins a quedar en línia amb el tronc (Y).
+    ytbench: { a: { P: [98, 80], t: -140, W: [72, 94], eb: 1, F: [124, 104], kb: 1 }, b: { W: [46, 39] },
+      props: [['l', 104, 88, 64, 54, 'gr'], ['l', 92, 78, 92, 104, 'gr'], ['d', 'W']] },
     landmine: { a: { P: [80, 64], t: -90, W: [88, 36], eb: 1, F: [94, 104], F2: [64, 104], kb: -1 }, b: { t: -80, W: [110, 12] },
       props: [['m', 18, 103, 'W'], ['o', 'W', 4]] },
 
@@ -73,7 +76,8 @@
       props: [['o', 'W', 6]] },
     dbrow: { a: { P: [62, 63], t: -4, W: [96, 94], eb: 1, W2: [100, 83], th: 90, sa: 180, F2: [76, 103], kb: -1 }, b: { W: [84, 72] },
       props: [['l', 36, 84, 108, 84, 'gr'], ['l', 46, 84, 46, 104, 'gr'], ['l', 100, 84, 100, 104, 'gr'], ['d', 'W']] },
-    cablerow: { a: { P: [62, 86], t: -72, W: [100, 70], eb: 1, F: [104, 92], kb: -1 }, b: { t: -94, W: [76, 70] },
+    // Rem a politja baixa: tronc gairebé vertical (només 10° de balanceig); colzes enrere i omòplats junts.
+    cablerow: { a: { P: [62, 86], t: -80, W: [100, 70], eb: 1, F: [104, 92], kb: -1 }, b: { t: -92, W: [72, 72] },
       props: [['l', 44, 90, 80, 90, 'gr'], ['l', 60, 90, 60, 104, 'gr'], ['l', 108, 84, 108, 104, 'gr'], ['c', 136, 88, 'W'], ['o', 'W', 3]] },
     bandrow: { a: { P: [60, 98], t: -72, E: [83, 74], W: [99, 77], F: [102, 100], kb: -1 }, b: { t: -94, E: [45, 78], W: [61, 81] },
       props: [['c', 104, 97, 'W']] },
@@ -91,6 +95,9 @@
       props: [['c', 100, 104, 'W'], ['o', 'W', 3]] },
     inclinecurl: { a: { P: [80, 82], t: -118, ua: 98, fa: 96, th: 0, sa: 90 }, b: { fa: -30 },
       props: [['l', 86, 86, 62, 44, 'gr'], ['l', 74, 86, 106, 86, 'gr'], ['l', 92, 86, 92, 104, 'gr'], ['d', 'W']] },
+    // Isomètric de canell: avantbraç recolzat a la cuixa i el canell aguanta en extensió, sense moure's.
+    wristiso: { a: { P: [70, 82], t: -62, E: [90, 70], W: [105, 70], th: 0, sa: 90 }, b: { W: [105, 69] },
+      props: [['l', 54, 86, 96, 86, 'gr'], ['l', 74, 86, 74, 104, 'gr'], ['d', 'W']] },
     wrist: { a: { P: [70, 82], t: -62, E: [90, 70], W: [105, 76], th: 0, sa: 90 }, b: { W: [105, 64] },
       props: [['l', 54, 86, 96, 86, 'gr'], ['l', 74, 86, 74, 104, 'gr'], ['d', 'W']] },
 
@@ -131,11 +138,21 @@
     // A dalt, espatlles, maluc i genoll en línia (sense hiperextensió lumbar).
     bridge: { a: { P: [84, 98], t: 180, W: [84, 103], eb: 1, F: [112, 103], kb: -1 }, b: { P: [84.3, 89.2], t: 164 },
       props: [] },
-    calves: { a: { P: [78, 59], t: -90, W: [80, 61], eb: 1, F: [78, 101], T: [89, 104], kb: -1 }, b: { P: [80, 52], W: [82, 54], F: [80, 94] },
+    calves: { a: { P: [78, 59], t: -90, W: [80, 61], eb: 1, F: [78, 101], T: [89, 104], kb: -1 }, b: { P: [80, 49], W: [82, 51], F: [80, 91] },
       props: [['l', 84, 104, 120, 104, 'eq']] },
     seatedcalf: { a: { P: [68, 82], t: -88, W: [88, 78], eb: 1, F: [94, 100], T: [104, 102], kb: -1 }, b: { F: [94, 94] },
       props: [['l', 50, 86, 80, 86, 'gr'], ['l', 64, 86, 64, 104, 'gr'], ['l', 80, 74, 100, 74, 'eq'], ['l', 98, 104, 116, 104, 'eq']] },
 
+    // Hip thrust: la part alta de l'esquena recolzada al banc (pivot a les espatlles), peus a terra; a dalt, canyella vertical i tronc horitzontal.
+    hipthrust: { a: { P: [86, 98], t: -150.3, Wr: [24, 12], eb: 1, F: [111, 103], kb: -1 }, b: { P: [90, 82], t: -180, Wr: [27, -3] },
+      props: [['l', 26, 84, 58, 84, 'gr'], ['l', 30, 84, 30, 104, 'gr'], ['l', 54, 84, 54, 104, 'gr']] },
+    // Bessons a una cama: es puja sobre la punta d'un peu; l'altra cama doblegada enrere sense tocar.
+    calves1: { a: { P: [78, 59], t: -90, W: [80, 61], eb: 1, F: [78, 101], T: [89, 104], F2: [62, 76], kb: -1 }, b: { P: [80, 52], W: [82, 54], F: [80, 94], F2: [64, 69] },
+      props: [['l', 84, 104, 120, 104, 'eq']] },
+    // Salt vertical amb aturada: contramoviment, salt i aterratge a mig esquat aguantant 2 s.
+    jumpstick: { a: { P: [74, 76], t: -62, W: [60, 74], eb: 1, F: [88, 104], kb: -1 }, m: { P: [84, 46], t: -88, W: [92, -2], F: [86, 88] },
+      b: { P: [76, 76], t: -64, W: [100, 58], F: [88, 104] },
+      props: [] },
     // Pes mort amb kettlebell: frontissa de maluc amb una mica més de genoll; la kettlebell baixa fins a terra entre els peus.
     kbdl: { a: { P: [80, 63], t: -90, Wr: [2, 31], eb: 1, F: [84, 104], kb: -1 }, b: { P: [68, 72], t: -28, Wr: [-10, 37] },
       props: [['o', 'W', 6]] },
@@ -150,6 +167,9 @@
       props: [] },
     copenhagen: { front: 1, a: { P: [88, 96], t: -149.9, E: [56, 103], W: [44, 103], F: [122, 100], F2: [128, 79] }, b: { P: [88, 82], t: -172.6, F: [122, 86] },
       props: [['l', 112, 82, 144, 82, 'gr'], ['l', 138, 82, 138, 104, 'gr']] },
+    // Copenhaguen curt: planxa lateral sobre el colze amb el genoll de dalt recolzat al banc; la cama de baix puja fins al banc.
+    copenshort: { front: 1, a: { P: [88, 96], t: -149.9, E: [56, 103], W: [44, 103], F: [122, 100], F2: [128, 79] }, b: { P: [88, 82], t: -172.6, F: [122, 86] },
+      props: [['l', 100, 83, 116, 83, 'gr'], ['l', 110, 83, 110, 104, 'gr']] },
     // Dead bug: braç i cama contraris. El braç del darrere va enrere i la cama del davant s'estira, sense que la lumbar s'aixequi.
     deadbug: { a: { P: [96, 96], t: 180, W: [64, 63], eb: 1, W2: [64, 63], th: -90, sa: 0, F2: [117, 74] }, b: { W2: [34, 92], th: -14, sa: -6 },
       props: [] },
@@ -158,7 +178,7 @@
     superman: { a: { P: [90, 98], t: 180, W: [26, 98], eb: 1, F: [132, 101], kb: 1 }, b: { t: 194, W: [28, 82], F: [130, 88] },
       props: [] },
     // Vist de davant: la politja estira des del costat i les mans van endavant (es veuen curtes) sense que el tronc giri.
-    pallof: { front: 1, a: { P: [80, 64], t: -90, E: [72, 50], W: [80, 46], E2: [88, 50], W2: [80, 46], F: [72, 104], F2: [88, 104] },
+    pallof: { front: 1, a: { P: [80, 62], t: -90, E: [72, 50], W: [80, 46], E2: [88, 50], W2: [80, 46], F: [72, 104], F2: [88, 104] },
       b: { E: [76, 42], W: [80, 40], E2: [84, 42], W2: [80, 40] },
       props: [['c', 10, 44, 'W'], ['o', 'W', 3]] },
     woodchop: { front: 1, a: { P: [80, 64], t: -90, W: [104, 8], W2: [100, 10], eb: 1, F: [66, 104], F2: [94, 104] }, b: { W: [60, 66], W2: [64, 64] },
@@ -201,6 +221,17 @@
     latlunge: { front: 1, a: { P: [80, 62], t: -90, E: [70, 52], W: [78, 44], E2: [90, 52], W2: [82, 44], F: [75, 104], F2: [85, 104] },
       b: { P: [66, 80], t: -82, E: [58, 70], W: [68, 62], E2: [80, 68], W2: [72, 62], F: [54, 104], F2: [106, 104] },
       props: [] },
+    // Salts laterals baixos a dos peus, vist de davant: peus junts, salt curt per sobre d'una línia i aterratge suau.
+    lathop2: { front: 1, a: { P: [66, 62], t: -90, ua: 110, fa: 70, ua2: 70, fa2: 110, F: [62, 104], F2: [70, 104] }, m: { P: [80, 50], F: [76, 92], F2: [84, 92] },
+      b: { P: [94, 62], F: [90, 104], F2: [98, 104] },
+      props: [['l', 76, 104, 84, 104, 'eq']] },
+    // Primer pas lateral, vist de davant: posició atlètica, empenta amb la cama de fora i pas llarg i baix cap al costat.
+    latstep: { front: 1, a: { P: [80, 70], t: -86, ua: 115, fa: 60, ua2: 65, fa2: 120, F: [66, 104], F2: [94, 104] },
+      b: { P: [62, 74], t: -74, F: [42, 104], F2: [92, 104] },
+      props: [] },
+    // Bici estàtica: assegut, tronc inclinat endavant i mans al manillar; les cames pedalen.
+    bike: { a: { P: [70, 62], t: -66, W: [104, 46], eb: 1, F: [93, 92], F2: [71, 92], kb: -1 }, m: { F: [82, 102], F2: [82, 82] }, b: { F: [71, 92], F2: [93, 92] },
+      props: [['l', 64, 64, 76, 64, 'gr'], ['l', 70, 64, 82, 92, 'gr'], ['l', 82, 92, 108, 44, 'gr'], ['l', 100, 44, 110, 44, 'gr'], ['k', 82, 92, 11, 'gr'], ['l', 66, 104, 104, 104, 'gr']] },
     run: { a: { P: [80, 60], t: -78, W: [98, 44], W2: [64, 62], eb: 1, F: [104, 92], F2: [56, 100], kb: -1 }, b: { W: [64, 62], W2: [98, 44], F: [56, 100], F2: [104, 92] },
       props: [] },
     walk: { a: { P: [80, 62], t: -88, W: [92, 62], W2: [70, 62], eb: 1, F: [96, 104], F2: [64, 104], kb: -1 }, b: { W: [70, 62], W2: [92, 62], F: [64, 104], F2: [96, 104] },
@@ -293,6 +324,7 @@
       else if (pr[0] === 'd') { var w = g[pr[1]]; out.push({ e: 'line', c: 'db', v: [w[0] - 5, w[1], w[0] + 5, w[1]] }); }
       else if (pr[0] === 'c') out.push({ e: 'line', c: 'cab', v: [pr[1], pr[2], g[pr[3]][0], g[pr[3]][1]] }, { e: 'circle', c: 'eqc', r: 3, v: [pr[1], pr[2]] });
       else if (pr[0] === 'm') out.push({ e: 'line', c: 'eq', v: [pr[1], pr[2], g[pr[3]][0], g[pr[3]][1]] });
+      else if (pr[0] === 'k') out.push({ e: 'circle', c: pr[4] || 'gr', r: pr[3], v: [pr[1], pr[2]] });
       else if (pr[0] === 'p') { var f = g[pr[1]]; out.push({ e: 'line', c: 'eq', v: [f[0] - pr[2], f[1] - pr[3], f[0] + pr[2], f[1] + pr[3]] }); }
     });
     return out;
