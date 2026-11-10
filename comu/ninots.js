@@ -16,7 +16,7 @@
     incline: { a: { P: [96, 78], t: -150, E: [60, 76], W: [66, 61], F: [120, 104], kb: -1 }, b: { E: [68, 46], W: [68, 30] },
       props: [['l', 98, 82, 62, 61, 'gr'], ['l', 98, 82, 120, 82, 'gr'], ['l', 100, 82, 100, 104, 'gr'], ['d', 'W']] },
     chestpress: { a: { P: [70, 82], t: -90, E: [54, 56], W: [70, 52], F: [94, 104], kb: -1 }, b: { E: [86, 51], W: [102, 50] },
-      props: [['l', 65, 86, 65, 42, 'gr'], ['l', 63, 86, 90, 86, 'gr'], ['l', 76, 86, 76, 104, 'gr'], ['m', 122, 6, 'W'], ['o', 'W', 3]] },
+      props: [['l', 65, 86, 65, 42, 'gr'], ['l', 63, 86, 90, 86, 'gr'], ['l', 76, 86, 76, 104, 'gr'], ['p', 'W', 0, 5]] },
     fly: { front: 1, a: { P: [80, 62], t: -90, W: [46, 36], W2: [114, 36], eb: 1, F: [74, 104], F2: [86, 104] }, b: { W: [76, 44], W2: [84, 44] },
       props: [['c', 14, -8, 'W'], ['c', 146, -8, 'W2'], ['o', 'W', 3], ['o', 'W2', 3]] },
     dips: { a: { P: [80, 60], t: -86, W: [84, 60], eb: 1, th: 110, sa: 165 }, b: { P: [76, 74], t: -78 },
@@ -165,6 +165,31 @@
     balance: { a: { P: [80, 60], t: -90, W: [96, 58], eb: 1, F: [80, 101], F2: [96, 84], kb: -1 }, b: { P: [82, 60], t: -88, W: [98, 56], F2: [98, 83] },
       props: [['l', 66, 102, 94, 102, 'eq']] },
 
+    // ── Màquines guiades i Smith ──
+    // Adductors a màquina, vist de davant i assegut: els genolls (cuixes cap a nosaltres) passen d'oberts a tancats contra els coixins de dins.
+    adductor: { front: 1, a: { P: [80, 82], t: -90, W: [66, 84], W2: [94, 84], eb: 1, K: [60, 86], K2: [100, 86], F: [62, 104], F2: [98, 104] },
+      b: { K: [73, 88], K2: [87, 88], F: [72, 104], F2: [88, 104] },
+      props: [['l', 60, 90, 100, 90, 'gr'], ['p', 'K', 0, 5], ['p', 'K2', 0, 5]] },
+    // Abductors a màquina: al revés, els genolls s'obren contra els coixins de fora.
+    abductor: { front: 1, a: { P: [80, 82], t: -90, W: [66, 84], W2: [94, 84], eb: 1, K: [73, 88], K2: [87, 88], F: [72, 104], F2: [88, 104] },
+      b: { K: [60, 86], K2: [100, 86], F: [62, 104], F2: [98, 104] },
+      props: [['l', 60, 90, 100, 90, 'gr'], ['p', 'K', 0, 5], ['p', 'K2', 0, 5]] },
+    // Press inclinat a la Smith: banc a 30° i la barra puja en vertical pel carril, sobre les espatlles.
+    smithincline: { a: { P: [96, 78], t: -150, E: [60, 76], W: [66, 61], F: [120, 104], kb: -1 }, b: { E: [68, 46], W: [68, 30] },
+      props: [['l', 98, 82, 62, 61, 'gr'], ['l', 98, 82, 120, 82, 'gr'], ['l', 100, 82, 100, 104, 'gr'], ['l', 58, -8, 58, 104, 'gr'], ['o', 'W', 6]] },
+    // Press militar a màquina: assegut amb l'esquena al respatller, nanses a l'altura de les espatlles i empenta amunt.
+    machineohp: { a: { P: [78, 82], t: -92, E: [90, 62], W: [88, 46], F: [102, 104], kb: -1 }, b: { E: [83, 33], W: [84, 17] },
+      props: [['l', 72, 86, 72, 40, 'gr'], ['l', 70, 86, 98, 86, 'gr'], ['l', 84, 86, 84, 104, 'gr'], ['p', 'W', 4, 0]] },
+    // Curl de bíceps a màquina (Scott): el braç recolzat al coixí inclinat i només es mou l'avantbraç.
+    machinecurl: { a: { P: [64, 84], t: -84, ua: 50, fa: 25, F: [92, 104], kb: -1 }, b: { fa: -75 },
+      props: [['l', 60, 88, 80, 88, 'gr'], ['l', 70, 88, 70, 104, 'gr'], ['l', 70, 60, 86, 76, 'gr'], ['l', 86, 76, 86, 104, 'gr'], ['o', 'W', 3]] },
+    // Extensió de tríceps a màquina: mateix coixí, l'avantbraç va d'amunt a estirat.
+    machinetri: { a: { P: [64, 84], t: -84, ua: 50, fa: -75, F: [92, 104], kb: -1 }, b: { fa: 25 },
+      props: [['l', 60, 88, 80, 88, 'gr'], ['l', 70, 88, 70, 104, 'gr'], ['l', 70, 60, 86, 76, 'gr'], ['l', 86, 76, 86, 104, 'gr'], ['o', 'W', 3]] },
+    // Bessons dempeus a la Smith: barra a les espatlles, puntes sobre un disc i es puja de puntetes.
+    smithcalves: { a: { P: [78, 60], t: -90, Wr: [-3, 3], eb: -1, F: [78, 101], T: [89, 104], kb: -1 }, b: { P: [80, 53], F: [80, 94] },
+      props: [['l', 96, -8, 96, 104, 'gr'], ['l', 84, 104, 104, 104, 'eq'], ['o', 'N', 6]] },
+
     // ── Core ──
     plank: { a: { P: [92, 86], t: 180, E: [60, 103], W: [44, 103], F: [132, 102], kb: 1, T: [135, 104] }, b: { P: [92, 85] },
       props: [] },
@@ -281,11 +306,11 @@
     var a = p.E ? [p.E, p.W] : p.ua != null ? fk(sh1, p.ua, p.fa, lu, lf) : ik(sh1, W, lu, lf, p.eb); g.E = a[0]; g.W = a[1];
     segs.push([def.front ? 'S1' : 'N', 'E'], ['E', 'W']);
     if (p.ua2 != null || p.W2) { a = p.E2 ? [p.E2, p.W2] : p.ua2 != null ? fk(sh2, p.ua2, p.fa2, lu, lf) : ik(sh2, p.W2, lu, lf, def.front ? -p.eb : p.eb); g.E2 = a[0]; g.W2 = a[1]; segs.push([def.front ? 'S2' : 'N', 'E2'], ['E2', 'W2']); }
-    var k = p.Kp ? [p.Kp, [p.Kp[0] + L.sh * Math.cos(rad(p.sa)), p.Kp[1] + L.sh * Math.sin(rad(p.sa))]]
+    var k = p.K ? [p.K, p.F] : p.Kp ? [p.Kp, [p.Kp[0] + L.sh * Math.cos(rad(p.sa)), p.Kp[1] + L.sh * Math.sin(rad(p.sa))]]
       : p.th != null ? fk(hp1, p.th, p.sa, L.th, L.sh) : ik(hp1, p.F, L.th, L.sh, def.front ? 1 : p.kb);
     g.K = k[0]; g.F = k[1];
     segs.push([def.front ? 'Q1' : 'P', 'K'], ['K', 'F']);
-    if (p.F2) { k = ik(hp2, p.F2, L.th, L.sh, def.front ? -1 : (p.kb || -1)); g.K2 = k[0]; g.F2 = k[1]; segs.push([def.front ? 'Q2' : 'P', 'K2'], ['K2', 'F2']); }
+    if (p.F2) { k = p.K2 ? [p.K2, p.F2] : ik(hp2, p.F2, L.th, L.sh, def.front ? -1 : (p.kb || -1)); g.K2 = k[0]; g.F2 = k[1]; segs.push([def.front ? 'Q2' : 'P', 'K2'], ['K2', 'F2']); }
     if (p.T) { g.T = p.T; segs.push(['F', 'T']); }
     return { g: g, segs: segs };
   }
