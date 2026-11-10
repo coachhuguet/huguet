@@ -183,9 +183,10 @@
     // Curl de bíceps a màquina (Scott): el braç recolzat al coixí inclinat i només es mou l'avantbraç.
     machinecurl: { a: { P: [64, 84], t: -84, ua: 50, fa: 25, F: [92, 104], kb: -1 }, b: { fa: -75 },
       props: [['l', 60, 88, 80, 88, 'gr'], ['l', 70, 88, 70, 104, 'gr'], ['l', 70, 60, 86, 76, 'gr'], ['l', 86, 76, 86, 104, 'gr'], ['o', 'W', 3]] },
-    // Extensió de tríceps a màquina: mateix coixí, l'avantbraç va d'amunt a estirat.
-    machinetri: { a: { P: [64, 84], t: -84, ua: 50, fa: -75, F: [92, 104], kb: -1 }, b: { fa: 25 },
-      props: [['l', 60, 88, 80, 88, 'gr'], ['l', 70, 88, 70, 104, 'gr'], ['l', 70, 60, 86, 76, 'gr'], ['l', 86, 76, 86, 104, 'gr'], ['o', 'W', 3]] },
+    // Extensió de tríceps a màquina: colzes recolzats al coixí gairebé horitzontal a l'altura del pit; la mà surt del costat de la cara
+    // (colze doblegat del tot) i empeny endavant i avall fins a estirar el braç. El braç no es mou, només l'avantbraç.
+    machinetri: { a: { P: [64, 84], t: -84, ua: 20, fa: -112, F: [92, 104], kb: -1 }, b: { fa: 38 },
+      props: [['l', 60, 88, 80, 88, 'gr'], ['l', 70, 88, 70, 104, 'gr'], ['l', 70, 62, 90, 67, 'gr'], ['l', 90, 67, 90, 104, 'gr'], ['p', 'W', 0, 4]] },
     // Bessons dempeus a la Smith: barra a les espatlles, puntes sobre un disc i es puja de puntetes.
     smithcalves: { a: { P: [78, 60], t: -90, Wr: [-3, 3], eb: -1, F: [78, 101], T: [89, 104], kb: -1 }, b: { P: [80, 53], F: [80, 94] },
       props: [['l', 96, -8, 96, 104, 'gr'], ['l', 84, 104, 104, 104, 'eq'], ['o', 'N', 6]] },
