@@ -35,6 +35,15 @@
   #entreno .blk .bn { font: 700 15px/1 var(--display); color: var(--green); min-width: 14px; }
   #entreno .blk b { font: 700 15px/1.2 var(--display); text-transform: uppercase; letter-spacing: .04em; }
   #entreno .blk .bt { margin-left: auto; font-size: 12px; color: var(--mut); white-space: nowrap; }
+  #xat .xat-temes { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  #xat .xat-temes button { font: 600 14px/1 var(--body); color: var(--ink); background: var(--card-2); border: 1px solid var(--line-2); border-radius: 999px; padding: 9px 12px; cursor: pointer; }
+  #xat .xat-temes button:hover { border-color: var(--green); }
+  #xat textarea { display: block; width: 100%; box-sizing: border-box; margin: 6px 0 12px; padding: 12px; font: 16px/1.4 var(--body); color: var(--ink); background: var(--card-2); border: 1px solid var(--line-2); border-radius: 12px; resize: vertical; }
+  #xat textarea:focus { outline: 2px solid var(--green); outline-offset: 1px; }
+  #xat .xat-env { display: block; text-align: center; padding: 14px; border-radius: 14px; font: 700 16px/1 var(--body); color: #04140b; background: #25d366; text-decoration: none; }
+  #xat .xat-env[aria-disabled="true"] { opacity: .45; pointer-events: none; }
+  #xat .xat-m { padding: 10px 12px; margin-top: 8px; border-radius: 12px; background: rgba(37, 211, 102, .1); border: 1px solid rgba(37, 211, 102, .25); white-space: pre-wrap; }
+  #xat .xat-m small { display: block; color: var(--mut); margin-top: 4px; }
 </style>
 
 <header>
@@ -57,7 +66,9 @@
     <button role="tab" data-t="estrategia" aria-selected="false">Estratègia</button>
     <button role="tab" data-t="entreno" aria-selected="false">Setmana</button>
     <button role="tab" data-t="entrenar" aria-selected="false">▶ Entrena</button>
+    <button role="tab" data-t="dieta" aria-selected="false">Dieta</button>
     <button role="tab" data-t="progreso" aria-selected="false">📊 Progrés</button>
+    <button role="tab" data-t="xat" aria-selected="false">💬 Xat</button>
   </div>
 </nav>
 
@@ -235,6 +246,48 @@
     <div class="wk-pad"></div>
   </section>
 
+  <!-- DIETA: pautes per kg; les kcal i els macros exactes es posen quan tinguem el pes -->
+  <section id="dieta" hidden>
+    <h2>La teva <em>dieta</em></h2>
+    <div class="card hl">
+      <p>Tu ja menges bé: aquí hi ha el que cal ajustar perquè la dieta acompanyi la força i el pàdel. Els grams i les calories, a sota, es posen amb el teu pes.</p>
+    </div>
+    <div class="card">
+      <h3>Calories i macros</h3>
+      <p><b style="font:700 32px/1 var(--display)">—</b> <span class="mut">kcal al dia (amb el teu pes i l'activitat)</span></p>
+      <div class="macro"><div><b class="bl">1,6-2 g/kg</b><span class="mut small">Proteïna</span></div><div><b class="g">3-5 g/kg</b><span class="mut small">Hidrats</span></div><div><b style="color:var(--amber)">0,8-1 g/kg</b><span class="mut small">Greix</span></div></div>
+      <p class="mut small" style="margin-top:10px">Hidrats a la part alta els dies de força i de partit, a la baixa els dies de descans.</p>
+    </div>
+    <div class="card">
+      <h3>🥩 Proteïna per mantenir i guanyar múscul</h3>
+      <ul>
+        <li>Reparteix-la en <b>3-4 àpats de 25-35 g</b>, cadascun amb una font completa (ou, peix, carn, làctics o llegum + cereal).</li>
+        <li>Després de la força: un àpat amb proteïna en les 2 hores següents.</li>
+        <li>A partir dels 50 anys el múscul respon menys: arribar a la ració de cada àpat compta més que el total del dia.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🦴 Os i articulacions</h3>
+      <ul>
+        <li><b>Calci:</b> uns 1.200 mg al dia (làctics, beguda vegetal enriquida, peix petit amb espina, ametlles).</li>
+        <li><b>Vitamina D:</b> sol i peix blau. Si l'analítica la marca baixa, en parlem.</li>
+        <li>La força amb càrrega i els salts suaus del pla també protegeixen l'os.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🎾 Dia de partit</h3>
+      <ul>
+        <li><b>2-3 h abans:</b> àpat ric en hidrats i lleuger en greix i fibra. Res de nou aquell dia.</li>
+        <li><b>Durant:</b> 400-600 ml d'aigua per hora; amb calor o partits de més de 90 min, amb sals.</li>
+        <li><b>Després:</b> 20-40 g de proteïna + hidrats en les 2 hores següents.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>💧 Hidratació</h3>
+      <p>Uns <b>30-35 ml per kg</b> al dia, més el que perds jugant. Orina de color clar = bé.</p>
+    </div>
+  </section>
+
   <!-- PROGRES -->
   <section id="progreso" hidden>
     <h2>El teu <em>progrés</em></h2>
@@ -256,6 +309,27 @@
     <div class="card">
       <h3>🏋️ Càrregues setmanals (kg)</h3>
       <div class="scroll"><table id="cargas"></table></div>
+    </div>
+  </section>
+
+  <!-- XAT: el missatge s'envia a l'Adrià per WhatsApp (número a TEL) i queda guardat en aquest mòbil -->
+  <section id="xat" hidden>
+    <h2>Parla amb <em>l'Adrià</em></h2>
+    <div class="card hl"><p>Escriu-me aquí el que sigui: dubtes d'un exercici, una molèstia o un canvi de dia. Toca <b>Enviar</b> i s'obre el WhatsApp amb el missatge ja escrit.</p></div>
+    <div class="card">
+      <div class="xat-temes">
+        <button type="button" data-t="🩹 Molèstia: ">🩹 Molèstia</button>
+        <button type="button" data-t="❓ Dubte d'exercici: ">❓ Dubte d'exercici</button>
+        <button type="button" data-t="📅 Canvi de dia: ">📅 Canvi de dia</button>
+        <button type="button" data-t="🍽️ Dieta: ">🍽️ Dieta</button>
+      </div>
+      <label for="xat-msg" class="mut small">El teu missatge</label>
+      <textarea id="xat-msg" rows="5" placeholder="Escriu aquí..."></textarea>
+      <a id="xat-env" class="xat-env" href="#" target="_blank" rel="noopener">Enviar per WhatsApp</a>
+    </div>
+    <div class="card">
+      <h3>Missatges enviats</h3>
+      <div id="xat-hist"><p class="mut small">Encara no n'has enviat cap.</p></div>
     </div>
   </section>
 </main>
@@ -302,6 +376,35 @@
     var weeks = []; for (var i = 1; i <= 6; i++) weeks.push('S' + i + (i === 4 ? '·D' : ''));
     table('control', weeks, ['sRPE setmanal', 'Dolor màxim (0-10)', 'Benestar mitjà (1-5)', 'Sessions fetes (de 3)']);
     table('cargas', weeks, ['Goblet', 'Hip thrust / pes mort KB', 'Gambada enrere', 'Landmine press', 'Rem a un braç', 'Rem a politja']);
+  })();
+
+  // Xat: el missatge s'obre al WhatsApp de l'Adrià i es guarda a l'historial d'aquest mòbil.
+  (function () {
+    var TEL = '34640119278', KEY = 'coach-huguet-barbara-xat';
+    var msg = document.getElementById('xat-msg'), env = document.getElementById('xat-env'), hist = document.getElementById('xat-hist');
+    var list = [];
+    try { list = JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) {}
+    function esc(t) { return t.replace(/[&<>]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]; }); }
+    function draw() {
+      if (!list.length) return;
+      hist.innerHTML = list.slice().reverse().map(function (m) { return '<div class="xat-m">' + esc(m.t) + '<small>' + m.d + '</small></div>'; }).join('');
+    }
+    function upd() {
+      var t = msg.value.trim();
+      env.setAttribute('aria-disabled', String(!t));
+      env.href = 'https://wa.me/' + TEL + '?text=' + encodeURIComponent('Bàrbara: ' + t);
+    }
+    document.querySelectorAll('#xat .xat-temes button').forEach(function (b) {
+      b.addEventListener('click', function () { if (msg.value.indexOf(b.dataset.t) !== 0) msg.value = b.dataset.t + msg.value; msg.focus(); upd(); });
+    });
+    msg.addEventListener('input', upd);
+    env.addEventListener('click', function () {
+      var t = msg.value.trim(); if (!t) return;
+      list.push({ t: t, d: new Date().toLocaleString('ca-ES', { day: 'numeric', month: 'numeric', hour: '2-digit', minute: '2-digit' }) });
+      try { localStorage.setItem(KEY, JSON.stringify(list.slice(-30))); } catch (e) {}
+      draw(); setTimeout(function () { msg.value = ''; upd(); }, 300);
+    });
+    upd(); draw();
   })();
 </script>
 <script src="comu/ninots.js?v=10"></script>
