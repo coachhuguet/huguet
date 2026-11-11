@@ -48,7 +48,7 @@
   .wrap { max-width: 720px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 
   /* Capçalera */
-  header { padding-block: 36px 26px; text-align: center; }
+  header { padding-block: calc(36px + env(safe-area-inset-top, 0px)) 26px; text-align: center; }
   .brand {
     display: inline-flex; align-items: center; gap: 8px; font: 700 12px/1 var(--body); letter-spacing: .24em; text-transform: uppercase;
     color: var(--green); padding: 8px 14px; border: 1px solid var(--line-2); border-radius: 999px; background: rgba(255,255,255,.03);
